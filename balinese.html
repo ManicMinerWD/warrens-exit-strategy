@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Option 1 Bali — Income Strategy (PT PMA → Mandiri → IBKR) — Warrens Exit Strategy</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="strategies_data.js"></script>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">☰ Menu</button>
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="app-name"><span class="dot"></span>Warrens Exit Strategy</div>
+  </div>
+
+  <!-- ---- Group: Phase1 (Exit Aus) ---- -->
+  <div class="sidebar-group" data-group="phase1">
+    <div class="sidebar-group-label" data-group="phase1">
+      <span>Phase1 (Exit Aus)</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="sidebar-group-content" data-group="phase1">
+      <a class="nav-link" href="queensberry.html">
+        <span class="link-icon">🏢</span><span class="link-label">108 Queensberry St</span>
+      </a>
+      <a class="nav-link" href="g05.html">
+        <span class="link-icon">📋</span><span class="link-label">G5 / 108</span>
+      </a>
+      <a class="nav-link" href="302.html">
+        <span class="link-icon">📋</span><span class="link-label">302 / 108</span>
+      </a>
+      <a class="nav-link" href="sussex.html">
+        <span class="link-icon">🏡</span><span class="link-label">143 Sussex St</span>
+      </a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:8px 0;">
+      <a class="nav-link" href="financial.html"><span class="link-icon">📋</span><span class="link-label"><strong>Exit finances — G05+302+Sussex</strong></span></a>
+    </div>
+  </div>
+  <hr class="sidebar-separator">
+
+  <!-- ---- Group: Bali Statistics ---- -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-label" data-group="baliStats">
+      <span>Bali Statistics</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="sidebar-group-content" data-group="baliStats">
+      <a class="nav-link" href="index.html#annualWrap"><span class="link-icon">📊</span><span class="link-label">Annual arrivals</span></a>
+      <a class="nav-link" href="index.html#monthlyWrap"><span class="link-icon">📈</span><span class="link-label">Monthly arrivals</span></a>
+      <a class="nav-link" href="index.html#gateWrap"><span class="link-icon">🚪</span><span class="link-label">Foreign visitors by gate</span></a>
+      <a class="nav-link" href="index.html#marketsWrap"><span class="link-icon">🌏</span><span class="link-label">Source markets</span></a>
+      <a class="nav-link" href="index.html#hotelOccWrap"><span class="link-icon">🏨</span><span class="link-label">Hotel occupancy (TPK)</span></a>
+      <a class="nav-link" href="index.html#losWrap"><span class="link-icon">🛏️</span><span class="link-label">Length of stay</span></a>
+      <a class="nav-link" href="index.html#economyWrap"><span class="link-icon">💰</span><span class="link-label">Bali economy (GDP)</span></a>
+      <a class="nav-link" href="index.html#strWrap"><span class="link-icon">🏠</span><span class="link-label">STR / Airbnb market</span></a>
+      <a class="nav-link" href="index.html#priceAdrWrap"><span class="link-icon">🏡</span><span class="link-label">Property prices by zone</span></a>
+      <a class="nav-link" href="index.html#hotelReportWrap"><span class="link-icon">📰</span><span class="link-label">Hotel report</span></a>
+      <a class="nav-link" href="index.html#sources"><span class="link-icon">🔗</span><span class="link-label">Data sources</span></a>
+    </div>
+  </div>
+
+  <!-- ---- Group: Phase2 ---- -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-label">
+      <span>Phase2</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="sidebar-group-content">
+      <a class="nav-link" href="villas.html"><span class="link-icon">🏠</span><span class="link-label"><strong>Option 1 Bali — villas</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="balinese.html"><span class="link-icon">🧭</span><span class="link-label"><strong>Option 1 — income strategy</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="villas.html#investmentTableWrap"><span class="link-icon">💰</span><span class="link-label"><strong>Investment Table</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="mactan.html"><span class="link-icon">🇵🇭</span><span class="link-label"><strong>Option 2 — Mactan (Cebu)</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="mactan.html#mactanLand"><span class="link-icon">🇵🇭</span><span class="link-label" style="font-size:12px;color:var(--muted);">Land — 241m² sea-view lot</span></a>
+      <a class="nav-link" href="mactan.html#mactanBuild"><span class="link-icon">🇵🇭</span><span class="link-label" style="font-size:12px;color:var(--muted);">Build budget — Phase 1/2/3</span></a>
+      <a class="nav-link" href="mactan.html#mactanMarket"><span class="link-icon">🇵🇭</span><span class="link-label" style="font-size:12px;color:var(--muted);">Market rates — 5-6BR luxury</span></a>
+      <a class="nav-link" href="mactan.html#mactanCompetition"><span class="link-icon">🇵🇭</span><span class="link-label" style="font-size:12px;color:var(--muted);">Competition — Anza + comp set</span></a>
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="footer-row">
+      <span class="footer-label">Data</span>
+      <span class="footer-value" id="footerLastUpdated">—</span>
+    </div>
+    <div class="footer-row">
+      <span class="footer-label">Source</span>
+      <span class="footer-value">Strategy notes · Indonesian tax · IBKR SG</span>
+    </div>
+  </div>
+</aside>
+
+<div class="main-content">
+<div class="wrap">
+
+<header>
+  <div><h1>Option 1 Bali — Income Strategy</h1>
+    <p style="font-size:13px;color:var(--muted);margin-top:4px;">PT PMA registration → Mandiri bank account → Singapore offshore IBKR · rental income 10% · deploy to SG without dividends · capital gains at 22%</p>
+  </div>
+  <div class="meta"><span>Last updated: <strong id="lastUpdated"></strong></span></div>
+</header>
+
+<!-- ============ STRATEGY OVERVIEW ============ -->
+<div class="section" id="strategyOverview">
+  <h2>Strategy overview <span class="badge">the flow: villa → PT PMA → IDR bank → SGD IBKR</span></h2>
+  <p class="lead" style="font-size:14px;">
+    Rental income from the Bali villa lands in an Indonesian PT PMA bank account (Mandiri). A 10% final income tax is withheld on gross rental receipts. Rather than pay dividends to move money offshore (which triggers an additional tax layer), the after-tax IDR is converted to SGD and deployed into a Singapore-resident IBKR account to buy AI / robotics / sovereign-infrastructure shares. Capital gains on those shares are taxed at 22% in Singapore when realised — no additional Indonesian tax on the conversion or the investment, because the money is no longer Indonesian rental income by the time it reaches the SG brokerage.
+  </p>
+  <div style="background:var(--sand);border-color:var(--sand-dark);margin-top:14px;padding:14px 16px;border-radius:8px;">
+    <h3 style="margin:0 0 8px;font-size:14px;color:var(--teal);">The chain (4 steps)</h3>
+    <ol style="font-size:13px;margin:0 0 0 18px;line-height:1.6;">
+      <li><strong>Register PT PMA</strong> — Indonesian foreign-owned LLC. Legal entity that can own leasehold villa, sign management agreement, receive IDR rental income, hold bank account, and file Indonesian tax.</li>
+      <li><strong>Register PT PMA bank account at Mandiri</strong> — corporate account in the PT PMA's name. All rental income flows here. 10% final tax withheld at source on gross rentals.</li>
+      <li><strong>Register Singapore offshore IBKR account</strong> — in the PT PMA's name (or the shareholder's, depending on IBKR's Singapore corporate onboarding). SGD-denominated. Receives converted IDR → SGD.</li>
+      <li><strong>Deploy into AI / robotics / sovereign-infrastructure shares</strong> — via IBKR. Capital gains taxed at 22% (Singapore) on realisation. No Indonesian tax on the gains — the rental income has already been taxed once in Indonesia at 10%.</li>
+    </ol>
+  </div>
+  <div class="note" style="font-size:12px;color:var(--coral);margin-top:10px;">
+    <strong>Core design principle: avoid the dividend trap.</strong> If the PT PMA pays a dividend to the Singaporean shareholder, Indonesia may apply an additional withholding tax on the outbound dividend (typically 20% under the Indonesia-Singapore DTA if conditions are met, otherwise the standard rate). The strategy instead converts rental income to SGD and deploys it as capital — the SG IBKR gains are a separate tax event (22%) in a separate jurisdiction. Confirm the Indonesia-Singapore DTA dividend withholding position with Indonesian counsel.
+  </div>
+</div>
+
+<!-- ============ PT PMA REGISTRATION ============ -->
+<div class="section" id="ptPma">
+  <h2>Step 1 — Register the PT PMA <span class="badge">Indonesian foreign-owned LLC</span></h2>
+  <p class="lead" style="font-size:13px;">
+    A PT PMA (Penanaman Modal Asing) is Indonesia's vehicle for foreign direct investment. It is required for a foreigner to legally hold title/leasehold to Bali investment property, operate a rental business, and open a corporate bank account. The PT PMA is owned by the foreign shareholder (you / your structure) and managed by a local director or nominee manager (subject to Indonesian corporate law).
+  </p>
+
+  <div class="two-col" style="margin-top:14px;">
+    <div>
+      <h3>What a PT PMA gives you</h3>
+      <table class="data-table" style="font-size:12.5px;">
+        <thead><tr><th>Capability</th><th>Why you need it</th></tr></thead>
+        <tbody>
+          <tr><td>Hold leasehold / HGB title</td><td>Indonesian law requires a PT PMA for foreign-owned property investment over a threshold. The villa leasehold is held in the PT PMA's name, not yours personally.</td></tr>
+          <tr><td>Sign management agreement</td><td>The operator (Balitecture, etc.) signs with the PT PMA — the entity that legally operates the rental. Your personal involvement is limited.</td></tr>
+          <tr><td>Receive IDR rental income</td><td>Rent goes to the PT PMA's bank account. The PT PMA is the taxable entity in Indonesia.</td></tr>
+          <tr><td>Open corporate bank account</td><td>Mandiri (or BCA/Mandiri) corporate account in PT PMA name. Required to receive rental income and pay expenses.</td></tr>
+          <tr><td>File Indonesian corporate tax</td><td>The PT PMA files its own Indonesian corporate tax return. Rental income is taxed at the final 10% rate (see tax section).</td></tr>
+          <tr><td>Repatriate profits / capital</td><td>The PT PMA can convert IDR → SGD and transfer to the Singapore IBKR account, subject to Bank Indonesia / OJK reporting rules on foreign capital repatriation.</td></tr>
+        </tbody>
+      </table>
+      <div class="note" style="font-size:11px;margin-top:8px;color:var(--coral);">
+        <strong>Do not skip the PT PMA.</strong> The villa cannot be held personally by a foreigner under Indonesian law (with limited exceptions). The PT PMA is the legally recognised vehicle. Trying to hold it informally exposes the structure to enforcement risk and can void the lease.
+      </div>
+    </div>
+    <div>
+      <h3>PT PMA registration — inputs required</h3>
+      <table class="data-table" style="font-size:12.5px;">
+        <thead><tr><th>Item</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Minimum paid-up capital</td><td>IDR 10 billion is the standard threshold for "PMA" classification under the new Indonesia-OECD alignment, but smaller PMA structures exist for property investment. Confirm current minimum with Indonesian notary / legal counsel — thresholds have moved with the Omnibus Law and follow-on reforms.</td></tr>
+          <tr><td>Local director / nominee</td><td>A PT PMA requires at least one director who is an Indonesian resident. This is typically a nominee arrangement (paid retainer) — the foreign shareholder retains effective control via shareholder 권한을 and the management agreement. Nominee risk is real: document control rights carefully; see risk section.</td></tr>
+          <tr><td>NPWP (tax ID) for the PT PMA</td><td>Required for the corporate bank account and tax filings. Issued by the Indonesian tax office (Direktorat Jenderal Pajak).</td></tr>
+          <tr><td>NIB (Nomor Induk Berusaha)</td><td>Business identity number — issued via the OSS (Online Single Submission) system as part of PT PMA registration. Linked to the KBLI business classification code (likely 55193 — villa/hospitality, or 68109 — other financial leasing, depending on structure).</td></tr>
+          <tr><td>IKHTISAR / domicile</td><td>The PT PMA needs a registered address in Indonesia (often the notary's office or a professional domiciliation service, until a physical office is required).</td></tr>
+          <tr><td>Notary / legal setup</td><td>The PT PMA must be notarised (Akta Pendirian) by an Indonesian notary (PPAT for property). Use independent counsel — not the developer's referred notary.</td></tr>
+          <tr><td>KBLI code</td><td>The business activity code determines whether you need a local office, manpower reporting, etc. For a rental villa operation, 55193 (Accommodation/Other Accommodation) or similar is typical.</td></tr>
+        </tbody>
+      </table>
+      <div class="note" style="font-size:11px;margin-top:8px;color:var(--teal);">
+        <strong>Timeline:</strong> PT PMA registration typically takes 4–8 weeks from first submission to NIB + bank account readiness, depending on the notary and OSS queue. Bank account opening (Mandiri) adds another 2–4 weeks after the PT PMA has its NPWP and NIB.
+      </div>
+    </div>
+  </div>
+
+  <div class="note" style="font-size:12px;color:var(--coral);margin-top:14px;">
+    <strong>⚠ Confirmation required before committing:</strong> the PT PMA structure — including the minimum capital threshold, the nominee director arrangement, the KBLI classification, the bank account eligibility, and the tax treatment of rental income — must be confirmed with independent Indonesian legal counsel and a tax adviser. This page states the framework; the actual setup must be verified by professionals. The developer's referred notary is not independent — use your own.
+  </div>
+</div>
+
+<!-- ============ MANDIRI BANK ACCOUNT ============ -->
+<div class="section" id="bankAccount">
+  <h2>Step 2 — Mandiri corporate bank account <span class="badge">PT PMA · IDR · rental collection</span></h2>
+  <p class="lead" style="font-size:13px;">
+    Bank Mandiri is Indonesia's largest bank by assets and is commonly used by foreign-owned PT PMA entities. The PT PMA opens a corporate current account (rekening giro) in its name. All villa rental income is deposited here; all operating expenses (management fees, utilities, maintenance, tax) are paid from here.
+  </p>
+  <div class="two-col" style="margin-top:14px;">
+    <div>
+      <h3>What you get</h3>
+      <table class="data-table" style="font-size:12.5px;">
+        <thead><tr><th>Feature</th><th>Detail</th></tr></thead>
+        <tbody>
+          <tr><td>Account currency</td><td>IDR (Rupiah). Rental income is IDR. Conversion to SGD happens at the FX stage before transfer to IBKR.</td></tr>
+          <tr><td>Account holder</td><td>The PT PMA (corporate account). Signatories: the local director / nominee + the foreign shareholder (depending on mandate).</td></tr>
+          <tr><td>Rental collection</td><td>The property management/co-host (e.g. Airbnb payout, operator collection) deposits IDR into this account. Confirm the payout path with the operator — some use Airbnb's Indonesia payout; others collect locally and deposit manually.</td></tr>
+          <tr><td>Tax withholding</td><td>Indonesia's 10% final withholding tax on gross rental income is typically withheld at the source (by the payer or by the bank / tax office mechanism). Confirm with the tax adviser whether the 10% is withheld by the operator before deposit, or self-declared and paid by the PT PMA. The structure matters for cash flow planning.</td></tr>
+          <tr><td>Online banking / API</td><td>Mandiri corporate online banking (M2U / Bizbanking) enables monitoring and transfers. IBKR transfer requires a USD/SGD FX conversion and a telegraphic transfer (TT) to the SG IBKR account — handled via the corporate online banking or a treasury desk.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Opening requirements (typical)</h3>
+      <table class="data-table" style="font-size:12.5px;">
+        <thead><tr><th>Document / item</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>PT PMA ekt / NIB</td><td>The registered business entity proof.</td></tr>
+          <tr><td>NPWP of PT PMA</td><td>Tax ID required for the bank to classify the account.</td></tr>
+          <tr><td>Akta Pendirian + AMEND</td><td>Notarised incorporation deed + any amendments.</td></tr>
+          <tr><td>Daftar Pemilik / UBO declaration</td><td>Beneficial ownership declaration — required under PPAT / Bank Indonesia reporting. Names the foreign shareholder(s).</td></tr>
+          <tr><td>KYC of the shareholder(s)</td><td>Passport, proof of address, and (if applicable) the Singapore entity's documents if the shareholder is a Singapore company.</td></tr>
+          <tr><td>Local director's ID (KTP)</td><td>The nominee director's Indonesian identity documents.</td></tr>
+          <tr><td>Initial deposit</td><td>Varies by bank; Mandiri may require an initial deposit for a corporate account. Confirm current figure.</td></tr>
+        </tbody>
+      </table>
+      <div class="note" style="font-size:11px;margin-top:8px;color:var(--muted);">
+        Typical opening: 2–4 weeks after PT PMA NIB + NPWP are ready, plus KYC clearance. Bring the completed PT PMA paperwork (notary, NIB, NPWP, UBO declaration, director KTP) to the bank appointment. A Mandiri relationship manager for foreign-owned entities can streamline this — ask the notary for a referral, but verify independently.
+      </div>
+    </div>
+  </div>
+  <div class="note" style="font-size:12px;color:var(--coral);margin-top:14px;">
+    <strong>FX note:</strong> IDR → SGD conversion happens at this stage (or at the IBKR deposit stage). The IDR weakens structurally over time (see Bali strategy verdict — currency risk). The conversion rate you get from Mandiri's FX desk may differ from the interbank rate — build a 1–2% FX spread into the model. Confirm Mandiri's corporate FX minimums, TT fees, and any Indonesian FX outbound restrictions (Bank Indonesia / OJK rules on capital repatriation for PMA entities).
+  </div>
+</div>
+
+<!-- ============ SINGAPORE IBKR ============ -->
+<div class="section" id="ibkr">
+  <h2>Step 3 — Singapore offshore IBKR account <span class="badge">SGD · no Indonesian rental tax on gains</span></h2>
+  <p class="lead" style="font-size:13px;">
+    Interactive Brokers (IBKR) offers a Singapore-resident account in SGD. The PT PMA (or its Singapore-registered shareholder / holding entity) opens the account, funds it via IDR→SGD conversion from the Mandiri account, and deploys the capital into AI, robotics, sovereign-infrastructure, and related shares.
+  </p>
+  <div class="two-col" style="margin-top:14px;">
+    <div>
+      <h3>Why Singapore IBKR (not Indonesia)</h3>
+      <table class="data-table" style="font-size:12.5px;">
+        <thead><tr><th>Reason</th><th>Detail</th></tr></thead>
+        <tbody>
+          <tr><td>SGD base currency</td><td>Matches the SGD income target. No unnecessary FX to AUD or USD if the deployment target is SGD-denominated assets.</td></tr>
+          <tr><td>Broad market access</td><td>IBKR SG gives access to SGX, US, HK, AU, and global equities — AI, robotics, semiconductor, sovereign-infrastructure exposure across markets from one custody account.</td></tr>
+          <tr><td>Tax clarity on gains</td><td>Singapore taxes capital gains at 22% (when realised, if the taxpayer is tax-resident in Singapore and the gains are not exempt under the capital gains regime). The rental income has already been taxed in Indonesia at 10% — the SG gains are a separate tax event. No double-taxation on the rental income itself.</td></tr>
+          <tr><td>No Indonesian tax on the gains</td><td>Once the IDR is converted to SGD and leaves Indonesia, it is no longer Indonesian-sourced income. The IBKR gains are not Indonesian rental income — they are a capital gain in Singapore. Confirm with Indonesian counsel that the conversion + outbound transfer does not trigger an Indonesian exit tax or withholding (typically it does not, but the structure must be clean).</td></tr>
+          <tr><td>Avoids dividend route</td><td>The alternative — paying a dividend from the PT PMA to the Singapore shareholder — may attract an Indonesia outbound dividend withholding tax (DTA rate 20% typical, subject to conditions). Deploying as capital (conversion + investment) avoids this layer.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>IBKR SG account — inputs</h3>
+      <table class="data-table" style="font-size:12.5px;">
+        <thead><tr><th>Item</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Account holder</td><td>Singapore-resident entity (PT PMA shareholder, or a Singapore company / trust set up to hold the IBKR account). IBKR onboarding for corporate accounts requires entity documents — Cert of Incorporation, UEN, org chart, authorised signatories.</td></tr>
+          <tr><td>Currency</td><td>SGD (base). Can hold multicurrency (IDR, USD, etc.) but the deployment target is SGD-denominated assets.</td></tr>
+          <tr><td>Onboarding</td><td>IBKR Singapore corporate onboarding: submit entity docs, shareholder docs, source of wealth / source of funds declaration (the PT PMA's rental income is the source of funds — document the Bali villa + management agreement as the source). Expect 1–3 weeks for corporate account approval.</td></tr>
+          <tr><td>Funding path</td><td>Mandiri (IDR) → FX conversion to SGD → telegraphic transfer to IBKR SG SGD account. Confirm IBKR's inbound SGD deposit details (bank, reference, any minimum).</td></tr>
+          <tr><td>Tax residency</td><td>The investor / account holder must be Singapore tax-resident for the 22% capital gains regime to apply (or the gains may be exempt under the Singapore capital gains rules for certain capital transactions). If the account holder is a non-resident, different rules apply. Confirm tax residency position with SG tax adviser.</td></tr>
+        </tbody>
+      </table>
+      <div class="note" style="font-size:11px;margin-top:8px;color:var(--teal);">
+        <strong>SG tax note (22%):</strong> Singapore does not have a broad capital-gains tax for individuals on the sale of shares in the ordinary course. The 22% figure here is the corporate income tax rate that would apply if the account holder is a Singapore company (the PT PMA's shareholder) and the gains are treated as taxable income. If the holder is an individual, gains may be exempt (capital in nature) — but the 22% is used as the conservative planning rate. Confirm with SG tax adviser: individual vs corporate holder, and whether the gains are capital (exempt) or revenue (taxable at 17%/22%).
+      </div>
+    </div>
+  </div>
+
+  <!-- ---- TAX COMPARISON TABLE ---- -->
+  <div class="section" style="margin-top:18px;">
+    <h2>Tax comparison — dividend vs capital deployment <span class="badge">10% rental · 0% vs 22% on deployment</span></h2>
+    <p class="lead" style="font-size:13px;">
+      Two ways to move after-tax IDR rental income offshore to Singapore: (A) pay a dividend from the PT PMA to the Singapore shareholder, or (B) convert to SGD and deploy as capital into IBKR shares. The table shows the tax at each step.
+    </p>
+    <table class="data-table" id="taxCompareTable" style="font-size:12.5px;margin-top:10px;">
+      <thead>
+        <tr>
+          <th>Step</th>
+          <th>Option A — dividend to SG</th>
+          <th>Option B — convert + deploy to IBKR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Rental income received (gross IDR)</strong></td>
+          <td class="num">100%</td>
+          <td class="num">100%</td>
+        </tr>
+        <tr>
+          <td><strong>2. Indonesia 10% final withholding tax on rental</strong></td>
+          <td class="num" style="color:var(--coral);">−10%</td>
+          <td class="num" style="color:var(--coral);">−10%</td>
+        </tr>
+        <tr>
+          <td><strong>3. After-tax IDR (net rental)</strong></td>
+          <td class="num">90%</td>
+          <td class="num">90%</td>
+        </tr>
+        <tr>
+          <td><strong>4. Convert IDR → SGD (FX spread ~1–2%, not a tax)</strong></td>
+          <td class="num">~88–89% (after FX)</td>
+          <td class="num">~88–89% (after FX)</td>
+        </tr>
+        <tr>
+          <td><strong>5a. Outbound dividend withholding (Indonesia → SG)</strong></td>
+          <td class="num" style="color:var(--coral);">−20% typical (Indonesia-Singapore DTA, subject to conditions; verify)</td>
+          <td class="muted">n/a — not a dividend</td>
+        </tr>
+        <tr>
+          <td><strong>5b. Net SGD after dividend withholding</strong></td>
+          <td class="num">~70–71% of gross rental (after 10% + 20% + FX)</td>
+          <td class="muted">—</td>
+        </tr>
+        <tr>
+          <td><strong>6. Deploy SGD into IBKR shares</strong></td>
+          <td class="num">~70–71% deployed</td>
+          <td class="num">~88–89% deployed</td>
+        </tr>
+        <tr>
+          <td><strong>7. Capital gains tax on realisation (Singapore)</strong></td>
+          <td class="num">22% on gains (if corporate holder; individual may be exempt)</td>
+          <td class="num">22% on gains (if corporate holder; individual may be exempt)</td>
+        </tr>
+        <tr>
+          <td><strong>8. Total effective tax leakage on the rental income</strong></td>
+          <td class="num" style="color:var(--coral);">~30%+ (10% rental + 20% dividend + FX drag)</td>
+          <td class="num" style="color:var(--teal);">10% rental only (FX drag 1–2%) — gains taxed separately at 22% when realised</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note" style="font-size:12px;margin-top:10px;color:var(--coral);">
+      <strong>The dividend route is the trap.</strong> A 10% rental tax is unavoidable in Indonesia. Adding a 20% outbound dividend withholding on the same money leaks ~30% of gross before it even reaches the investment account. Deployment as capital — convert, send to IBKR, buy shares — keeps the leakage at 10% + FX, with the 22% only applied to gains when realised. That is the core of this strategy.
+    </div>
+    <div class="note" style="font-size:11px;color:var(--muted);margin-top:6px;">
+      Figures are illustrative model rates — 10% final rental withholding, 20% Indonesia-Singapore DTA dividend withholding (subject to conditions — verify with Indonesian counsel), 22% Singapore corporate tax on gains (individual may be exempt; verify with SG tax adviser), FX spread ~1–2% (Mandiri corporate FX). All figures must be confirmed with professionals before relying on them.
+    </div>
+  </div>
+
+  <!-- ---- DEPLOYMENT TARGETS TABLE ---- -->
+  <div class="section" style="margin-top:18px;">
+    <h2>IBKR deployment targets <span class="badge">AI · robotics · sovereign infrastructure · ~15yr horizon</span></h2>
+    <p class="lead" style="font-size:13px;">
+      The SGD deployed to IBKR isWarren's long-horizon (15-year) capital deployment — the income funnel from Bali funds the sovereign AI / robotics / infrastructure share portfolio. The villa's rental yield (target 10%+) feeds the account; the shares compound via capital gains. The deployment is a separate build — this page documents the plumbing only; the specific share allocations are a separate workstream.
+    </p>
+    <table class="data-table" style="font-size:12.5px;margin-top:10px;">
+      <thead>
+        <tr><th>Layer</th><th>What it is</th><th>Why it's here</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Bali villa (Option 1)</strong></td>
+          <td>Completed/off-plan STR villa — rental income at 10%+ net yield target (e.g. Casa Petak at 15.7–21.5% projected, PPV4967 at Tourism zoning)</td>
+          <td>Generates the IDR rental stream that funds the PT PMA account → IBKR deployment. The villa is the income engine.</td>
+          <td class="muted" style="font-size:11px;">See villas.html — shortlist</td>
+        </tr>
+        <tr>
+          <td><strong>PT PMA</strong></td>
+          <td>Indonesian foreign-owned LLC — holds villa leasehold, signs mgmt agreement, receives IDR rental, holds Mandiri bank account</td>
+          <td>Legal vehicle for the whole structure. Without it, the villa can't be held, the bank account can't be opened, and the IBKR funding path is blocked.</td>
+          <td class="muted" style="font-size:11px;">Registration pending — confirm with counsel</td>
+        </tr>
+        <tr>
+          <td><strong>Mandiri corporate account</strong></td>
+          <td>IDR bank account in PT PMA name — collects rental, pays expenses, converts IDR→SGD for outbound transfer</td>
+          <td>The FX + repatriation bridge. 10% rental tax withheld here; net IDR converted to SGD for IBKR funding.</td>
+          <td class="muted" style="font-size:11px;">Opening pending — after PT PMA ready</td>
+        </tr>
+        <tr>
+          <td><strong>Singapore IBKR account</strong></td>
+          <td>SGD brokerage account for AI/robotics/sovereign-infrastructure shares — capital gains taxed at 22% on realisation (corporate holder; individual may be exempt)</td>
+          <td>The deployment destination. No Indonesian tax on gains; no dividend withholding tax. The after-10%-tax IDR becomes SGD capital deployed over 15 years.</td>
+          <td class="muted" style="font-size:11px;">Onboarding pending — after PT PMA + bank ready</td>
+        </tr>
+        <tr>
+          <td><strong>AI / robotics / sovereign-infrastructure shares</strong></td>
+          <td>Long-horizon (15yr) equity portfolio — the investment target for the SGD capital. Not detailed on this page.</td>
+          <td>The capital growth layer. See separate deployment workstream. This page documents the plumbing only.</td>
+          <td class="muted" style="font-size:11px;">Separate workstream</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============ RISKS ============ -->
+<div class="section" id="risks">
+  <h2>Risks & things to confirm <span class="badge" style="color:var(--coral);">before wiring</span></h2>
+  <div class="note" style="font-size:12px;margin-bottom:10px;">
+    <strong>1. PT PMA structure.</strong> Minimum capital threshold, nominee director arrangement, KBLI code, local office requirement, and NPWP/NIB issuance all need confirmation with independent Indonesian counsel. The nominee director is a real risk — document control rights (shareholder authority, board resolutions, bank mandate) carefully. A poorly structured nominee arrangement can result in the director locking the entity (see the Phuket 13-foreigner case as a cautionary example of nominee structures gone wrong).
+  </div>
+  <div class="note" style="font-size:12px;margin-bottom:10px;">
+    <strong>2. Bank account eligibility.</strong> Mandiri (and other Indonesian banks) have tightened KYC for foreign-owned PMA entities. Confirm that the PT PMA's structure qualifies for a corporate account — some banks require a minimum capital deposit, a local office address, or a certain shareholder structure. The bank opening can be the slowest step after the PT PMA is registered.
+  </div>
+  <div class="note" style="font-size:12px;margin-bottom:10px;">
+    <strong>3. Dividend withholding (Indonesia → Singapore).</strong> The 20% DTA rate is the typical outbound dividend withholding under the Indonesia-Singapore DTA, but it is subject to conditions (beneficial ownership, underlying tax, treaty claim procedure). The strategy assumes the dividend route is avoided entirely — deploy as capital instead. This must be confirmed: if the PT PMA later needs to pay a dividend (e.g. to distribute proceeds on exit), the withholding applies. Plan the exit structure in advance.
+  </div>
+  <div class="note" style="font-size:12px;margin-bottom:10px;">
+    <strong>4. Singapore tax residency of the IBKR holder.</strong> The 22% capital gains rate assumes the account holder is a Singapore tax-resident company (or an individual whose gains are not exempt). If the holder is a non-resident or the gains are capital in nature (exempt for individuals), the effective rate differs. Confirm Singapore tax residency of the holder and the characterisation of the gains (capital vs revenue) with a Singapore tax adviser.
+  </div>
+  <div class="note" style="font-size:12px;margin-bottom:10px;">
+    <strong>5. FX risk (IDR → SGD).</strong> The IDR is structurally inflationary against the SGD. The rental income is IDR; the deployment target is SGD. Every conversion loses value over time if the IDR weakens. Build a 1–2% FX spread per conversion into the model, and consider whether partial hedging (e.g. a USD/SGD intermediate) is warranted. This is the same currency risk flagged in the Bali strategy verdict — it applies to the deployment path as well.
+  </div>
+  <div class="note" style="font-size:12px;margin-bottom:10px;">
+    <strong>6. Indonesian FX outbound rules.</strong> Bank Indonesia / OJK have reporting and, in some cases, restriction rules on capital repatriation by PMA entities. Converting IDR to SGD and transferring to Singapore may require a documented business purpose, source-of-funds declaration, and reporting. Confirm the current outbound FX rules for PMA entities with the bank's treasury desk and Indonesian counsel — the rules have shifted with the Omnibus Law and follow-on reforms.
+  </div>
+  <div class="note" style="font-size:12px;margin-bottom:10px;">
+    <strong>7. IBKR onboarding source of funds.</strong> IBKR Singapore corporate onboarding requires a source-of-funds declaration. The Bali villa rental income is the source — document the villa, the PT PMA, the management agreement, and the Mandiri account as the source chain. Incomplete documentation can delay onboarding or trigger enhanced due diligence.
+  </div>
+  <div class="note" style="font-size:11px;color:var(--coral);">
+    <strong>⚠ ACTION:</strong> Get independent Indonesian legal counsel (not the developer's notary) to confirm (a) PT PMA setup and minimum capital, (b) nominee director structure and control rights, (c) Mandiri corporate account eligibility and requirements, (d) Indonesia-Singapore DTA dividend withholding position and the capital-deployment alternative. Get a Singapore tax adviser to confirm (e) the IBKR holder's tax residency, (f) the 22% gains rate vs the capital-exemption position for an individual holder, and (g) the Singapore entity structure for the IBKR account.
+  </div>
+</div>
+
+<!-- ============ NOTES ============ -->
+<div class="section">
+  <h2>Methodology & sources <span class="badge">strategy notes</span></h2>
+  <div class="note" style="font-size:12px;">
+    <strong>This page documents the plumbing of the Option 1 Bali income strategy — not the villa shortlist or the share deployment.</strong> The villa shortlist (Option 1 Bali properties) is on villas.html. The investment comparison table is on villas.html#investmentTableWrap. The share deployment targets (AI / robotics / sovereign infrastructure) are a separate workstream not covered here.
+  </div>
+  <div class="note" style="font-size:12px;margin-top:8px;">
+    <strong>Tax figures are planning rates only.</strong> The 10% Indonesia final rental withholding, the 20% Indonesia-Singapore DTA dividend withholding, and the 22% Singapore corporate capital gains rate are illustrative planning figures. They must be confirmed with Indonesian counsel and a Singapore tax adviser before any money moves. Tax law in both jurisdictions is subject to reform.
+  </div>
+  <div class="note" style="font-size:12px;margin-top:8px;">
+    <strong>The strategy is a hypothesis to be validated.</strong> The core claim — that deploying after-tax rental IDR as capital into a Singapore IBKR account avoids the dividend withholding layer and limits the Indonesian tax to 10% — must be confirmed by professionals in both jurisdictions. If the capital-deployment route triggers an Indonesian tax event (e.g. a deemed dividend on outbound transfer, or a withholding on the conversion), the strategy needs to be restructured. Do not assume the tax treatment until confirmed.
+  </div>
+</div>
+
+<p style="font-size:12px;color:var(--muted);margin-top:20px;text-align:center;">
+  <a href="index.html" style="color:var(--teal);">← Back to dashboard</a>
+</p>
+
+</div><!-- /wrap -->
+</div><!-- /main-content -->
+
+<script src="render.js?v=3"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  setupSidebars();
+  document.getElementById("lastUpdated").textContent = DATA.lastUpdated || "2026-09-18";
+  var fl = document.getElementById("footerLastUpdated");
+  if (fl) fl.textContent = DATA.lastUpdated || "2026-09-18";
+});
+</script>
+</body>
+</html>

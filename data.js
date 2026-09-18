@@ -672,9 +672,76 @@ const SUSSEX_SALES = [
 ];
 
 /* =============================================================================
-   EXPORTS
+   OPTION 1 BALI — INCOME STRATEGY (PT PMA → Mandiri → SG IBKR)
    ============================================================================= */
+const BALI_STRATEGY = {
+  lastUpdated: "2026-09-18",
+  steps: [
+    {
+      title: "Register the PT PMA (Indonesian foreign-owned LLC)",
+      detail: "The PT PMA is the legal vehicle that holds the villa leasehold, signs the management agreement, receives IDR rental income, and opens a corporate bank account. Required by Indonesian law for foreign-owned property investment. Register via Indonesian notary (PPAT for property) — use independent counsel, not the developer's referred notary.",
+      caveat: "Confirm minimum paid-up capital, KBLI code (55193 / similar), nominee director structure, and NPWP/NIB issuance with Indonesian counsel"
+    },
+    {
+      title: "Open Mandiri corporate bank account in PT PMA name",
+      detail: "Bank Mandiri corporate current account (rekening giro). All IDR rental income is deposited here; all operating expenses, management fees, and tax are paid from here. The 10% final withholding tax on gross rental is applied at this stage (by the payer / bank / tax office — confirm mechanism with tax adviser).",
+      caveat: "Confirm bank KYC / minimum deposit / signatory mandate; confirm whether the 10% is withheld before or after deposit"
+    },
+    {
+      title: "Open Singapore offshore IBKR account",
+      detail: "IBKR Singapore-resident account in SGD. The PT PMA (or its Singapore shareholder / holding entity) opens the account, funds it via IDR→SGD conversion from the Mandiri account, and deploys capital into AI / robotics / sovereign-infrastructure shares. Corporate onboarding requires entity docs (Cert of Incorporation, UEN, org chart, authorised signatories) + source-of-funds declaration (the Bali villa + PT PMA + management agreement is the documented source).",
+      caveat: "Confirm IBKR SG onboarding timeline (1-3 weeks for corporate), holder tax residency (affects 22% rate vs capital exemption), and inbound SGD deposit details"
+    },
+    {
+      title: "Deploy SGD into AI / robotics / sovereign-infrastructure shares (15yr horizon)",
+      detail: "Long-horizon (15-year) equity portfolio — the capital growth layer. The villa's rental yield (target 10%+) feeds the account; share gains compound via capital appreciation. Capital gains taxed at 22% in Singapore on realisation (corporate holder) — no Indonesian tax on the gains, because the rental income has already been taxed once at 10% and the money is no longer Indonesian-sourced by the time it reaches SG.",
+      caveat: "This is the separate deployment workstream (share selection, allocation, rebalancing). This page documents the plumbing only."
+    }
+  ],
+  taxComparison: {
+    rentalGross: "100%",
+    indonesiaRentalTax: "−10% final withholding tax on gross rental income (Indonesia)",
+    afterRentalTax: "90% net IDR",
+    fxConversion: "Convert IDR → SGD (~1–2% FX spread, not a tax; Mandiri corporate FX rate may differ from interbank)",
+    afterFx: "~88–89% of gross (after 10% tax + FX spread)",
+    optionA: {
+      label: "Option A — pay dividend to Singapore shareholder",
+      step1: "Outbound dividend withholding (Indonesia → SG): −20% typical under Indonesia-Singapore DTA, subject to conditions (verify)",
+      step2: "Net SGD after dividend withholding: ~70–71% of gross rental (after 10% + 20% + FX)",
+      step3: "SG capital gains tax on realisation: 22% on gains (corporate holder; individual may be exempt)",
+      totalLeakage: "30%+ of gross before deployment (10% rental + 20% dividend + FX drag) — then 22% on gains"
+    },
+    optionB: {
+      label: "Option B — convert to SGD and deploy as capital into IBKR (preferred)",
+      step1: "No dividend — the money is converted and sent as capital, not distributed. Avoids the 20% outbound dividend withholding entirely.",
+      step2: "Net SGD after conversion: ~88–89% of gross rental (after 10% tax + FX spread only)",
+      step3: "SG capital gains tax on realisation: 22% on gains (corporate holder; individual may be exempt) — same as Option A, but applied to a larger deployed base",
+      totalLeakage: "10% rental tax + FX drag only (1–2%) — gains taxed separately at 22% when realised. The 20% dividend withholding is avoided."
+    },
+    summary: "The dividend route (Option A) leaks ~30%+ of gross before the money even reaches the investment account. The capital deployment route (Option B) limits the leakage to 10% + FX, with the 22% only applied to gains when realised. This is the core of the strategy — avoid paying a dividend to offset tax; instead reinvest to SG IBKR."
+  },
+  risks: [
+    { num: "1", title: "PT PMA structure", body: "Minimum capital threshold, nominee director arrangement, KBLI code, local office requirement, and NPWP/NIB issuance all need confirmation with independent Indonesian counsel. The nominee director is a real risk — document control rights (shareholder authority, board resolutions, bank mandate) carefully. A poorly structured nominee arrangement can result in the director locking the entity (see the Phuket 13-foreigner case as a cautionary example)." },
+    { num: "2", title: "Bank account eligibility", body: "Mandiri and other Indonesian banks have tightened KYC for foreign-owned PMA entities. Confirm that the PT PMA's structure qualifies for a corporate account — some banks require a minimum capital deposit, a local office address, or a certain shareholder structure. The bank opening can be the slowest step after the PT PMA is registered." },
+    { num: "3", title: "Dividend withholding (Indonesia → Singapore)", body: "The 20% DTA rate is the typical outbound dividend withholding under the Indonesia-Singapore DTA, but it is subject to conditions (beneficial ownership, underlying tax, treaty claim procedure). The strategy assumes the dividend route is avoided entirely — deploy as capital instead. This must be confirmed: if the PT PMA later needs to pay a dividend (e.g. to distribute proceeds on exit), the withholding applies. Plan the exit structure in advance." },
+    { num: "4", title: "Singapore tax residency of the IBKR holder", body: "The 22% capital gains rate assumes the account holder is a Singapore tax-resident company (or an individual whose gains are not exempt). If the holder is a non-resident or the gains are capital in nature (exempt for individuals), the effective rate differs. Confirm Singapore tax residency of the holder and the characterisation of the gains (capital vs revenue) with a Singapore tax adviser." },
+    { num: "5", title: "FX risk (IDR → SGD)", body: "The IDR is structurally inflationary against the SGD. The rental income is IDR; the deployment target is SGD. Every conversion loses value over time if the IDR weakens. Build a 1–2% FX spread per conversion into the model, and consider whether partial hedging (e.g. a USD/SGD intermediate) is warranted. This is the same currency risk flagged in the Bali strategy verdict — it applies to the deployment path as well." },
+    { num: "6", title: "Indonesian FX outbound rules", body: "Bank Indonesia / OJK have reporting and, in some cases, restriction rules on capital repatriation by PMA entities. Converting IDR to SGD and transferring to Singapore may require a documented business purpose, source-of-funds declaration, and reporting. Confirm the current outbound FX rules for PMA entities with the bank's treasury desk and Indonesian counsel — the rules have shifted with the Omnibus Law and follow-on reforms." },
+    { num: "7", title: "IBKR onboarding source of funds", body: "IBKR Singapore corporate onboarding requires a source-of-funds declaration. The Bali villa rental income is the source — document the villa, the PT PMA, the management agreement, and the Mandiri account as the source chain. Incomplete documentation can delay onboarding or trigger enhanced due diligence." }
+  ],
+  deploymentTargets: [
+    { layer: "Bali villa (Option 1)", what: "Completed/off-plan STR villa — rental income at 10%+ net yield target (e.g. Casa Petak 15.7–21.5% projected, PPV4967 Tourism zoning)", why: "Generates the IDR rental stream that funds the PT PMA account → IBKR deployment. The villa is the income engine.", status: "See villas.html — shortlist" },
+    { layer: "PT PMA", what: "Indonesian foreign-owned LLC — holds villa leasehold, signs mgmt agreement, receives IDR rental, holds Mandiri bank account", why: "Legal vehicle for the whole structure. Without it, the villa can't be held, the bank account can't be opened, and the IBKR funding path is blocked.", status: "Registration pending — confirm with counsel" },
+    { layer: "Mandiri corporate account", what: "IDR bank account in PT PMA name — collects rental, pays expenses, converts IDR→SGD for outbound transfer", why: "The FX + repatriation bridge. 10% rental tax withheld here; net IDR converted to SGD for IBKR funding.", status: "Opening pending — after PT PMA ready" },
+    { layer: "Singapore IBKR account", what: "SGD brokerage account for AI/robotics/sovereign-infrastructure shares — capital gains taxed at 22% on realisation (corporate holder; individual may be exempt)", why: "The deployment destination. No Indonesian tax on gains; no dividend withholding tax. The after-10%-tax IDR becomes SGD capital deployed over 15 years.", status: "Onboarding pending — after PT PMA + bank ready" },
+    { layer: "AI / robotics / sovereign-infrastructure shares", what: "Long-horizon (15yr) equity portfolio — the investment target for the SGD capital. Not detailed on this page.", why: "The capital growth layer. See separate deployment workstream. This page documents the plumbing only.", status: "Separate workstream" }
+  ]
+};
 
+/* =============================================================================
+   EXPORTS — add to DATA at the bottom of data.js
+   ============================================================================= */
+DATA.baliStrategy = BALI_STRATEGY;
 
 /* =============================================================================
    MACTAN OPTION 2 — Punta Engaño, Cebu (inlined from mactan_data.js)
