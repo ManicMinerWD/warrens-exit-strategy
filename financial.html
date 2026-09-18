@@ -7,9 +7,18 @@
 <link rel="stylesheet" href="style.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <script src="data.js"></script>
+<script src="render.js?v=3"></script>
+<script src="balinese_render.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  setupSidebars();
+  renderBaliStrategy();
+  renderBaliStrategyButtons();
+});
+</script>
 </head>
 <body>
-<button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">&#x2630; Menu</button>
+<button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">☰ Menu</button>
 
 <!-- ============ SIDEBAR ============ -->
 <aside class="sidebar" id="sidebar">
@@ -95,6 +104,8 @@
   </div>
   <div class="meta"><span>Sep 2026 &#x2014; indicative only, confirm with tax adviser</span></div>
 </header>
+
+<div class="section" id="baliStrategyButtons" style="display:none;"></div>
 
 <p style="font-size:12.5px;color:var(--muted);margin-bottom:16px;">Selling all three Phase-1 properties: the two Carlton apartments (G5/108 + 302/108, off-market/private at ~$420k each) and the Pascoe Vale townhouse (5/143 Sussex St, reno + list at $830k&#x2013;$900k). Below: capital gains, CGT, carried-forward rental losses, depreciation schedule, and final net cash in hand under two scenarios &#x2014; with and without the loss offset.</p>
 
@@ -496,6 +507,5 @@
 </div><!-- /wrap -->
 </div><!-- /main-content -->
 
-<script src="render.js?v=3"></script>
 </body>
 </html>

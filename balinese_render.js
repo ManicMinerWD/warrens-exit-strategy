@@ -1,10 +1,23 @@
 /* =============================================================================
    OPTION 1 BALI — INCOME STRATEGY
-   Renders strategy data from strategies_data.js into balinese.html
+   Renders strategy data from data.js (DATA.baliStrategy) into containers.
+   Safe to call from any page that loads data.js + this script.
    ============================================================================= */
 
+function renderBaliStrategyButtons() {
+  const d = DATA && DATA.baliStrategy;
+  if (!d || !d.steps || !d.steps.length) return;
+  const container = document.getElementById("baliStrategyButtons");
+  if (!container) return;
+  container.style.display = "";
+  container.innerHTML = `<h2 style="font-size:14px;margin:0 0 10px;color:var(--teal);">Option 1 Bali — income strategy <span style="font-size:11px;color:var(--muted);font-weight:normal;">(PT PMA → Mandiri → SG IBKR)</span></h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;">
+      ${d.steps.map((s, i) => `<a href="balinese.html#step${i+1}" class="callout" style="background:var(--sand);border-color:var(--sand-dark);padding:8px 12px;border-radius:6px;text-decoration:none;color:var(--ink);font-size:12px;display:inline-block;"><strong>Step ${i+1} — ${esc(s.title)}</strong></a>`).join("")}
+    </div>`;
+}
+
 function renderBaliStrategy() {
-  const d = DATA.baliStrategy;
+  const d = DATA && DATA.baliStrategy;
   if (!d) return;
 
   // ---- Strategy flow diagram (text + steps) ----

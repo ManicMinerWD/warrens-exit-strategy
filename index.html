@@ -7,12 +7,22 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <script src="data.js"></script>
+  <script src="render.js?v=3"></script>
+  <script src="balinese_render.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    setupSidebars();
+    renderBaliStrategy();
+    renderBaliStrategyButtons();
+    var lu = document.getElementById("lastUpdated");
+    if (lu) lu.textContent = DATA && DATA.lastUpdated ? DATA.lastUpdated : "2026-09-18";
+    var fl = document.getElementById("footerLastUpdated");
+    if (fl) fl.textContent = DATA && DATA.lastUpdated ? DATA.lastUpdated : "2026-09-18";
+  });
+  </script>
 </head>
 <body>
 <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">☰ Menu</button>
-
-<!-- ============ SIDEBAR (Hyatt-style) ============ -->
-<aside class="sidebar" id="sidebar">
   <div class="sidebar-header">
     <div class="app-name"><span class="dot"></span>Warrens Exit Strategy</div>
   </div>
@@ -139,6 +149,8 @@
     <span>Data: BPS Bali · BHA · Antara · AirDNA · Reid Real Info</span>
   </div>
 </header>
+
+<div class="section" id="baliStrategyButtons" style="display:none;"></div>
 
 <div id="balistatsShowAll">Show all Bali Statistics sections</div>
 
@@ -409,7 +421,6 @@
 </div><!-- /wrap -->
 </div><!-- /main-content -->
 
-<script src="render.js?v=2"></script>
 
 </body>
 </html>

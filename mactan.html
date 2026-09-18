@@ -8,6 +8,16 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <script src="data.js"></script>
   <script src="mactan_render.js"></script>
+  <script src="render.js?v=3"></script>
+  <script src="balinese_render.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    setupSidebars();
+    renderMactan();
+    renderBaliStrategy();
+    renderBaliStrategyButtons();
+  });
+  </script>
 </head>
 <body>
 
@@ -103,6 +113,8 @@
   </div>
   <div class="meta"><span>Last updated: <strong id="lastUpdated"></strong></span></div>
 </header>
+
+<div class="section" id="baliStrategyButtons" style="display:none;"></div>
 
 <p class="lead" style="font-size:14px;margin-bottom:16px;">
   From the spreadsheet's Mactan tabs: a 241m² sea-view lot at Punta Engaño tip (near Dusit Thani / Mövenpick / Shangri-La), a 3-storey 6BR villa build budget ~₱16.8M (~$448k AUD) in 3 phases, and a luxury villa rental market where 5-6BR beachfront villas command $844–917/night. Blue-ocean: no confirmed 6BR at this spec at the tip — your villa enters a near-empty premium slot.
@@ -260,7 +272,6 @@
 </div><!-- /wrap -->
 </div><!-- /main-content -->
 
-<script src="render.js?v=3"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   setupSidebars();
