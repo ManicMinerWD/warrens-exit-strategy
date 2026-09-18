@@ -6,7 +6,9 @@
   <title>Option 1 Bali — Income Strategy (PT PMA → Mandiri → IBKR) — Warrens Exit Strategy</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-  <script src="strategies_data.js"></script>
+  <script src="data.js"></script>
+  <script src="render.js?v=3"></script>
+  <script src="balinese_render.js"></script>
 </head>
 <body>
 
@@ -72,9 +74,9 @@
     </div>
     <div class="sidebar-group-content">
       <a class="nav-link" href="villas.html"><span class="link-icon">🏠</span><span class="link-label"><strong>Option 1 Bali — villas</strong></span></a>
-      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
-      <a class="nav-link" href="balinese.html"><span class="link-icon">🧭</span><span class="link-label"><strong>Option 1 — income strategy</strong></span></a>
-      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <hr style="border:none;border-top:1px solid var(--sidebar-separator);margin:7px 0 4px;">
+      <a class="nav-link" href="balinese.html"><span class="link-icon">🧭</span><span class="link-label">Option 1 — income strategy</span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-separator);margin:7px 0;">
       <a class="nav-link" href="villas.html#investmentTableWrap"><span class="link-icon">💰</span><span class="link-label"><strong>Investment Table</strong></span></a>
       <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
       <a class="nav-link" href="mactan.html"><span class="link-icon">🇵🇭</span><span class="link-label"><strong>Option 2 — Mactan (Cebu)</strong></span></a>
@@ -426,13 +428,14 @@
 </div><!-- /wrap -->
 </div><!-- /main-content -->
 
-<script src="render.js?v=3"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   setupSidebars();
-  document.getElementById("lastUpdated").textContent = DATA.lastUpdated || "2026-09-18";
+  renderBaliStrategy();
+  var lu = document.getElementById("lastUpdated");
+  if (lu) lu.textContent = DATA && DATA.lastUpdated ? DATA.lastUpdated : "2026-09-18";
   var fl = document.getElementById("footerLastUpdated");
-  if (fl) fl.textContent = DATA.lastUpdated || "2026-09-18";
+  if (fl) fl.textContent = DATA && DATA.lastUpdated ? DATA.lastUpdated : "2026-09-18";
 });
 </script>
 </body>
