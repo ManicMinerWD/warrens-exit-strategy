@@ -635,10 +635,36 @@ function renderVillaPage() {
       </table>
       <div class="note" style="font-size:12px;margin-top:6px;">${esc(v.note || "")}</div>
       <div class="note" style="font-size:12px;margin-top:4px;color:${v.verdict.indexOf("watch") >= 0 || v.verdict.indexOf("not a lead") >= 0 ? "var(--coral)" : "var(--teal)"};"><strong>Verdict:</strong> ${esc(v.verdict || "")}</div>
+      ${v.projections ? renderProjectionTable(v.projections) : ""}
       <p style="font-size:11px;margin-top:6px;"><a href="${esc(v.url)}" target="_blank" rel="noopener" style="color:var(--teal);">View source listing →</a></p>
     </div>`;
   }).join("");
   detailEl.innerHTML = cards;
+}
+
+/* =============================================================================
+   PROJECTION TABLE — Balitecture-stated occupancy projection (Casa Petak)
+   ============================================================================= */
+function renderProjectionTable(p) {
+  if (!p || !p.rows || !p.scenarios) return "";
+  const thead = "<tr><th>" + esc(p.caption || "Projection") + "</th>" +
+    p.scenarios.map(s => "<th class=\"num\">" + esc(s) + "</th>").join("") + "</tr>";
+  const tbody = p.rows.map(r => {
+    const cells = r.vals.map((v, i) => {
+      let txt = v == null ? "—" : String(v);
+      if (r.pct) txt = (v * 100).toFixed(1) + "%";
+      if (r.years) txt = v.toFixed(1) + " years";
+      if (!r.pct && !r.years && typeof v === "number" && v >= 1000) txt = "$" + v.toLocaleString("en-AU");
+      return "<td class=\"num\">" + esc(txt) + "</td>";
+    }).join("");
+    return "<tr><td>" + esc(r.label) + "</td>" + cells + "</tr>";
+  }).join("");
+  return "<div class=\"section\" style=\"margin-top:14px;margin-bottom:6px;\">" +
+    "<h4 style=\"font-size:13px;margin:0 0 6px;color:var(--muted);\">" +
+    esc(p.caption) + " <span style=\"font-weight:normal;font-size:11px;\">— " + esc(p.source) + "</span></h4>" +
+    "<table class=\"data-table\" style=\"font-size:13px;\"><thead>" + thead + "</thead><tbody>" + tbody + "</tbody></table>" +
+    "<div style=\"font-size:11px;color:var(--muted);margin-top:4px;\">Estimates based on operator-stated model. Confirm independently before committing.</div>" +
+    "</div>";
 }
 
 /* =============================================================================

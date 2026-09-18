@@ -335,7 +335,22 @@ const VILLA_SHORTLIST = [
     yield:null,
     operator:"Balitecture (20% mgmt fee, full management)",
     note:"Completed 3BR 236m² + pool. Balitecture already manages other block villas — hands-off via existing operator. STR-zoned (differs from Casa Vela orange-zone NIB). Personal use 90 nights/yr. Their own pub proj: 70% occ → $55k/yr net (15.7% ROI, 6.4yr payback); 80% → $65k (18.6%, 5.4yr); 90% → $75k (21.5%, 4.6yr). [Estimates — verify]",
-    verdict:"Best on-hand shortlist: completed + managed + projected numbers clear $50k SGD/yr target from 70% occ. Confirms 10% yield floor & 6yr payback."
+    verdict:"Best on-hand shortlist: completed + managed + projected numbers clear $50k SGD/yr target from 70% occ. Confirms 10% yield floor & 6yr payback.",
+    // Balitecture-stated projection table (source: Balitecture marketing material, 2026-09-18)
+    projections: {
+      caption: "Balitecture-stated projection (their pub proj model)",
+      source: "Balitecture marketing material, 2026-09-18",
+      scenarios: ["70% OCC.", "80% OCC.", "90% OCC."],
+      rows: [
+        { label: "Monthly Revenue",      vals: [7500, 8500, 9600] },
+        { label: "Management Fee (20%)",  vals: [1500, 1700, 1900] },
+        { label: "Monthly Expenses",      vals: [1400, 1400, 1400] },
+        { label: "Monthly Profit",        vals: [4600, 5400, 6300] },
+        { label: "Annual Profit",         vals: [55000, 65000, 75000] },
+        { label: "Projected Annual Return", vals: [0.157, 0.186, 0.215], pct: true },
+        { label: "Breakeven",             vals: [6.4, 5.4, 4.6], years: true },
+      ]
+    }
   },
   {
     id:"PPV4967",
