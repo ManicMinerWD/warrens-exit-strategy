@@ -680,7 +680,7 @@ const BALI_STRATEGY = {
     {
       title: "Register the PT PMA (Indonesian foreign-owned LLC)",
       detail: "The PT PMA is the legal vehicle that holds the villa leasehold, signs the management agreement, receives IDR rental income, and opens a corporate bank account. Required by Indonesian law for foreign-owned property investment. Register via Indonesian notary (PPAT for property) — use independent counsel, not the developer's referred notary.",
-      caveat: "Confirm minimum paid-up capital, KBLI code (55193 / similar), nominee director structure, and NPWP/NIB issuance with Indonesian counsel"
+      caveat: "Confirm minimum paid-up capital, KBLI code (55193 / similar), nominee director structure, and NPWP/NIB issuance with Indonesian counsel. The 10B IDR must be invested in the business within 3 years of approval (KAP / government board requirement); extend to 4-5 years is possible with a documented investment plan and proof of progress — confirm timeline, extension process, and acceptable proof with Indonesian counsel.",
     },
     {
       title: "Open Mandiri corporate bank account in PT PMA name",
