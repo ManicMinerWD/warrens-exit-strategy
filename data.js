@@ -739,11 +739,6 @@ const BALI_STRATEGY = {
 };
 
 /* =============================================================================
-   EXPORTS — add to DATA at the bottom of data.js
-   ============================================================================= */
-DATA.baliStrategy = BALI_STRATEGY;
-
-/* =============================================================================
    MACTAN OPTION 2 — Punta Engaño, Cebu (inlined from mactan_data.js)
    ============================================================================= */
 const MACTAN_VILLA = {
@@ -908,4 +903,5 @@ const DATA = {
   adrGridUsd: ADR_GRID_USD,
   pricePerSqm: PRICE_PER_SQM,
   avgSizeSqm: AVG_SIZE_SQM,
+  baliStrategy: BALI_STRATEGY,
 };
