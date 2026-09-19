@@ -839,7 +839,7 @@ document.addEventListener("DOMContentLoaded", boot);
   "use strict";
   var STORAGE_KEY = "warrens-exit-darkMode";
   var html = document.documentElement;
-  var toggle = document.getElementById("darkModeToggle");
+  var toggle = null;
   var apply = function(isDark) {
     if (isDark) { html.setAttribute("data-theme", "dark"); }
     else { html.removeAttribute("data-theme"); }
@@ -859,12 +859,20 @@ document.addEventListener("DOMContentLoaded", boot);
     } catch(e) {}
     return "light";
   };
-  apply(getPref() === "dark");
-  if (toggle) {
-    toggle.addEventListener("click", function() {
-      var next = html.getAttribute("data-theme") !== "dark";
-      apply(next);
-      try { localStorage.setItem(STORAGE_KEY, next ? "dark" : "light"); } catch(e) {}
-    });
+  function init() {
+    toggle = document.getElementById("darkModeToggle");
+    apply(getPref() === "dark");
+    if (toggle) {
+      toggle.addEventListener("click", function() {
+        var next = html.getAttribute("data-theme") !== "dark";
+        apply(next);
+        try { localStorage.setItem(STORAGE_KEY, next ? "dark" : "light"); } catch(e) {}
+      });
+    }
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
   }
 })();
