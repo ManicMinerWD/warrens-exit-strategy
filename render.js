@@ -831,3 +831,40 @@ function boot() {
 
 // Boot: wait for DOM fully parsed before querying
 document.addEventListener("DOMContentLoaded", boot);
+
+/* =============================================================================
+   DARK MODE TOGGLE — wired by CSS variable overrides in style.css
+   ============================================================================= */
+(function() {
+  "use strict";
+  var STORAGE_KEY = "warrens-exit-darkMode";
+  var html = document.documentElement;
+  var toggle = document.getElementById("darkModeToggle");
+  var apply = function(isDark) {
+    if (isDark) { html.setAttribute("data-theme", "dark"); }
+    else { html.removeAttribute("data-theme"); }
+    if (toggle) {
+      toggle.classList.toggle("is-dark", isDark);
+      toggle.innerHTML = isDark
+        ? '<span class="dm-icon">☀️</span><span class="dm-label">Light</span>'
+        : '<span class="dm-icon">🌙</span><span class="dm-label">Dark</span>';
+    }
+  };
+  var getPref = function() {
+    var saved = null;
+    try { saved = localStorage.getItem(STORAGE_KEY); } catch(e) {}
+    if (saved === "dark" || saved === "light") return saved;
+    try {
+      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
+    } catch(e) {}
+    return "light";
+  };
+  apply(getPref() === "dark");
+  if (toggle) {
+    toggle.addEventListener("click", function() {
+      var next = html.getAttribute("data-theme") !== "dark";
+      apply(next);
+      try { localStorage.setItem(STORAGE_KEY, next ? "dark" : "light"); } catch(e) {}
+    });
+  }
+})();
