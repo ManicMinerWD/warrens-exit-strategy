@@ -7,6 +7,14 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <script src="data.js"></script>
+  <script src="render.js?v=3"></script>
+  <script>
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+      boot();
+    } else {
+      document.addEventListener("DOMContentLoaded", boot);
+    }
+  </script>
 </head>
 <body>
 
@@ -181,6 +189,5 @@
 </div><!-- /wrap -->
 </div><!-- /main-content -->
 
-<script src="render.js?v=3"></script>
 </body>
 </html>
