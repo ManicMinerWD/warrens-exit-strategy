@@ -761,43 +761,44 @@ function setupSidebars() {
     });
   }
 
-  // ---- Bali Statistics section locking (index.html ONLY — standalone pages skip) ----
+  // ---- Bali Statistics section locking (index.html ONLY — standalone pages skip this section) ----
   var showAllBtn = document.getElementById && document.getElementById("balistatsShowAll") || null;
-  if (!showAllBtn) return;  // standalone pages: no #balistatsShowAll → nothing to lock → bail
-  var baliStatsLinks = body.querySelectorAll && body.querySelectorAll(".sidebar-group-content[data-group=\"baliStats\"] .nav-link") || [];
-  var baliStatsIds = [];
-  for (var i = 0; i < baliStatsLinks.length; i++) {
-    var href = baliStatsLinks[i].getAttribute && baliStatsLinks[i].getAttribute("href");
-    if (href && href.charAt && href.charAt(0) === "#") baliStatsIds.push(href.slice(1));
-  }
-  if (baliStatsIds.length > 1 && showAllBtn) {
-    // "Show all" button — restore every section
-    showAllBtn.addEventListener("click", function() {
-      for (var k = 0; k < baliStatsIds.length; k++) {
-        var el = document.getElementById(baliStatsIds[k]);
-        if (el) el.classList.remove("balistats-hidden");
+  if (showAllBtn) {
+    var baliStatsLinks = body.querySelectorAll && body.querySelectorAll(".sidebar-group-content[data-group=\"baliStats\"] .nav-link") || [];
+    var baliStatsIds = [];
+    for (var i = 0; i < baliStatsLinks.length; i++) {
+      var href = baliStatsLinks[i].getAttribute && baliStatsLinks[i].getAttribute("href");
+      if (href && href.charAt && href.charAt(0) === "#") baliStatsIds.push(href.slice(1));
+    }
+    if (baliStatsIds.length > 1 && showAllBtn) {
+      // "Show all" button — restore every section
+      showAllBtn.addEventListener("click", function() {
+        for (var k = 0; k < baliStatsIds.length; k++) {
+          var el = document.getElementById(baliStatsIds[k]);
+          if (el) el.classList.remove("balistats-hidden");
+        }
+        showAllBtn.classList.remove("visible");
+        for (var l = 0; l < baliStatsLinks.length; l++) baliStatsLinks[l].classList.remove("active");
+      });
+      // Each nav-link hides all others and shows only itself
+      for (var m = 0; m < baliStatsLinks.length; m++) {
+        (function(link, id) {
+          link.addEventListener("click", function(e) {
+            if (!link) return;
+            if (e && e.preventDefault) e.preventDefault();
+            for (var n = 0; n < baliStatsIds.length; n++) {
+              var sec = document.getElementById(baliStatsIds[n]);
+              if (sec && sec.classList) sec.classList.add("balistats-hidden");
+            }
+            var target = document.getElementById(id);
+            if (target && target.classList) target.classList.remove("balistats-hidden");
+            if (showAllBtn && showAllBtn.classList) showAllBtn.classList.add("visible");
+            for (var o = 0; o < baliStatsLinks.length; o++) { var lb = baliStatsLinks[o]; if (lb && lb.classList) lb.classList.remove("active"); }
+            if (link.classList) link.classList.add("active");
+            if (target && target.scrollIntoView) target.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+        })(baliStatsLinks[m], baliStatsIds[m]);
       }
-      showAllBtn.classList.remove("visible");
-      for (var l = 0; l < baliStatsLinks.length; l++) baliStatsLinks[l].classList.remove("active");
-    });
-    // Each nav-link hides all others and shows only itself
-    for (var m = 0; m < baliStatsLinks.length; m++) {
-      (function(link, id) {
-        link.addEventListener("click", function(e) {
-          if (!link) return;
-          if (e && e.preventDefault) e.preventDefault();
-          for (var n = 0; n < baliStatsIds.length; n++) {
-            var sec = document.getElementById(baliStatsIds[n]);
-            if (sec && sec.classList) sec.classList.add("balistats-hidden");
-          }
-          var target = document.getElementById(id);
-          if (target && target.classList) target.classList.remove("balistats-hidden");
-          if (showAllBtn && showAllBtn.classList) showAllBtn.classList.add("visible");
-          for (var o = 0; o < baliStatsLinks.length; o++) { var lb = baliStatsLinks[o]; if (lb && lb.classList) lb.classList.remove("active"); }
-          if (link.classList) link.classList.add("active");
-          if (target && target.scrollIntoView) target.scrollIntoView({ behavior: "smooth", block: "start" });
-        });
-      })(baliStatsLinks[m], baliStatsIds[m]);
     }
   }
 }
