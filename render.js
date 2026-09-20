@@ -840,6 +840,7 @@ document.addEventListener("DOMContentLoaded", boot);
   var STORAGE_KEY = "warrens-exit-darkMode";
   var html = document.documentElement;
   var toggle = null;
+  var wired = false;
   var apply = function(isDark) {
     if (isDark) { html.setAttribute("data-theme", "dark"); }
     else { html.removeAttribute("data-theme"); }
@@ -859,20 +860,26 @@ document.addEventListener("DOMContentLoaded", boot);
     } catch(e) {}
     return "light";
   };
-  function init() {
+  var wire = function() {
+    if (wired) return;
     toggle = document.getElementById("darkModeToggle");
+    if (!toggle) return;
+    wired = true;
     apply(getPref() === "dark");
-    if (toggle) {
-      toggle.addEventListener("click", function() {
-        var next = html.getAttribute("data-theme") !== "dark";
-        apply(next);
-        try { localStorage.setItem(STORAGE_KEY, next ? "dark" : "light"); } catch(e) {}
-      });
-    }
-  }
+    toggle.addEventListener("click", function() {
+      var next = html.getAttribute("data-theme") !== "dark";
+      apply(next);
+      try { localStorage.setItem(STORAGE_KEY, next ? "dark" : "light"); } catch(e) {}
+    });
+  };
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("DOMContentLoaded", wire);
   } else {
-    init();
+    wire();
   }
+  var poller = setInterval(function() {
+    if (wired || document.readyState === "complete") { clearInterval(poller); return; }
+    wire();
+  }, 100);
+  setTimeout(function() { clearInterval(poller); }, 5000);
 })();

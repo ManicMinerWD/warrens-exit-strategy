@@ -507,7 +507,67 @@ body { display: flex; flex-direction: row; min-height: 100vh; }
 [data-theme="dark"] .sidebar-trigger:hover { color: var(--teal-light); }
 [data-theme="dark"] .sidebar-trigger .chevron { color: var(--muted-dark); }
 
-/* ---- Page sections (unchanged) ---- */
+/* ---- Sidebar dark mode ---- */
+[data-theme="dark"] .sidebar {
+  background: var(--sidebar-bg-dark);
+  border-right-color: var(--sidebar-border-dark);
+}
+[data-theme="dark"] .sidebar-header {
+  border-bottom-color: var(--sidebar-border-dark);
+}
+[data-theme="dark"] .sidebar-header .app-name { color: var(--sidebar-accent-foreground-dark); }
+[data-theme="dark"] .sidebar-header .dot {
+  background: var(--sidebar-accent-foreground-dark);
+  box-shadow: 0 0 0 3px rgba(20,112,107,0.2);
+}
+[data-theme="dark"] .sidebar-separator { border-top-color: var(--sidebar-border-dark); }
+[data-theme="dark"] .sidebar-group { border-bottom-color: var(--sidebar-border-dark); }
+[data-theme="dark"] .sidebar-group-label {
+  color: var(--muted-dark);
+}
+[data-theme="dark"] .sidebar-group-label .chevron { color: var(--muted-dark); }
+[data-theme="dark"] .sidebar-group-label:hover { color: var(--teal-light); }
+[data-theme="dark"] .sidebar-group-content { }
+[data-theme="dark"] .nav-link {
+  color: var(--sidebar-foreground-dark);
+  border-bottom-color: var(--sidebar-border-dark);
+}
+[data-theme="dark"] .nav-link:hover {
+  background: var(--sidebar-hover-dark);
+  color: var(--teal-light);
+}
+[data-theme="dark"] .nav-link.active {
+  background: var(--sidebar-hover-dark);
+  color: var(--teal-light);
+}
+[data-theme="dark"] .nav-link .link-icon { opacity: 0.7; }
+[data-theme="dark"] .nav-link:hover .link-icon,
+[data-theme="dark"] .nav-link.active .link-icon { opacity: 1; }
+[data-theme="dark"] .sidebar-footer {
+  border-top-color: var(--sidebar-border-dark);
+  color: var(--muted-dark);
+}
+[data-theme="dark"] .sidebar-footer .footer-label { color: var(--muted-dark); }
+[data-theme="dark"] .sidebar-footer .footer-value {
+  color: var(--sidebar-foreground-dark);
+  font-weight: 500;
+}
+[data-theme="dark"] .sidebar-submenu-btn { color: var(--sidebar-foreground-dark); }
+[data-theme="dark"] .sidebar-submenu-btn:hover {
+  background: var(--sidebar-hover-dark);
+  color: var(--teal-light);
+}
+[data-theme="dark"] .sidebar-submenu-btn .sub-label { color: var(--muted-dark); }
+[data-theme="dark"] .sidebar-submenu-item { border-bottom-color: var(--sidebar-border-dark); }
+[data-theme="dark"] .collapsible-sub-header { color: var(--muted-dark); }
+[data-theme="dark"] .collapsible-sub-header .chevron { color: var(--muted-dark); }
+[data-theme="dark"] .collapsible-sub-header:hover { color: var(--teal-light); }
+[data-theme="dark"] .collapsible-sub-content { }
+[data-theme="dark"] .sidebar-trigger { color: var(--muted-dark); border-bottom-color: var(--sidebar-border-dark); }
+[data-theme="dark"] .sidebar-trigger:hover { color: var(--teal-light); }
+[data-theme="dark"] .sidebar-trigger .chevron { color: var(--muted-dark); }
+
+/* ---- Page sections ---- */
 header,
 footer,
 footer,
