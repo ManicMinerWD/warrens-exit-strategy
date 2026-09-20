@@ -872,14 +872,42 @@ document.addEventListener("DOMContentLoaded", boot);
       try { localStorage.setItem(STORAGE_KEY, next ? "dark" : "light"); } catch(e) {}
     });
   };
+  function maybeApply() {
+    if (wired) return;
+    toggle = document.getElementById("darkModeToggle");
+    if (!toggle) return;
+    wired = true;
+    // Add click handler FIRST (so button always responds, even if apply fails)
+    try {
+      toggle.addEventListener("click", function() {
+        var next = html.getAttribute("data-theme") !== "dark";
+        apply(next);
+        try { localStorage.setItem(STORAGE_KEY, next ? "dark" : "light"); } catch(e2) {}
+      });
+    } catch(e2) {
+      // Fallback: inline onclick
+      try { toggle.setAttribute("onclick", "var t=document.documentElement;var d=t.getAttribute('data-theme')!=='dark';t.setAttribute('data-theme',d?'dark':null);try{localStorage.setItem('warrens-exit-darkMode',d?'dark':'light');}catch(e){}if(this.classList)try{this.classList.toggle('is-dark',d);}catch(e){}var ic=this.querySelector('.dm-icon');if(ic)ic.textContent=d?'☀️':'🌙';var lb=this.querySelector('.dm-label');if(lb)lb.textContent=d?'Light':'Dark';"); } catch(e3) {}
+    }
+    // Apply initial preference AFTER handler is wired
+    try { apply(getPref() === "dark"); } catch(e2) {}
+  }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", wire);
   } else {
     wire();
   }
+  // MutationObserver: catch the button if render.js loaded before body existed
+  var observer = null;
+  try {
+    observer = new MutationObserver(function() {
+      maybeApply();
+      if (wired) observer.disconnect();
+    });
+    observer.observe(document.body || document.documentElement, { childList: true, subtree: true });
+  } catch(e) {}
   var poller = setInterval(function() {
     if (wired || document.readyState === "complete") { clearInterval(poller); return; }
-    wire();
+    maybeApply();
   }, 100);
-  setTimeout(function() { clearInterval(poller); }, 5000);
+  setTimeout(function() { clearInterval(poller); if (observer) observer.disconnect(); }, 8000);
 })();
