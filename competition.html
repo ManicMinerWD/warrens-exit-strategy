@@ -10,16 +10,6 @@
 <script src="data.js"></script>
 <script src="render.js?v=3"></script>
 <script src="balinese_render.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  setupSidebars();
-  renderCompetition();
-  var lu = document.getElementById("lastUpdated");
-  if (lu) lu.textContent = DATA && DATA.lastUpdated ? "Last updated: " + DATA.lastUpdated : "";
-  var fl = document.getElementById("footerLastUpdated");
-  if (fl) fl.textContent = DATA && DATA.lastUpdated ? DATA.lastUpdated : "";
-});
-</script>
 </head>
 <body>
 
