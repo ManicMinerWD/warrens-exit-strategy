@@ -846,7 +846,7 @@ function renderCompetition() {
           <td><a href="${esc(c.url)}" target="_blank" rel="noopener" style="color:var(--teal);font-size:12px;">${esc(c.source)} ↗</a></td>
           <td class="num">${esc(c.type || "—")}</td>
           <td>${esc(c.location || "—")}</td>
-          <td class="num">${c.price != null ? "$" + c.price.toLocaleString("en-AU") : "—"}</td>
+          <td class="num">${c.price != null ? esc(c.price) : "—"}</td>
           <td class="num">${c.beds != null ? c.beds + "BR" : "—"}</td>
           <td class="num">${esc(c.lastSeen || "—")}</td>
           <td style="font-size:12px;">${esc(c.notes || "")}</td>

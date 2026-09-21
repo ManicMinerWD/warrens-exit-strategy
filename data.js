@@ -310,19 +310,19 @@ const AVG_SIZE_SQM = {
    ============================================================================= */
 const COMPETITION_TRACKER = [
   {
-    id: "rea-melbourne-apartment-151850872",
-    title: "Melbourne apartment — REA listing #151850872",
+    id: "rea-stkildaroad-730-539",
+    title: "730/539 St Kilda Road — REA listing #151850872",
     url: "https://www.realestate.com.au/property-apartment-vic-melbourne-151850872",
     source: "realestate.com.au",
     type: "Apartment",
-    location: "Melbourne VIC",
-    beds: null,
-    price: null,
+    location: "St Kilda Road VIC",
+    beds: 1,
+    price: "$360,000 - $395,000",
     lastSeen: "2026-09-20",
     buyerContext: "Reported by potential buyer — tracking what else they're looking at alongside G05/108 + 302/108",
-    notes: "",
+    notes: "1 bed, 1 car. Asking $360,000 - $395,000. St Kilda Road — central Melbourne CBD fringe; comparable to G05/108 + 302/108 (Carlton) as another inner-Melbourne apartment exit option.",
     status: "logged",
-    action: "Extract price, beds, suburb, auction/price-guide from listing page; compare to G05/108 ($420k est.) and 302/108 ($420k est.)"
+    action: "1 bed, 1 car, $360k-$395k asking. Compare to G05/108 ($420k est.) and 302/108 ($420k est.) — this is priced below our Carlton apartments; check why (floor level, building quality, condition, BSV)."
   },
   {
     id: "rea-melbourne-apartment-151710008",
