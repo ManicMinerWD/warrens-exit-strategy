@@ -341,18 +341,18 @@ const COMPETITION_TRACKER = [
   },
   {
     id: "rea-carlton-apartment-150593592",
-    title: "Carlton apartment — REA listing #150593592",
+    title: "112A/640 Swanston Street — REA listing #150593592",
     url: "https://www.realestate.com.au/property-apartment-vic-carlton-150593592",
     source: "realestate.com.au",
     type: "Apartment",
-    location: "Carlton VIC 3053",
-    beds: null,
-    price: null,
+    location: "Swanston Street VIC",
+    beds: 1,
+    price: "$399,000 - $430,000",
     lastSeen: "2026-09-21",
     buyerContext: "Reported by potential buyer — Carlton is the same suburb as G05/108 and 302/108, so this is a direct same-suburb comparison",
-    notes: "Same suburb (Carlton 3053) as our Phase 1 exit apartments — most directly comparable to G05/108 + 302/108",
+    notes: "1 bed, 1 carpark. Asking $399,000 - $430,000. Swanston Street — inner Melbourne, same suburb (Carlton 3053) as G05/108 and 302/108; direct same-suburb comparison.",
     status: "logged",
-    action: "Extract price, beds, auction/price-guide from listing page; this is the most directly comparable to G05/108 ($420k est.) and 302/108 ($420k est.) since it's the same suburb — compare price per entry, building quality, floor level"
+    action: "1 bed, 1 carpark, $399k-$430k asking. Compare to G05/108 ($420k est.) and 302/108 ($420k est.) — same suburb (Carlton), similar price range; check floor level, building quality, condition, BSV."
   },
   {
     id: "rea-carlton-apartment-151054624",
