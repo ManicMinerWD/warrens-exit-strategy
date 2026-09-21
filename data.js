@@ -325,19 +325,34 @@ const COMPETITION_TRACKER = [
     action: "Extract price, beds, suburb, auction/price-guide from listing page; compare to G05/108 ($420k est.) and 302/108 ($420k est.)"
   },
   {
-    id: "rea-melbourne-apartment-151710008",
-    title: "Melbourne apartment — REA listing #151710008",
-    url: "https://www.realestate.com.au/property-apartment-vic-melbourne-151710008",
+    id: "rea-carlton-apartment-150593592",
+    title: "Carlton apartment — REA listing #150593592",
+    url: "https://www.realestate.com.au/property-apartment-vic-carlton-150593592",
     source: "realestate.com.au",
     type: "Apartment",
-    location: "Melbourne VIC",
+    location: "Carlton VIC 3053",
     beds: null,
     price: null,
     lastSeen: "2026-09-21",
-    buyerContext: "Reported by potential buyer — tracking alongside other Melbourne apartments they're considering",
-    notes: "",
+    buyerContext: "Reported by potential buyer — Carlton is the same suburb as G05/108 and 302/108, so this is a direct same-suburb comparison",
+    notes: "Same suburb (Carlton 3053) as our Phase 1 exit apartments — most directly comparable to G05/108 + 302/108",
     status: "logged",
-    action: "Extract price, beds, suburb, auction/price-guide from listing page; compare to G05/108 ($420k est.) and 302/108 ($420k est.)"
+    action: "Extract price, beds, auction/price-guide from listing page; this is the most directly comparable to G05/108 ($420k est.) and 302/108 ($420k est.) since it's the same suburb — compare price per entry, building quality, floor level"
+  },
+  {
+    id: "rea-carlton-apartment-151054624",
+    title: "Carlton apartment — REA listing #151054624",
+    url: "https://www.realestate.com.au/property-apartment-vic-carlton-151054624",
+    source: "realestate.com.au",
+    type: "Apartment",
+    location: "Carlton VIC 3053",
+    beds: null,
+    price: null,
+    lastSeen: "2026-09-22",
+    buyerContext: "Reported by potential buyer — Carlton is the same suburb as G05/108 and 302/108, so this is another direct same-suburb comparison",
+    notes: "Same suburb (Carlton 3053) as our Phase 1 exit apartments — second Carlton listing in the tracker alongside #150593592",
+    status: "logged",
+    action: "Extract price, beds, auction/price-guide from listing page; compare to G05/108 ($420k est.) and 302/108 ($420k est.) — third Carlton comparison in the tracker (with #150593592)"
   }
 ];
 
