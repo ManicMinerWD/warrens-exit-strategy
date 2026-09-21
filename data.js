@@ -325,6 +325,21 @@ const COMPETITION_TRACKER = [
     action: "Extract price, beds, suburb, auction/price-guide from listing page; compare to G05/108 ($420k est.) and 302/108 ($420k est.)"
   },
   {
+    id: "rea-melbourne-apartment-151710008",
+    title: "Melbourne apartment — REA listing #151710008",
+    url: "https://www.realestate.com.au/property-apartment-vic-melbourne-151710008",
+    source: "realestate.com.au",
+    type: "Apartment",
+    location: "Melbourne VIC",
+    beds: null,
+    price: null,
+    lastSeen: "2026-09-22",
+    buyerContext: "Reported by potential buyer — tracking alongside other Melbourne apartments they're considering",
+    notes: "",
+    status: "logged",
+    action: "Extract price, beds, suburb, auction/price-guide from listing page; compare to G05/108 ($420k est.) and 302/108 ($420k est.)"
+  },
+  {
     id: "rea-carlton-apartment-150593592",
     title: "Carlton apartment — REA listing #150593592",
     url: "https://www.realestate.com.au/property-apartment-vic-carlton-150593592",
