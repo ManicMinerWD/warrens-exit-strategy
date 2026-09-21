@@ -325,19 +325,19 @@ const COMPETITION_TRACKER = [
     action: "1 bed, 1 car, $360k-$395k asking. Compare to G05/108 ($420k est.) and 302/108 ($420k est.) — this is priced below our Carlton apartments; check why (floor level, building quality, condition, BSV)."
   },
   {
-    id: "rea-melbourne-apartment-151710008",
-    title: "Melbourne apartment — REA listing #151710008",
+    id: "rea-spencerstreet-1711-200",
+    title: "1711/200 Spencer Street — REA listing #151710008",
     url: "https://www.realestate.com.au/property-apartment-vic-melbourne-151710008",
     source: "realestate.com.au",
     type: "Apartment",
-    location: "Melbourne VIC",
-    beds: null,
-    price: null,
+    location: "Spencer Street VIC",
+    beds: 1,
+    price: "$345,000",
     lastSeen: "2026-09-22",
     buyerContext: "Reported by potential buyer — tracking alongside other Melbourne apartments they're considering",
-    notes: "",
+    notes: "1 bed. Asking $345,000. Spencer Street — inner Melbourne, near Southern Cross Station; another inner-Melbourne apartment exit option alongside 730/539 St Kilda Road and our Carlton apartments.",
     status: "logged",
-    action: "Extract price, beds, suburb, auction/price-guide from listing page; compare to G05/108 ($420k est.) and 302/108 ($420k est.)"
+    action: "1 bed, $345,000 asking. Compare to 730/539 St Kilda Road ($360k-$395k) and G05/108 ($420k est.) and 302/108 ($420k est.) — lowest asking price in the tracker so far."
   },
   {
     id: "rea-carlton-apartment-150593592",
