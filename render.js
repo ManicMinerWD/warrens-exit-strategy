@@ -826,7 +826,48 @@ function boot() {
   renderSTR();
   renderPriceAdr();
   renderHotelReport();
+  renderCompetition();
   renderVillaPage();
+}
+
+// ---- Competition tracker renderer ----
+function renderCompetition() {
+  const wrap = $("#competitionWrap");
+  if (!wrap) return;
+  const list = DATA.competitionTracker || [];
+  const tbody = $("#competitionTable tbody");
+  if (tbody) {
+    if (list.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="10" style="padding:20px;text-align:center;color:var(--muted);">No competition tracked yet. Add entries to <code>data.js</code> COMPETITION_TRACKER array.</td></tr>`;
+    } else {
+      tbody.innerHTML = list.map(c => `
+        <tr>
+          <td><strong>${esc(c.title)}</strong><br><span class="muted" style="font-size:11px;">${esc(c.id)}</span></td>
+          <td><a href="${esc(c.url)}" target="_blank" rel="noopener" style="color:var(--teal);font-size:12px;">${esc(c.source)} ↗</a></td>
+          <td class="num">${esc(c.type || "—")}</td>
+          <td>${esc(c.location || "—")}</td>
+          <td class="num">${c.price != null ? "$" + c.price.toLocaleString("en-AU") : "—"}</td>
+          <td class="num">${c.beds != null ? c.beds + "BR" : "—"}</td>
+          <td class="num">${esc(c.lastSeen || "—")}</td>
+          <td style="font-size:12px;">${esc(c.notes || "")}</td>
+          <td style="font-size:11px;color:var(--muted);">${esc(c.status || "")}</td>
+          <td style="font-size:11px;color:var(--muted);max-width:200px;">${esc(c.buyerContext || "")}</td>
+        </tr>`).join("");
+    }
+  }
+  const empty = $("#competitionEmpty");
+  if (empty) empty.style.display = (list.length > 0) ? "none" : "";
+  const actionTable = $("#competitionActionTable tbody");
+  if (actionTable) {
+    actionTable.innerHTML = list.map(c => `
+      <tr>
+        <td><strong>${esc(c.title)}</strong></td>
+        <td style="font-size:12px;">${esc(c.action || "")}</td>
+        <td class="num">${esc(c.lastSeen || "—")}</td>
+      </tr>`).join("");
+  }
+  const note = $("#competitionNote");
+  if (note) note.textContent = "Track every property a potential buyer mentions — log the URL, extract price/beds/location, and compare to the Phase 1 exit properties (G05/108, 302/108, 5/143 Sussex). Update data.js COMPETITION_TRACKER array and push.";
 }
 
 // Boot: wait for DOM fully parsed before querying

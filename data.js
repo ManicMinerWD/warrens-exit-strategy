@@ -306,6 +306,27 @@ const AVG_SIZE_SQM = {
 };
 
 /* =============================================================================
+   PHASE 1 COMPETITION TRACKER — properties potential buyers are looking at
+   ============================================================================= */
+const COMPETITION_TRACKER = [
+  {
+    id: "rea-melbourne-apartment-151850872",
+    title: "Melbourne apartment — REA listing #151850872",
+    url: "https://www.realestate.com.au/property-apartment-vic-melbourne-151850872",
+    source: "realestate.com.au",
+    type: "Apartment",
+    location: "Melbourne VIC",
+    beds: null,
+    price: null,
+    lastSeen: "2026-09-20",
+    buyerContext: "Reported by potential buyer — tracking what else they're looking at alongside G05/108 + 302/108",
+    notes: "",
+    status: "logged",
+    action: "Extract price, beds, suburb, auction/price-guide from listing page; compare to G05/108 ($420k est.) and 302/108 ($420k est.)"
+  }
+];
+
+/* =============================================================================
    VILLA SHORT LIST — Warren's Villa Shortlist
    Fill in / update this array — renders into the sidebar submenu
    url: Propertia / developer listing page (or your own notes)
@@ -923,4 +944,5 @@ const DATA = {
   pricePerSqm: PRICE_PER_SQM,
   avgSizeSqm: AVG_SIZE_SQM,
   baliStrategy: BALI_STRATEGY,
+  competitionTracker: COMPETITION_TRACKER,
 };

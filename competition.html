@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 1 — Competition Tracker — Warrens Exit Strategy</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="data.js"></script>
+<script src="render.js?v=3"></script>
+<script src="balinese_render.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  setupSidebars();
+  renderCompetition();
+  var lu = document.getElementById("lastUpdated");
+  if (lu) lu.textContent = DATA && DATA.lastUpdated ? "Last updated: " + DATA.lastUpdated : "";
+  var fl = document.getElementById("footerLastUpdated");
+  if (fl) fl.textContent = DATA && DATA.lastUpdated ? DATA.lastUpdated : "";
+});
+</script>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">☰ Menu</button>
+<button id="darkModeToggle" class="is-dark" aria-label="Toggle dark mode" title="Dark mode"><span class="dm-icon">🌙</span><span class="dm-label">Dark</span></button>
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="app-name"><span class="dot"></span>Warrens Exit Strategy</div>
+  </div>
+
+  <!-- ---- Group: Phase1 (Exit Aus) ---- -->
+  <div class="sidebar-group" data-group="phase1">
+    <div class="sidebar-group-label" data-group="phase1">
+      <span>Phase1 (Exit Aus)</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="sidebar-group-content" data-group="phase1">
+
+      <!-- Sub-group: 108 Queensberry (collapsible) -->
+      <a class="nav-link" href="queensberry.html">
+        <span class="link-icon">🏢</span><span class="link-label">108 Queensberry St</span>
+      </a>
+      <a class="nav-link" href="g05.html">
+        <span class="link-icon">📋</span><span class="link-label">G5 / 108</span>
+      </a>
+      <a class="nav-link" href="302.html">
+        <span class="link-icon">📋</span><span class="link-label">302 / 108</span>
+      </a>
+      <a class="nav-link" href="sussex.html">
+        <span class="link-icon">🏡</span><span class="link-label">143 Sussex St</span>
+      </a>
+
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:8px 0;">
+      <a class="nav-link" href="financial.html"><span class="link-icon">📊</span><span class="link-label"><strong>Exit finances — G05+302+Sussex</strong></span></a>
+      <a class="nav-link" href="competition.html"><span class="link-icon">🏁</span><span class="link-label"><strong>Competition tracker</strong></span></a>
+
+    </div>
+  </div>
+  <hr class="sidebar-separator">
+
+  <!-- ---- Group: Bali Statistics ---- -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-label" data-group="baliStats">
+      <span>Bali Statistics</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="sidebar-group-content" data-group="baliStats">
+      <a class="nav-link" href="index.html#annualWrap"><span class="link-icon">📊</span><span class="link-label">Annual arrivals</span></a>
+      <a class="nav-link" href="index.html#monthlyWrap"><span class="link-icon">📈</span><span class="link-label">Monthly arrivals</span></a>
+      <a class="nav-link" href="index.html#gateWrap"><span class="link-icon">🚪</span><span class="link-label">Foreign visitors by gate</span></a>
+      <a class="nav-link" href="index.html#marketsWrap"><span class="link-icon">🌏</span><span class="link-label">Source markets</span></a>
+      <a class="nav-link" href="index.html#hotelOccWrap"><span class="link-icon">🏨</span><span class="link-label">Hotel occupancy (TPK)</span></a>
+      <a class="nav-link" href="index.html#losWrap"><span class="link-icon">🛏️</span><span class="link-label">Length of stay</span></a>
+      <a class="nav-link" href="index.html#economyWrap"><span class="link-icon">💰</span><span class="link-label">Bali economy (GDP)</span></a>
+      <a class="nav-link" href="index.html#strWrap"><span class="link-icon">🏠</span><span class="link-label">STR / Airbnb market</span></a>
+      <a class="nav-link" href="index.html#priceAdrWrap"><span class="link-icon">🏡</span><span class="link-label">Property prices by zone</span></a>
+      <a class="nav-link" href="index.html#hotelReportWrap"><span class="link-icon">📰</span><span class="link-label">Hotel report</span></a>
+      <a class="nav-link" href="index.html#sources"><span class="link-icon">🔗</span><span class="link-label">Data sources</span></a>
+    </div>
+  </div>
+
+  <!-- ---- Group: Phase2 ---- -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-label">
+      <span>Phase2</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="sidebar-group-content">
+      <a class="nav-link" href="villas.html"><span class="link-icon">🏠</span><span class="link-label"><strong>Option 1 Bali — villas</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-separator);margin:7px 0 4px;">
+      <a class="nav-link" href="balinese.html"><span class="link-icon">🧭</span><span class="link-label">Option 1 — income strategy</span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-separator);margin:7px 0;">
+      <a class="nav-link" href="villas.html#investmentTableWrap"><span class="link-icon">💰</span><span class="link-label"><strong>Investment Table</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="mactan.html"><span class="link-icon">🇵🇭</span><span class="link-label"><strong>Option 2 — Mactan (Cebu)</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="mactan.html#mactanLand"><span class="link-icon">🇵🇭</span><span class="link-label" style="font-size:12px;color:var(--muted);">Land — 241m² sea-view lot</span></a>
+      <a class="nav-link" href="mactan.html#mactanBuild"><span class="link-icon">🇵🇭</span><span class="link-label" style="font-size:12px;color:var(--muted);">Build budget — Phase 1/2/3</span></a>
+      <a class="nav-link" href="mactan.html#mactanMarket"><span class="link-icon">🇵🇭</span><span class="link-label" style="font-size:12px;color:var(--muted);">Market rates — 5-6BR luxury</span></a>
+      <a class="nav-link" href="mactan.html#mactanCompetition"><span class="link-icon">🏁</span><span class="link-label" style="font-size:12px;color:var(--muted);">Competition — Anza + comp set</span></a>
+    </div>
+  </div>
+
+  <!-- ---- Footer ---- -->
+  <div class="sidebar-footer">
+    <div class="footer-row">
+      <span class="footer-label">Data</span>
+      <span class="footer-value" id="footerLastUpdated">—</span>
+    </div>
+    <div class="footer-row">
+      <span class="footer-label">Source</span>
+      <span class="footer-value">REA · buyer intel</span>
+    </div>
+  </div>
+</aside>
+
+<div class="main-content">
+<div class="wrap">
+
+<header>
+  <div><h1>Phase 1 — Competition Tracker</h1>
+    <p style="font-size:13px;color:var(--muted);margin-top:4px;">Properties potential buyers are looking at — track URLs, prices, beds, location and how they compare to G05/108 + 302/108 + 5/143 Sussex</p>
+  </div>
+  <div class="meta"><span>Last updated: <strong id="lastUpdated"></strong></span></div>
+</header>
+
+<div class="section" id="baliStrategyButtons" style="display:none;"></div>
+
+<p style="font-size:12.5px;color:var(--muted);margin-bottom:16px;">When a potential buyer tells us what else they're looking at, log it here. The value is in comparison: how does this competing property stack up against our Phase 1 exit assets (G05/108, 302/108, 5/143 Sussex St)? Use it to understand buyer alternatives, negotiate, and time our listing/pricing.</p>
+
+<!-- ============ COMPETITION LIST ============ -->
+<div class="section" id="competitionWrap">
+  <h2>Tracked competition <span class="badge">buyer alternatives</span></h2>
+  <p class="lead" style="font-size:13px;">Every property a buyer mentions — URL, price, beds, location, when we saw it, and the comparison to our listing.</p>
+  <div class="table-wrap">
+    <table class="data-table" id="competitionTable" style="margin-top:10px;">
+      <thead>
+        <tr>
+          <th style="width:22%;">Property</th>
+          <th style="width:14%;">Source / URL</th>
+          <th style="width:8%;">Type</th>
+          <th style="width:14%;">Location</th>
+          <th style="width:10%;" class="num">Price (AUD)</th>
+          <th style="width:6%;" class="num">Beds</th>
+          <th style="width:10%;" class="num">Last seen</th>
+          <th style="width:12%;">Notes</th>
+          <th style="width:6%;">Status</th>
+          <th style="width:14%;">Buyer context</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="note" id="competitionNote" style="margin-top:12px;"></div>
+</div>
+
+<!-- ============ WHAT TO EXTRACT ============ -->
+<div class="section" id="competitionHowTo" style="margin-top:18px;">
+  <h2>What to log for each listing</h2>
+  <p class="lead" style="font-size:13px;">When a buyer sends a link, capture these fields in <code>data.js</code> COMPETITION_TRACKER:</p>
+  <table class="data-table" style="margin-top:10px;font-size:13px;">
+    <thead><tr><th style="width:22%;">Field</th><th>What to capture</th></tr></thead>
+    <tbody>
+      <tr><td><strong>title</strong></td><td>Short label — e.g. "REA Melbourne apartment #151850872"</td></tr>
+      <tr><td><strong>url</strong></td><td>Full listing URL — this is the primary key; can always re-visit</td></tr>
+      <tr><td><strong>source</strong></td><td>Platform — realestate.com.au, domain.com.au, laudus, facebook, etc.</td></tr>
+      <tr><td><strong>type</strong></td><td>Apartment / townhouse / house / land / villa</td></tr>
+      <tr><td><strong>location</strong></td><td>Suburb + state — e.g. "Melbourne VIC", "Carlton VIC 3053"</td></tr>
+      <tr><td><strong>beds</strong></td><td>Bedroom count — null if unclear</td></tr>
+      <tr><td><strong>price</strong></td><td>Asking price in AUD (null if not stated — note if auction/price-guide)</td></tr>
+      <tr><td><strong>lastSeen</strong></td><td>Date we logged it — YYYY-MM-DD</td></tr>
+      <tr><td><strong>buyerContext</strong></td><td>Who mentioned it, what they said, where in the funnel this buyer is</td></tr>
+      <tr><td><strong>notes</strong></td><td>Any extra detail — auction date, features, why it caught our eye</td></tr>
+      <tr><td><strong>status</strong></td><td>logged / researched / compared / dropped</td></tr>
+      <tr><td><strong>action</strong></td><td>What we need to do next — extract field X, compare to our property Y, call the agent</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============ COMPARISON TO OUR PROPERTIES ============ -->
+<div class="section" id="competitionBenchmark" style="margin-top:18px;">
+  <h2>How our Phase 1 exit properties benchmark</h2>
+  <p class="lead" style="font-size:13px;">The comparison the buyer is implicitly making — our exit assets vs what else they could buy in Melbourne.</p>
+  <table class="data-table" style="margin-top:10px;font-size:13px;">
+    <thead>
+      <tr><th>Our property</th><th class="num">Est. sale (AUD)</th><th>Type</th><th>Beds</th><th>Baths</th><th>Car</th><th>Location</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>G5 / 108</strong></td>
+        <td class="num">~$420,000</td>
+        <td>Apartment</td>
+        <td class="num">1BR</td>
+        <td class="num">1</td>
+        <td class="num">1</td>
+        <td>Carlton VIC 3053</td>
+        <td style="font-size:12px;">Off-market / private sale; last recorded sale $411,545 (2017); comparable 1BRs in building $320k–$452k</td>
+      </tr>
+      <tr>
+        <td><strong>302 / 108</strong></td>
+        <td class="num">~$420,000</td>
+        <td>Apartment</td>
+        <td class="num">1BR</td>
+        <td class="num">1</td>
+        <td class="num">1</td>
+        <td>Carlton VIC 3053</td>
+        <td style="font-size:12px;">Off-market / private sale; 1BR 1BA 1pk ground floor; building sales 2014–2026 range $370k–$695k</td>
+      </tr>
+      <tr>
+        <td><strong>5 / 143 Sussex St</strong></td>
+        <td class="num">$830k–$900k (reno + list target)</td>
+        <td>Townhouse</td>
+        <td class="num">3BR</td>
+        <td class="num">2</td>
+        <td class="num">1–2</td>
+        <td>Pascoe Vale VIC 3044</td>
+        <td style="font-size:12px;">Reno + list; 3BR townhouses in building sold $370k–$770k (2007–2024); last sale $770k (Jun 2024)</td>
+      </tr>
+      <tr>
+        <td colspan="8" style="padding:10px;background:var(--sand);font-size:12px;color:var(--muted);"><strong>Combined Phase 1 exit:</strong> G5 + 302 + 5/Sussex ≈ $1.67M–$1.72M AUD net (full CGT scenario). Buyer alternatives in this range: one 3BR+ property in Melbourne, or two smaller apartments. Track whether buyers are comparing to one larger property vs our two smaller Carlton apartments + Pascoe Vale townhouse.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============ HOW TO ADD A COMPETITOR ============ -->
+<div class="section" id="competitionAdd" style="margin-top:18px;">
+  <h2>How to add a competitor to the tracker</h2>
+  <p class="lead" style="font-size:13px;">Add an entry to the <code>COMPETITION_TRACKER</code> array in <code>data.js</code>:</p>
+  <div class="code-block" style="background:var(--code-dark);color:#d4d4d4;padding:12px 14px;border-radius:6px;font-size:12px;margin-top:10px;font-family:ui-monospace,monospace;white-space:pre-wrap;overflow-x:auto;">{
+    id: "rea-melbourne-apartment-151850872",          // short unique id
+    title: "Melbourne apartment — REA listing #151850872",
+    url: "https://www.realestate.com.au/property-apartment-vic-melbourne-151850872",
+    source: "realestate.com.au",
+    type: "Apartment",
+    location: "Melbourne VIC",
+    beds: null,          // null if not stated
+    price: null,         // null if not stated (note auction/price-guide in notes)
+    lastSeen: "2026-09-20",
+    buyerContext: "Potential buyer reported this — tracking alongside G05/108 + 302/108",
+    notes: "",
+    status: "logged",
+    action: "Extract price, beds, suburb, auction/price-guide; compare to G05/108 ($420k est.) and 302/108 ($420k est.)"
+  }</div>
+  <p style="font-size:12px;color:var(--muted);margin-top:8px;">Then commit + push — the site rebuilds automatically on GitHub Pages. The table above updates immediately.</p>
+</div>
+
+</div><!-- /wrap -->
+</div><!-- /main-content -->
+
+</body>
+</html>
