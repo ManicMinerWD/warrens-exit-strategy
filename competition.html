@@ -12,7 +12,24 @@
 <script src="balinese_render.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  if (typeof boot === "function") boot();
+  try {
+    if (typeof boot === "function") boot();
+  } catch(e) {
+    console.error("[competition.html] boot() failed:", e);
+    // Fallback: render competition table directly
+    try {
+      if (typeof renderCompetition === "function") renderCompetition();
+      if (typeof setupSidebars === "function") setupSidebars();
+    } catch(e2) {
+      console.error("[competition.html] fallback render failed:", e2);
+    }
+  }
+  // Direct render as safety net — ensure table always populates
+  try {
+    if (typeof renderCompetition === "function") renderCompetition();
+  } catch(e3) {
+    console.error("[competition.html] renderCompetition() failed:", e3);
+  }
 });
 </script>
 </head>

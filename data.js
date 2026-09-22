@@ -356,18 +356,18 @@ const COMPETITION_TRACKER = [
   },
   {
     id: "rea-carlton-apartment-151054624",
-    title: "Carlton apartment — REA listing #151054624",
+    title: "101/94 Canning Street — REA listing #151054624",
     url: "https://www.realestate.com.au/property-apartment-vic-carlton-151054624",
     source: "realestate.com.au",
     type: "Apartment",
-    location: "Carlton VIC 3053",
-    beds: null,
-    price: null,
+    location: "Canning Street VIC",
+    beds: 1,
+    price: "$380,000 - $410,000",
     lastSeen: "2026-09-22",
     buyerContext: "Reported by potential buyer — Carlton is the same suburb as G05/108 and 302/108, so this is another direct same-suburb comparison",
-    notes: "Same suburb (Carlton 3053) as our Phase 1 exit apartments — second Carlton listing in the tracker alongside #150593592",
+    notes: "1 bed, 1 carpark. Asking $380,000 - $410,000. Canning Street — inner Melbourne, same suburb (Carlton 3053) as G05/108 and 302/108; direct same-suburb comparison.",
     status: "logged",
-    action: "Extract price, beds, auction/price-guide from listing page; compare to G05/108 ($420k est.) and 302/108 ($420k est.) — third Carlton comparison in the tracker (with #150593592)"
+    action: "1 bed, 1 carpark, $380k-$410k asking. Compare to G05/108 ($420k est.) and 302/108 ($420k est.) — same suburb (Carlton), similar price range; check floor level, building quality, condition, BSV."
   }
 ];
 
