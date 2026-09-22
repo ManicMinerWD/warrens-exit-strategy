@@ -12,27 +12,15 @@
 <script src="balinese_render.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  // Render competition table directly — boot() calls many renderers that
-  // may throw on pages without their wraps; renderCompetition is safe.
-  try {
-    if (typeof setupSidebars === "function") setupSidebars();
-  } catch(e) { console.error("[competition.html] setupSidebars error:", e); }
-  try {
-    if (typeof renderCompetition === "function") renderCompetition();
-  } catch(e) { console.error("[competition.html] renderCompetition error:", e); }
-  var lu = document.getElementById("lastUpdated");
-  if (lu && typeof DATA !== "undefined" && DATA.lastUpdated) lu.textContent = "Last updated: " + DATA.lastUpdated;
-  var fl = document.getElementById("footerLastUpdated");
-  if (fl && typeof DATA !== "undefined" && DATA.lastUpdated) fl.textContent = DATA.lastUpdated;
-  // Inline diagnostics
-  var d = document.getElementById("competitionDebug");
-  if (d) {
-    d.innerHTML = "<p><strong>DEBUG:</strong> typeof DATA=" + typeof DATA +
-      ", typeof renderCompetition=" + typeof renderCompetition +
-      ", DATA.competitionTracker=" + (typeof DATA !== "undefined" && DATA.competitionTracker ? "length=" + DATA.competitionTracker.length : "undefined") +
-      ", tbody rows after render=" + (document.querySelector("#competitionTable tbody") ? document.querySelector("#competitionTable tbody").querySelectorAll("tr").length : "no tbody") + "</p>";
-  }
-});
+  // renderCompetition() directly — boot() throws on pages missing their wrap renderers
+  (function() {
+    try { if (typeof setupSidebars === "function") setupSidebars(); } catch(e) {}
+    try { if (typeof renderCompetition === "function") renderCompetition(); } catch(e) {}
+    var el = document.getElementById("lastUpdated");
+    if (el && typeof DATA !== "undefined" && DATA.lastUpdated) el.textContent = "Last updated: " + DATA.lastUpdated;
+    var fl = document.getElementById("footerLastUpdated");
+    if (fl && typeof DATA !== "undefined" && DATA.lastUpdated) fl.textContent = DATA.lastUpdated;
+  })();
 </script>
 </head>
 <body>
