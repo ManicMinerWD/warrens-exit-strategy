@@ -12,15 +12,14 @@
 <script src="balinese_render.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  // renderCompetition() directly — boot() throws on pages missing their wrap renderers
-  (function() {
-    try { if (typeof setupSidebars === "function") setupSidebars(); } catch(e) {}
-    try { if (typeof renderCompetition === "function") renderCompetition(); } catch(e) {}
-    var el = document.getElementById("lastUpdated");
-    if (el && typeof DATA !== "undefined" && DATA.lastUpdated) el.textContent = "Last updated: " + DATA.lastUpdated;
-    var fl = document.getElementById("footerLastUpdated");
-    if (fl && typeof DATA !== "undefined" && DATA.lastUpdated) fl.textContent = DATA.lastUpdated;
-  })();
+  // Render competition table directly — boot() throws on pages missing their wrap renderers
+  try { if (typeof setupSidebars === "function") setupSidebars(); } catch(e) {}
+  try { if (typeof renderCompetition === "function") renderCompetition(); } catch(e) {}
+  var el = document.getElementById("lastUpdated");
+  if (el && typeof DATA !== "undefined" && DATA.lastUpdated) el.textContent = "Last updated: " + DATA.lastUpdated;
+  var fl = document.getElementById("footerLastUpdated");
+  if (fl && typeof DATA !== "undefined" && DATA.lastUpdated) fl.textContent = DATA.lastUpdated;
+});
 </script>
 </head>
 <body>
