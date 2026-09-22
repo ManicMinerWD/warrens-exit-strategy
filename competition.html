@@ -24,6 +24,14 @@ document.addEventListener("DOMContentLoaded", function() {
   if (lu && typeof DATA !== "undefined" && DATA.lastUpdated) lu.textContent = "Last updated: " + DATA.lastUpdated;
   var fl = document.getElementById("footerLastUpdated");
   if (fl && typeof DATA !== "undefined" && DATA.lastUpdated) fl.textContent = DATA.lastUpdated;
+  // Inline diagnostics
+  var d = document.getElementById("competitionDebug");
+  if (d) {
+    d.innerHTML = "<p><strong>DEBUG:</strong> typeof DATA=" + typeof DATA +
+      ", typeof renderCompetition=" + typeof renderCompetition +
+      ", DATA.competitionTracker=" + (typeof DATA !== "undefined" && DATA.competitionTracker ? "length=" + DATA.competitionTracker.length : "undefined") +
+      ", tbody rows after render=" + (document.querySelector("#competitionTable tbody") ? document.querySelector("#competitionTable tbody").querySelectorAll("tr").length : "no tbody") + "</p>";
+  }
 });
 </script>
 </head>
@@ -161,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <tbody></tbody>
     </table>
   </div>
-  <div class="note" id="competitionNote" style="margin-top:12px;"></div>
+  <div id="competitionDebug" style="margin-top:12px;font-size:12px;background:#fff8dc;padding:8px;border:1px solid #ddc;border-radius:4px;"></div>
 </div>
 
 <!-- ============ WHAT TO EXTRACT ============ -->
