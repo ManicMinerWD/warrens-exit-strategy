@@ -12,24 +12,18 @@
 <script src="balinese_render.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+  // Render competition table directly — boot() calls many renderers that
+  // may throw on pages without their wraps; renderCompetition is safe.
   try {
-    if (typeof boot === "function") boot();
-  } catch(e) {
-    console.error("[competition.html] boot() failed:", e);
-    // Fallback: render competition table directly
-    try {
-      if (typeof renderCompetition === "function") renderCompetition();
-      if (typeof setupSidebars === "function") setupSidebars();
-    } catch(e2) {
-      console.error("[competition.html] fallback render failed:", e2);
-    }
-  }
-  // Direct render as safety net — ensure table always populates
+    if (typeof setupSidebars === "function") setupSidebars();
+  } catch(e) { console.error("[competition.html] setupSidebars error:", e); }
   try {
     if (typeof renderCompetition === "function") renderCompetition();
-  } catch(e3) {
-    console.error("[competition.html] renderCompetition() failed:", e3);
-  }
+  } catch(e) { console.error("[competition.html] renderCompetition error:", e); }
+  var lu = document.getElementById("lastUpdated");
+  if (lu && typeof DATA !== "undefined" && DATA.lastUpdated) lu.textContent = "Last updated: " + DATA.lastUpdated;
+  var fl = document.getElementById("footerLastUpdated");
+  if (fl && typeof DATA !== "undefined" && DATA.lastUpdated) fl.textContent = DATA.lastUpdated;
 });
 </script>
 </head>
