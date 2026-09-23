@@ -400,21 +400,22 @@ const VILLA_SHORTLIST = [
     when:"Available now",
     yield:null,
     operator:"Balitecture (20% mgmt fee, full management)",
-    note:"Completed 3BR 236m² + pool. Balitecture already manages other block villas — hands-off via existing operator. STR-zoned (differs from Casa Vela orange-zone NIB). Personal use 90 nights/yr. Their own pub proj: 70% occ → $55k/yr net (15.7% ROI, 6.4yr payback); 80% → $65k (18.6%, 5.4yr); 90% → $75k (21.5%, 4.6yr). [Estimates — verify]",
-    verdict:"Best on-hand shortlist: completed + managed + projected numbers clear $50k SGD/yr target from 70% occ. Confirms 10% yield floor & 6yr payback.",
-    // Balitecture-stated projection table (source: Balitecture marketing material, 2026-09-18)
+    note:"Completed 3BR 236m² + pool. Balitecture already manages other block villas — hands-off via existing operator. STR-zoned (differs from Casa Vela orange-zone NIB). Personal use 90 nights/yr. Updated Balitecture projection (screenshot 2026-09-23): total fees now split 15% booking platform + 15% management = 30%, monthly expenses $750. 70% occ → $34k/yr net (9.7% ROI, 10.3yr payback); 80% → $40k (11.5%, 8.7yr); 90% → $46k (13.2%, 7.6yr). Previous projection (2026-09-18) was 20% total fee, $1,400 expenses, higher revenues: 70%→$55k(15.7%,6.4yr); 80%→$65k(18.6%,5.4yr); 90%→$75k(21.5%,4.6yr). [Estimates — verify independently]  Occupancy caveat: island-wide hotel TPK is in the late 50s and island-wide average is ~50% — so the calculator's 70% scenario (the lowest toggle) is already an optimistic bracket, NOT a planning base case. The realistic planning worst case sits below 70%; at island-average occupancy (~50–55%) the villa is likely near break-even or loss-making at these fee/expense levels. Treat 70% as best-case-achievable, stress-test below it.",
+    verdict:"Revised projection (screenshot 2026-09-23) materially weaker than the 2026-09-18 model. The modelling stance: the calculator's 70% is the LOWEST toggle Balitecture offers, yet island-wide hotel TPK is in the late 50s and island-wide average is ~50% — so 70% is already an optimistic bracket, not a base case. The realistic planning worst case sits below 70%; at island-average occupancy (~50–55%) the villa is likely near break-even or loss-making at these fee/expense levels (30% total fees, $750 expenses, revenue ~$5,100/mo at 70% → $34k/yr net at 70%). Treat the 70% column as best-case-achievable, not expected. 80% occ (11.5%, 8.7yr) clears yield but fails payback; 90% occ (13.2%, 7.6yr) clears yield but still fails 6yr payback; no calculator scenario clears both Warren's 10% yield floor AND 6yr payback line. The new fee split (15% booking platform + 15% management = 30% total vs the old 20% flat) is the main structural drag; revenue also came down, consistent with new villa competition entering the market since Sep 18 and compressing achievable rates/occupancy. Still the only completed + managed + STR-zoned + hands-off option in hand — but on these revised numbers it no longer leads on either hard line, and needs independent validation plus a below-70% stress test before it ranks above PPV4967.",
+    // Balitecture-stated projection table (source: Balitecture calculator screenshot, 2026-09-23; previous 2026-09-18 figures retained in note for comparison)
     projections: {
-      caption: "Balitecture-stated projection (their pub proj model)",
-      source: "Balitecture marketing material, 2026-09-18",
-      scenarios: ["70% OCC.", "80% OCC.", "90% OCC."],
+      caption: "Balitecture calculator — updated projection (screenshot 2026-09-23)",
+      source: "Balitecture calculator, screenshot 2026-09-23 (previous 2026-09-18 model in note below)",
+      scenarios: ["70% OCC. (calc worst case)", "80% OCC.", "90% OCC."],
       rows: [
-        { label: "Monthly Revenue",      vals: [7500, 8500, 9600] },
-        { label: "Management Fee (20%)",  vals: [1500, 1700, 1900] },
-        { label: "Monthly Expenses",      vals: [1400, 1400, 1400] },
-        { label: "Monthly Profit",        vals: [4600, 5400, 6300] },
-        { label: "Annual Profit",         vals: [55000, 65000, 75000] },
-        { label: "Projected Annual Return", vals: [0.157, 0.186, 0.215], pct: true },
-        { label: "Breakeven",             vals: [6.4, 5.4, 4.6], years: true },
+        { label: "Monthly Revenue",            vals: [5100, 5800, 6600] },
+        { label: "Booking Platform Fee (15%)", vals: [766, 876, 986] },
+        { label: "Management Fee (15%)",       vals: [766, 876, 986] },
+        { label: "Monthly Expenses",           vals: [750, 750, 750] },
+        { label: "Monthly Profit",             vals: [2800, 3300, 3800] },
+        { label: "Annual Profit",              vals: [34000, 40000, 46000] },
+        { label: "Projected Annual Return",    vals: [0.097, 0.115, 0.132], pct: true },
+        { label: "Breakeven",                  vals: [10.3, 8.7, 7.6], years: true },
       ]
     }
   },
@@ -504,6 +505,23 @@ const VILLA_SHORTLIST = [
     verdict: "Higher ticket ($312k) for a ~55% bigger slice of the same pool — but still a pool product, not your own villa. Revenue depends on FINNS' whole pool performance, not your asset. Same structural drawbacks as Standard. If you want exposure to the FINNS resort, the Lagoon Superior is the better-priced slice of that exposure — but still doesn't beat a single STR-viable villa on Warren's criteria.",
   },
   {
+    id:"Ramada-Nusa-Dua",
+    name:"Ramada Nusa Dua by Wyndham — STR-reserved apartment unit",
+    url:"https://www.ramada.com/",
+    flag:"🇮🇩",
+    zone:"Nusa Dua (Bali Resort area)",
+    br:null,
+    priceUsd:null,
+    leaseTo:null,
+    zoning:"STR-reserved / hotel-backed (via brand agreement)",
+    status:"Operating 5-star resort — apartment units marketed for STR",
+    when:"Available now",
+    yield:null,
+    operator:"Wyndham / Ramada Nusa Dua (management/brand agreement)",
+    note:"Ramada Nusa Dua by Wyndham markets apartment units for short-term rental under the brand's STR programme. Nusa Dua is Bali's planned resort enclave — tourism-zone, high ADR, strong occupancy, 5★ hotel anchor. Zone is Tourism (STR-viable). Yields / unit prices to be confirmed from the developer/STR operator. Pending research: confirmed unit price (USD), management fee, projected net yield, lease structure, minimum commitment.",
+    verdict:"Nusa Dua = Bali's highest-occupancy resort zone (TPK Badung incl. Nusa Dua ~57–62% in 2026). STR-reserved apartment under a known brand (Wyndham/Ramada) could clear $50k SGD/yr if occupied at resort-level rates. Not yet validated — need unit price, fee, and yield figures from operator before ranking against Casa Petak / PPV4967. Treat as 'research in progress'."
+  },
+  {
     id: "Mirah",
     name: "Mirah Developments — FINNS Bali Resort",
     url: "https://mirahdevelopments.com/",
@@ -567,7 +585,7 @@ const INVESTMENT_TABLE = [
     location: "Petak / Mengwi (Bali)",
     beds: 3,
     priceUsd: 349000,
-    roi: "15.7–21.5% (proj., Balitecture model)",
+    roi: "9.7–13.2% (proj., Balitecture calc 2026-09-23; prev. 15.7–21.5% on 2026-09-18 model)",
     status: "Completed — available now",
     leaseTo: 2056,
     operator: "Balitecture (20% mgmt fee, full management)",
@@ -632,6 +650,18 @@ const INVESTMENT_TABLE = [
     leaseTo: null,
     operator: "FINNS (Mgmt Agreement — 35% gross rev → pool)",
     verdict: "Higher ticket ($312k) for ~55% bigger slice of same pool. Still pool product — doesn't beat single-villa options.",
+  },
+  {
+    id: "Ramada-Nusa-Dua",
+    name: "Ramada Nusa Dua by Wyndham — STR apartment",
+    location: "Nusa Dua, Bali (resort enclave)",
+    beds: null,
+    priceUsd: null,
+    roi: "— (pending operator research)",
+    status: "Operating 5-star resort — STR-reserved units",
+    leaseTo: null,
+    operator: "Wyndham / Ramada Nusa Dua",
+    verdict: "Nusa Dua = top-occupancy resort zone (~57–62% TPK). STR apartment under known brand could clear $50k SGD/yr. Need unit price, fee, yield from operator before ranking. Research in progress.",
   },
   {
     id: "Mirah",
@@ -959,7 +989,7 @@ const MACTAN_VILLA = {
 
 
 const DATA = {
-  lastUpdated: "2026-09-15T20:40",
+  lastUpdated: "2026-09-22T14:30",
   arrAnnual: ARR_ANNUAL,
   arrMonthly: ARR_MONTHLY,
   gate2026: GATE_2026,
