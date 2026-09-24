@@ -607,6 +607,7 @@ const INVESTMENT_TABLE = [
     status: "Completed — available now",
     leaseTo: 2056,
     operator: "Balitecture (20% mgmt fee, full management)",
+    image: "assets/casa-petak/casa-petak.png",
     verdict: "Best on-hand: completed + managed + clears $50k SGD/yr from 70% occ. Confirms 10% yield floor & 6yr payback.",
   },
   {
