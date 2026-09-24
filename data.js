@@ -535,9 +535,10 @@ const VILLA_SHORTLIST = [
     status:"Operating 5-star resort — apartment units marketed for STR",
     when:"Available now",
     yield:null,
-    operator:"Wyndham / Ramada Nusa Dua (management/brand agreement)",
-    note:"Ramada Nusa Dua by Wyndham markets apartment units for short-term rental under the brand's STR programme. Nusa Dua is Bali's planned resort enclave — tourism-zone, high ADR, strong occupancy, 5★ hotel anchor. Zone is Tourism (STR-viable). Yields / unit prices to be confirmed from the developer/STR operator. Pending research: confirmed unit price (USD), management fee, projected net yield, lease structure, minimum commitment.",
-    verdict:"Nusa Dua = Bali's highest-occupancy resort zone (TPK Badung incl. Nusa Dua ~57–62% in 2026). STR-reserved apartment under a known brand (Wyndham/Ramada) could clear $50k SGD/yr if occupied at resort-level rates. Not yet validated — need unit price, fee, and yield figures from operator before ranking against Casa Petak / PPV4967. Treat as 'research in progress'."
+    operator: "Wyndham / Ramada Nusa Dua (management/brand agreement)",
+    image: "assets/ramada-nusa-dua/ramada-nusa-dua.png",
+    note: "Ramada Nusa Dua by Wyndham markets apartment units for short-term rental under the brand's STR programme. Nusa Dua is Bali's planned resort enclave — tourism-zone, high ADR, strong occupancy, 5★ hotel anchor. Zone is Tourism (STR-viable). Yields / unit prices to be confirmed from the developer/STR operator. Pending research: confirmed unit price (USD), management fee, projected net yield, lease structure, minimum commitment.",
+    verdict: "Nusa Dua = Bali's highest-occupancy resort zone (TPK Badung incl. Nusa Dua ~57–62% in 2026). STR-reserved apartment under a known brand (Wyndham/Ramada) could clear $50k SGD/yr if occupied at resort-level rates. Not yet validated — need unit price, fee, and yield figures from operator before ranking against Casa Petak / PPV4967. Treat as 'research in progress'.",
   },
   {
     id: "Mirah",
@@ -692,6 +693,7 @@ const INVESTMENT_TABLE = [
     status: "Operating 5-star resort — STR-reserved units",
     leaseTo: null,
     operator: "Wyndham / Ramada Nusa Dua",
+    image: "assets/ramada-nusa-dua/ramada-nusa-dua.png",
     verdict: "Nusa Dua = top-occupancy resort zone (~57–62% TPK). STR apartment under known brand could clear $50k SGD/yr. Need unit price, fee, yield from operator before ranking. Research in progress.",
   },
   {
