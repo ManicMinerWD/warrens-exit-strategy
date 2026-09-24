@@ -623,6 +623,7 @@ function renderVillaPage() {
       : esc(v.zoning);
     const statusLine = v.status + (v.when ? " · " + v.when : "");
     return `<div class="section" style="margin-bottom:14px;">
+      ${v.image ? `<img src="${esc(v.image)}" alt="${esc(v.name)}" style="width:100%;max-width:720px;border:1px solid var(--line);border-radius:6px;margin-bottom:8px;">` : ""}
       <h3>${esc(v.name)} <span class="badge" style="font-size:10px;">${esc(v.id)}</span></h3>
       <table class="data-table" style="margin-top:8px;font-size:13px;">
         <tr><td style="width:120px;"><strong>Zone</strong></td><td>${esc(v.zone)}</td></tr>
