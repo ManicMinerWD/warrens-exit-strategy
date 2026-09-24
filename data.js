@@ -505,7 +505,24 @@ const VILLA_SHORTLIST = [
     verdict: "Higher ticket ($312k) for a ~55% bigger slice of the same pool — but still a pool product, not your own villa. Revenue depends on FINNS' whole pool performance, not your asset. Same structural drawbacks as Standard. If you want exposure to the FINNS resort, the Lagoon Superior is the better-priced slice of that exposure — but still doesn't beat a single STR-viable villa on Warren's criteria.",
   },
   {
-    id:"Ramada-Nusa-Dua",
+    id: "Elle-Resort-Beach-Club",
+    name: "Elle Resort & Beach Club — Hotel / Beach Club Revenue Share",
+    url: "[confirm — operator/developer listing page]",
+    flag: "🇮🇩",
+    zone: "Bali (resort location — confirm)",
+    br: null,
+    priceUsd: 65000,
+    leaseTo: null,
+    zoning: "Commercial / resort (investment + revenue-pool structure)",
+    status: "Off plan — under construction; projected net returns up to 15% p.a.",
+    when: "8% guaranteed capital repayment during construction + revenue share",
+    yield: null,
+    operator: "Elle Resort & Beach Club (fully managed — hands-off)",
+    note: "Entry from ~$65,000 USD. Structure: (1) 8% guaranteed capital repayment during construction; (2) share in hotel AND beach club revenue — 45% net revenue pool spanning rooms, food & beverage, and beach club operations; (3) projected net returns up to 15% p.a.; (4) 50-year investment period. Fully managed — no day-to-day hassle. Perks: annual free stays + VIP access. [Estimates — verify independently: exact entry price, revenue pool split, payout frequency, guarantee terms, and exit/liquidity]",
+    verdict: "Hotel/beach club revenue-share product (same family as FINNS) at a much lower entry (~$65k vs FINNS Standard ~$195k / Lagoon ~$312k). 8% guaranteed capital repayment during construction + up to 15% p.a. projected net returns from a 45% net revenue pool spanning rooms, F&B, and beach club. Looks competitive on entry price and projected yield vs FINNS on paper — but same structural caveats: pool product (not your own villa), revenue depends on the whole operation's performance, operator/counterparty risk, and the 15% p.a. is projected/quoted — needs independent validation. Annual free stays + VIP access are a lifestyle perk, not an income factor. Treat as a strong watch item — confirm the 8% guarantee, the 45% pool structure, payout mechanics, and exit/liquidity terms before ranking against single-villa options (Casa Petak, PPV4967).",
+  },
+  {
+    id: "Ramada-Nusa-Dua",
     name:"Ramada Nusa Dua by Wyndham — STR-reserved apartment unit",
     url:"https://www.ramada.com/",
     flag:"🇮🇩",
@@ -650,6 +667,18 @@ const INVESTMENT_TABLE = [
     leaseTo: null,
     operator: "FINNS (Mgmt Agreement — 35% gross rev → pool)",
     verdict: "Higher ticket ($312k) for ~55% bigger slice of same pool. Still pool product — doesn't beat single-villa options.",
+  },
+  {
+    id: "Elle-Resort-Beach-Club",
+    name: "Elle Resort & Beach Club — Hotel / Beach Club Revenue Share",
+    location: "Bali (resort location — confirm)",
+    beds: null,
+    priceUsd: 65000,
+    roi: "Projected up to 15% p.a. net (quoted — verify independently)",
+    status: "Off plan — under construction; 8% guaranteed capital repayment during construction",
+    leaseTo: null,
+    operator: "Elle Resort & Beach Club (fully managed — hands-off)",
+    verdict: "Hotel/beach club revenue-share product at ~$65k entry (much lower than FINNS Standard ~$195k / Lagoon ~$312k). 8% guaranteed capital repayment during construction + up to 15% p.a. projected from a 45% net revenue pool (rooms, F&B, beach club). Same structural caveats as FINNS: pool product, operator/counterparty risk, projected yield needs validation. Annual free stays + VIP access are lifestyle perks. Treat as a strong watch item — confirm guarantee, pool structure, payout, exit/liquidity before ranking against single-villa options.",
   },
   {
     id: "Ramada-Nusa-Dua",
@@ -989,7 +1018,7 @@ const MACTAN_VILLA = {
 
 
 const DATA = {
-  lastUpdated: "2026-09-22T14:30",
+  lastUpdated: "2026-09-25",
   arrAnnual: ARR_ANNUAL,
   arrMonthly: ARR_MONTHLY,
   gate2026: GATE_2026,
