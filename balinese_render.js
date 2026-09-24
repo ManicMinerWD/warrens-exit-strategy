@@ -76,7 +76,6 @@ function renderBaliStrategy() {
    BOOT hook — called from balinese.html's own script tag
    ============================================================================= */
 function bootBaliStrategy() {
-  if (typeof setupSidebars === "function") setupSidebars();
   const lu = document.getElementById("lastUpdated");
   if (lu) lu.textContent = "Last updated: " + (DATA.lastUpdated || "2026-09-18");
   const fl = document.getElementById("footerLastUpdated");

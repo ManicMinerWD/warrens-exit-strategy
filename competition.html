@@ -12,8 +12,7 @@
 <script src="balinese_render.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  // Render competition table directly — boot() throws on pages missing their wrap renderers
-  try { if (typeof setupSidebars === "function") setupSidebars(); } catch(e) {}
+  // Render competition table directly — render.js boot() handles setupSidebars on pages that load it
   try { if (typeof renderCompetition === "function") renderCompetition(); } catch(e) {}
   var el = document.getElementById("lastUpdated");
   if (el && typeof DATA !== "undefined" && DATA.lastUpdated) el.textContent = "Last updated: " + DATA.lastUpdated;
