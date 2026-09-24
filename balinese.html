@@ -440,8 +440,8 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  setupSidebars();
   renderBaliStrategy();
+  renderBaliStrategyButtons();
   var lu = document.getElementById("lastUpdated");
   if (lu) lu.textContent = DATA && DATA.lastUpdated ? DATA.lastUpdated : "2026-09-18";
   var fl = document.getElementById("footerLastUpdated");
