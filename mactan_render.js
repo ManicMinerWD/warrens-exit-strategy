@@ -115,7 +115,7 @@ function renderMactan() {
   // ---- Coral Point Residences villas (HallersRealty) ----
   if (d.villas && d.villas.length > 0) {
     const mfee = d.maintenanceFeePerSqmMonthly || 105;
-    const villaRows = d.villas.map(v => {
+    const villaRows = d.villas.filter(v => v.pricePhp != null && v.pricePhp <= 26000000).map(v => {
       const priceAud = v.pricePhp != null ? Math.round(v.pricePhp / 37.5) : null;
       const priceAudStr = priceAud != null ? '$' + priceAud.toLocaleString() : '—';
       const pricePhpStr = v.pricePhp != null ? '₱' + v.pricePhp.toLocaleString() : '—';
