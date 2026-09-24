@@ -507,7 +507,7 @@ const VILLA_SHORTLIST = [
   {
     id: "Elle-Resort-Beach-Club",
     name: "Elle Resort & Beach Club — Hotel / Beach Club Revenue Share",
-    url: "[confirm — operator/developer listing page]",
+    url: "https://www.stonerealestate.com.au/property/8441876-elle-resort-beach-club-bali-international-int/",
     flag: "🇮🇩",
     zone: "Bali (resort location — confirm)",
     br: null,
