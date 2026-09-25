@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Option 3 — Lightspeed Dividend — Warrens Exit Strategy</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="data.js"></script>
+  <script src="render.js?v=3"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMactan();
+  });
+  </script>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">☰ Menu</button>
+<button id="darkModeToggle" class="is-dark" aria-label="Toggle dark mode" title="Dark mode"><span class="dm-icon">🌙</span><span class="dm-label">Dark</span></button>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="app-name"><span class="dot"></span>Warrens Exit Strategy</div>
+  </div>
+
+  <!-- ---- Group: Phase1 (Exit Aus) ---- -->
+  <div class="sidebar-group" data-group="phase1">
+    <div class="sidebar-group-label" data-group="phase1">
+      <span>Phase1 (Exit Aus)</span>
+      <span class="chevron">&#x25BC;</span>
+    </div>
+    <div class="sidebar-group-content" data-group="phase1">
+      <a class="nav-link" href="queensberry.html">
+        <span class="link-icon">&#x1F3E2;</span><span class="link-label">108 Queensberry St</span>
+      </a>
+      <a class="nav-link" href="g05.html">
+        <span class="link-icon">&#x1F4CB;</span><span class="link-label">G5 / 108</span>
+      </a>
+      <a class="nav-link" href="302.html">
+        <span class="link-icon">&#x1F4CB;</span><span class="link-label">302 / 108</span>
+      </a>
+      <a class="nav-link" href="sussex.html">
+        <span class="link-icon">&#x1F3E1;</span><span class="link-label">143 Sussex St</span>
+      </a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:8px 0;">
+      <a class="nav-link" href="financial.html"><span class="link-icon">&#x1F4CA;</span><span class="link-label"><strong>Exit finances — G05+302+Sussex</strong></span></a>
+      <a class="nav-link" href="competition.html"><span class="link-icon">&#x1F3C1;</span><span class="link-label"><strong>Competition tracker</strong></span></a>
+    </div>
+  </div>
+  <hr class="sidebar-separator">
+
+  <!-- ---- Group: Bali Statistics (Option 1 reference) ---- -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-label" data-group="baliStats">
+      <span>Bali Statistics</span>
+      <span class="chevron">&#x25BC;</span>
+    </div>
+    <div class="sidebar-group-content" data-group="baliStats">
+      <a class="nav-link" href="index.html#annualWrap"><span class="link-icon">&#x1F4CA;</span><span class="link-label">Annual arrivals</span></a>
+      <a class="nav-link" href="index.html#monthlyWrap"><span class="link-icon">&#x1F4CA;</span><span class="link-label">Monthly arrivals</span></a>
+      <a class="nav-link" href="index.html#gateWrap"><span class="link-icon">&#x1F4CA;</span><span class="link-label">Foreign visitors by gate</span></a>
+      <a class="nav-link" href="index.html#marketsWrap"><span class="link-icon">&#x1F4CA;</span><span class="link-label">Source markets</span></a>
+    </div>
+  </div>
+  <hr class="sidebar-separator">
+
+  <!-- ---- Group: Phase2 ---- -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-label">
+      <span>Phase2</span>
+      <span class="chevron">&#x25BC;</span>
+    </div>
+    <div class="sidebar-group-content">
+      <a class="nav-link" href="villas.html"><span class="link-icon">&#x1F3E0;</span><span class="link-label"><strong>Option 1 Bali</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="balinese.html"><span class="link-icon">&#x1F3EB;</span><span class="link-label">Option 1 — income strategy</span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="mactan.html"><span class="link-icon">&#x1F3EB;</span><span class="link-label"><strong>Option 2 — Mactan (Cebu)</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="lightspeed.html"><span class="link-icon">&#x1F1FA;</span><span class="link-label"><strong>Option 3 — Lightspeed Dividend</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="mactan.html#mactanLand"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Land — 241m² sea-view lot</span></a>
+      <a class="nav-link" href="mactan.html#mactanBuild"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Build budget — Phase 1/2/3</span></a>
+      <a class="nav-link" href="mactan.html#mactanMarket"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Market rates — 5-6BR luxury</span></a>
+      <a class="nav-link" href="mactan.html#mactanCompetition"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Competition — Anza + comp set</span></a>
+    </div>
+  </div>
+</aside>
+
+<div class="main-content">
+<div class="wrap">
+
+<header>
+  <div><h1>Option 3 — Lightspeed Dividend</h1>
+    <p style="font-size:13px;color:var(--muted);margin-top:4px;">Australia — non-bank lender offering secured returns from 12–24% p.a., $50k minimum entry, property-backed</p>
+  </div>
+  <div class="meta"><span>Last updated: <strong id="lastUpdated"></strong></span></div>
+</header>
+
+<p class="lead" style="font-size:14px;margin-bottom:16px;">
+  Lightspeed Group is an Australian non-bank lender offering investment returns from <strong>12–24% p.a.</strong>, funded by a diverse range of private lenders, with all loans <strong>secured by real property</strong> at low LVR%. Entry from <strong>$50,000</strong>. Term sheets range from <strong>3 to 18 months</strong> (longer for home loans). This page summarises the Lightspeed capability statement (PDF, Sep 2026) as a third exit option alongside the Bali villa play and the Mactan build-and-rent.
+</p>
+
+<!-- ============ OVERVIEW ============ -->
+<div class="section" id="lightspeedOverview">
+  <h2>Overview — who Lightspeed are <span class="badge">Capability statement · Sep 2026</span></h2>
+  <p style="font-size:13px;">
+    Lightspeed Group is Australia's leading commercial Lightspeed — a quick-cash finance company specializing in non-bank lending across personal, business, and property finance.
+    They have over a decade of experience funding loans from <strong>$2k to $20M</strong>, settling quickly (often same week), and tailoring solutions where traditional banks and lending institutions won't.
+  </p>
+  <p style="font-size:13px;margin-top:10px;">
+    Lightspeed funds its lending from a <strong>diverse range of private lenders</strong> who enjoy solid real estate security with exceptional returns. The borrower pays returns of <strong>12–24% p.a.</strong>, and as an investor you receive a share of that via a secured loan structure — hence "Lightspeed Dividend."
+  </p>
+  <div class="totals-row" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;">
+    <div class="total-card" style="flex:1;min-width:170px;background:var(--teal);color:#fff;padding:14px 16px;border-radius:8px;">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;opacity:0.85;margin-bottom:4px;">Target return (p.a.)</div>
+      <div style="font-size:24px;font-weight:700;">12–24%</div>
+      <div style="font-size:11px;opacity:0.9;margin-top:2px;">Secured by real property · low LVR%</div>
+    </div>
+    <div class="total-card" style="flex:1;min-width:170px;background:var(--sand-dark);color:var(--ink);padding:14px 16px;border-radius:8px;">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;opacity:0.85;margin-bottom:4px;">Minimum entry</div>
+      <div style="font-size:24px;font-weight:700;">$50,000</div>
+      <div style="font-size:11px;opacity:0.9;margin-top:2px;">Alternative to superfund / shares</div>
+    </div>
+    <div class="total-card" style="flex:1;min-width:170px;background:var(--coral);color:#fff;padding:14px 16px;border-radius:8px;">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;opacity:0.85;margin-bottom:4px;">Loan size range</div>
+      <div style="font-size:24px;font-weight:700;">$2k–$20M</div>
+      <div style="font-size:11px;opacity:0.9;margin-top:2px;">Personal → commercial → development</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ RETURNS & TERMS ============ -->
+<div class="section" id="lightspeedReturns">
+  <h2>Returns &amp; terms <span class="badge">from the capability statement</span></h2>
+  <table class="data-table" style="margin-top:10px;font-size:13px;">
+    <thead>
+      <tr>
+        <th style="width:30%;">Parameter</th>
+        <th>Detail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Target return</strong></td>
+        <td>12–24% p.a. — "exceptional opportunities all secured by real property and low LVR%"</td>
+      </tr>
+      <tr>
+        <td><strong>Minimum investment</strong></td>
+        <td>From $50,000 — "Funding can start as low as $50K &amp; it is an excellent alternative to traditional superfund investment or share markets"</td>
+      </tr>
+      <tr>
+        <td><strong>Loan terms</strong></td>
+        <td>3–6–12–18 months for short-medium term loans; longer periods apply with home loans</td>
+      </tr>
+      <tr>
+        <td><strong>Loan size range</strong></td>
+        <td>$2,000 to $20,000,000 — Lightspeed offers loans from $2k to $20M</td>
+      </tr>
+      <tr>
+        <td><strong>Security</strong></td>
+        <td>Real property — "All is funded by a diverse range of private lenders, of whom have enjoyed solid real estate security with exceptional returns." Loans can include 1st and 2nd mortgages, caveat loans, across residential / commercial / land / industrial sites</td>
+      </tr>
+      <tr>
+        <td><strong>Applications considered</strong></td>
+        <td>Low doc, credit impaired, ATO debts, historical bankrupts, uncompleted construction/development — "We will consider many types of applications"</td>
+      </tr>
+      <tr>
+        <td><strong>Settlement speed</strong></td>
+        <td>"Settle quickly typically within same week" — same-day assessment in some cases; settlements in some cases same week</td>
+      </tr>
+      <tr>
+        <td><strong>Asset types funded</strong></td>
+        <td>Home loans (new + refinance), business &amp; development finance, bridging finance, mezzanine finance, 1st/2nd mortgage loans, property development finance, debt consolidation, working capital, ATO &amp; regulatory company debts, corporate/business finance, liquidity issues, sheriffs warrants &amp; DPN, construction completion, bad/no credit history, smaller personal loans (subject to NCCP rules)</td>
+      </tr>
+      <tr>
+        <td><strong>Reporting &amp; communication</strong></td>
+        <td>"Strong returns and piece of mind with solid reporting and communication on each loan" — per-loan reporting from a team with "experience over the decades"</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note" style="font-size:12px;margin-top:12px;color:var(--coral);">
+    <strong>Comparison to Bali villa play:</strong> Lightspeed offers <strong>12–24% p.a.</strong> target returns vs the Bali options' <strong>rental yield range (~8–20% depending on occupancy/villa type)</strong>. Lightspeed's returns are <strong>loan-interest-based and secured by real property</strong>, which is a fundamentally different risk profile from an operating STR/villa business — you're the lender, not the operator. Minimum entry $50k fits within the ~$587k cleared capital. Not a tourism play — it's an Australian private-credit play. Confirm deal structures, LVR, and the exact security on any specific facility before committing.
+  </p>
+</div>
+
+<!-- ============ SECURITY & LENDING TYPES ============ -->
+<div class="section" id="lightspeedSecurity">
+  <h2>Security &amp; lending types <span class="badge">what Lightspeed funds</span></h2>
+  <div class="two-col">
+    <div>
+      <h3>Non-bank lending</h3>
+      <p style="font-size:13px;">
+        Lightspeed provides a wide variety of borrowing options, settling quickly (often within the same week). They consider many application types including Low doc, Credit impaired, ATO debts, historical bankrupts, and uncompleted construction or development situations.
+      </p>
+      <p style="font-size:13px;margin-top:6px;">
+        They review many types of security offerings: residential, commercial, land, and industrial sites. Their specialist staff are all accredited and experienced to offer a wide range of financial solutions.
+      </p>
+    </div>
+    <div>
+      <h3>Home loans</h3>
+      <p style="font-size:13px;">
+        Buying or refinancing your property can be exciting and daunting at the same time — Lightspeed is here to assist and ensure you are armed with the right information to make the right decisions.
+      </p>
+      <p style="font-size:13px;margin-top:6px;">
+        Lightspeed has access to many alternative financial institutions to ensure you obtain the best rate &amp; the best term available in the market. They assist with grants, stamp duty, fees, ongoing cost, serviceability, and choosing the right loan or refinance option.
+      </p>
+    </div>
+    <div>
+      <h3>Personal loans — Cash Faster</h3>
+      <p style="font-size:13px;">
+        Cash Faster can offer quick cash personal loans from $300–$2,000, same day. Flexible repayment terms as micro loans. Extremely simple to create an account. Straightforward rates and charges.
+      </p>
+      <p style="font-size:13px;margin-top:6px;">
+        Visit <strong>www.cashfaster.com.au</strong> for personal loan products. (Separate brand, same group.)
+      </p>
+    </div>
+  </div>
+  <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:16px 0;">
+  <h3 style="font-size:14px;color:var(--teal);">Lending with Lightspeed — investor perspective</h3>
+  <p style="font-size:13px;">
+    If you seek a secure, flexible investment offering returns from <strong>12–24% p.a.</strong>, Lightspeed Group provides exceptional opportunities — all secured by real property and low LVR%.
+    Funding can start as low as <strong>$50K</strong> and it is an excellent alternative to traditional superfund investment or share markets.
+  </p>
+  <p style="font-size:13px;margin-top:6px;">
+    Lightspeed is one of Australia's leading non-bank lenders providing specific tailored solutions in complete confidence. All is funded by a diverse range of private lenders who have enjoyed solid real estate security with exceptional returns. Their experience over the decades lets you enjoy strong returns and piece of mind with solid reporting and communication on each loan.
+  </p>
+</div>
+
+<!-- ============ WHO THEY WORK WITH ============ -->
+<div class="section" id="lightspeedWho">
+  <h2>Who they work with <span class="badge">partners &amp; referral network</span></h2>
+  <div class="two-col">
+    <div>
+      <h3>Mortgage brokers</h3>
+      <p style="font-size:13px;">
+        Lightspeed works very closely with many Mortgage Brokers throughout Australia. If you have an opportunity that requires financing, Lightspeed is the place for you to discuss a financial solution.
+      </p>
+      <p style="font-size:12px;color:var(--muted);margin-top:4px;">
+        — We pay referrer fees at settlement<br>
+        — Loan types throughout Australia<br>
+        — ATO and Penalty Notice debts may be included<br>
+        — We do all the work for you in most cases<br>
+        — Your client may have poor credit history<br>
+        — Same Day assessment<br>
+        — Settlements in some cases same week<br>
+        — 1st and 2nd Mortgages<br>
+        — Caveat loans apply<br>
+        — All Property types considered
+      </p>
+    </div>
+    <div>
+      <h3>Accountants</h3>
+      <p style="font-size:13px;">
+        Lightspeed has strong relationships with a number of Accounting firms for referral purposes. Many of your clients may be in a precarious financial difficult when it comes to a finance solution — lightspeed will look and in confidence assist.
+      </p>
+      <p style="font-size:12px;color:var(--muted);margin-top:4px;">
+        — Companies in administration<br>
+        — Directors individually Or Board requiring finance<br>
+        — ATO company debts / DPN's — ASIC notices OR regulatory financial solutions<br>
+        — Bank Arrears<br>
+        — Potential Marriage or business partner breakdown<br>
+        — Segregate legal issues from financial matters<br>
+        — Allow your client to seek financial assistance from Lightspeed
+      </p>
+    </div>
+    <div>
+      <h3>Lawyers</h3>
+      <p style="font-size:13px;">
+        Lightspeed has been working alongside a number of Law firms in order to assist with finance for their clients. If you have a matter that requires finance such as:
+      </p>
+      <p style="font-size:12px;color:var(--muted);margin-top:4px;">
+        — Creditor Debts<br>
+        — ATO Debts<br>
+        — Debt Consolidation<br>
+        — Australia Wide funding available
+      </p>
+      <p style="font-size:12px;margin-top:8px;font-style:italic;">
+        Strategic partners quoted in the capability statement:<br>
+        — EC Legal (James Woods, Managing Partner) — commercial litigation, lending &amp; business advice, ~10-year relationship, representing private lenders including loan agreements, recovery of overdue loans.<br>
+        — Parsons &amp; Partners (Samatha Parsons, Founder &amp; Principal) — mortgage finance and recovery sector, many years, transparent/fruitful/ethical relationship with funders &amp; facilitators.<br>
+        — Tisher Liner FC Law / TLFC (Michael Fetter, Principal Lawyer) — commercial &amp; business law, finance/loans, property; Michael Fetter has worked with Lightspeed Group Principal Mark Fitzpatrick for "way over a decade"; TLFC works closely with Lightspeed's lenders and borrowers and may participate in recovery where required.<br>
+        — Clamenz Evans Ellis Lawyers (Darren Eliau, Principal lawyer) — commercial, taxation, litigation, corporate advisory, insolvency, employment, property; strong relationship servicing Loan Agreement requirements and short-term funding client referrals.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CONTACT ============ -->
+<div class="section" id="lightspeedContact">
+  <h2>Contact <span class="badge">Lightspeed Group</span></h2>
+  <table class="data-table" style="margin-top:10px;font-size:13px;">
+    <thead>
+      <tr>
+        <th style="width:35%;">Channel</th>
+        <th>Detail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>General email</strong></td><td>info@lsmm.com.au / info@lightspeedfinance.com.au / info@Lightspeedhomeloans.com.au</td></tr>
+      <tr><td><strong>Cash Faster contact</strong></td><td>cashfaster.com.au/contact-us/</td></tr>
+      <tr><td><strong>Phone</strong></td><td>1300 133 406</td></tr>
+      <tr><td><strong>Website</strong></td><td>Lightspeed Group — capability statement: "MONEY NEVER SLEEPS"</td></tr>
+      <tr><td><strong>Address</strong></td><td>Australia-wide — non-bank lender, multiple contact points</td></tr>
+    </tbody>
+  </table>
+  <p class="note" style="font-size:12px;margin-top:12px;color:var(--coral);">
+    <strong>Next step:</strong> Call 1300 133 406 or email one of the above addresses to discuss an investment facility — specific deal terms, LVR, security property, and the exact return for a given facility are negotiated per loan, not published as a blanket rate. The 12–24% p.a. range is the target band from the capability statement; individual facilities will be at a point within that range depending on security, LVR, term, and borrower quality. Confirm the specific deal structure, security, and reporting cadence before committing capital.
+  </p>
+</div>
+
+<p style="font-size:12px;color:var(--muted);margin-top:20px;text-align:center;">
+  <a href="index.html" style="color:var(--teal);">← Back to Option 1 — Bali dashboard</a>
+</p>
+
+</div><!-- /wrap -->
+</div><!-- /main-content -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMactan();
+});
+</script>
+</body>
+</html>
