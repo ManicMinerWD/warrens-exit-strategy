@@ -10,7 +10,7 @@ function renderBaliStrategyButtons() {
   const container = document.getElementById("baliStrategyButtons");
   if (!container) return;
   container.style.display = "";
-  container.innerHTML = `<h2 style="font-size:14px;margin:0 0 10px;color:var(--teal);">Option 1 Bali — income strategy <span style="font-size:11px;color:var(--muted);font-weight:normal;">(PT PMA → Mandiri → SG IBKR)</span></h2>
+  container.innerHTML = `<h2 style="font-size:14px;margin:0 0 10px;color:var(--teal);">Option 1 Bali — income strategy <span style="font-size:11px;color:var(--muted);font-weight:normal;">(PT PMA → Mandiri → IDX domestic shares)</span></h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;">
       ${d.steps.map((s, i) => `<a href="balinese.html#step${i+1}" class="callout" style="background:var(--sand);border-color:var(--sand-dark);padding:8px 12px;border-radius:6px;text-decoration:none;color:var(--ink);font-size:12px;display:inline-block;"><strong>Step ${i+1} — ${esc(s.title)}</strong></a>`).join("")}
     </div>`;
