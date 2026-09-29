@@ -744,7 +744,7 @@ function setupSidebars() {
     if (e.stopPropagation) e.stopPropagation();
   });
 
-  // ---- Mobile menu toggle ----
+  // ---- Mobile menu toggle (runs inside setupSidebars on DOMContentLoaded — safe on every page regardless of where render.js is loaded) ----
   var sidebar = document.getElementById && document.getElementById("sidebar") || null;
   var btn = document.getElementById && document.getElementById("menuToggle") || null;
   if (sidebar && btn) {
