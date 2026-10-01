@@ -800,6 +800,199 @@ const SUSSEX_SALES = [
   { unit:"5", beds:3, baths:2, parking:1, price:380000, date:"Apr 2007", link:"https://www.domain.com.au/property-profile/5-143-sussex-street-pascoe-vale-vic-3044" },
 ];
 
+// =============================================================================
+// ELLE RESORT & BEACH CLUB — Batu Belig, Bali (Option 1)
+// Sourced 2026-10-01 from the four Geonet / Inspiral PDFs in
+// ~/Desktop/Property/Bali/. All rates AUD unless stated, AUD/USD 0.639,
+// IDR/USD 16,000. Everything here is a GEONET PROJECTION, not a guarantee
+// of returns.
+// =============================================================================
+const ELLE = {
+  meta: {
+    name: "ELLE Resort & Beach Club",
+    location: "Batu Belig, Seminyak, Bali",
+    developer: "Geonet Developments International",
+    operator: "SONO Hotels & Resorts Asia",
+    architect: "Inspiral Architecture and Design Studios",
+    pm: "Colliers",
+    keys: 168,
+    opening: "2028 (base case year used throughout the market case)",
+    disclaimer: "PROJECTION — NOT A GUARANTEE OF RETURNS. Every ADR, occupancy and return figure on this page is a Geonet / SONO / Inspiral Stage 1 projection, not a contracted or independently validated number. Concept design: artist impressions and indicative areas, subject to change, approval and final documentation."
+  },
+  // ---- The investment product (as marketed) ----
+  product: {
+    structure: "Individual suite sale into a 50-year investment period, inside a fully managed room rental program operated under the ELLE lifestyle brand.",
+    guarantee: "8% guaranteed capital repayment during construction",
+    projectedNet: "up to 15% p.a. projected net returns (quoted)",
+    poolBasis: "45% net revenue pool spanning hotel rooms, food & beverage, and beach club operations",
+    entryUsd: 65000,
+    perks: "Annual free stays + VIP access",
+    verify: "Confirm before ranking: the 8% construction guarantee terms and who stands behind it; the 45% pool definition (net of what?); payout frequency and currency; the 15% p.a. basis (on entry price? on net pool share?); and exit/liquidity terms at year 50 — or on default."
+  },
+  // ---- Two sites, two collections ----
+  sites: [
+    { site: "Site 1 — The Resort", areaSqm: 6483, keys: 130, types: 13, buildingArea: 15411, footprint: 3239, coverage: "50%", levels: "8 levels, 1:500, 2nd basement to roof", smallest: "45 m²", largest: "165 m² internal" },
+    { site: "Site 2 — The Beach Club Suites", areaSqm: 6940, keys: 38, types: 8, buildingArea: 9076, footprint: 2059, coverage: "30%", levels: "6 levels, 1:550, basement to 3rd floor", smallest: "45 m²", largest: "175 m² internal" }
+  ],
+  totals: { keys: 168, types: 21, siteAreaHa: "1.38", resortInternal: 7465, resortOutdoor: 1057, resortCounted: 529, resortTotal: 7994, suitesInternal: 2400, suitesOutdoor: 604, suitesCounted: 302, suitesTotal: 2702 },
+  // ---- Resort unit schedule (Site 1) ----
+  resortUnits: [
+    { type: "Standard Room", keys: 94, internal: 45, outdoorLabel: "Balcony", outdoor: 5, counted: 2.5, total: 50 },
+    { type: "Standard Room Premium", keys: 8, internal: 60, outdoorLabel: "Balcony", outdoor: 6, counted: 3, total: 66 },
+    { type: "One Bedroom Suite A", keys: 4, internal: 80, outdoorLabel: "Balcony", outdoor: 6, counted: 3, total: 86 },
+    { type: "One Bedroom Suite B", keys: 1, internal: 86, outdoorLabel: "Balcony", outdoor: 5, counted: 3, total: 91 },
+    { type: "One Bedroom Suite C", keys: 3, internal: 80, outdoorLabel: "Terrace", outdoor: 50, counted: 25, total: 130 },
+    { type: "One Bedroom Suite D", keys: 2, internal: 90, outdoorLabel: "Balcony", outdoor: 10, counted: 5, total: 100 },
+    { type: "Standard Loft Room", keys: 5, internal: 80, outdoorLabel: "Deck", outdoor: 4, counted: 2, total: 84 },
+    { type: "Pool Access Loft Standard", keys: 4, internal: 80, outdoorLabel: "Deck", outdoor: 4, counted: 2, total: 84 },
+    { type: "Pool Access Loft Premium", keys: 1, internal: 90, outdoorLabel: "Deck", outdoor: 16, counted: 8, total: 106 },
+    { type: "Pool Access Loft 2 Bedroom", keys: 1, internal: 129, outdoorLabel: "Deck", outdoor: 4, counted: 2, total: 133 },
+    { type: "Loft 2 Bedroom", keys: 1, internal: 140, outdoorLabel: "Deck", outdoor: 4, counted: 2, total: 144 },
+    { type: "Penthouse with Pool A", keys: 4, internal: 130, outdoorLabel: "Terrace", outdoor: 40, counted: 20, total: 170 },
+    { type: "Penthouse with Pool B", keys: 2, internal: 165, outdoorLabel: "Terrace", outdoor: 60, counted: 30, total: 225 }
+  ],
+  // ---- Beach Club Suites unit schedule (Site 2) ----
+  suiteUnits: [
+    { type: "Regular Suite A", keys: 22, internal: 55, outdoorLabel: "Balcony", outdoor: 8, counted: 4, total: 63 },
+    { type: "Regular Suite B", keys: 6, internal: 55, outdoorLabel: "Balcony", outdoor: 14, counted: 7, total: 69 },
+    { type: "Regular Suite C", keys: 3, internal: 45, outdoorLabel: "Balcony", outdoor: 16, counted: 8, total: 61 },
+    { type: "One Bedroom Suite", keys: 1, internal: 69, outdoorLabel: "Terrace", outdoor: 32, counted: 16, total: 101 },
+    { type: "Two Bedroom Suite A", keys: 3, internal: 90, outdoorLabel: "Balcony", outdoor: 18, counted: 9, total: 108 },
+    { type: "Two Bedroom Suite B", keys: 1, internal: 91, outdoorLabel: "Terrace", outdoor: 66, counted: 33, total: 157 },
+    { type: "Penthouse A", keys: 1, internal: 120, outdoorLabel: "Terrace", outdoor: 68, counted: 34, total: 188 },
+    { type: "Penthouse B", keys: 1, internal: 175, outdoorLabel: "Terrace", outdoor: 76, counted: 38, total: 251 }
+  ],
+  // ---- Why the areas are quoted this way ----
+  areaNote: "The architect writes each type as, for example, 45 m2 +5(2.5) m2 balcony. The first figure is internal area. The second is the full balcony, terrace or deck. The bracketed figure is that outdoor area counted at 50%. This reconciles by arithmetic: internal 7,465 m2 plus counted 529 m2 reproduces the brochure's stated 7,994 m2 for the Resort, and 2,400 + 302 = 2,702 m2 for the Suites. The convention holds in every type except One Bedroom Suite B, where the source states a 5 m2 balcony with 3 m2 counted.",
+  inconsistencyNote: "Two inconsistencies are known and are worth holding in mind. First, the per-level unit summaries printed on the drawings do not fully reconcile to the masterplan schedules: on the Resort, standard rooms tally 86 against 94, and split-level lofts and penthouses appear on each level they occupy; on the Suites, the level drawings account for 37 suites against 38 (one Regular Suite C short) and the 3rd Floor summary counts a terrace as one of its six entries. The masterplan schedules are treated as the figure of record. Second, the Stage 1 brochure holds building-level floor plans only — there is no per-type unit plan for any room or suite, which would have to be requested from Inspiral.",
+  parking: { resortCars: 48, resortScooters: 82, beachClubCars: 67, beachClubScooters: 162 },
+  amenities: [
+    "Signature restaurant and café",
+    "Expansive swimming pools",
+    "Children's playground",
+    "Wellness and yoga centre",
+    "State-of-the-art gym",
+    "Beach-side events and wedding spaces",
+    "Ample parking facilities",
+    "High-end lifestyle retail — beauty clinic, designer salon and spa"
+  ],
+  masterplanZones: [
+    "Drop off", "Lobby", "Back of house", "Parking",
+    "Garden / children's playground", "Existing temple", "Pool"
+  ],
+  designIntent: "A luxury destination accommodating both accommodation and an oceanfront beach club, focused on entertainment, fashion, wellness and tropical lifestyle. A diverse playground where hospitality, cuisine and events occur concurrently through spaces that curate elegance by the sea. Inspiral works in biocentric architecture, using SIP technology, prefabrication and bamboo craftsmanship; recognised with the UNESCO Prix Versailles and AHEAD Asia Awards.",
+  // ---- Market case: Part one, the market ----
+  market: {
+    arrivals2025: "6.95m international arrivals — a record. 2026 target 6.63m; 2028–2030 projection 8–9m annually.",
+    supply: "A 146% surge in private villa supply over two years has softened the broader hotel market, but the pressure sits in the mid-market and economy tiers. Luxury and upper upscale held.",
+    tierGrowth: { economy: "+2.4% 2025 ADR growth (A$235)", upperUpscale: "+10% 2025 ADR growth (A$446–455)", luxury: "+8.0% 2025 ADR growth (A$1,280, tier above A$785)" },
+    fx: "Horwath HTL Bali 2026 report. IDR/USD 16,000. Luxury growth +8.0% in IDR, +3.9% in USD.",
+    australia: "Australia is 25% of arrivals — the source market.",
+    elleBand: "A$469–782",
+    headline: "The luxury tier is the only one growing."
+  },
+  // ---- Seminyak / Canggu published OTA rate ladder ----
+  compSet: [
+    { name: "The Legian Seminyak", size: "70–80 m²", positioning: "Ultra luxury all-suite", rate: "A$720–1,842" },
+    { name: "Regent Bali Canggu", size: "55–65 m²", positioning: "Ultra luxury, opened 2024", rate: "A$845–1,120" },
+    { name: "W Bali Seminyak", size: "52+ m²", positioning: "Upper upscale lifestyle", rate: "A$568–986" },
+    { name: "Alila Seminyak", size: "45–55 m²", positioning: "Upper upscale lifestyle", rate: "A$387–814" },
+    { name: "Desa Potato Head", size: "40–50 m²", positioning: "Upper upscale lifestyle", rate: "A$352–671" },
+    { name: "Hotel Indigo Bali", size: "35–50 m²", positioning: "Upper upscale lifestyle", rate: "A$304–712" },
+    { name: "COMO Uma Canggu", size: "45–55 m²", positioning: "Upper upscale wellness", rate: "A$355–548" },
+    { name: "Bvlgari Resort Bali", size: "villa product", positioning: "Ultra luxury — outside ELLE's positioning and product type", rate: "A$2,649–3,818" }
+  ],
+  // ---- Global lifestyle set ----
+  globalSet: [
+    { name: "Armani Hotel Dubai", rate: "A$1,095–1,408" },
+    { name: "Soho Beach House, Canouan", rate: "A$1,095–1,408" },
+    { name: "Nobu Ibiza Bay", rate: "A$1,100–1,800" },
+    { name: "Six Senses Ibiza", rate: "A$1,100–1,800" },
+    { name: "OKU Ibiza", rate: "A$548–704" },
+    { name: "W Koh Samui", rate: "A$595–861" },
+    { name: "The Standard", rate: "A$469–782" },
+    { name: "Nikki Beach Koh Samui", rate: "A$313–469" },
+    { name: "Casa Cook Rhodes", rate: "A$360–501" },
+    { name: "Papaya Playa, Tulum", rate: "A$438–626" }
+  ],
+  cluster: "A$548–1,095 — the published OTA range the global lifestyle market supports for the cluster most directly comparable to ELLE: internationally branded, beachfront, lifestyle, with a destination beach club. Bali still trades below the global set. Urban lifestyle leaders are excluded — they are brand-DNA references, not rate comparables for a beach resort.",
+  // ---- Part two: the brand + beach club premium ----
+  premium: {
+    headline: "Four mechanisms, one number.",
+    mechanisms: [
+      { name: "ADR premium", value: "+15–30%", source: "Colliers 2024, BTN/CoStar 2026" },
+      { name: "Chain scale premium", value: "+50%", source: "Colliers 2024, BTN/CoStar 2026" },
+      { name: "Lifestyle format premium", value: "+40–60%", source: "JLL APAC 2025, Horwath HTL 2026" },
+      { name: "Fashion and media crossover", value: "+10–20%", source: "Ibiza same-market set, CBRE 2024" }
+    ],
+    ops: [
+      { name: "Occupancy", value: "+25–40%", source: "Revinate and Skift" },
+      { name: "Direct booking share", value: "+3–8 ppt", source: "Revinate and Skift" },
+      { name: "RevPAR, aggregate", value: "+5–12 ppt", source: "—", note: "+13% against the baseline" },
+      { name: "Distribution efficiency", value: "+20–40%", source: "35% direct target" }
+    ],
+    combined: "+48%",
+    combinedNote: "Combined ELLE brand premium. Mechanisms do not simply add. Chain scale establishes the tier; the other three are applied incrementally above the nearest lifestyle comparator. Same market, like for like: W Bali against Hotel Indigo runs +53%; Regent Canggu against COMO Uma Canggu runs +117% including brand. ELLE sits between the OKU and Standard lifestyle tier and the Nobu and Armani fashion brand tier.",
+    sources: "Colliers 2024 · JLL APAC Lifestyle Hotels 2025 · CBRE 2024 · BTN/CoStar 2026"
+  },
+  // ---- Part three: the forecast ----
+  forecast: {
+    method: "Derived from the published OTA mid-point of the nearest non-branded lifestyle comparators — Hotel Indigo at A$509 and COMO Uma Canggu at A$452 — with a +48% brand and beach club premium and a 60% opening-year ramp factor. Forward market inflation is excluded; Bali luxury ADR trending at +3.9% per annum in USD adds roughly 8.0% by a 2028 opening.",
+    openingClean: "A$532 (USD 340)",
+    openingOcc: "70–75%",
+    table: [
+      { rate: "Opening year clean ADR", conservative: "A$438", base: "A$532", optimistic: "A$657", usd: "280 / 340 / 420" },
+      { rate: "Opening year dirty ADR, published", conservative: "A$606", base: "A$757", optimistic: "A$947", usd: "387 / 484 / 605" },
+      { rate: "Stabilised clean ADR, year 3 to 4", conservative: "A$501", base: "A$626", optimistic: "A$782", usd: "320 / 400 / 500" },
+      { rate: "Stabilised dirty ADR, published", conservative: "A$703", base: "A$879", optimistic: "A$1,096", usd: "449 / 562 / 700" }
+    ],
+    ramp: [
+      { year: "2028", band: "A$532", stage: "Opening, 60% ramp" },
+      { year: "2029", band: "A$626–704", stage: "Year 2, 75% ramp" },
+      { year: "2030", band: "A$704–782", stage: "Year 3, 90% ramp" },
+      { year: "2031+", band: "A$626–704", stage: "Stabilised, 100%" },
+      { year: "2031+", band: "A$751–844", stage: "Inflation adjusted" }
+    ],
+    rampNote: "Occupancy targets climb across the same period, from 65–70% at opening to 72–78% at stabilisation, with the brand premium over comparators widening from +20–30% to +40–56%. The 2030 band sits above the 2031+ stabilised band in the source forecast — the inflation-adjusted 2031+ row, which applies +3.9% per annum from the June 2026 base, is the report's recommended long-run planning figure.",
+    cleanNote: "CLEAN ADR IS NET OF 21% INDONESIAN TAX AND SERVICE AND BLENDED OTA COMMISSION AT 35% DIRECT BOOKING SHARE"
+  },
+  // ---- Part four: the ceiling ----
+  ceiling: {
+    headline: "Where guests start choosing Regent.",
+    note: "The market begins to reject ELLE pricing at the point where a guest can choose Regent Bali Canggu at a comparable or lower rate for a demonstrably superior product. That ceiling is not permanent — as the identity crystallises through events, editorial and social proof, it rises. By year five a fully activated ELLE no longer competes in the same set as Hotel Indigo or COMO Uma Canggu.",
+    ladder: [
+      { name: "The Legian Seminyak", rate: "A$1,281" },
+      { name: "Regent Bali Canggu", rate: "A$983" },
+      { name: "W Bali Seminyak", rate: "A$778" },
+      { name: "Alila Seminyak", rate: "A$601" },
+      { name: "Hotel Indigo Bali", rate: "A$509" },
+      { name: "COMO Uma Canggu", rate: "A$452" }
+    ],
+    scenarios: [
+      { name: "Base case", range: "A$595–657" },
+      { name: "Success case", range: "A$860–970" },
+      { name: "Exceptional case", range: "A$1,095–1,283" }
+    ],
+    bvlgari: "Bvlgari Resort Bali at A$3,234 sits outside the product type and the scale.",
+    scenarioNote: "The base, success and exceptional set comes from the Phase 2 destination analysis. It is defined differently from the conservative / base / optimistic set in the forecast above, and the two are not interchangeable."
+  },
+  // ---- Tier 1 milestones ----
+  milestones: [
+    { area: "Beach club", items: ["800 day-pass admissions per week in peak season", "40% of beach club revenue from non-hotel guests", "Operating cost covered by the end of year one"] },
+    { area: "Food and beverage", items: ["1.8 covers per seat at lunch and dinner in peak months", "35% of total hotel revenue", "70% breakfast penetration among hotel guests"] },
+    { area: "Media and reviews", items: ["10 editorial placements in international lifestyle, travel or design media in year one", "Google 4.6 out of 5.0", "Booking.com 8.5 out of 10"] },
+    { area: "Occupancy and distribution", items: ["62% occupancy by the end of year one", "OTA share capped at 55%, direct booking reaching 30%", "No distressed inventory below A$391 clean ADR"] },
+    { area: "Brand partnerships", items: ["Two fashion or lifestyle partnerships formalised at opening", "ELLE editorial coverage before opening", "One Bali collaboration for place authenticity"] }
+  ],
+  milestoneNote: "The forecast is conditional. These are the operating thresholds that carry the property from opening to a defensible rate, stated so that progress can be tracked rather than asserted. Tier two and tier three milestones carry the property from the success case toward the exceptional case — they are set out in full in the Phase 2 destination analysis.",
+  // ---- Verdict ----
+  verdict: {
+    headline: "The base case is conservative. The brand and the beach club are why it rises.",
+    pull: "The beach club is the single most commercially powerful element of the product mix.",
+    againstCriteria: "Against Warren's hard lines: the 15% p.a. quoted is well above the 10% net yield floor, and the ~$65k entry is the cheapest of any Bali option by an order of magnitude. The unresolved question is not the yield — it is that the 15% is a projection, not a contract, and it depends on a 45% revenue pool spanning a hotel, a beach club and F&B across 168 keys. Unlike Casa Petak (Balitecture management, 20% fee) there is no operator whose economics you can read, and unlike FINNS there is no comparable operating track record to anchor the pool. Treat it as the highest-upside / least-verified item in the Option 1 set, not as a done deal."
+  }
+};
+
 /* =============================================================================
    OPTION 1 BALI — INCOME STRATEGY (PT PMA → Mandiri → IDX domestic shares)
    ============================================================================= */
@@ -1045,5 +1238,6 @@ const DATA = {
   pricePerSqm: PRICE_PER_SQM,
   avgSizeSqm: AVG_SIZE_SQM,
   baliStrategy: BALI_STRATEGY,
+  elle: ELLE,
   competitionTracker: COMPETITION_TRACKER,
 };

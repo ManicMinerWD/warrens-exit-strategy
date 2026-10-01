@@ -829,6 +829,7 @@ function boot() {
   renderHotelReport();
   renderCompetition();
   renderVillaPage();
+  renderElle();
 }
 
 // ---- Competition tracker renderer ----
@@ -953,3 +954,255 @@ document.addEventListener("DOMContentLoaded", boot);
   }, 100);
   setTimeout(function() { clearInterval(poller); if (observer) observer.disconnect(); }, 8000);
 })();
+
+// =============================================================================
+// ELLE RESORT & BEACH CLUB — dedicated page renderer (elle.html)
+// Reads DATA.elle. Every element is guarded so render.js stays safe on the
+// other pages that share this bundle.
+// =============================================================================
+function renderElle() {
+  const d = DATA.elle;
+  if (!d) return;
+  const root = $("#elleRoot");
+  if (!root) return;
+
+  const put = (sel, html) => {
+    const w = $(sel, root);
+    if (w) w.innerHTML = html;
+  };
+
+  // ---- headline cards ----
+  put("#elleKeyCards", `
+    <div class="total-card"><div class="label">Keys</div><div class="value">${d.totals.keys}</div><div class="sub">${d.totals.types} room &amp; suite types</div></div>
+    <div class="total-card"><div class="label">Entry (USD)</div><div class="value">$${d.product.entryUsd.toLocaleString()}</div><div class="sub">per suite, 50-year term</div></div>
+    <div class="total-card" style="background:var(--teal);color:#fff;"><div class="label" style="color:#fff;opacity:0.85;">Projected net (quoted)</div><div class="value">up to 15% p.a.</div><div class="sub" style="color:#fff;opacity:0.9;">+ 8% guaranteed capital repayment in construction</div></div>
+    <div class="total-card"><div class="label">Opening clean ADR</div><div class="value" style="font-size:18px;">${esc(d.forecast.openingClean)}</div><div class="sub">${esc(d.forecast.openingOcc)} occupancy · 2028</div></div>
+  `);
+
+  // ---- investment product ----
+  put("#elleProduct", `
+    <table class="data-table">
+      <tbody>
+        <tr><td style="width:26%;"><strong>Structure</strong></td><td>${esc(d.product.structure)}</td></tr>
+        <tr><td><strong>Construction</strong></td><td>${esc(d.product.guarantee)}</td></tr>
+        <tr><td><strong>Return</strong></td><td>${esc(d.product.projectedNet)}</td></tr>
+        <tr><td><strong>Revenue basis</strong></td><td>${esc(d.product.poolBasis)}</td></tr>
+        <tr><td><strong>Perks</strong></td><td>${esc(d.product.perks)}</td></tr>
+      </tbody>
+    </table>
+    <div class="note" style="font-size:12px;color:var(--coral);margin-top:10px;"><strong>Verify before ranking:</strong> ${esc(d.product.verify)}</div>
+  `);
+
+  // ---- the two sites ----
+  const siteRows = d.sites.map(s => `
+    <tr>
+      <td><strong>${esc(s.site)}</strong></td>
+      <td class="num">${s.areaSqm.toLocaleString()} m²</td>
+      <td class="num">${s.keys}</td>
+      <td class="num">${s.types}</td>
+      <td class="num">${s.buildingArea.toLocaleString()} m²</td>
+      <td class="num">${s.footprint.toLocaleString()} m²</td>
+      <td class="num">${esc(s.coverage)}</td>
+      <td class="muted" style="font-size:11px;">${esc(s.levels)}</td>
+    </tr>`).join("");
+  put("#elleSiteTable", `
+    <table class="data-table">
+      <thead><tr><th>Site</th><th class="num">Land</th><th class="num">Keys</th><th class="num">Types</th><th class="num">Building area</th><th class="num">Footprint</th><th class="num">Coverage</th><th>Levels</th></tr></thead>
+      <tbody>${siteRows}</tbody>
+    </table>
+    <div class="note" style="font-size:12px;margin-top:8px;">Two consolidated sites totalling ${esc(d.totals.siteAreaHa)} ha, separated by a small road. The suites join the beach club by tunnel and sky bridge. Land is relatively flat with compact soil and strong ground. Parking: ${d.parking.resortCars} car / ${d.parking.resortScooters} scooter lots at the Resort, ${d.parking.beachClubCars} car / ${d.parking.beachClubScooters} scooter lots at the Beach Club.</div>
+  `);
+
+  // ---- unit schedules ----
+  const unitRows = list => list.map(u => `
+    <tr>
+      <td>${esc(u.type)}</td>
+      <td class="num">${u.keys}</td>
+      <td class="num">${u.internal} m²</td>
+      <td>${esc(u.outdoorLabel)} ${u.outdoor} m² <span class="muted">(${u.counted})</span></td>
+      <td class="num"><strong>${u.total} m²</strong></td>
+    </tr>`).join("");
+
+  const t = d.totals;
+  put("#elleResortUnits", `
+    <table class="data-table">
+      <thead><tr><th>Room / suite type</th><th class="num">Keys</th><th class="num">Internal</th><th>Outdoor (counted at 50%)</th><th class="num">Total / key</th></tr></thead>
+      <tbody>${unitRows(d.resortUnits)}
+        <tr style="background:var(--sand);"><td><strong>Total — 13 types</strong></td><td class="num"><strong>130</strong></td><td class="num"><strong>${t.resortInternal.toLocaleString()} m²</strong></td><td><strong>${t.resortOutdoor.toLocaleString()} m² (${t.resortCounted})</strong></td><td class="num"><strong>${t.resortTotal.toLocaleString()} m²</strong></td></tr>
+      </tbody>
+    </table>
+  `);
+  put("#elleSuiteUnits", `
+    <table class="data-table">
+      <thead><tr><th>Room / suite type</th><th class="num">Keys</th><th class="num">Internal</th><th>Outdoor (counted at 50%)</th><th class="num">Total / key</th></tr></thead>
+      <tbody>${unitRows(d.suiteUnits)}
+        <tr style="background:var(--sand);"><td><strong>Total — 8 types</strong></td><td class="num"><strong>38</strong></td><td class="num"><strong>${t.suitesInternal.toLocaleString()} m²</strong></td><td><strong>${t.suitesOutdoor.toLocaleString()} m² (${t.suitesCounted})</strong></td><td class="num"><strong>${t.suitesTotal.toLocaleString()} m²</strong></td></tr>
+      </tbody>
+    </table>
+  `);
+
+  // ---- full 21-type size range ----
+  const all = [
+    ...d.resortUnits.map(u => ({ ...u, coll: "Resort" })),
+    ...d.suiteUnits.map(u => ({ ...u, coll: "Suites" }))
+  ].sort((a, b) => b.total - a.total);
+  put("#elleSizeRange", `
+    <table class="data-table" style="font-size:12px;">
+      <thead><tr><th>Type</th><th>Collection</th><th class="num">Internal</th><th class="num">Outdoor</th><th class="num">Total / key</th><th style="width:34%;">Relative size</th></tr></thead>
+      <tbody>${all.map(u => `
+        <tr>
+          <td>${esc(u.type)}</td>
+          <td class="muted">${esc(u.coll)}</td>
+          <td class="num">${u.internal} m²</td>
+          <td class="num">${u.outdoor} m²</td>
+          <td class="num"><strong>${u.total} m²</strong></td>
+          <td><div style="background:var(--teal);height:9px;border-radius:2px;width:${(u.total / 251 * 100).toFixed(1)}%;opacity:0.75;"></div></td>
+        </tr>`).join("")}
+      </tbody>
+    </table>
+    <div class="note" style="font-size:12px;margin-top:8px;">Ordered by total area per key. The largest type is Beach Club Penthouse B — 175 m² internal with a 76 m² terrace. The smallest, at 45 m² internal, appears twice: as the Resort Standard Room and as Regular Suite C.</div>
+  `);
+
+  // ---- comp set ----
+  put("#elleCompSet", `
+    <table class="data-table" style="font-size:12px;">
+      <thead><tr><th>Property</th><th class="num">Size</th><th>Positioning</th><th class="num">Published OTA range (AUD)</th></tr></thead>
+      <tbody>${d.compSet.map(c => `
+        <tr${c.name.indexOf("Bvlgari") === 0 ? ' style="opacity:0.6;"' : ""}>
+          <td><strong>${esc(c.name)}</strong></td>
+          <td class="num">${esc(c.size)}</td>
+          <td class="muted">${esc(c.positioning)}</td>
+          <td class="num">${esc(c.rate)}</td>
+        </tr>`).join("")}
+      </tbody>
+    </table>
+    <div class="note" style="font-size:12px;margin-top:8px;">ELLE's stated positioning band is <strong>${esc(d.market.elleBand)}</strong>. The Legian reset the AUD ceiling in 2024. Bvlgari sits off this scale entirely — a villa product outside ELLE's positioning and product type. [TripAdvisor, Booking.com, Agoda, Kayak, Google Hotels — verified June 2026]</div>
+  `);
+
+  // ---- global lifestyle set ----
+  const clusterParts = d.cluster.split(" — ");
+  put("#elleGlobalSet", `
+    <table class="data-table" style="font-size:12px;">
+      <thead><tr><th>Property</th><th class="num">Estimated annualised realised ADR (AUD)</th></tr></thead>
+      <tbody>${d.globalSet.map(g => `
+        <tr><td><strong>${esc(g.name)}</strong></td><td class="num">${esc(g.rate)}</td></tr>`).join("")}
+      </tbody>
+    </table>
+    <div class="note" style="font-size:12px;margin-top:8px;"><strong>The comparable cluster: ${esc(clusterParts[0])}.</strong> ${esc(clusterParts.slice(1).join(" — "))}</div>
+  `);
+
+  // ---- premium mechanisms ----
+  const mechRows = d.premium.mechanisms.map(m => `
+    <tr><td><strong>${esc(m.name)}</strong></td><td class="num">${esc(m.value)}</td><td class="muted" style="font-size:11px;">${esc(m.source)}</td></tr>`).join("");
+  const opRows = d.premium.ops.map(m => `
+    <tr><td><strong>${esc(m.name)}</strong>${m.note ? `<br><span class="muted" style="font-size:11px;">${esc(m.note)}</span>` : ""}</td><td class="num">${esc(m.value)}</td><td class="muted" style="font-size:11px;">${esc(m.source)}</td></tr>`).join("");
+  put("#ellePremium", `
+    <div class="two-col">
+      <div>
+        <h3>The beach club, measured</h3>
+        <p style="font-size:12px;">Four mechanisms of brand-driven ADR premium over a non-branded upper upscale lifestyle comparator.</p>
+        <table class="data-table" style="font-size:12px;"><thead><tr><th>Mechanism</th><th class="num">Value</th><th>Source</th></tr></thead><tbody>${mechRows}</tbody></table>
+      </div>
+      <div>
+        <h3>Operating and distribution effects</h3>
+        <p style="font-size:12px;">The same premium read through operations rather than rate.</p>
+        <table class="data-table" style="font-size:12px;"><thead><tr><th>Metric</th><th class="num">Value</th><th>Source</th></tr></thead><tbody>${opRows}</tbody></table>
+      </div>
+    </div>
+    <div class="note" style="font-size:12px;margin-top:10px;">
+      <strong>Combined ELLE brand premium: ${esc(d.premium.combined)}.</strong> ${esc(d.premium.combinedNote)}
+    </div>
+    <div class="note" style="font-size:11px;color:var(--muted);margin-top:6px;">Sources: ${esc(d.premium.sources)}</div>
+  `);
+
+  // ---- forecast table ----
+  put("#elleForecast", `
+    <table class="data-table">
+      <thead><tr><th>Rate type</th><th class="num">Conservative</th><th class="num">Base case</th><th class="num">Optimistic</th><th class="num">USD source</th></tr></thead>
+      <tbody>${d.forecast.table.map(r => `
+        <tr>
+          <td><strong>${esc(r.rate)}</strong></td>
+          <td class="num">${esc(r.conservative)}</td>
+          <td class="num" style="background:var(--sand);"><strong>${esc(r.base)}</strong></td>
+          <td class="num">${esc(r.optimistic)}</td>
+          <td class="num muted">${esc(r.usd)}</td>
+        </tr>`).join("")}
+      </tbody>
+    </table>
+    <div class="note" style="font-size:11px;color:var(--muted);margin-top:6px;">${esc(d.forecast.cleanNote)}</div>
+  `);
+
+  // ---- ramp trajectory ----
+  put("#elleRamp", `
+    <table class="data-table">
+      <thead><tr><th>Year</th><th class="num">Base case clean ADR band (AUD)</th><th>Stage</th><th style="width:28%;">&nbsp;</th></tr></thead>
+      <tbody>${d.forecast.ramp.map(r => {
+        const digits = r.band.replace(/[^0-9]/g, "");
+        const hi = parseInt(digits.length > 3 ? digits.slice(3) : digits, 10);
+        const w = Math.max(6, Math.min(100, (isNaN(hi) ? 600 : hi) / 900 * 100));
+        return `
+        <tr>
+          <td><strong>${esc(r.year)}</strong></td>
+          <td class="num">${esc(r.band)}</td>
+          <td class="muted">${esc(r.stage)}</td>
+          <td><div style="background:var(--teal);height:11px;border-radius:2px;width:${w.toFixed(0)}%;opacity:0.75;"></div></td>
+        </tr>`;
+      }).join("")}
+      </tbody>
+    </table>
+    <div class="note" style="font-size:12px;margin-top:8px;">${esc(d.forecast.rampNote)}</div>
+  `);
+
+  // ---- ceiling ladder + scenarios ----
+  put("#elleCeiling", `
+    <div class="two-col">
+      <div>
+        <h3>Hard ceiling by scenario — competitor published mid-points</h3>
+        <table class="data-table" style="font-size:12px;">
+          <thead><tr><th>Property</th><th class="num">Mid-point (AUD)</th></tr></thead>
+          <tbody>${d.ceiling.ladder.map(c => `<tr><td>${esc(c.name)}</td><td class="num">${esc(c.rate)}</td></tr>`).join("")}</tbody>
+        </table>
+        <div class="note" style="font-size:11px;color:var(--muted);margin-top:6px;">${esc(d.ceiling.bvlgari)}</div>
+      </div>
+      <div>
+        <h3>Phase 2 scenario set — published rate</h3>
+        <table class="data-table" style="font-size:12px;">
+          <thead><tr><th>Scenario</th><th class="num">Published rate (AUD)</th></tr></thead>
+          <tbody>${d.ceiling.scenarios.map(c => `
+            <tr><td><strong>${esc(c.name)}</strong></td><td class="num">${esc(c.range)}</td></tr>`).join("")}
+          </tbody>
+        </table>
+        <div class="note" style="font-size:11px;color:var(--coral);margin-top:6px;">${esc(d.ceiling.scenarioNote)}</div>
+      </div>
+    </div>
+  `);
+
+  // ---- milestones ----
+  put("#elleMilestones", `
+    <div class="two-col" style="align-items:flex-start;">
+      ${d.milestones.map(m => `
+        <div>
+          <h3>${esc(m.area)}</h3>
+          <ul style="font-size:12px;margin:4px 0 0;padding-left:18px;">
+            ${m.items.map(i => `<li style="margin-bottom:3px;">${esc(i)}</li>`).join("")}
+          </ul>
+        </div>`).join("")}
+    </div>
+    <div class="note" style="font-size:12px;margin-top:10px;">${esc(d.milestoneNote)}</div>
+  `);
+
+  // ---- amenity chips ----
+  put("#elleAmenities", d.amenities.map(a => `<span class="badge" style="display:inline-block;margin:0 6px 6px 0;">${esc(a)}</span>`).join(""));
+
+  // ---- masterplan zones ----
+  put("#elleZones", d.masterplanZones.map((z, i) => `<span class="badge" style="display:inline-block;margin:0 6px 6px 0;">${i + 1}. ${esc(z)}</span>`).join(""));
+
+  // ---- verdict ----
+  put("#elleVerdict", `
+    <div style="background:var(--sand);border:1px solid var(--sand-dark);padding:14px 16px;border-radius:8px;">
+      <h3 style="margin:0 0 6px;font-size:14px;color:var(--teal);">${esc(d.verdict.headline)}</h3>
+      <div style="font-size:13px;font-style:italic;">"${esc(d.verdict.pull)}"</div>
+    </div>
+    <div class="note" style="font-size:12px;margin-top:10px;">${esc(d.verdict.againstCriteria)}</div>
+  `);
+}
