@@ -947,7 +947,7 @@ function renderElleLease() {
             <tr><td><strong>Available room nights</strong></td><td class="num">${nm.availableNights.toLocaleString()}</td></tr>
             <tr><td><strong>Occupied room nights (75%)</strong></td><td class="num">${nm.occupiedNights.toLocaleString()}</td></tr>
             <tr><td><strong>Gross room revenue</strong></td><td class="num">A$${nm.grossRoomRevenue.toLocaleString()}</td></tr>
-            <tr><td><strong>Investor room pool (45%)</strong></td><td class="num">A$${nm.investorRoomPool45.toLocaleString()}</td></tr>
+            <tr><td><strong>Investor room pool (45%)</strong></td><td class="num">A$${nm.investorPool.toLocaleString()}</td></tr>
           </tbody>
         </table>
         <div class="lease-notes" style="margin-top:10px;">
