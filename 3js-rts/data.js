@@ -255,3 +255,32 @@ function getNearBasePosition() {
 
   return { x: base.x + offsets[0].x, y: 0, z: base.z + offsets[0].z };
 }
+
+// ---- Get available actions for a building ----
+function getBuildingActions() {
+  if (!game.selected || !game.selected.alive) return [];
+
+  const unit = units.find(u => u.stats.id === game.selected.id);
+  if (unit && unit.stats.type === 'worker') {
+    return [{ type: 'worker', name: 'Worker', gold: 100, food: 50 }];
+  }
+  if (unit && unit.stats.type === 'warrior') {
+    return [{ type: 'warrior', name: 'Warrior', gold: 150, food: 100 }];
+  }
+
+  // Building actions
+  if (game.selected.type === 'base') {
+    return [
+      { type: 'worker', name: 'Worker', gold: 100, food: 50 },
+      { type: 'warrior', name: 'Warrior', gold: 150, food: 100 },
+      { type: 'base', name: 'Base', gold: 300, food: 0 },
+    ];
+  }
+
+  return [];
+}
+
+// ---- Check if enough resources ----
+function checkAfford(goldCost, foodCost) {
+  return resources.gold >= goldCost && resources.food >= foodCost;
+}
