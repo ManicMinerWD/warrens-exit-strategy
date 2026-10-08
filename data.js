@@ -1207,6 +1207,246 @@ const MACTAN_VILLA = {
 };
 
 
+
+/*
+  =============================================================================
+  ELLE RESORT & BEACH CLUB - FRACTIONAL LEASEHOLD POSITION (1 lease: 2BR Penthouse A, Resort Hotel)
+  Sourced 2026-10-08 from the Geonet / SONO / Inspiral "Fractional Leasehold Position Summary"
+  (8 Oct 2026, 16 pages, PT Geonet Developments International). All AUD unless stated.
+  Currency: AUD.
+  FX: IDR/USD 16,000 (Horwath HTL Bali 2026). These figures are GEONET PROJECTIONS,
+  not contracts, and are subject to the least verification of the Option 1 set.
+  =============================================================================
+*/
+const ELLE_LEASE = {
+  // ---- Lease structure (the actual position) ----
+  leaseStructure: {
+    key: "Elle-2BR-Penthouse-A-Resort-Hotel",
+    roomType: "2BR Penthouse A",
+    precinct: "Resort Hotel",
+    tower: null,
+    fractions: 1,
+    pricePerFraction: 258750,
+    keyOwnershipPct: 5.0,
+    shareOfLeaseAllocationPct: 0.0755,
+    advanceConsideration: 258750,
+    constructionRebateRatePct: 10.0,
+    constructionRebateAnnual: 25875,
+    constructionRebateTotal: 77625,
+    adjustedLeasePrice: 181125,
+    guaranteeMinYear1: 25875,
+    year1LeaseIncomeModel: 22431,
+    year1LeaseIncomeGuaranteed: 25875,
+    guaranteePeriodYears: 2,
+    guaranteeUnit: "AUD",
+  },
+
+  // ---- Headline lease income metrics (Expected Operating Scenario, FY2029-FY2053) ----
+  headline: {
+    year1LeaseIncome: 25875,
+    year5Stabilised: 26839,
+    totalOperating25: 1021057,
+    totalLifecycle25: 1098682,
+    ratio: 4.25,
+    avgRateAdvancePct: 15.78,
+    avgRateAdjustedPct: 22.55,
+  },
+
+  // ---- Operating sensitivity: conservative / expected / optimistic (multiplier 0.80x / 1.00x / 1.18x) ----
+  sensitivity: {
+    conservative: { label: "Conservative (0.80x)", multiplier: 0.80,
+      year1: 25875, year5: 21471, totalOp25: 827196, avgRateAdjustedPct: 18.27, ratio: 3.50, totalLifecycle: 904821 },
+    expected: { label: "Expected (1.00x)", multiplier: 1.00,
+      year1: 25875, year5: 26839, totalOp25: 1021057, avgRateAdjustedPct: 22.55, ratio: 4.25, totalLifecycle: 1098682 },
+    optimistic: { label: "Optimistic (1.18x)", multiplier: 1.18,
+      year1: 26469, year5: 31670, totalOp25: 1197933, avgRateAdjustedPct: 26.46, ratio: 4.93, totalLifecycle: 1275558 },
+  },
+
+  // ---- Room revenue waterfall (per room night, Year 1 base case, ADR $1,294) ----
+  roomWaterfall: {
+    grossAdr: 1294,
+    taxService: 272,
+    netTaxService: 1022,
+    ota: 102,
+    netAfterOTA: 920,
+    sinkingFund: 46,
+    netDistributable: 874,
+    hotel: 481,
+    investorPool: 393,
+    occupancy: 0.75,
+    keys: 168,
+    availableNights: 61488,
+    occupiedNights: 46116,
+    grossRoomRevenue: 59674104,
+    cleanRevenue: 47130552,
+    netAfterOTAAll: 42426720,
+    netDistributableAll: 40305384,
+    investorPoolAll: 18137423,
+    hotelOperationsAll: 22167961,
+    investorRoomPool45: 18842648,
+  },
+
+  // ---- Non-room revenue (Leasehold Position Summary, FY2029, resort total A$131,350,344) ----
+  nonRoomRevenue: {
+    rooms: 44076369,
+    beachClub: 63707100,
+    resortFood: 9198000,
+    events: 1457000,
+    wellness: 8619475,
+    other: 4292400,
+    totalResort: 131350344,
+    beachClubPct: 48.5,
+    roomsPct: 33.6,
+    resortFoodPct: 7.0,
+    eventsPct: 1.1,
+    wellnessPct: 6.6,
+    otherPct: 3.3,
+    perKey: {
+      rooms: 262359,
+      beachClub: 379209,
+      resortFood: 54750,
+      events: 8673,
+      wellness: 51306,
+      other: 25550,
+      total: 771847,
+    },
+    perOccupiedNight: {
+      rooms: 898,
+      beachClub: 1299,
+      resortFood: 188,
+      events: 30,
+      wellness: 176,
+      other: 88,
+      total: 2689,
+    },
+  },
+
+  // ---- Year 1 room revenue model (Core Assumptions, AUD) ----
+  year1RoomModel: {
+    adr: 1294,
+    cleanAdr: 920,
+    occupancy: 0.75,
+    keys: 168,
+    availableNights: 61488,
+    occupiedNights: 46116,
+    grossRoomRevenue: 59674104,
+    cleanRevenue: 47130552,
+    netAfterOTA: 42426720,
+    netDistributable: 40305384,
+    investorPool: 18137423,
+    hotelOperations: 22167961,
+  },
+
+  // ---- Year 1 non-room / total revenue model (Core Assumptions) ----
+  year1NonRoomModel: {
+    totalRevenue: 121400000,
+    roomsRevenue: 42400000,
+    roomsShare: 0.349,
+    nonRoomRevenue: 79000000,
+    nonRoomShare: 0.651,
+    cogs: 27600000,
+    gop: 35900000,
+    ebitda: 28600000,
+    ebitdaMargin: 0.235,
+    npbt: 26100000,
+    npbtMargin: 0.215,
+    investorRoomPool: 18100000,
+    investorNonRoomPool: 7800000,
+    npat: 14300000,
+    npatMargin: 0.118,
+  },
+
+  // ---- Comparable property benchmark ----
+  comparison: {
+    comparableRate: 0.105,
+    comparableGrowth: 0.045,
+    totalComparable25: 1210781,
+    totalUplift: -189724,
+    upliftPct: 0.1567,
+    recoveryPeriod: "FY2035",
+    upliftNote: "The fractional leasehold lifts total lease income over 25 years (A$1,021,057) by A$189,724 (15.67%) against a comparable 10.50% starting lease income, growing at 4.50% p.a.",
+  },
+
+  // ---- Full forecast / lease schedule (FY2026-FY2053) ----
+  schedule: [
+    { year: "FY2026", phase: "CONSTRUCTION", receipts: 25875, growth: "n/a", cumulative: 25875, benchmark: 27169, gap: -1294 },
+    { year: "FY2027", phase: "CONSTRUCTION", receipts: 25875, growth: "n/a", cumulative: 51750, benchmark: 28391, gap: -3810 },
+    { year: "FY2028", phase: "CONSTRUCTION", receipts: 25875, growth: "n/a", cumulative: 77625, benchmark: 29669, gap: -7604 },
+    { year: "FY2029", phase: "OPERATING", receipts: 25875, growth: "n/a", cumulative: 103500, benchmark: 31004, gap: -12733 },
+    { year: "FY2030", phase: "OPERATING", receipts: 25875, growth: "+4.6%", cumulative: 129375, benchmark: 32399, gap: -19257 },
+    { year: "FY2031", phase: "OPERATING", receipts: 24535, growth: "+4.6%", cumulative: 153910, benchmark: 33857, gap: -28580 },
+    { year: "FY2032", phase: "OPERATING", receipts: 25660, growth: "+4.6%", cumulative: 179570, benchmark: 35381, gap: -38300 },
+    { year: "FY2033", phase: "OPERATING", receipts: 26839, growth: "+4.6%", cumulative: 206409, benchmark: 36973, gap: -48434 },
+    { year: "FY2034", phase: "OPERATING", receipts: 28072, growth: "+4.6%", cumulative: 234481, benchmark: 38637, gap: -58999 },
+    { year: "FY2035", phase: "OPERATING", receipts: 29364, growth: "+4.6%", cumulative: 263845, benchmark: 40375, gap: -70011 },
+    { year: "FY2036", phase: "OPERATING", receipts: 30715, growth: "+4.6%", cumulative: 294560, benchmark: 42192, gap: -81488 },
+    { year: "FY2037", phase: "OPERATING", receipts: 32130, growth: "+4.6%", cumulative: 326690, benchmark: 44091, gap: -93448 },
+    { year: "FY2038", phase: "OPERATING", receipts: 33612, growth: "+4.6%", cumulative: 360302, benchmark: 46075, gap: -105911 },
+    { year: "FY2039", phase: "OPERATING", receipts: 35163, growth: "+4.6%", cumulative: 395465, benchmark: 48148, gap: -118897 },
+    { year: "FY2040", phase: "OPERATING", receipts: 36787, growth: "+4.6%", cumulative: 432252, benchmark: 50315, gap: -132425 },
+    { year: "FY2041", phase: "OPERATING", receipts: 38487, growth: "+4.6%", cumulative: 470739, benchmark: 52579, gap: -146517 },
+    { year: "FY2042", phase: "OPERATING", receipts: 40268, growth: "+4.6%", cumulative: 511007, benchmark: 54945, gap: -161194 },
+    { year: "FY2043", phase: "OPERATING", receipts: 42133, growth: "+4.6%", cumulative: 553140, benchmark: 57418, gap: -176479 },
+    { year: "FY2044", phase: "OPERATING", receipts: 44086, growth: "+4.6%", cumulative: 597226, benchmark: 60002, gap: -192395 },
+    { year: "FY2045", phase: "OPERATING", receipts: 46131, growth: "+4.6%", cumulative: 643357, benchmark: 62702, gap: -208966 },
+    { year: "FY2046", phase: "OPERATING", receipts: 48273, growth: "+4.6%", cumulative: 691629, benchmark: 65523, gap: -226216 },
+    { year: "FY2047", phase: "OPERATING", receipts: 50516, growth: "+4.6%", cumulative: 742145, benchmark: 68472, gap: -244172 },
+    { year: "FY2048", phase: "OPERATING", receipts: 52866, growth: "+4.7%", cumulative: 795011, benchmark: 71553, gap: -262859 },
+    { year: "FY2049", phase: "OPERATING", receipts: 55327, growth: "+4.7%", cumulative: 850338, benchmark: 74773, gap: -282305 },
+    { year: "FY2050", phase: "OPERATING", receipts: 57905, growth: "+4.7%", cumulative: 908243, benchmark: 78138, gap: -302538 },
+    { year: "FY2051", phase: "OPERATING", receipts: 60606, growth: "+4.7%", cumulative: 968849, benchmark: 81654, gap: -323586 },
+    { year: "FY2052", phase: "OPERATING", receipts: 63435, growth: "+4.7%", cumulative: 1032284, benchmark: 85328, gap: -345480 },
+    { year: "FY2053", phase: "OPERATING", receipts: 66399, growth: "+4.7%", cumulative: 1098682, benchmark: 89168, gap: -368249 },
+  ],
+
+  // ---- Key schedule totals ----
+  scheduleTotals: {
+    totalConstructionRebates: 77625,
+    totalOperating: 1021057,
+    totalLifecycle: 1098682,
+    leaseReceiptsRatio: 4.25,
+    breakevenYear: "FY2035",
+  },
+
+  // ---- Protection features ----
+  protections: {
+    constructionRebate: {
+      ratePct: 10.0,
+      periodMonths: 36,
+      annual: 25875,
+      total: 77625,
+      note: "Cash payments during construction equal to 10.0% p.a. of advance consideration, paid quarterly (36 months).",
+    },
+    minimumGuarantee: {
+      minYear1: 25875,
+      periodYears: 2,
+      note: "For FY2029-FY2030 the lessor guarantees a minimum lease income of A$25,875 per year. Where modelled income falls below, the lessor pays the shortfall.",
+      year1Modelled: 22431,
+      year1Guaranteed: 25875,
+      year1Shortfall: 3444,
+      coverage: 0.87,
+    },
+  },
+
+  // ---- How the income is generated ----
+  incomeSource: {
+    headline: "Two-thirds of resort revenue is generated by something other than room nights. The beach club alone (48.5% of resort revenue, A$63.7m) is larger than rooms (A$44.1m, 33.6%).",
+    roomRevenue: "Derived from occupancy and ADR. Venue revenue from the beach club, resort F&B, events and wellness is modelled from venue capacity, utilisation and spend per guest, each set for the venue rather than derived from hotel occupancy.",
+    waterfall: "Rooms revenue is split: 45% to the investor room pool, 55% to hotel operations. Non-room revenue flows through the P&L to Net Profit Before Tax; investors receive 30% of NPBT.",
+    totalResortPool: 29723729,
+    roomLeasePool: 18842648,
+    facilitiesLeasePool: 10881082,
+    roomPoolShare: 0.45,
+    facilitiesPoolShare: 0.45,
+    yourShare: 0.000755,
+    year1LeaseIncome: 22431,
+    year1Guaranteed: 25875,
+  },
+
+  // ---- Verdict ----
+  verdict: "Higher-upside / least-verified item in the Option 1 set. Entry from ~$65,000 USD - the cheapest of any Bali option by an order of magnitude - and the 15.78% average lease income rate on advance consideration is the highest of the Bali pool products. But the 15% is a projection, not a contract, and it depends on a 45% revenue pool spanning a hotel, a beach club and F&B across 168 keys. Unlike Casa Petak (Balitecture management, 20% fee) there is no operator whose economics you can read, and unlike FINNS there is no comparable operating track record to anchor the pool. The lease is lowest on entry price, highest on yield - and least verifiable. Treat as a strong watch item: confirm the 8% construction guarantee terms and who stands behind it; the 45% pool definition (net of what?); payout frequency and currency; and exit/liquidity terms at year 50.",
+};
+
 const DATA = {
   lastUpdated: "2026-09-25",
   arrAnnual: ARR_ANNUAL,
@@ -1240,4 +1480,5 @@ const DATA = {
   baliStrategy: BALI_STRATEGY,
   elle: ELLE,
   competitionTracker: COMPETITION_TRACKER,
+  elle_lease: ELLE_LEASE,
 };
