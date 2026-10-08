@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3JS RTS — Prototype</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="data.js"></script>
+  <script src="render.js"></script>
+</head>
+<body>
+  <div id="ui">
+    <div id="hud">
+      <div id="resource-bar">
+        <span class="res-label">Gold</span>
+        <div class="res-fill" id="gold-fill"></div>
+        <span class="res-val" id="gold-val">0</span>
+      </div>
+      <div id="resource-bar">
+        <span class="res-label">Food</span>
+        <div class="res-fill" id="food-fill"></div>
+        <span class="res-val" id="food-val">0</span>
+      </div>
+      <div id="unit-count">
+        <span class="res-label">Workers</span>
+        <span class="res-val" id="worker-val">0</span>
+        <span class="res-label">Warriors</span>
+        <span class="res-val" id="warrior-val">0</span>
+      </div>
+    </div>
+    <div id="build-menu">
+      <div class="build-btn" data-action="build_worker">
+        <span class="build-icon">⛏️</span>
+        <span class="build-text">Worker (100 Gold)</span>
+      </div>
+      <div class="build-btn" data-action="build_warrior">
+        <span class="build-icon">⚔️</span>
+        <span class="build-text">Warrior (150 Gold)</span>
+      </div>
+      <div class="build-btn" data-action="build_base">
+        <span class="build-icon">🏰</span>
+        <span class="build-text">Base (300 Gold)</span>
+      </div>
+    </div>
+    <div id="info-panel">
+      <div id="selected-info">
+        <strong id="selected-name">Select a unit</strong>
+        <span id="selected-type"></span>
+        <span id="selected-action">Right-click to assign job</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="game-over" style="display:none;">
+    <h2>Game Over</h2>
+    <p>You built <strong id="gameover-count">0</strong> units.</p>
+    <button onclick="location.reload()">Restart</button>
+  </div>
+
+  <script>
+    if (typeof init === 'function') {
+      init();
+    } else {
+      console.error('init() not found in render.js');
+    }
+  </script>
+</body>
+</html>
