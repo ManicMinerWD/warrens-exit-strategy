@@ -9,6 +9,7 @@ let isFlyToMode;
 let flyToTarget;
 let showFlyOrigin;
 let buildPreviewMesh;
+let rightClickTarget;
 
 // ---- DOM refs ----
 const goldFill = document.getElementById('gold-fill');
@@ -22,6 +23,7 @@ const selectedType = document.getElementById('selected-type');
 const selectedAction = document.getElementById('selected-action');
 const gameOverEl = document.getElementById('game-over');
 const buildButtons = document.getElementById('build-menu');
+const infoPanel = document.getElementById('info-panel');
 
 // ---- Setup scene ----
 function init() {
@@ -96,6 +98,7 @@ function init() {
   isFlyToMode = false;
   showFlyOrigin = false;
   buildPreviewMesh = null;
+  rightClickTarget = null;
 
   // Game loop
   gameLoop();
@@ -207,28 +210,36 @@ function setupUI() {
     event.preventDefault();
     if (game.isGameOver) return;
 
-    if (game.selected && game.selected.alive) {
-      const unit = units.find(u => u.stats.id === game.selected.id);
-      if (unit) {
-        const intersects = getMouseIntersects(event);
-        if (intersects.length > 0 && intersects[0].object === terrainMesh) {
-          const groundPos = intersects[0].point;
+    const intersects = getMouseIntersects(event);
+    if (intersects.length > 0 && intersects[0].object === terrainMesh) {
+      const groundPos = intersects[0].point;
+
+      if (game.selected && game.selected.alive) {
+        const unit = units.find(u => u.stats.id === game.selected.id);
+        if (unit) {
+          // Place unit at ground position
           placeUnitAt(unit.stats.type, groundPos);
           return;
         }
       }
+
+      // No valid selection — deselect
+      game.selected = null;
+      updateSelectionUI();
+      updateSelectedUI('base', 'Click a unit or building to select it');
+      buildButtons.style.display = 'none';
+      return;
     }
 
-    const intersects = getMouseIntersects(event);
-    if (intersects.length > 0) {
-      const hit = intersects[0];
-      const building = findBuildingByObject(hit.object);
-      if (building) {
-        selectBuilding(building);
-        return;
-      }
+    // Clicked on a building
+    const hit = intersects[0];
+    const building = findBuildingByObject(hit.object);
+    if (building) {
+      selectBuilding(building);
+      return;
     }
 
+    // Clicked elsewhere — deselect
     game.selected = null;
     updateSelectionUI();
     updateSelectedUI('base', 'Click a unit or building to select it');
@@ -379,11 +390,11 @@ function selectBuilding(building) {
 function getUnitAction(type) {
   switch (type) {
     case 'worker':
-      return 'Gather gold & place units';
+      return 'Right-click on ground to place  •  Gather gold';
     case 'warrior':
-      return 'Attack enemies';
+      return 'Ready to attack';
     case 'base':
-      return 'Right-click to build';
+      return 'Right-click ground to place units';
     default:
       return 'Select a unit';
   }
@@ -509,6 +520,27 @@ function getBuildPosition() {
   return null;
 }
 
+function getNearBasePosition() {
+  const base = getFirstBuildingPosition();
+  const offsets = [
+    { x: 10, z: 0 },
+    { x: -10, z: 0 },
+    { x: 0, z: 10 },
+    { x: 0, z: -10 },
+  ];
+
+  for (const offset of offsets) {
+    const pos = { x: base.x + offset.x, y: 0, z: base.z + offset.z };
+    const overlap = buildings.find(b => {
+      return Math.sqrt(Math.pow(pos.x - b.position.x, 2) + Math.pow(pos.z - b.position.z, 2)) < 3;
+    });
+    if (!overlap) {
+      return pos;
+    }
+  }
+
+  return { x: base.x + offsets[0].x, y: 0, z: base.z + offsets[0].z };
+}
 
 // ---- Resource system ----
 function findNearestResourceNode(unitPosition) {
@@ -589,4 +621,192 @@ function highlightUnit(unit) {
 }
 
 // ---- Unit helpers ----
+function findUnitByObject(obj) {
+  for (const u of units) {
+    if (!u.stats.alive) continue;
+    let found = false;
+    u.group.traverse(child => {
+      if (child.isMesh && child.userData && child.userData.unitId === u.stats.id) {
+        found = true;
+      }
+    });
+    if (found) return u;
+  }
+  return null;
+}
 
+function findBuildingByObject(obj) {
+  for (const b of buildings) {
+    if (!b.group) continue;
+    let found = false;
+    b.group.traverse(child => {
+      if (child.isMesh && child.userData && child.userData.buildingId === b.id) {
+        found = true;
+      }
+    });
+    if (found) return b;
+  }
+  return null;
+}
+
+// ---- Get available actions for a building ----
+function getBuildingActions() {
+  if (!game.selected || !game.selected.alive) return [];
+
+  const unit = units.find(u => u.stats.id === game.selected.id);
+  if (unit && unit.stats.type === 'worker') {
+    return [{ type: 'worker', name: 'Worker', gold: 100, food: 50 }];
+  }
+  if (unit && unit.stats.type === 'warrior') {
+    return [{ type: 'warrior', name: 'Warrior', gold: 150, food: 100 }];
+  }
+
+  if (game.selected.type === 'base') {
+    return [
+      { type: 'worker', name: 'Worker', gold: 100, food: 50 },
+      { type: 'warrior', name: 'Warrior', gold: 150, food: 100 },
+      { type: 'base', name: 'Base', gold: 300, food: 0 },
+    ];
+  }
+
+  return [];
+}
+
+// ---- AI ----
+function startAI() {
+  const aiPos = { x: 20, y: 0, z: 20 };
+  const aiWorker = createUnitVisual('worker', aiPos);
+  const aiStats = {
+    id: units.length,
+    type: 'worker',
+    position: { x: aiPos.x, y: aiPos.y, z: aiPos.z },
+    rotation: 0,
+    health: 100,
+    maxHealth: 100,
+    damage: 0,
+    attackRange: 3.0,
+    speed: 2.0,
+    gatherRate: 2.0,
+    buildRate: 5.0,
+    goldCost: 100,
+    foodCost: 50,
+    alive: true,
+    target: null,
+    animation: 0,
+  };
+  units.push({ stats: aiStats, group: aiWorker, alive: true });
+
+  // AI tick
+  aiLoop();
+}
+
+let aiInterval;
+
+function aiLoop() {
+  if (game.isGameOver) return;
+
+  const aiWorker = units.find(u => u.stats.type === 'worker' && u.stats.alive && u.stats.position.x > 10 && u.stats.target);
+
+  if (aiWorker && !aiWorker.stats.target) {
+    const node = findNearestResourceNode(aiWorker.stats.position);
+    if (node) {
+      aiWorker.stats.target = node;
+      if (!aiWorker.aiGatherInterval) {
+        aiWorker.aiGatherInterval = setInterval(() => {
+          collectResource(aiWorker.stats);
+        }, 1000);
+      }
+    }
+  }
+
+  if (Math.random() < 0.005 && game.warriors < 15) {
+    const warPos = { x: 20, y: 0, z: 20 };
+    const warUnit = createUnitVisual('warrior', warPos);
+    const warStats = {
+      id: units.length,
+      type: 'warrior',
+      position: { x: warPos.x, y: warPos.y, z: warPos.z },
+      rotation: Math.PI,
+      health: 150,
+      maxHealth: 150,
+      damage: 20,
+      attackRange: 3.0,
+      speed: 2.0,
+      gatherRate: 0,
+      buildRate: 0,
+      goldCost: 150,
+      foodCost: 100,
+      alive: true,
+      target: null,
+      animation: 0,
+    };
+    units.push({ stats: warStats, group: warUnit, alive: true });
+  }
+
+  if (aiInterval) clearInterval(aiInterval);
+  aiInterval = setInterval(() => {
+    if (game.warriors < 15 && Math.random() < 0.3) {
+      const workerPos = { x: 20, y: 0, z: 20 };
+      const workerUnit = createUnitVisual('worker', workerPos);
+      const workerStats = {
+        id: units.length,
+        type: 'worker',
+        position: { x: workerPos.x, y: 0, z: workerPos.z },
+        rotation: 0,
+        health: 100,
+        maxHealth: 100,
+        damage: 0,
+        attackRange: 3.0,
+        speed: 2.0,
+        gatherRate: 2.0,
+        buildRate: 5.0,
+        goldCost: 100,
+        foodCost: 50,
+        alive: true,
+        target: null,
+        animation: 0,
+      };
+      units.push({ stats: workerStats, group: workerUnit, alive: true });
+    }
+  }, 20000);
+
+  gameLoopId = requestAnimationFrame(aiLoop);
+}
+
+// ---- Game over check ----
+setInterval(() => {
+  checkGameOver();
+}, 1000);
+
+// ---- Resize ----
+function onResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+// ---- Build buttons ----
+function updateBuildButtons() {
+  const actions = getBuildingActions();
+  if (!actions || actions.length === 0) {
+    buildButtons.style.display = 'none';
+    return;
+  }
+
+  buildButtons.style.display = 'flex';
+  buildButtons.innerHTML = '';
+
+  actions.forEach(action => {
+    const btn = document.createElement('div');
+    btn.className = 'build-btn';
+    btn.dataset.action = 'place_' + action.type;
+    btn.innerHTML = `
+      <span class="build-icon">${action.type === 'worker' ? '⛏️' : action.type === 'warrior' ? '⚔️' : '🏰'}</span>
+      <span class="build-text">${action.name} (${action.gold}g/${action.food}f)</span>
+    `;
+    btn.addEventListener('click', () => {
+      placeUnitAt(action.type, getBuildingPosition());
+    });
+    buildButtons.appendChild(btn);
+  });
+}
