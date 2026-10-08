@@ -1039,22 +1039,28 @@ function renderElleLease() {
   put("#elleLeaseIncomeSource", `
     <div class="two-col" style="align-items:flex-start;">
       <div>
-        <p style="font-size:12px;">${inc.headline}</p>
+        <p style="font-size:12px;">${esc(inc.headline)}</p>
         <table class="data-table" style="font-size:11px;">
           <tbody>
             <tr><td><strong>Total resort revenue</strong></td><td class="num">A$${nonRoom.totalResort.toLocaleString()}</td></tr>
             <tr><td><strong>Room revenue</strong></td><td class="num">A$${nonRoom.rooms.toLocaleString()} (${(nonRoom.roomsPct).toFixed(1)}%)</td></tr>
-            <tr><td><strong>Beach club</strong></td><td class="num">A$${nonRoom.beachClub.toLocaleString()} (${(nonRoom.beachClubPct).toFixed(1)}%) — <b>larger than rooms</b></td></tr>
+            <tr><td><strong>Beach club</strong></td><td class="num">A$${nonRoom.beachClub.toLocaleString()} (${(nonRoom.beachClubPct).toFixed(1)}%)</td></tr>
             <tr><td><strong>Resort F&amp;B</strong></td><td class="num">A$${nonRoom.resortFood.toLocaleString()} (${(nonRoom.resortFoodPct).toFixed(1)}%)</td></tr>
             <tr><td><strong>Events</strong></td><td class="num">A$${nonRoom.events.toLocaleString()} (${(nonRoom.eventsPct).toFixed(1)}%)</td></tr>
             <tr><td><strong>Wellness</strong></td><td class="num">A$${nonRoom.wellness.toLocaleString()} (${(nonRoom.wellnessPct).toFixed(1)}%)</td></tr>
             <tr><td><strong>Other departments</strong></td><td class="num">A$${nonRoom.other.toLocaleString()} (${(nonRoom.otherPct).toFixed(1)}%)</td></tr>
-            <tr><td><strong>Pool: room lease pool (45%)</strong></td><td class="num">A$${inc.roomLeasePool.toLocaleString()}</td></tr>
-            <tr><td><strong>Facilities lease pool (45%)</strong></td><td class="num">A$${inc.facilitiesLeasePool.toLocaleString()}</td></tr>
-            <tr><td><strong>Your share (0.0755%)</strong></td><td class="num">A$${inc.year1LeaseIncome.toLocaleString()} Year 1 / guaranteed A$${inc.year1Guaranteed.toLocaleString()}</td></tr>
+            <tr><td><strong>Room lease pool (45% of rooms)</strong></td><td class="num">A$${inc.roomLeasePool.toLocaleString()}</td></tr>
+            <tr><td><strong>Facilities lease pool (30% of NPBT)</strong></td><td class="num">A$${inc.facilitiesLeasePool.toLocaleString()}</td></tr>
+            <tr><td><strong>Total lease allocation</strong></td><td class="num"><strong>A$${inc.totalLeasePool.toLocaleString()}</strong></td></tr>
+            <tr><td><strong>Your 0.0755% of the total</strong></td><td class="num"><b>A$${inc.blendedYourShare.toLocaleString()} blended lease income/yr</b></td></tr>
+            <tr><td><strong>Year 1 lease income (modelled)</strong></td><td class="num"><b>A$${inc.year1LeaseIncome.toLocaleString()}</b></td></tr>
+            <tr><td><strong>Year 1 lease income (guaranteed floor)</strong></td><td class="num"><b>A$${inc.year1Guaranteed.toLocaleString()}</b></td></tr>
+            <tr><td><strong>Year 5 stabilised lease income</strong></td><td class="num"><b>A$${inc.year5Stabilised.toLocaleString()}</b></td></tr>
           </tbody>
         </table>
-        <div class="lease-notes" style="margin-top:10px;">${esc(inc.note || "")}</div>
+        <div class="lease-notes" style="margin-top:10px;">
+          <b>How the income is generated:</b> your lease is ONE blended stream. The <b>45% pool is the ROOM revenue pool</b> — 45% of A$${nonRoom.rooms.toLocaleString()} in room revenue goes to the investor room lease pool (A$${inc.roomLeasePool.toLocaleString()}). <b>Non-room revenue does NOT flow at 45%</b> — it consolidates into the P&L, and investors receive <b>30% of Net Profit Before Tax</b> (the A$${inc.facilitiesLeasePool.toLocaleString()} facilities lease pool). Your 0.0755% is of the <b>total lease allocation</b> (A$${inc.totalLeasePool.toLocaleString()}), giving a blended A$${inc.blendedYourShare.toLocaleString()}/yr on the pool — which the model maps to A$${inc.year1LeaseIncome.toLocaleString()} in Year 1 (A$${inc.year1Guaranteed.toLocaleString()} guaranteed floor in FY2029, A$${inc.year5Stabilised.toLocaleString()} stabilised by Year 5).
+        </div>
       </div>
       <div>
         <table class="scenario-table" style="font-size:10px;">
