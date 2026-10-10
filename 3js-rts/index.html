@@ -30,6 +30,12 @@
         <span class="res-val" id="warrior-val">0</span>
       </div>
     </div>
+    <div id="health-bar-container" style="display:none; position:absolute; bottom:80px; left:50%; transform:translateX(-50%); pointer-events:none;">
+      <div id="health-bar" style="width:200px; height:12px; background:rgba(0,0,0,0.6); border-radius:4px; overflow:hidden;">
+        <div id="health-bar-fill" style="height:100%; background:#4CAF50; width:100%; transition: width 0.3s;"></div>
+      </div>
+      <div id="health-label" style="text-align:center; font-size:10px; color:#aaa; margin-top:4px;">0 / 0</div>
+    </div>
     <div id="build-menu">
       <div class="build-btn" data-action="build_worker">
         <span class="build-icon">⛏️</span>

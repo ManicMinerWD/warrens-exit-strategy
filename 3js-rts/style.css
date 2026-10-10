@@ -138,6 +138,22 @@ body {
   color: #4CAF50;
 }
 
+#health-bar-container {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+#health-bar {
+  width: 200px;
+  height: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
 #selected-type {
   color: #aaa;
   font-size: 12px;
