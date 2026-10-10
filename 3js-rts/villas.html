@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Option 1 Bali — Warrens Villa Shortlist</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="data.js?v=5"></script>
+  <script src="render.js?v=5"></script>
+  <script>
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+      boot();
+    } else {
+      document.addEventListener("DOMContentLoaded", boot);
+    }
+  </script>
+</head>
+<body>
+
+<!-- ============ SIDEBAR (overlay — same as index.html) ============ -->
+<button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">☰ Menu</button>
+<button id="darkModeToggle" class="is-dark" aria-label="Toggle dark mode" title="Dark mode"><span class="dm-icon">🌙</span><span class="dm-label">Dark</span></button>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="app-name"><span class="dot"></span>Warrens Exit Strategy</div>
+  </div>
+
+  <!-- ---- Group: Phase1 (Exit Aus) ---- -->
+  <div class="sidebar-group" data-group="phase1">
+    <div class="sidebar-group-label" data-group="phase1">
+      <span>Phase1 (Exit Aus)</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="sidebar-group-content" data-group="phase1">
+      <a class="nav-link" href="queensberry.html">
+        <span class="link-icon">🏢</span><span class="link-label">108 Queensberry St</span>
+      </a>
+      <a class="nav-link" href="g05.html">
+        <span class="link-icon">📋</span><span class="link-label">G5 / 108</span>
+      </a>
+      <a class="nav-link" href="302.html">
+        <span class="link-icon">📋</span><span class="link-label">302 / 108</span>
+      </a>
+      <a class="nav-link" href="sussex.html">
+        <span class="link-icon">🏡</span><span class="link-label">143 Sussex St</span>
+      </a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:8px 0;">
+      <a class="nav-link" href="financial.html"><span class="link-icon">📋</span><span class="link-label"><strong>Exit finances — G05+302+Sussex</strong></span></a>
+      <a class="nav-link" href="competition.html"><span class="link-icon">🏁</span><span class="link-label"><strong>Competition tracker</strong></span></a>
+    </div>
+  </div>
+  <hr class="sidebar-separator">
+
+  <!-- ---- Group: Bali Statistics ---- -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-label" data-group="baliStats">
+      <span>Bali Statistics</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="sidebar-group-content" data-group="baliStats">
+      <a class="nav-link" href="index.html#annualWrap"><span class="link-icon">📊</span><span class="link-label">Annual arrivals</span></a>
+      <a class="nav-link" href="index.html#monthlyWrap"><span class="link-icon">📈</span><span class="link-label">Monthly arrivals</span></a>
+      <a class="nav-link" href="index.html#gateWrap"><span class="link-icon">🚪</span><span class="link-label">Foreign visitors by gate</span></a>
+      <a class="nav-link" href="index.html#marketsWrap"><span class="link-icon">🌏</span><span class="link-label">Source markets</span></a>
+      <a class="nav-link" href="index.html#hotelOccWrap"><span class="link-icon">🏨</span><span class="link-label">Hotel occupancy (TPK)</span></a>
+      <a class="nav-link" href="index.html#losWrap"><span class="link-icon">🛏️</span><span class="link-label">Length of stay</span></a>
+      <a class="nav-link" href="index.html#economyWrap"><span class="link-icon">💰</span><span class="link-label">Bali economy (GDP)</span></a>
+      <a class="nav-link" href="index.html#strWrap"><span class="link-icon">🏠</span><span class="link-label">STR / Airbnb market</span></a>
+      <a class="nav-link" href="index.html#priceAdrWrap"><span class="link-icon">🏡</span><span class="link-label">Property prices by zone</span></a>
+      <a class="nav-link" href="index.html#hotelReportWrap"><span class="link-icon">📰</span><span class="link-label">Hotel report</span></a>
+      <a class="nav-link" href="index.html#sources"><span class="link-icon">🔗</span><span class="link-label">Data sources</span></a>
+    </div>
+  </div>
+
+    <!-- ---- Group: Phase2 ---- -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-label">
+      <span>Phase2</span>
+      <span class="chevron">&#x25BC;</span>
+    </div>
+    <div class="sidebar-group-content">
+      <a class="nav-link" href="villas.html"><span class="link-icon">&#x1F3E0;</span><span class="link-label"><strong>Option 1 Bali</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="balinese.html"><span class="link-icon">🧭</span><span class="link-label">Option 1 — income strategy</span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="elle.html">
+        <span class="link-icon">&#x1F3DD;</span><span class="link-label"><strong>ELLE Resort &amp; Beach Club</strong></span>
+      </a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="#investmentTableWrap"><span class="link-icon">&#x1F4B0;</span><span class="link-label"><strong>Investment Table</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="mactan.html"><span class="link-icon">&#x1F3EB;</span><span class="link-label"><strong>Option 2 — Mactan (Cebu)</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="mactan.html#mactanLand"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Land — 241m² sea-view lot</span></a>
+      <a class="nav-link" href="mactan.html#mactanBuild"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Build budget — Phase 1/2/3</span></a>
+      <a class="nav-link" href="mactan.html#mactanMarket"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Market rates — 5-6BR luxury</span></a>
+      <a class="nav-link" href="mactan.html#mactanCompetition"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Competition — Anza + comp set</span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="lightspeed.html"><span class="link-icon">&#x1F1FA;</span><span class="link-label"><strong>Option 3 — Lightspeed Dividend</strong></span></a>
+    </div>
+  </div>
+
+</aside>
+
+<div class="main-content">
+<div class="wrap">
+
+<header>
+  <div><h1>Option 1 Bali — Villa Shortlist</h1>
+    <p style="font-size:13px;color:var(--muted);margin-top:4px;">Bali investment properties — completed villas, off-plan, and pool-revenue products</p>
+  </div>
+  <div class="meta"><span>Last updated: <strong id="lastUpdated"></strong></span></div>
+</header>
+
+<p class="lead" style="font-size:14px;margin-bottom:16px;">
+  Every property in the Option 1 Bali investment shortlist, side by side. Each row links to the source listing.
+  The full side-by-side comparison with ROI, status, lease, operator, and verdict is in the <strong>Investment Table</strong> section below.
+</p>
+
+<!-- ============ VILLA SHORTLIST — detailed table ============ -->
+<div class="section">
+  <h2>Villa shortlist <span class="badge">Propertia · Balitecture · FINNS · Mirah · Magnum Estate · InvestLand Bali</span></h2>
+
+  <table id="villaPageTable" class="data-table" style="font-size:13px;">
+    <thead>
+      <tr>
+        <th style="width:22%;">Property</th>
+        <th style="width:16%;">Zone</th>
+        <th class="num" style="width:7%;">BR</th>
+        <th class="num" style="width:12%;">Price (USD)</th>
+        <th style="width:9%;">Lease to</th>
+        <th style="width:14%;">Zoning</th>
+        <th style="width:15%;">Status / when</th>
+        <th>Source</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div style="margin-top:14px;font-size:12px;color:var(--muted);">
+    <strong>How to read:</strong> "BR" = bedrooms. "Lease to" = remaining lease term. "Zoning" = land-use classification — Tourism (STR-viable) means the property can legally run a short-term rental; "NOT STATED" must be confirmed before any commitment. "Status / when" combines current state and availability timeline.
+  </div>
+
+  <!-- Per-property detail cards (rendered by JS) -->
+  <div id="villaPageDetails" style="margin-top:18px;"></div>
+</div>
+
+<!-- ============ INVESTMENT TABLE ============ -->
+<div class="section" id="investmentTableWrap">
+  <h2>Investment Table <span class="badge">Option 1 Bali — full comparison</span></h2>
+  <p class="lead" style="font-size:14px;">Side-by-side comparison of every property in the Option 1 Bali shortlist plus Finns resort interest — price, estimated ROI/yield, lease term, operator, and Warrens verdict.</p>
+  <div class="table-wrap">
+    <table id="investmentTable">
+      <thead><tr>
+        <th>Property</th><th>Location</th><th class="num">Beds</th><th class="num">Price (USD)</th><th>Est. ROI / yield</th><th>Status</th><th class="num">Lease to</th><th>Operator</th><th>Verdict</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <p class="note">ROI figures are <strong>estimates only</strong> based on operator-stated projections or comparable market yields. "Watch item, not a lead" = Warrens has not made an offer and is tracking for information only.</p>
+</div>
+
+<!-- ============ FINNS ROI SIMULATION (source: WhatApp image, 31 Aug 2026) ============ -->
+<div class="section">
+  <h2>FINNS ROI simulation <span class="badge">Source: FINNS document · 31 Aug 2026</span></h2>
+  <p class="lead" style="font-size:13px;">Operator-stated 5-year return projection for the FINNS Beach Club rental pool program. Standard pool: 0.38% of pool · Lagoon Superior: 0.59% of pool. All figures in IDR (1 USD = IDR 17,500 per document).</p>
+  <img src="assets/finns/finns-roi-simulation.jpeg" alt="FINNS ROI simulation document — 5-year projection for Standard (0.38%) and Lagoon Superior (0.59%) pool units. Source: FINNS, 31 Aug 2026." style="width:100%;max-width:720px;border:1px solid var(--line);border-radius:6px;margin:8px 0;">
+  <div class="note" style="font-size:11px;color:var(--muted);margin-top:6px;">
+    <strong>Key figures from the document:</strong> Year 1 avg. occupancy 72% → Year 5 90%. Avg. nightly rate: $226 (Yr1) → $291 (Yr5) IDR 3.96M → 5.08M. Est. owners' rental pool (GOP): $4.1M (Yr1) → $6.8M (Yr5) IDR 71.8B → 119.0B. <strong>Standard (0.38%):</strong> $15,577 (Yr1) → $25,799 (Yr5) IDR 272M → 450M. <strong>Lagoon Superior (0.59%):</strong> $24,339 (Yr1) → $40,311 (Yr5) IDR 426M → 704M. <strong>5yr avg ROI: 12.3%</strong> (stated as conservative projection). Note 5: USD shown for comparison only — all transactions in IDR at 17,500 rate.
+  </div>
+  <div class="note" style="font-size:12px;margin-top:6px;color:var(--coral);">
+    <strong>Cross-reference with Warren's analysis:</strong> Warren's independent calc (in the note above the table and on the financial.html page) puts actual Yr1 spot at ~7.8% — below the 9% stated in this document, hence the FX flag. The 12.3% 5yr average matches Warren's figure. The 0.38% (Standard) and 0.59% (Lagoon Superior) proportional shares are confirmed by this document.
+  </div>
+</div>
+
+<!-- ============ NOTES ============ -->
+<div class="section">
+  <h2>Shortlist methodology <span class="badge">Warrens</span></h2>
+  <div class="note" style="font-size:13px;">
+    <strong>What's in the shortlist:</strong> Every Bali property Warren is actively tracking — from completed, managed villas (Casa Petak) through off-plan income properties (PPV4967, PPV4619) to incomplete watch items (PPV4637) and pool-revenue products (FINNS Standard, FINNS Lagoon Superior).
+  </div>
+  <div class="note" style="font-size:13px;margin-top:8px;">
+    <strong>What's NOT in the shortlist:</strong> Any property that doesn't meet Warren's core criteria — Tourism/STR-viable zoning, clear path to $50k SGD/yr net income, 10% yield floor, 6yr payback. FINNS fails both hard lines and appears here for completeness as a "watch, not a lead" item.
+  </div>
+  <div class="note" style="font-size:13px;margin-top:8px;">
+    <strong>Numbers are estimates:</strong> Off-plan projected returns, operator-stated yields, and market comparisons are all indicative. Confirm independently before committing. The spreadsheet's Sussex tab and the individual listing pages are the source of truth.
+  </div>
+  <div class="note" style="font-size:13px;margin-top:8px;">
+    <strong>Next step:</strong> The Investment Table (sidebar → Phase2 → Investment Table) gives the full side-by-side comparison across all criteria. Use it to rank and filter before shortlisting for site visits or offers.
+  </div>
+</div>
+
+<p style="font-size:12px;color:var(--muted);margin-top:20px;text-align:center;">
+  <a href="index.html" style="color:var(--teal);">← Back to dashboard</a>
+</p>
+
+</div><!-- /wrap -->
+</div><!-- /main-content -->
+
+</body>
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>302 / 108 Queensberry Street, Carlton — Detailed</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js?v=5"></script>
+  <script src="render.js"></script>
+</head>
+<body>
+
+<div class="sidebar-lock">
+<button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">☰ Menu</button>
+<button id="darkModeToggle" class="is-dark" aria-label="Toggle dark mode" title="Dark mode"><span class="dm-icon">🌙</span><span class="dm-label">Dark</span></button>
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="app-name"><span class="dot"></span>Warrens Exit Strategy</div>
+  </div>
+  <div class="sidebar-group" data-group="phase1">
+    <div class="sidebar-group-label" data-group="phase1">
+      <span>Phase1 (Exit Aus)</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="sidebar-group-content" data-group="phase1">
+      <a class="nav-link" href="queensberry.html"><span class="link-icon">🏢</span><span class="link-label">108 Queensberry St</span></a>
+      <a class="nav-link" href="g05.html"><span class="link-icon">📋</span><span class="link-label">G5 / 108</span></a>
+      <a class="nav-link" href="302.html"><span class="link-icon">📋</span><span class="link-label">302 / 108</span></a>
+      <a class="nav-link" href="sussex.html"><span class="link-icon">🏡</span><span class="link-label">143 Sussex St</span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:8px 0;">
+      <a class="nav-link" href="financial.html"><span class="link-icon">&#x1F4CA;</span><span class="link-label"><strong>Exit finances &#x2014; G05+302+Sussex</strong></span></a>
+      <a class="nav-link" href="competition.html"><span class="link-icon">🏁</span><span class="link-label"><strong>Competition tracker</strong></span></a>
+    </div>
+  </div>
+  <hr class="sidebar-separator">
+
+  <div class="sidebar-group">
+    <div class="sidebar-group-label" data-group="baliStats">
+      <span>Bali Statistics</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="sidebar-group-content" data-group="baliStats">
+      <a class="nav-link" href="index.html#annualWrap"><span class="link-icon">📊</span><span class="link-label">Annual arrivals</span></a>
+      <a class="nav-link" href="index.html#monthlyWrap"><span class="link-icon">📈</span><span class="link-label">Monthly arrivals</span></a>
+      <a class="nav-link" href="index.html#gateWrap"><span class="link-icon">🚪</span><span class="link-label">Foreign visitors by gate</span></a>
+      <a class="nav-link" href="index.html#marketsWrap"><span class="link-icon">🌏</span><span class="link-label">Source markets</span></a>
+      <a class="nav-link" href="index.html#hotelOccWrap"><span class="link-icon">🏨</span><span class="link-label">Hotel occupancy (TPK)</span></a>
+      <a class="nav-link" href="index.html#losWrap"><span class="link-icon">🛏️</span><span class="link-label">Length of stay</span></a>
+      <a class="nav-link" href="index.html#economyWrap"><span class="link-icon">💰</span><span class="link-label">Bali economy (GDP)</span></a>
+      <a class="nav-link" href="index.html#strWrap"><span class="link-icon">🏠</span><span class="link-label">STR / Airbnb market</span></a>
+      <a class="nav-link" href="index.html#priceAdrWrap"><span class="link-icon">🏡</span><span class="link-label">Property prices by zone</span></a>
+      <a class="nav-link" href="index.html#hotelReportWrap"><span class="link-icon">📰</span><span class="link-label">Hotel report</span></a>
+      <a class="nav-link" href="index.html#sources"><span class="link-icon">🔗</span><span class="link-label">Data sources</span></a>
+    </div>
+  </div>
+
+  <hr class="sidebar-separator">
+
+  <div class="sidebar-group">
+    <div class="sidebar-group-label">
+      <span>Phase2</span>
+      <span class="chevron">&#x25BC;</span>
+    </div>
+    <div class="sidebar-group-content">
+      <a class="nav-link" href="villas.html"><span class="link-icon">&#x1F3E0;</span><span class="link-label"><strong>Option 1 Bali</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="elle.html">
+        <span class="link-icon">&#x1F3DD;</span><span class="link-label"><strong>ELLE Resort &amp; Beach Club</strong></span>
+      </a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="villas.html#investmentTableWrap"><span class="link-icon">&#x1F4B0;</span><span class="link-label"><strong>Investment Table</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="mactan.html"><span class="link-icon">&#x1F3EB;</span><span class="link-label"><strong>Option 2 — Mactan (Cebu)</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="mactan.html#mactanLand"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Land — 241m² sea-view lot</span></a>
+      <a class="nav-link" href="mactan.html#mactanBuild"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Build budget — Phase 1/2/3</span></a>
+      <a class="nav-link" href="mactan.html#mactanMarket"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Market rates — 5-6BR luxury</span></a>
+      <a class="nav-link" href="mactan.html#mactanCompetition"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Competition — Anza + comp set</span></a>
+    </div>
+  </div>
+  <div class="sidebar-footer">
+    <div class="footer-row"><span class="footer-label">Source</span><span class="footer-value">Domain.com.au · realestate.com.au</span></div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="main-content">
+<div class="wrap">
+
+<header>
+  <div><h1>302 / 108 Queensberry Street, Carlton</h1>
+    <p style="font-size:13px;color:var(--muted);margin-top:4px;">Detailed apartment profile — 1 bed · 1 bath · ground floor · 42m²</p>
+  </div>
+  <div class="meta"><span>Domain.com.au · realestate.com.au (PropTrack) · Sep 2026</span></div>
+</header>
+
+<!-- ====== APARTMENT DETAILS ====== -->
+<div class="section">
+  <h2>Apartment details <span class="badge">Domain · REA · Sep 2026</span></h2>
+  <div class="table-wrap">
+    <table>
+      <tbody>
+        <tr><td style="width:32%;"><strong>Unit</strong></td><td>302 / 108 — Ground floor · Queensberry St, Carlton VIC 3053</td></tr>
+        <tr><td><strong>Bedrooms</strong></td><td class="num">1</td></tr>
+        <tr><td><strong>Bathrooms</strong></td><td class="num">1</td></tr>
+        <tr><td><strong>Parking</strong></td><td class="num">1 car space</td></tr>
+        <tr><td><strong>Floor area</strong></td><td class="num">42 m² <span style="font-size:11.5px;color:var(--muted);">estimated — same as G5/108 (identical 1-bed/1-bath/1-park layout)</span></td></tr>
+        <tr><td><strong>Year built</strong></td><td class="num">2017 <span style="font-size:11.5px;color:var(--muted);">(per Domain profile, building)</span></td></tr>
+        <tr><td><strong>Storeys</strong></td><td class="num">6 <span style="font-size:11.5px;color:var(--muted);">(per REA PropTrack)</span></td></tr>
+        <tr><td><strong>Purchased</strong></td><td class="num"><strong>$442,045</strong> <span style="font-size:11.5px;color:var(--muted);">— 22 May 2017 · Warren Duncan (owner)</span></td></tr>
+        <tr><td><strong>Open floor plan</strong></td><td>Likely <span style="font-size:11.5px;color:var(--muted);">(per G5/108, identical layout — unconfirmed for 302)</span></td></tr>
+        <tr><td><strong>Flood risk</strong></td><td><span style="color:var(--teal);font-weight:600;">Not detected</span> <span style="font-size:11.5px;color:var(--muted);">(per Domain, building)</span></td></tr>
+        <tr><td><strong>Bushfire risk</strong></td><td><span style="color:var(--teal);font-weight:600;">Not detected</span> <span style="font-size:11.5px;color:var(--muted);">(per Domain, building)</span></td></tr>
+        <tr><td><strong>Heritage zone</strong></td><td><span style="color:var(--teal);font-weight:600;">Not detected</span> <span style="font-size:11.5px;color:var(--muted);">(per Domain, building)</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ====== PROPERTY VALUE ESTIMATES ====== -->
+<div class="section">
+  <h2>Property value estimates <span class="badge">Domain Insight · REA PropTrack</span></h2>
+  <div class="table-wrap">
+    <table class="compare">
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th class="num">Low</th>
+          <th class="num">Mid</th>
+          <th class="num">High</th>
+          <th>Est. rental</th>
+          <th class="num">Yield</th>
+          <th>Confidence</th>
+          <th>Updated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Domain.com.au — Domain Insight</strong> <span style="font-size:11.5px;color:var(--muted);">(building-level only; no per-unit estimate for 302)</span></td>
+          <td class="num">$395k</td>
+          <td class="num" style="color:var(--teal);font-weight:700;">$460k</td>
+          <td class="num">$525k</td>
+          <td>$615/week</td>
+          <td class="num">7.02%</td>
+          <td>Medium</td>
+          <td>03 Sep 2026</td>
+        </tr>
+        <tr>
+          <td><strong>realestate.com.au — PropTrack realEstimate™</strong> <span style="font-size:11.5px;color:var(--muted);">(unit-specific)</span></td>
+          <td class="num">$320k</td>
+          <td class="num" style="color:var(--coral);font-weight:700;">$420k</td>
+          <td class="num">$520k</td>
+          <td>$560/week <span style="font-size:11px;color:var(--muted);">REA estimate · actual rent $560/week</span></td>
+          <td class="num">6.6%</td>
+          <td>High</td>
+          <td>Aug / Sep 2026</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:12px;color:var(--muted);margin-top:10px;">Automated estimates only — not a formal valuation. Should not be relied on for financial decisions. Mid estimates differ by $40k ($460k Domain vs $420k REA). The REA figure is for 302 specifically, while the Domain figure is for the building average (which includes larger 2-bed units), so the Domain figure overstates 302's likely value. The REA $420k mid is the more relevant figure for 302.</p>
+</div>
+
+<!-- ====== PURCHASE ====== -->
+<div class="section">
+  <h2>Purchase <span class="badge">Owner · Warren Duncan</span></h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Unit</th><th class="num">Beds</th><th class="num">Baths</th><th class="num">Parking</th><th class="num">Purchase price (AUD)</th><th>Date settled</th><th>Method</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>302 / 108</strong></td>
+          <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+          <td class="num"><strong>$442,045</strong></td>
+          <td>22 May 2017</td>
+          <td class="muted">Private treaty</td>
+          <td class="muted">Warren Duncan (owner)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:var(--muted);margin-top:8px;">Single purchase on record — $442,045 settled 22 May 2017, by Warren Duncan. The unit has not been sold since; it remains owner-occupied. No prior sale records on Domain.</p>
+</div>
+
+<!-- ====== RENTAL HISTORY ====== -->
+<div class="section">
+  <h2>Rental history <span class="badge">Domain</span></h2>
+  <div class="table-wrap">
+    <table id="302RentTable">
+      <thead><tr><th>Period</th><th>Type</th><th>Price</th><th>Listed by</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>—</td><td class="muted">No rental history recorded</td><td class="muted">—</td><td class="muted">—</td><td class="muted">Domain</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:var(--muted);margin-top:8px;">No rental listings or history recorded for 302/108 on Domain. This is consistent with owner-occupier status since purchase in May 2017, or the rental history is simply not captured by Domain. Current rent: $560/week for a 1-bed unit in this building (6.9% yield at $420k REA mid). Comparable: G5/108 had rental history of $430/week (Sep 2022), $500/week (Mar 2024).</p>
+</div>
+
+<!-- ====== FINANCIAL SUMMARY ====== -->
+<div class="section">
+  <h2>Financial summary <span class="badge">Domain · REA · computed</span></h2>
+  <div class="two-col">
+    <div>
+      <h3>Income</h3>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><td style="width:58%;">Current rent</td><td class="num"><strong>$560/week</strong> <span style="font-size:11px;color:var(--muted);">Sep 2026</span></td></tr>
+            <tr><td>Annual rent</td><td class="num">$29,120 <span style="font-size:11px;color:var(--muted);">$560 × 52 weeks</span></td></tr>
+            <tr><td>Rental history</td><td class="num" style="color:var(--coral);">None recorded <span style="font-size:11px;color:var(--muted);">no Domain rental listings for 302</span></td></tr>
+            <tr><td>Rental comp: G5/108</td><td class="num">$430–$500/week <span style="font-size:11px;color:var(--muted);">Sep 2022 · Mar 2024 · same building, 1-bed</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <h3>Valuation</h3>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><td style="width:58%;">Purchase price</td><td class="num"><strong>$442,045</strong> <span style="font-size:11px;color:var(--muted);">22 May 2017 · Warren Duncan (owner)</span></td></tr>
+            <tr><td>REA PropTrack mid (unit-specific)</td><td class="num" style="color:var(--coral);">$420,000 <span style="font-size:11px;color:var(--muted);">range $320k–$520k</span></td></tr>
+            <tr><td>Domain Insight (building-level)</td><td class="num" style="color:var(--teal);">$460k mid <span style="font-size:11px;color:var(--muted);">range $395k–$525k · overstates 302</span></td></tr>
+            <tr><td>Purchase vs REA estimate</td><td class="num" style="color:var(--coral);">−$22,045 (−5.0%) <span style="font-size:11px;color:var(--muted);">$442,045 → $420k · 9 yrs · modest nominal softening</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <h3 style="margin-top:18px;">Yield &amp; mortgage</h3>
+  <div class="table-wrap">
+    <table>
+      <tbody>
+        <tr><td style="width:58%;">Gross yield (REA mid $420k, rent $560/wk)</td><td class="num"><strong>6.9%</strong> <span style="font-size:11px;color:var(--muted);">$29,120 ÷ $420,000 · at Carlton avg 6.9%</span></td></tr>
+        <tr><td><strong>Gross yield (purchase $442,045, rent $560/wk)</strong></td><td class="num">6.6% <span style="font-size:11px;color:var(--muted);">$29,120 ÷ $442,045</span></td></tr>
+        <tr><td>Gross yield (purchase $442,045, rent $500/wk comp)</td><td class="num">5.2% <span style="font-size:11px;color:var(--muted);">$26,000 ÷ $442,045 · G5 comp rent basis</span></td></tr>
+        <tr><td>Implied mortgage (est. 6%, 80% LVR, 30yr)</td><td class="num">~$1,650/mth <span style="font-size:11px;color:var(--muted);">$336,000 loan · P&amp;I · indicative only</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:12px;color:var(--muted);margin-top:8px;">Mortgage figure assumes 6% p.a. variable, 30-year term, 80% LVR on REA mid valuation. For illustration only — not financial advice. No rental history for 302 specifically; the $560/week figure is the current rent for this unit (confirmed).</p>
+</div>
+
+<!-- ====== DEPRECIATION SCHEDULE ====== -->
+<div class="section">
+  <h2>Depreciation schedule — 302/108 <span class="badge">21-year · 2017–2038</span></h2>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:10px;">Capital works (Division 43) and plant/equipment (Division 40) depreciation for the 1-bed apartment purchased 22 May 2017. Period 1 is a partial period (22 May – 30 Jun 2017, ~5 weeks); all subsequent periods run 1 Jul to 30 Jun. DV = depreciable value (capital works, 40-year straight-line). PC = plant/equipment pool. <em>Total ($) column computed.</em> The table below shows the first 14 periods; the full 21-year schedule extends to 2038.</p>
+  <div class="table-wrap">
+    <table class="compare">
+      <thead>
+        <tr>
+          <th style="width:30%;">Period</th>
+          <th class="num">DV ($)</th>
+          <th class="num">PC ($)</th>
+          <th class="num">Total ($)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>22 May 2017 – 30 Jun 2017 <span style="font-size:11px;color:var(--muted);">(partial)</span></td><td class="num">3,147</td><td class="num">2,017</td><td class="num"><strong>5,164</strong></td></tr>
+        <tr><td>Year 1: 1 Jul 2017 – 30 Jun 2018</td><td class="num">3,364</td><td class="num">1,926</td><td class="num"><strong>5,290</strong></td></tr>
+        <tr><td>Year 2: 1 Jul 2018 – 30 Jun 2019</td><td class="num">2,626</td><td class="num">1,926</td><td class="num"><strong>4,552</strong></td></tr>
+        <tr><td>Year 3: 1 Jul 2019 – 30 Jun 2020</td><td class="num">2,164</td><td class="num">1,926</td><td class="num"><strong>4,090</strong></td></tr>
+        <tr><td>Year 4: 1 Jul 2020 – 30 Jun 2021</td><td class="num">1,870</td><td class="num">1,926</td><td class="num"><strong>3,796</strong></td></tr>
+        <tr><td>Year 5: 1 Jul 2021 – 30 Jun 2022</td><td class="num">1,683</td><td class="num">1,926</td><td class="num"><strong>3,609</strong></td></tr>
+        <tr><td>Year 6: 1 Jul 2022 – 30 Jun 2023</td><td class="num">1,564</td><td class="num">1,926</td><td class="num"><strong>3,490</strong></td></tr>
+        <tr><td>Year 7: 1 Jul 2023 – 30 Jun 2024</td><td class="num">2,079</td><td class="num">1,926</td><td class="num"><strong>4,005</strong></td></tr>
+        <tr><td>Year 8: 1 Jul 2024 – 30 Jun 2025</td><td class="num">1,764</td><td class="num">1,926</td><td class="num"><strong>3,690</strong></td></tr>
+        <tr><td>Year 9: 1 Jul 2025 – 30 Jun 2026</td><td class="num">1,569</td><td class="num">1,926</td><td class="num"><strong>3,495</strong></td></tr>
+        <tr><td>Year 10: 1 Jul 2026 – 30 Jun 2027</td><td class="num">1,449</td><td class="num">1,877</td><td class="num"><strong>3,326</strong></td></tr>
+        <tr><td>Year 11: 1 Jul 2027 – 30 Jun 2028</td><td class="num">1,373</td><td class="num">1,588</td><td class="num"><strong>2,961</strong></td></tr>
+        <tr><td>Year 12: 1 Jul 2028 – 30 Jun 2029</td><td class="num">1,328</td><td class="num">1,551</td><td class="num"><strong>2,879</strong></td></tr>
+        <tr><td>Year 13: 1 Jul 2029 – 30 Jun 2030</td><td class="num">1,295</td><td class="num">1,342</td><td class="num"><strong>2,637</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:12px;color:var(--muted);margin-top:8px;">DV (depreciable value) = capital works deduction under Division 43 — 40-year straight-line on the building element. PC (plant/equipment) = Division 40 depreciation on fixtures, fittings, and appliances. The partial Period 1 (22 May – 30 Jun 2017) captures ~5 weeks of ownership in the purchase year. Values are indicative; confirm against your tax adviser's schedule before lodging.</p>
+</div>
+
+
+
+<!-- ====== CASH FLOW COMPARISON ====== -->
+<div class="section">
+  <h2>Cash flow comparison — 302/108 &amp; G5/108 at 6.5% <span class="badge">Combined Carlton units</span></h2>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:10px;">Per-unit annual costs and net cash flow for the two Carlton 1-bed units, assuming a 6.5% interest rate. Unit 1 = 302/108 ($350k loan); Unit 2 = G5/108 ($337k loan). Figures are indicative.</p>
+  <div class="table-wrap">
+    <table class="compare">
+      <thead>
+        <tr>
+          <th style="width:30%;">Item</th>
+          <th class="num">Unit 1 — 302/108<br><span style="font-weight:400;font-size:11px;color:var(--muted);">$350k loan</span></th>
+          <th class="num">Unit 2 — G5/108<br><span style="font-weight:400;font-size:11px;color:var(--muted);">$337k loan</span></th>
+          <th class="num">2 Units Combined</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Interest @ 6.5%</strong></td><td class="num"><strong>$22,750</strong></td><td class="num"><strong>$21,450</strong></td><td class="num"><strong>$44,200</strong></td></tr>
+        <tr><td><strong>Body corp</strong></td><td class="num">$9,000</td><td class="num">$9,600</td><td class="num">$18,600</td></tr>
+        <tr><td><strong>Council rates (actual)</strong></td><td class="num"><strong>$852.72</strong></td><td class="num"><strong>$776.85</strong></td><td class="num"><strong>$1,629.57</strong></td></tr>
+        <tr><td><strong>Property mgmt</strong></td><td class="num">$2,060</td><td class="num">$2,060</td><td class="num">$4,120</td></tr>
+        <tr><td><strong>Maintenance (est.)</strong></td><td class="num">$1,500</td><td class="num">$1,500</td><td class="num">$3,000</td></tr>
+        <tr><td><strong>Total costs</strong></td><td class="num" style="font-weight:700;"><strong>$35,602.72</strong></td><td class="num" style="font-weight:700;"><strong>$34,886.85</strong></td><td class="num" style="font-weight:700;"><strong>$70,489.57</strong></td></tr>
+        <tr><td><strong>Rent income</strong></td><td class="num" style="font-weight:700;">$31,200</td><td class="num" style="font-weight:700;">$31,200</td><td class="num" style="font-weight:700;">$62,400</td></tr>
+        <tr><td><strong>Net cash flow / yr</strong></td><td class="num" style="font-weight:700;color:var(--coral);">&minus;$7,042.72</td><td class="num" style="font-weight:700;color:var(--coral);">&minus;$5,666.85</td><td class="num" style="font-weight:700;color:var(--coral);">&minus;$12,709.57</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:12px;color:var(--muted);margin-top:8px;">Combined net cash flow of &minus;$12,710/year across both units at 6.5% interest — each unit is negatively geared. Unit 1 (302/108, $350k loan) carries $7,043/year negative; Unit 2 (G5/108, $337k loan) carries $5,667/year negative. Assumes both units rented at $600/week ($31,200/year). Council rates are actual City of Melbourne figures (2026–27 for 302, 2025–26 for G5); body corp, property management, and maintenance are estimates. Confirm against actual figures and your tax adviser.</p>
+</div>
+
+<!-- ====== COUNCIL RATES — 302/108 ====== -->
+<div class="section">
+  <h2>Council rates — 302 / 108 <span class="badge">City of Melbourne · 2026–27</span></h2>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:10px;">Rates notice for Unit 302, 108 Queensberry Street, Carlton VIC 3053. Property identified as Lot 408, PS727379S. Valuations effective 1 July 2026 (valued as at 1 January 2026). NAV $165,000 · site value $90,000 · CIV $330,000 · land use Residential.</p>
+  <div class="table-wrap">
+    <table class="compare">
+      <tbody>
+        <tr><td style="width:40%;"><strong>Property</strong></td><td>Unit 302 · 108 Queensberry Street, CARLTON VIC 3053 <span style="font-size:11px;color:var(--coral);">(council notice lists as "Level 3" — see note)</span></td></tr>
+        <tr><td><strong>Legal description</strong></td><td>Lot 408, PS727379S</td></tr>
+        <tr><td><strong>Valuations — effective date</strong></td><td>1 July 2026 (valued as at 1 Jan 2026)</td></tr>
+        <tr><td><strong>Net improved value (NAV)</strong></td><td class="num"><strong>$165,000</strong></td></tr>
+        <tr><td><strong>Site value</strong></td><td class="num">$90,000</td></tr>
+        <tr><td><strong>Capital improved value (CIV)</strong></td><td class="num">$330,000</td></tr>
+        <tr><td><strong>Interest rate</strong></td><td class="num">10%</td></tr>
+        <tr><td><strong>Land use</strong></td><td>Residential</td></tr>
+        <tr><td><strong>AVPCC</strong></td><td>120 — Single Unit / Villa Unit / Townhouse</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:11px;color:var(--coral);margin-top:4px;"><strong>Note:</strong> The council rates notice identifies this unit as "Level 3", whereas the building profile and Domain listing describe 302/108 as a ground-floor unit (lots G1–G7 on the ground floor). This may reflect a different council floor-classification scheme rather than the unit's actual floor level — worth confirming with City of Melbourne if it affects anything.</p>
+  <div class="table-wrap" style="margin-top:14px;">
+    <table class="compare">
+      <thead>
+        <tr>
+          <th style="width:55%;">Item</th>
+          <th class="num">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Residential rates @ 3.9796 cents in the $ of NAV</strong></td><td class="num"><strong>$656.63</strong></td></tr>
+        <tr><td>ESVF @ $139 plus 17.3 cents per $1,000 of CIV</td><td class="num"><strong>$196.09</strong></td></tr>
+        <tr><td><strong>Total rates + ESVF due</strong></td><td class="num" style="font-weight:700;"><strong>$852.72</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:12px;color:var(--muted);margin-top:6px;">ESVF = Emergency Services and Volunteers Fund (State Government charge). Payable in full or in 4 installments.</p>
+  <div class="table-wrap" style="margin-top:14px;">
+    <table class="compare">
+      <thead>
+        <tr>
+          <th style="width:55%;">Payment option</th>
+          <th class="num">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Option 1 — pay in full</strong> (direct debit available, due 15 Feb 2027)</td><td class="num"><strong>$852.72</strong></td></tr>
+        <tr><td><strong>Option 2 — 4 installments</strong> (direct debit available)</td><td class="num">4 × $213.17 / $213.21 = <strong>$852.72</strong></td></tr>
+        <tr><td>&nbsp;&nbsp;&nbsp;Instalment 1 — 30 Sep 2026</td><td class="num">$213.17</td></tr>
+        <tr><td>&nbsp;&nbsp;&nbsp;Instalment 2 — 30 Nov 2026</td><td class="num">$213.17</td></tr>
+        <tr><td>&nbsp;&nbsp;&nbsp;Instalment 3 — 28 Feb 2027</td><td class="num">$213.17</td></tr>
+        <tr><td>&nbsp;&nbsp;&nbsp;Instalment 4 — 31 May 2027</td><td class="num">$213.21</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:12px;color:var(--muted);margin-top:8px;">Rate in the dollar: 3.9796 cents per $ of NAV for residential rates (2026–27). ESVF = $139 base + 17.3 cents per $1,000 of CIV. Interest on late payments: 10% p.a. Source: City of Melbourne rates notice for 302/108 (2026–27).</p>
+</div>
+
+<!-- ====== TAX INCOME HISTORY (6 MONTHS) ====== -->
+<div class="section">
+  <h2>Tax income history — 302/108 <span class="badge">Apr–Sep 2026 · per tax adviser</span></h2>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:10px;">Six-month payment history from the 302/108 tax records, covering the rental income, expenses, and net payment (to landlord) for each month from April through September 2026. The last month (Sep 2026) shows $0 income — consistent with the tenant moving out. Source: /Users/warrenduncan/Desktop/302_Tax_Income.png.</p>
+  <div class="table-wrap">
+    <table class="compare">
+      <thead>
+        <tr>
+          <th style="width:18%;">Month</th>
+          <th class="num">Expenses ($)</th>
+          <th class="num">Income ($)</th>
+          <th class="num">Payment to landlord ($)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Apr 2026</td><td class="num">$324.28</td><td class="num">$2,433.00</td><td class="num">$2,108.72</td></tr>
+        <tr><td>May 2026</td><td class="num">$479.09</td><td class="num">$2,433.00</td><td class="num">$1,953.91</td></tr>
+        <tr><td>Jun 2026</td><td class="num">$448.09</td><td class="num">$2,433.00</td><td class="num">$1,984.91</td></tr>
+        <tr><td>Jul 2026</td><td class="num">$394.19</td><td class="num">$2,433.00</td><td class="num">$2,038.81</td></tr>
+        <tr><td>Aug 2026</td><td class="num">$337.01</td><td class="num">$2,399.67</td><td class="num">$2,093.81</td></tr>
+        <tr><td>Sep 2026 <span style="font-size:11px;color:var(--coral);">(tenant moved out — $0 income)</span></td><td class="num">$0.00</td><td class="num">$31.15</td><td class="num">$0.00</td></tr>
+        <tr><td><strong>6-month average</strong></td><td class="num"><strong>$330.44</strong></td><td class="num"><strong>$2,027.14</strong></td><td class="num"><strong>$1,696.69</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="table-wrap" style="margin-top:14px;">
+    <img src="assets/302/302_Tax_Income.png" alt="302/108 tax income history — 6 months Apr to Sep 2026" style="max-width:100%;height:auto;border:1px solid var(--sidebar-border);border-radius:4px;margin-top:4px;">
+  </div>
+  <p style="font-size:11px;color:var(--muted);margin-top:6px;"><strong>Reading the table:</strong> "Income" is the gross rental income received each month ($2,433/month through Aug = ~$600/week consistent with the current rent). "Expenses" is the monthly tax-deductible expense component (rates, depreciation, interest etc.). "Payment to landlord" is income minus expenses — the net amount received. Average net payment over 6 months: $1,696.69/month (~$40,720/year annualized before the tenant left).</p>
+  <p style="font-size:12px;color:var(--coral);margin-top:8px;"><strong>Tenant vacancy:</strong> September 2026 shows $0 income and $0 payment — the tenant moved out. Aug 2026 was the last full month of rental income at $2,399.67 (slightly below the $2,433/month run rate — possibly a partial month). The unit is vacant from Sep 2026 onward. This affects the exit timing and any loss-offset calculations — confirm with tax adviser whether the vacancy period changes the loss carried-forward position.</p>
+</div>
+
+<!-- ====== EXIT CONSIDERATIONS ====== -->
+<div class="section">
+  <h2>Exit considerations <span class="badge">Warren's analysis</span></h2>
+  <div class="table-wrap">
+    <table class="compare">
+      <tbody>
+        <tr><td style="width:32%;"><strong>Current status</strong></td><td>Off-market — not listed for sale</td></tr>
+        <tr><td><strong>Purchase</strong></td><td>$442,045 — 22 May 2017 · Warren Duncan (owner)</td></tr>
+        <tr><td><strong>Hold period</strong></td><td>~9 years <span style="font-size:11.5px;color:var(--muted);">(May 2017 → Sep 2026)</span></td></tr>
+        <tr><td><strong>1-bed ground-floor dynamics</strong></td><td><span style="color:var(--coral);font-weight:600;">Mixed</span> — convenience (no stairs) vs no views / street noise / smaller buyer pool</td></tr>
+        <tr><td><strong>Building median (all units)</strong></td><td>~$860k <span style="font-size:11.5px;color:var(--muted);">47 apartments · 108 Queensberry · per queensberry.html</span></td></tr>
+        <tr><td><strong>302 vs building median</strong></td><td><span style="color:var(--teal);font-weight:600;">~51% of median</span> — $442k vs $860k · 1-bed ground-floor vs larger units</td></tr>
+        <tr><td><strong>REA vs Domain estimate gap</strong></td><td><span style="color:var(--coral);font-weight:600;">~$40k</span> — REA unit-specific $420k vs Domain building-level $460k · REA more relevant for 302</td></tr>
+        <tr><td><strong>Purchase vs REA estimate</strong></td><td><span style="color:var(--coral);font-weight:600;">−$22,045 (−5.0%)</span> — $442,045 → $420k over 9 years · modest nominal softening since purchase</td></tr>
+        <tr><td><strong>Rental upside (est.)</strong></td><td>TBC <span style="font-size:11.5px;color:var(--muted);">current rent $560/week; REA estimated $600/week — potential +$40/week upside to REA estimate</span></td></tr>
+        <tr><td><strong>Rental risk</strong></td><td>Small pool + unknown <span style="font-size:11.5px;color:var(--muted);">1-bed ground-floor: student/sharer renters possible; no actual rental data for 302</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:12px;color:var(--muted);margin-top:10px;"><strong>Data note:</strong> The Domain profile states "Year built: 2017" but the purchase was settled 22 May 2017 — consistent with a newly-built or newly-completed building at the time of purchase. The building's recorded sales on Domain begin from 2014 (G5/108), which predates the 2017 build date; this may reflect a prior building on the site or a data inconsistency. Worth verifying against CCM Council records and the title deed.</p>
+  <p style="font-size:12px;color:var(--muted);margin-top:4px;"><strong>Zoning / overlays:</strong> Not detected by Domain — no flood, bushfire, or heritage overlay flagged. Carlton is zoned Residential Growth (RGZ) under the Melbourne Planning Scheme; confirm specific lot zoning via CCM.</p>
+</div>
+
+<!-- ====== BUILDING CONTEXT ====== -->
+<div class="section">
+  <h2>Building context <span class="badge">108 Queensberry St · Carlton VIC 3053</span></h2>
+  <div class="table-wrap">
+    <table class="compare">
+      <tbody>
+        <tr><td style="width:32%;"><strong>Address</strong></td><td>108 Queensberry St — Carlton VIC 3053 · corner of Queensberry &amp; Rathdowne</td></tr>
+        <tr><td><strong>302 position</strong></td><td>Ground floor — lots G1–G7 on ground floor per Domain profile</td></tr>
+        <tr><td><strong>Storeys</strong></td><td class="num">6 <span style="font-size:11.5px;color:var(--muted);">(per REA PropTrack)</span></td></tr>
+        <tr><td><strong>302 floor area</strong></td><td class="num">42 m² <span style="font-size:11.5px;color:var(--muted);">estimated — same 1-bed/1-bath/1-park layout as G3/108 &amp; G5/108</span></td></tr>
+        <tr><td><strong>Total recorded sales (whole building)</strong></td><td class="num">47 <span style="font-size:11.5px;color:var(--muted);">apartments · 2014–2026 · see queensberry.html</span></td></tr>
+        <tr><td><strong>Building median price</strong></td><td class="num">~$860k <span style="font-size:11.5px;color:var(--muted);">all units · queensberry.html</span></td></tr>
+        <tr><td><strong>Top sale (building)</strong></td><td class="num">$3.5M <span style="font-size:11.5px;color:var(--muted);">penthouse · 31 Mar 2026</span></td></tr>
+        <tr><td><strong>302 unit type</strong></td><td>1-bed · 1-bath · 1-park — same layout as G3/108 and G5/108</td></tr>
+        <tr><td><strong>Comparable: G3/108</strong></td><td class="num">$370k <span style="font-size:11.5px;color:var(--muted);">(Dec 2025) · sold · 1-bed · 1-bath · 1-park · same building</span></td></tr>
+        <tr><td><strong>Comparable: G5/108</strong></td><td class="num">$411,545 <span style="font-size:11.5px;color:var(--muted);">(Oct 2014) · sold · 1-bed · 1-bath · 1-park · same building · ground floor</span></td></tr>
+        <tr><td><strong>Comparable: 304/108 (1-bed)</strong></td><td class="num">$460k <span style="font-size:11.5px;color:var(--muted);">(Mar 2026) · sold · 1-bed · 1-bath · 1-park · same building</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:12px;color:var(--muted);margin-top:10px;">302/108 is the same 1-bed/1-bath/1-park layout as G3/108 and G5/108 in this building. The three comparable 1-bed units have sold for $370k (G3, Dec 2025), $411,545 (G5, Oct 2014), and $460k (304, Mar 2026) — a wide $90k range reflecting unit-specific factors (aspect, floor level, condition, exact positioning). 302/108's purchase price of $442,045 (May 2017) sits in the middle of this range. The REA unit-specific estimate of $420k is well-supported by these comps.</p>
+  <p style="font-size:12px;color:var(--muted);margin-top:4px;">Ground-floor lots (G1–G7 and 301–307 range) are generally priced below upper-floor equivalents in this building due to lack of views and street-level noise, offset by convenience (no stairs/lift wait). 302/108's open floor plan, and garden (per G5/108 — unconfirmed for 302) would be positive features in a ground-floor unit if present.</p>
+</div>
+
+<!-- ====== KEY LINKS ====== -->
+<div class="section">
+  <h2>Key links <span class="badge">sources</span></h2>
+  <div class="link-grid">
+    <a class="link-card" href="https://www.realestate.com.au/property/unit-302-108-queensberry-st-carlton-vic-3053" target="_blank" rel="noopener">
+      <span class="link-icon">🏡</span>
+      <span class="link-label">REA — 302/108 profile</span>
+      <span class="link-sub">PropTrack realEstimate, sold listings, features</span>
+    </a>
+    <a class="link-card" href="https://www.domain.com.au/property-profile/108-queensberry-street-carlton-vic-3053" target="_blank" rel="noopener">
+      <span class="link-icon">🏢</span>
+      <span class="link-label">Domain — 108 Queensberry (building)</span>
+      <span class="link-sub">Full building profile, all unit sales</span>
+    </a>
+    <a class="link-card" href="queensberry.html" target="_blank" rel="noopener">
+      <span class="link-icon">📋</span>
+      <span class="link-label">108 Queensberry — full sale history</span>
+      <span class="link-sub">47 apartment sales · 2014–2026 · Domain + REA</span>
+    </a>
+    <a class="link-card" href="g05.html" target="_blank" rel="noopener">
+      <span class="link-icon">📋</span>
+      <span class="link-label">G5 / 108 (comparable)</span>
+      <span class="link-sub">Identical 1-bed/1-bath/1-park layout · ground floor</span>
+    </a>
+    <a class="link-card" href="index.html" target="_blank" rel="noopener">
+      <span class="link-icon">🔙</span>
+      <span class="link-label">← Back to Warrens Exit Strategy dashboard</span>
+      <span class="link-sub">Bali + Melbourne property overview</span>
+    </a>
+  </div>
+</div>
+
+<p style="font-size:12px;color:var(--muted);margin-top:18px;text-align:center;">
+  Last updated: Sep 2026 · Sources: Domain.com.au · realestate.com.au (PropTrack) · queensberry.html (building sales data) · Warren Duncan (owner) · Warrens Exit Strategy<br>
+  <span style="color:var(--coral);">Data gaps:</span> No per-unit Domain Insight for 302 (building-level only). No rental history recorded for 302. Open floor plan / garden / solar panels status unconfirmed — assumed same as G5/108 based on identical layout but not verified.
+</p>
+
+</div>
+</div>
+
+<script src="render.js?v=5"></script>
+</body>
+</html>

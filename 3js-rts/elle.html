@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ELLE Resort &amp; Beach Club — Batu Belig, Bali — Warrens Exit Strategy</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js?v=5"></script>
+  <script src="render.js?v=5"></script>
+  <script src="balinese_render.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    boot();
+    renderElleLease();
+  });
+</script>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">☰ Menu</button>
+<button id="darkModeToggle" class="is-dark" aria-label="Toggle dark mode" title="Dark mode"><span class="dm-icon">🌙</span><span class="dm-label">Dark</span></button>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="app-name"><span class="dot"></span>Warrens Exit Strategy</div>
+  </div>
+
+  <!-- ---- Group: Phase1 (Option 1 — Bali) ---- -->
+  <div class="sidebar-group" data-group="phase1">
+    <div class="sidebar-group-label" data-group="phase1">
+      <span>Phase1 (Exit Aus)</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="sidebar-group-content" data-group="phase1">
+      <a class="nav-link" href="index.html">
+        <span class="link-icon">🏝️</span><span class="link-label"><strong>Bali dashboard</strong></span>
+      </a>
+      <a class="nav-link" href="villas.html">
+        <span class="link-icon">🏝️</span><span class="link-label">Villa shortlist</span>
+      </a>
+      <a class="nav-link" href="queensberry.html">
+        <span class="link-icon">🏢</span><span class="link-label">108 Queensberry St</span>
+      </a>
+      <a class="nav-link" href="g05.html">
+        <span class="link-icon">📋</span><span class="link-label">G5 / 108</span>
+      </a>
+      <a class="nav-link" href="302.html">
+        <span class="link-icon">📋</span><span class="link-label">302 / 108</span>
+      </a>
+      <a class="nav-link" href="sussex.html">
+        <span class="link-icon">🏡</span><span class="link-label">143 Sussex St</span>
+      </a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:8px 0;">
+      <a class="nav-link" href="financial.html"><span class="link-icon">📋</span><span class="link-label"><strong>Exit finances — G05+302+Sussex</strong></span></a>
+      <a class="nav-link" href="competition.html"><span class="link-icon">🏁</span><span class="link-label"><strong>Competition tracker</strong></span></a>
+    </div>
+  </div>
+  <hr class="sidebar-separator">
+
+  <!-- ---- Group: Bali Statistics (Option 1 reference) ---- -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-label" data-group="baliStats">
+      <span>Bali Statistics</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="sidebar-group-content" data-group="baliStats">
+      <a class="nav-link" href="index.html#annualWrap"><span class="link-icon">📊</span><span class="link-label">Annual arrivals</span></a>
+      <a class="nav-link" href="index.html#monthlyWrap"><span class="link-icon">📈</span><span class="link-label">Monthly arrivals</span></a>
+      <a class="nav-link" href="index.html#gateWrap"><span class="link-icon">🚪</span><span class="link-label">Foreign visitors by gate</span></a>
+      <a class="nav-link" href="index.html#marketsWrap"><span class="link-icon">🌏</span><span class="link-label">Source markets</span></a>
+      <a class="nav-link" href="index.html#hotelOccWrap"><span class="link-icon">🏨</span><span class="link-label">Hotel occupancy (TPK)</span></a>
+      <a class="nav-link" href="index.html#losWrap"><span class="link-icon">🛏️</span><span class="link-label">Length of stay</span></a>
+      <a class="nav-link" href="index.html#economyWrap"><span class="link-icon">💰</span><span class="link-label">Bali economy (GDP)</span></a>
+      <a class="nav-link" href="index.html#strWrap"><span class="link-icon">🏠</span><span class="link-label">STR / Airbnb market</span></a>
+      <a class="nav-link" href="index.html#priceAdrWrap"><span class="link-icon">🏡</span><span class="link-label">Property prices by zone</span></a>
+      <a class="nav-link" href="index.html#hotelReportWrap"><span class="link-icon">📰</span><span class="link-label">Hotel report</span></a>
+      <a class="nav-link" href="index.html#sources"><span class="link-icon">🔗</span><span class="link-label">Data sources</span></a>
+    </div>
+  </div>
+  <hr class="sidebar-separator">
+
+  <!-- ---- Group: Phase2 ---- -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-label">
+      <span>Phase2</span>
+      <span class="chevron">&#x25BC;</span>
+    </div>
+    <div class="sidebar-group-content">
+      <a class="nav-link" href="villas.html"><span class="link-icon">&#x1F3E0;</span><span class="link-label"><strong>Option 1 Bali</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="balinese.html"><span class="link-icon">&#x1F3DA;</span><span class="link-label">Option 1 — income strategy</span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="elle.html">
+        <span class="link-icon">&#x1F3DD;</span><span class="link-label"><strong>ELLE Resort &amp; Beach Club</strong></span>
+      </a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="mactan.html"><span class="link-icon">&#x1F3EB;</span><span class="link-label"><strong>Option 2 — Mactan (Cebu)</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="mactan.html#mactanLand"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Land — 241m² sea-view lot</span></a>
+      <a class="nav-link" href="mactan.html#mactanBuild"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Build budget — Phase 1/2/3</span></a>
+      <a class="nav-link" href="mactan.html#mactanMarket"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Market rates — 5-6BR luxury</span></a>
+      <a class="nav-link" href="mactan.html#mactanCompetition"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Competition — Anza + comp set</span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="lightspeed.html"><span class="link-icon">&#x1F1FA;</span><span class="link-label"><strong>Option 3 — Lightspeed Dividend</strong></span></a>
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="footer-row"><span class="footer-label">Data</span><span class="footer-value" id="footerLastUpdated">—</span></div>
+    <div class="footer-row"><span class="footer-label">Source</span><span class="footer-value">Geonet market case · Project Overview · Inspiral Stage 1 · Rooms &amp; Suites schedules</span></div>
+  </div>
+</aside>
+
+<div class="main-content">
+<div class="wrap" id="elleRoot">
+
+<header>
+  <div>
+    <h1>ELLE Resort &amp; Beach Club — Batu Belig, Bali</h1>
+    <p style="font-size:13px;color:var(--muted);margin-top:4px;">Option 1 — 168-key branded resort + landmark beach club, Seminyak. Individual suite sale into a 50-year managed investment program. Geonet / SONO / Inspiral, Stage 1, June 2026.</p>
+  </div>
+  <div class="meta"><span>Last updated: <strong id="lastUpdated"></strong></span></div>
+</header>
+
+<div class="totals-row" id="elleKeyCards"></div>
+
+<div class="note" style="font-size:12px;color:var(--coral);margin-top:12px;">
+  <strong>Read this first.</strong> Every rate, occupancy and return figure below is a Geonet / SONO / Inspiral <em>projection</em>, not a contract and not independently validated. Concept design — artist impressions and indicative areas, subject to change, approval and final documentation.
+</div>
+
+<p class="lead" style="font-size:14px;margin-top:16px;">
+  A 5-star beachfront development of 168 branded suites and a landmark beach club on two consolidated sites in Batu Belig, between Seminyak and Canggu. Developed by Geonet Developments International, operated by SONO Hotels &amp; Resorts Asia, designed by Inspiral, project-managed by Colliers. Suites are sold individually into a 50-year investment period inside a fully managed rental program, with an 8% guaranteed capital repayment during construction and up to 15% p.a. projected net returns off a 45% revenue pool spanning rooms, F&amp;B and beach club operations.
+</p>
+
+<!-- ============ THE PRODUCT ============ -->
+<div class="section" id="elleProductSection">
+  <h2>The investment product <span class="badge">As marketed · verify independently</span></h2>
+  <div id="elleProduct"></div>
+</div>
+
+<!-- ============ THE ASSET ============ -->
+<div class="section" id="elleAsset">
+  <h2>The asset — two sites, two collections <span class="badge">Inspiral Stage 1 · 52-spread brochure</span></h2>
+  <p class="lead" style="font-size:13px;">The development holds two separate accommodation offers on two consolidated sites split by a small road. The Resort sits on Site 1 with 130 keys across thirteen types. The Beach Club Suites sit on Site 2 with 38 keys across eight types, joined to the beach club itself by a tunnel and a sky bridge.</p>
+  <div id="elleSiteTable" style="margin-top:8px;"></div>
+</div>
+
+<!-- ============ ROOM & SUITE SCHEDULE ============ -->
+<div class="section" id="elleUnits">
+  <h2>Rooms &amp; suites — every type, measured <span class="badge">Masterplan schedules</span></h2>
+  <p class="lead" style="font-size:13px;">Areas as scheduled by Inspiral on the Resort and Beach Club masterplan sheets. The architect writes each type as, for example, 45 m² +5(2.5) m² balcony: the first figure is internal, the second is the full outdoor area, and the bracketed figure is that outdoor area counted at 50%.</p>
+
+  <h3 style="margin-top:10px;">The Resort — 130 keys, 13 types</h3>
+  <div id="elleResortUnits"></div>
+
+  <h3 style="margin-top:16px;">The Beach Club Suites — 38 keys, 8 types</h3>
+  <div id="elleSuiteUnits"></div>
+
+  <div class="note" style="font-size:12px;margin-top:10px;">
+    <strong>Why the areas are quoted this way.</strong> The convention checks out by arithmetic: internal plus counted outdoor reproduces the brochure's own stated totals of 7,994 m² for the Resort and 2,702 m² for the Suites, exactly. It holds in every type except One Bedroom Suite B, where the source states a 5 m² balcony with 3 m² counted.
+  </div>
+  <div class="note" style="font-size:12px;color:var(--coral);margin-top:6px;">
+    <strong>Two inconsistencies worth knowing.</strong> The per-level unit summaries printed on the drawings do not fully reconcile to the masterplan schedules — on the Resort, standard rooms tally 86 against 94 and split-level lofts and penthouses appear on each level they occupy; on the Suites, the level drawings account for 37 suites against 38 (one Regular Suite C short). The masterplan schedules are treated as the figure of record. Separately, the Stage 1 brochure holds building-level floor plans only — there is no per-type unit plan for any room or suite, which would have to be requested from Inspiral.
+  </div>
+</div>
+
+<!-- ============ SIZE RANGE ============ -->
+<div class="section" id="elleSizeRangeWrap">
+  <h2>Size range — all 21 types, 45 m² to 175 m² <span class="badge">Internal + full outdoor</span></h2>
+  <p class="lead" style="font-size:13px;">From a 45 m² standard room to a 175 m² penthouse. Bars show total area per key, ordered largest to smallest.</p>
+  <div id="elleSizeRange" style="margin-top:8px;"></div>
+</div>
+
+<!-- ============ THE MARKET ============ -->
+<div class="section" id="elleMarket">
+  <h2>Part one — the market <span class="badge">Bali 2025 actuals · Horwath HTL 2026</span></h2>
+  <p class="lead" style="font-size:13px;"><strong>The luxury tier is the only one growing.</strong></p>
+  <ul style="font-size:13px;">
+    <li style="margin-bottom:5px;">Bali took a <strong>record 6.95 million international arrivals in 2025</strong>. 2026 target 6.63m; 2028–2030 projection 8–9m annually.</li>
+    <li style="margin-bottom:5px;">A <strong>146% surge in private villa supply over two years</strong> has softened the broader hotel market — but the pressure sits in the mid-market and economy tiers. Luxury and upper upscale held.</li>
+    <li style="margin-bottom:5px;">2025 ADR growth: economy <strong>+2.4%</strong> (A$235) · upper upscale <strong>+10%</strong> (A$446–455) · luxury <strong>+8.0%</strong> (A$1,280, tier above A$785).</li>
+    <li style="margin-bottom:5px;">Australia is <strong>25% of arrivals</strong> — the source market. IDR/USD 16,000; luxury growth +8.0% in IDR, <strong>+3.9% in USD</strong>.</li>
+  </ul>
+  <div class="note" style="font-size:12px;margin-top:6px;">ELLE's stated positioning band: <strong>A$469–782</strong> — it sits in the luxury tier that is holding, not the tiers absorbing the new villa supply.</div>
+</div>
+
+<!-- ============ COMP SET ============ -->
+<div class="section" id="elleCompSetWrap">
+  <h2>Seminyak &amp; Canggu — published OTA rate ladder <span class="badge">Verified June 2026</span></h2>
+  <p class="lead" style="font-size:13px;">The Legian reset the AUD ceiling in 2024. These are the properties ELLE prices against on day one.</p>
+  <div id="elleCompSet" style="margin-top:8px;"></div>
+</div>
+
+<!-- ============ GLOBAL SET ============ -->
+<div class="section" id="elleGlobalSetWrap">
+  <h2>Global lifestyle set — Bali still trades below it <span class="badge">Annualised realised ADR</span></h2>
+  <div id="elleGlobalSet" style="margin-top:8px;"></div>
+</div>
+
+<!-- ============ THE PREMIUM ============ -->
+<div class="section" id="ellePremiumWrap">
+  <h2>Part two — the evidence <span class="badge">Four mechanisms, one number</span></h2>
+  <p class="lead" style="font-size:13px;">Every premium in this report is measured. <strong>The beach club is the single most commercially powerful element of the product mix</strong> — and it is what the investment case actually rests on.</p>
+  <div id="ellePremium" style="margin-top:10px;"></div>
+</div>
+
+<!-- ============ THE FORECAST ============ -->
+<div class="section" id="elleForecastWrap">
+  <h2>Part three — the forecast <span class="badge">Base case · 2028 opening</span></h2>
+  <p class="lead" style="font-size:13px;"><strong>The recommended planning figure.</strong> Derived from the published OTA mid-point of the nearest non-branded lifestyle comparators — Hotel Indigo at A$509 and COMO Uma Canggu at A$452 — with a +48% brand and beach club premium and a 60% opening-year ramp factor. Forward market inflation is excluded; Bali luxury ADR trending at +3.9% per annum in USD adds roughly 8.0% by a 2028 opening.</p>
+  <div id="elleForecast" style="margin-top:8px;"></div>
+
+  <h3 style="margin-top:16px;">Ramp-up trajectory — five years to a stabilised rate</h3>
+  <div id="elleRamp" style="margin-top:8px;"></div>
+</div>
+
+<!-- ============ THE LEASE INCOME ============ -->
+<div class="section" id="elleLeaseWrap">
+  <h2>Part four — the lease income model <span class="badge">Geonet leasehold position summary · 8 Oct 2026</span></h2>
+  <p class="lead" style="font-size:13px;">The lease is a <b>fractional leasehold</b>: 1 fraction of a 2BR Penthouse A in the Resort Hotel precinct, at A$258,750 advance consideration, giving 5.0% key ownership and a 0.0755% share of the lease allocation. Income is AUD.</p>
+
+  <div id="elleLeaseHeadline"></div>
+
+  <div class="two-col" style="align-items:flex-start;">
+    <div>
+      <h3>The investment product as a lease</h3>
+      <div id="elleLeaseProduct" style="font-size:12px;"></div>
+    </div>
+    <div>
+      <h3>Room revenue waterfall (per room night, Year 1 base case, ADR $1,294)</h3>
+      <div id="elleLeaseWaterfall" style="font-size:11px;" class="waterfall"></div>
+    </div>
+  </div>
+
+  <div class="two-col" style="align-items:flex-start;">
+    <div>
+      <h3>Year 1 room model — non-room + room revenue (base case)</h3>
+      <div id="elleLeaseRoomModel" style="font-size:11px;"></div>
+    </div>
+    <div>
+      <h3>Lease income schedule — FY2026 to FY2053 (28-year lifecycle)</h3>
+      <div id="elleLeaseSchedule" style="font-size:10px;width:100%;"></div>
+    </div>
+  </div>
+
+  <div class="two-col" style="align-items:flex-start;">
+    <div>
+      <h3>Operating sensitivity — conservative / expected / optimistic</h3>
+      <div id="elleLeaseSensitivity" style="font-size:11px;"></div>
+    </div>
+    <div>
+      <h3>How the income is generated</h3>
+      <div id="elleLeaseIncomeSource" style="font-size:11px;"></div>
+    </div>
+  </div>
+
+  <div class="two-col" style="align-items:flex-start;">
+    <div>
+      <h3>Comparable property benchmark (10.50% starting lease income, 4.50% growth)</h3>
+      <div id="elleLeaseComparison" style="font-size:11px;"></div>
+    </div>
+    <div>
+      <h3>Protection features built into the lease</h3>
+      <div id="elleLeaseProtections" style="font-size:11px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ THE CEILING ============ -->
+<div class="section" id="elleCeilingWrap">
+  <h2>Part four — the ceiling moves <span class="badge">Market acceptance</span></h2>
+  <p class="lead" style="font-size:13px;"><strong>Where guests start choosing Regent.</strong> The market begins to reject ELLE pricing at the point where a guest can choose Regent Bali Canggu at a comparable or lower rate for a demonstrably superior product. That ceiling is not permanent — as the identity crystallises through events, editorial and social proof, it rises. By year five a fully activated ELLE no longer competes in the same set as Hotel Indigo or COMO Uma Canggu.</p>
+  <div id="elleCeiling" style="margin-top:10px;"></div>
+</div>
+
+<!-- ============ MILESTONES ============ -->
+<div class="section" id="elleMilestonesWrap">
+  <h2>What has to be true — Tier 1 milestones <span class="badge">Opening year to year two</span></h2>
+  <p class="lead" style="font-size:13px;">The forecast is conditional. These are the operating thresholds that carry the property from opening to a defensible rate, stated so that progress can be tracked rather than asserted.</p>
+  <div id="elleMilestones" style="margin-top:8px;"></div>
+</div>
+
+<!-- ============ EXPERIENCE ============ -->
+<div class="section" id="elleExperience">
+  <h2>On-site facilities &amp; masterplan <span class="badge">Inspiral Stage 1</span></h2>
+  <h3>Facilities and experiences</h3>
+  <div id="elleAmenities" style="margin:6px 0 12px 0;"></div>
+
+  <h3>Masterplan zones</h3>
+  <div id="elleZones" style="margin:6px 0 12px 0;"></div>
+
+  <h3>Design intent</h3>
+  <p class="lead" style="font-size:13px;">A luxury destination accommodating both accommodation and an oceanfront beach club, focused on entertainment, fashion, wellness and tropical lifestyle — a diverse playground where hospitality, cuisine and events occur concurrently through spaces that curate elegance by the sea. Elevations with rooms designed to capture sweeping ocean views, positioned as the heart of the high-end lifestyle retail development.</p>
+  <p class="lead" style="font-size:13px;">Inspiral works in biocentric architecture, integrating nature with the built environment using SIP technology, prefabrication and bamboo craftsmanship; recognised with the UNESCO Prix Versailles and AHEAD Asia Awards.</p>
+</div>
+
+<!-- ============ PARTNERS ============ -->
+<div class="section" id="ellePartners">
+  <h2>Who is behind it <span class="badge">Developer · operator · PM · advisers</span></h2>
+  <table class="data-table" style="font-size:12px;">
+    <tbody>
+      <tr><td style="width:22%;"><strong>Developer</strong></td><td>Geonet Developments International</td></tr>
+        <tr><td><strong>Operator</strong></td><td>SONO Hotels &amp; Resorts Asia — regional arm of South Korean leisure group Sono International. 14,500+ operating rooms, 7 countries, 16 hotels currently managed in Thailand and Indonesia, 12+ properties in development across Asia by 2029. Owner of T'way Air. End-to-end services from sourcing and pre-opening through long-term operations.</td></tr>
+        <tr><td><strong>Architect</strong></td><td>Inspiral Architecture and Design Studios — biocentric architecture, SIP technology, prefabrication, bamboo craftsmanship. UNESCO Prix Versailles, AHEAD Asia Awards.</td></tr>
+        <tr><td><strong>Project manager</strong></td><td>Colliers — 63 countries, 17,000+ professionals. Design coordination, construction, and post-completion services.</td></tr>
+        <tr><td><strong>Hospitality &amp; F&amp;B advisers</strong></td><td>JACK Hospitality — Australia's first majority Indigenous-owned, female-led hospitality consultancy (InterContinental Maldives, Hayman Island, ANA InterContinental Manza Beach). Marc Schicker, Founder &amp; MD, Schicker &amp; Co. — 30+ years across Asia-Pacific, IHG pipeline, InterContinental Osaka, Hotel Indigo Bangkok, now based in Bali.</td></tr>
+      </tbody>
+    </table>
+  <div class="note" style="font-size:11px;color:var(--muted);margin-top:8px;">Geonet Developments International · +61 800 951 331 · info@geonet.properties · www.geonet.properties</div>
+</div>
+
+<!-- ============ VERDICT ============ -->
+<div class="section" id="elleVerdictWrap">
+  <h2>Where this lands <span class="badge">Against Warren's criteria</span></h2>
+  <div id="elleVerdict"></div>
+</div>
+
+<div class="section" id="elleCaveats">
+  <h2>Caveats &amp; what to demand before committing</h2>
+  <ul style="font-size:13px;">
+    <li style="margin-bottom:6px;"><strong>Nothing on this page is a guarantee.</strong> The 15% p.a., the 8% construction repayment, the ADR bands and the occupancy targets are all projections from a marketing document dated June 2026, premised on a 2028 opening that has not happened yet.</li>
+    <li style="margin-bottom:6px;"><strong>Define the 45% pool precisely.</strong> Net of what — operating costs, SONO management fee, debt service, reserves? A pool that is "45% net" of an undefined base can be made to produce almost any headline number.</li>
+    <li style="margin-bottom:6px;"><strong>Establish who stands behind the 8%.</strong> A construction-period capital repayment guarantee is only worth the balance sheet of the guarantor. Ask for the instrument, not the sentence.</li>
+    <li style="margin-bottom:6px;"><strong>Get the exit terms in writing.</strong> What happens at year 50? What happens if the operator defaults, if the pool underperforms, or if you want out at year 7? Resale in a secondary market for an off-plan branded suite is not a liquid asset.</li>
+    <li style="margin-bottom:6px;"><strong>Test the beach club assumption independently.</strong> The whole premium rests on the beach club performing. "800 day-pass admissions per week" and "40% of beach club revenue from non-hotel guests" are the two numbers to pressure. Which comparable Seminyak beach clubs actually draw 800 day-passes in a peak week?</li>
+    <li style="margin-bottom:6px;"><strong>There is no operating track record to anchor the pool</strong> — unlike FINNS, where the beach club already runs and the 256-room resort is being added to a known operation. SONO is a capable regional operator, but 16 hotels across two countries is not a track record at this scale in Bali.</li>
+    <li><strong>Compare against the alternatives on the same basis.</strong> Casa Petak is a completed 3BR villa you own outright, with a named manager and a 20% fee you can read. FINNS is a 35% gross-revenue share of an operating club. ELLE is cheaper to enter and higher on paper — but it is also the least verifiable of the three.</li>
+  </ul>
+</div>
+
+<p style="font-size:12px;color:var(--muted);margin-top:20px;text-align:center;">
+  <a href="index.html" style="color:var(--teal);">← Back to Option 1 — Bali dashboard</a>
+</p>
+
+</div><!-- /wrap -->
+</div><!-- /main-content -->
+
+</body>
+</html>

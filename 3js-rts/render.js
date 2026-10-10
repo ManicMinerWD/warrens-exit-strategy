@@ -23,6 +23,9 @@ const selectedType = document.getElementById('selected-type');
 const selectedAction = document.getElementById('selected-action');
 const gameOverEl = document.getElementById('game-over');
 const buildButtons = document.getElementById('build-menu');
+const healthBarContainer = document.getElementById('health-bar-container');
+const healthBarFill = document.getElementById('health-bar-fill');
+const healthLabel = document.getElementById('health-label');
 const infoPanel = document.getElementById('info-panel');
 
 // ---- Setup scene ----
@@ -90,6 +93,10 @@ function init() {
   const gridHelper = new THREE.GridHelper(terrain.size, 20, 0x87CEEB, 0x4a6fa5);
   gridHelper.position.y = -0.01;
   scene.add(gridHelper);
+
+  // UI
+  buildButtons.style.display = 'none';
+  healthBarContainer.style.display = 'none';
 
   // Setup UI
   setupUI();
@@ -174,8 +181,6 @@ function setupTerrain() {
 
 // ---- Setup UI event handlers ----
 function setupUI() {
-  buildButtons.style.display = 'none';
-
   // Left-click: select units or buildings
   renderer.domElement.addEventListener('click', (event) => {
     if (game.isGameOver) return;
@@ -202,40 +207,53 @@ function setupUI() {
       updateSelectionUI();
       updateSelectedUI('base', 'Click a unit or building to select it');
       buildButtons.style.display = 'none';
+      healthBarContainer.style.display = 'none';
     }
   });
 
-  // Right-click: place unit
+  // Right-click: attack (if warrior selected) or place unit
   renderer.domElement.addEventListener('contextmenu', (event) => {
     event.preventDefault();
     if (game.isGameOver) return;
 
     const intersects = getMouseIntersects(event);
-    if (intersects.length > 0 && intersects[0].object === terrainMesh) {
-      const groundPos = intersects[0].point;
+    const hit = intersects[0];
 
+    // Check if clicked on a unit
+    if (intersects.length > 0) {
+      const clickedUnit = findUnitByObject(hit.object);
+      if (clickedUnit && game.selected && game.selected.type === 'warrior') {
+        // Warrior selected, clicked another unit — attack
+        const target = units.find(u => u.stats.id === clickedUnit.stats.id);
+        if (target && target.stats.alive && target.stats.type !== 'worker') {
+          attackTarget(game.selected.id, target.stats.id);
+          return;
+        }
+      }
+    }
+
+    // Clicked on a building — select it
+    const building = findBuildingByObject(hit.object);
+    if (building) {
+      selectBuilding(building);
+      return;
+    }
+
+    // Clicked on ground — place unit or deselect
+    if (hitsOnGround(intersects, event)) {
       if (game.selected && game.selected.alive) {
         const unit = units.find(u => u.stats.id === game.selected.id);
         if (unit) {
-          // Place unit at ground position
+          const groundPos = intersects[0].point;
           placeUnitAt(unit.stats.type, groundPos);
           return;
         }
       }
-
-      // No valid selection — deselect
       game.selected = null;
       updateSelectionUI();
       updateSelectedUI('base', 'Click a unit or building to select it');
       buildButtons.style.display = 'none';
-      return;
-    }
-
-    // Clicked on a building
-    const hit = intersects[0];
-    const building = findBuildingByObject(hit.object);
-    if (building) {
-      selectBuilding(building);
+      healthBarContainer.style.display = 'none';
       return;
     }
 
@@ -244,6 +262,7 @@ function setupUI() {
     updateSelectionUI();
     updateSelectedUI('base', 'Click a unit or building to select it');
     buildButtons.style.display = 'none';
+    healthBarContainer.style.display = 'none';
   });
 
   // Hover for build preview
@@ -254,6 +273,13 @@ function setupUI() {
         showFlyOrigin = true;
         updateBuildPreview(intersects[0].point);
         updateHUD();
+        // Show health bar for warrior selection
+        if (game.selected.type === 'warrior') {
+          const unit = units.find(u => u.stats.id === game.selected.id);
+          if (unit) {
+            showHealthBar(unit.stats.health, unit.stats.maxHealth);
+          }
+        }
       } else {
         showFlyOrigin = false;
         if (buildPreviewMesh) {
@@ -263,6 +289,16 @@ function setupUI() {
       }
     }
   });
+}
+
+// ---- Check if mousedown is on ground ----
+function hitsOnGround(intersects, event) {
+  if (intersects.length > 0 && intersects[0].object === terrainMesh) {
+    // Check if this is a left click (not right click)
+    const button = event.button || 0;
+    return button === 0;
+  }
+  return false;
 }
 
 // ---- Get mouse intersects ----
@@ -328,14 +364,24 @@ function update() {
     updateFlyTo();
   }
 
+  // Update unit animations
   units.forEach(u => {
     if (u.group && u.stats.alive) {
       u.stats.animation = (u.stats.animation || 0) + 0.02;
-      if (u.stats.type === 'worker') {
-        u.group.rotation.y += 0.005;
-      }
-      if (!u.stats.target) {
+
+      // Idle bob for units without target
+      if (!u.stats.target && u.stats.type !== 'warrior') {
         u.group.position.y = 0.4 + Math.sin(u.stats.animation) * 0.03;
+      }
+
+      // Warrior animation
+      if (u.stats.type === 'warrior') {
+        u.group.rotation.y += 0.005;
+        // Attack animation
+        if (u.stats.attacking) {
+          u.stats.attackingTimer += 0.02;
+          u.group.position.y = 0.4 + Math.sin(u.stats.attackingTimer) * 0.08;
+        }
       }
     }
   });
@@ -370,6 +416,7 @@ function selectUnit(id) {
     updateSelectionUI();
     updateSelectedUI(unit.stats.type, getUnitAction(unit.stats.type));
     updateBuildButtons();
+    healthBarContainer.style.display = 'none';
     return true;
   }
   return false;
@@ -382,6 +429,7 @@ function selectBuilding(building) {
     updateSelectionUI();
     updateSelectedUI('base', getBuildingAction(found));
     updateBuildButtons();
+    healthBarContainer.style.display = 'none';
     return true;
   }
   return false;
@@ -390,9 +438,9 @@ function selectBuilding(building) {
 function getUnitAction(type) {
   switch (type) {
     case 'worker':
-      return 'Right-click on ground to place  •  Gather gold';
+      return 'Right-click to place  •  Gather gold';
     case 'warrior':
-      return 'Ready to attack';
+      return 'Right-click on enemy to attack';
     case 'base':
       return 'Right-click ground to place units';
     default:
@@ -421,6 +469,97 @@ function updateSelectionUI() {
   }
 }
 
+// ---- Combat ----
+function attackTarget(attackerId, targetId) {
+  const attacker = units.find(u => u.stats.id === attackerId);
+  const target = units.find(u => u.stats.id === targetId);
+
+  if (!attacker || !target) return;
+  if (attacker.stats.type !== 'warrior') return;
+  if (!target.stats.alive) return;
+  if (target.stats.type === 'worker') {
+    // Warriors attack workers too
+  }
+
+  // Start attack
+  attacker.stats.attacking = true;
+  attacker.stats.attackingTimer = 0;
+  attacker.stats.target = target.stats.position;
+  attackTargetUI(attacker.stats.id, target.stats.id);
+
+  // Attack animation
+  setTimeout(() => {
+    if (attacker.stats.attacking) {
+      attack(target.stats.id, target.stats.health);
+      // End attack
+      setTimeout(() => {
+        if (attacker.stats.attacking) {
+          attacker.stats.attacking = false;
+        }
+      }, 300);
+    }
+  }, 150);
+}
+
+function attack(targetId, targetHealth) {
+  const attacker = units.find(u => u.stats.alive && u.stats.attacking && u.stats.target);
+  const target = units.find(u => u.stats.id === targetId);
+
+  if (!attacker || !target) return;
+
+  // Deal damage
+  const damage = attacker.stats.damage;
+  target.stats.health -= damage;
+
+  if (target.stats.health <= 0) {
+    target.stats.health = 0;
+    target.stats.alive = false;
+    if (target.group) {
+      target.group.removeFromParent();
+    }
+    // Update counts
+    if (target.stats.type === 'warrior') {
+      game.warriors--;
+    } else if (target.stats.type === 'worker') {
+      game.workers--;
+    }
+    // Check game over
+    checkGameOver();
+  }
+
+  // Update health bar
+  showHealthBar(target.stats.health, target.stats.maxHealth);
+
+  // Move attacker toward target
+  moveUnit(attacker, target.stats.position);
+
+  // Reset attack after a cooldown
+  setTimeout(() => {
+    if (attacker.stats.alive && attacker.stats.attacking) {
+      attacker.stats.attacking = false;
+    }
+  }, 600);
+}
+
+function moveUnit(unit, targetPos) {
+  if (!unit.stats.alive) return;
+  const dx = targetPos.x - unit.stats.position.x;
+  const dz = targetPos.z - unit.stats.position.z;
+  const dist = Math.sqrt(dx * dx + dz * dz);
+
+  if (dist > 1.0) {
+    const speed = unit.stats.speed || 2.0;
+    unit.stats.position.x += (dx / dist) * speed * 0.1;
+    unit.stats.position.z += (dz / dist) * speed * 0.1;
+    unit.group.position.set(unit.stats.position.x, 0.4, unit.stats.position.z);
+    unit.group.lookAt(targetPos.x, 0, targetPos.z);
+  } else {
+    unit.stats.position.x = targetPos.x;
+    unit.stats.position.z = targetPos.z;
+    unit.group.position.set(targetPos.x, 0.4, targetPos.z);
+  }
+}
+
 // ---- Build system ----
 function buildBase() {
   if (game.isGameOver) return;
@@ -444,6 +583,7 @@ function buildBase() {
   updateSelectedUI('base', 'Base built! Build more units.');
   saveState();
   updateBuildButtons();
+  healthBarContainer.style.display = 'none';
 }
 
 function placeUnitAt(type, position) {
@@ -481,6 +621,8 @@ function placeUnitAt(type, position) {
     alive: true,
     target: null,
     animation: 0,
+    attacking: false,
+    attackingTimer: 0,
   };
   units.push({ stats: stats, group: unit, alive: true });
 
@@ -490,15 +632,13 @@ function placeUnitAt(type, position) {
         collectResource(stats);
       }, 1000);
     }
-    if (type === 'warrior') {
-      highlightUnit(unit);
-    }
   }
 
   updateHUD();
   saveState();
-  updateSelectedUI('base', 'Unit placed! Select a unit or building to place more.');
+  updateSelectedUI('base', 'Unit placed! Select a unit to control it.');
   updateBuildButtons();
+  healthBarContainer.style.display = 'none';
 }
 
 // ---- Get build position ----
@@ -672,6 +812,16 @@ function getBuildingActions() {
   return [];
 }
 
+// ---- Health bar ----
+function showHealthBar(health, maxHealth) {
+  if (!healthBarContainer) return;
+  healthBarContainer.style.display = 'block';
+  const pct = Math.max(0, Math.min(1, health / maxHealth));
+  healthBarFill.style.width = (pct * 100) + '%';
+  healthBarFill.style.background = pct > 0.3 ? '#4CAF50' : pct > 0.15 ? '#FF9800' : '#F44336';
+  healthLabel.textContent = Math.floor(health) + ' / ' + Math.floor(maxHealth);
+}
+
 // ---- AI ----
 function startAI() {
   const aiPos = { x: 20, y: 0, z: 20 };
@@ -693,6 +843,8 @@ function startAI() {
     alive: true,
     target: null,
     animation: 0,
+    attacking: false,
+    attackingTimer: 0,
   };
   units.push({ stats: aiStats, group: aiWorker, alive: true });
 
@@ -705,20 +857,66 @@ let aiInterval;
 function aiLoop() {
   if (game.isGameOver) return;
 
-  const aiWorker = units.find(u => u.stats.type === 'worker' && u.stats.alive && u.stats.position.x > 10 && u.stats.target);
+  // Find AI warrior (find the nearest warrior to an enemy)
+  const aiWarriors = units.filter(u => u.stats.type === 'warrior' && u.stats.alive && u.stats.position.x > 10);
 
-  if (aiWorker && !aiWorker.stats.target) {
-    const node = findNearestResourceNode(aiWorker.stats.position);
-    if (node) {
-      aiWorker.stats.target = node;
-      if (!aiWorker.aiGatherInterval) {
-        aiWorker.aiGatherInterval = setInterval(() => {
-          collectResource(aiWorker.stats);
-        }, 1000);
+  for (const warrior of aiWarriors) {
+    if (!warrior.stats.alive) continue;
+
+    // Find nearest enemy (friendly worker or another warrior)
+    let target = null;
+    let minDist = Infinity;
+
+    for (const unit of units) {
+      if (unit === warrior) continue;
+      if (!unit.stats.alive) continue;
+      if (unit.stats.type === 'worker') continue; // Don't attack workers
+
+      const dx = unit.stats.position.x - warrior.stats.position.x;
+      const dz = unit.stats.position.z - warrior.stats.position.z;
+      const dist = Math.sqrt(dx * dx + dz * dz);
+
+      if (dist < minDist) {
+        minDist = dist;
+        target = unit;
+        if (dist < 5) break; // Close enough
       }
+    }
+
+    if (target) {
+      warrior.stats.target = target.stats.position;
+      warrior.stats.attacking = true;
+      warrior.stats.attackingTimer = 0;
+
+      // Move toward target
+      moveUnit(warrior, target.stats.position);
+
+      // Attack
+      setTimeout(() => {
+        if (warrior.stats.alive && warrior.stats.attacking) {
+          attack(target.stats.id, target.stats.health);
+          setTimeout(() => {
+            if (warrior.stats.alive && warrior.stats.attacking) {
+              warrior.stats.attacking = false;
+            }
+          }, 600);
+        }
+      }, 150);
+
+      // Check if target is dead
+      setTimeout(() => {
+        if (target && !target.stats.alive) {
+          target = null;
+        }
+      }, 800);
+    } else {
+      // No enemy found — return to base
+      const basePos = getFirstBuildingPosition();
+      moveUnit(warrior, basePos);
     }
   }
 
+  // Spawn AI units periodically
   if (Math.random() < 0.005 && game.warriors < 15) {
     const warPos = { x: 20, y: 0, z: 20 };
     const warUnit = createUnitVisual('warrior', warPos);
@@ -739,6 +937,8 @@ function aiLoop() {
       alive: true,
       target: null,
       animation: 0,
+      attacking: false,
+      attackingTimer: 0,
     };
     units.push({ stats: warStats, group: warUnit, alive: true });
   }
@@ -765,6 +965,8 @@ function aiLoop() {
         alive: true,
         target: null,
         animation: 0,
+        attacking: false,
+        attackingTimer: 0,
       };
       units.push({ stats: workerStats, group: workerUnit, alive: true });
     }

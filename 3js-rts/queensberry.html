@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>108 Queensberry Street, Carlton — Sale History</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== LOCKED SIDEBAR (same as index.html) ===== -->
+<button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">☰ Menu</button>
+<button id="darkModeToggle" class="is-dark" aria-label="Toggle dark mode" title="Dark mode"><span class="dm-icon">🌙</span><span class="dm-label">Dark</span></button>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="app-name"><span class="dot"></span>Warrens Exit Strategy</div>
+  </div>
+
+  <div class="sidebar-group" data-group="phase1">
+    <div class="sidebar-group-label" data-group="phase1">
+      <span>Phase1 (Exit Aus)</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="sidebar-group-content" data-group="phase1">
+      <a class="nav-link" href="queensberry.html">
+        <span class="link-icon">🏢</span><span class="link-label">108 Queensberry St</span>
+      </a>
+      <a class="nav-link" href="g05.html">
+        <span class="link-icon">📋</span><span class="link-label">G5 / 108</span>
+      </a>
+      <a class="nav-link" href="302.html">
+        <span class="link-icon">📋</span><span class="link-label">302 / 108</span>
+      </a>
+      <a class="nav-link" href="sussex.html">
+        <span class="link-icon">🏡</span><span class="link-label">143 Sussex St</span>
+      </a>
+
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:8px 0;">
+      <a class="nav-link" href="financial.html"><span class="link-icon">&#x1F4CA;</span><span class="link-label"><strong>Exit finances &#x2014; G05+302+Sussex</strong></span></a>
+      <a class="nav-link" href="competition.html"><span class="link-icon">🏁</span><span class="link-label"><strong>Competition tracker</strong></span></a>
+    </div>
+  </div>
+  <hr class="sidebar-separator">
+
+  <!-- ---- Group: Bali Statistics ---- -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-label" data-group="baliStats">
+      <span>Bali Statistics</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="sidebar-group-content" data-group="baliStats">
+      <a class="nav-link" href="index.html#annualWrap">
+        <span class="link-icon">📊</span><span class="link-label">Annual arrivals</span>
+      </a>
+      <a class="nav-link" href="index.html#monthlyWrap">
+        <span class="link-icon">📈</span><span class="link-label">Monthly arrivals</span>
+      </a>
+      <a class="nav-link" href="index.html#gateWrap">
+        <span class="link-icon">🚪</span><span class="link-label">Foreign visitors by gate</span>
+      </a>
+      <a class="nav-link" href="index.html#marketsWrap">
+        <span class="link-icon">🌏</span><span class="link-label">Source markets</span>
+      </a>
+      <a class="nav-link" href="index.html#hotelOccWrap">
+        <span class="link-icon">🏨</span><span class="link-label">Hotel occupancy (TPK)</span>
+      </a>
+      <a class="nav-link" href="index.html#losWrap">
+        <span class="link-icon">🛏️</span><span class="link-label">Length of stay</span>
+      </a>
+      <a class="nav-link" href="index.html#economyWrap">
+        <span class="link-icon">💰</span><span class="link-label">Bali economy (GDP)</span>
+      </a>
+      <a class="nav-link" href="index.html#strWrap">
+        <span class="link-icon">🏠</span><span class="link-label">STR / Airbnb market</span>
+      </a>
+      <a class="nav-link" href="index.html#priceAdrWrap">
+        <span class="link-icon">🏡</span><span class="link-label">Property prices by zone</span>
+      </a>
+      <a class="nav-link" href="index.html#hotelReportWrap">
+        <span class="link-icon">📰</span><span class="link-label">Hotel report</span>
+      </a>
+      <a class="nav-link" href="index.html#sources">
+        <span class="link-icon">🔗</span><span class="link-label">Data sources</span>
+      </a>
+    </div>
+  </div>
+
+  
+
+  <!-- ---- Group: Phase2 ---- -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-label">
+      <span>Phase2</span>
+      <span class="chevron">&#x25BC;</span>
+    </div>
+    <div class="sidebar-group-content">
+      <a class="nav-link" href="villas.html"><span class="link-icon">&#x1F3E0;</span><span class="link-label"><strong>Option 1 Bali</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="balinese.html"><span class="link-icon">🧭</span><span class="link-label">Option 1 — income strategy</span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="elle.html">
+        <span class="link-icon">&#x1F3DD;</span><span class="link-label"><strong>ELLE Resort &amp; Beach Club</strong></span>
+      </a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="villas.html#investmentTableWrap"><span class="link-icon">&#x1F4B0;</span><span class="link-label"><strong>Investment Table</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="mactan.html"><span class="link-icon">&#x1F3EB;</span><span class="link-label"><strong>Option 2 — Mactan (Cebu)</strong></span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="mactan.html#mactanLand"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Land — 241m² sea-view lot</span></a>
+      <a class="nav-link" href="mactan.html#mactanBuild"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Build budget — Phase 1/2/3</span></a>
+      <a class="nav-link" href="mactan.html#mactanMarket"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Market rates — 5-6BR luxury</span></a>
+      <a class="nav-link" href="mactan.html#mactanCompetition"><span class="link-icon">&#x1F3EB;</span><span class="link-label" style="font-size:12px;color:var(--muted);">Competition — Anza + comp set</span></a>
+      <hr style="border:none;border-top:1px solid var(--sidebar-border);margin:6px 0;">
+      <a class="nav-link" href="lightspeed.html"><span class="link-icon">&#x1F1FA;</span><span class="link-label"><strong>Option 3 — Lightspeed Dividend</strong></span></a>
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="footer-row"><span class="footer-label">Source</span><span class="footer-value">Domain.com.au · realestate.com.au</span></div>
+  </div>
+  <hr class="sidebar-separator">
+
+  <div class="sidebar-group">
+    <div class="sidebar-group-label">
+      <span>Phase2</span>
+      <span class="chevron">&#x25BC;</span>
+    </div>
+    <div class="sidebar-group-content">
+      <a class="nav-link" href="villas.html"><span class="link-icon">&#x1F3E0;</span><span class="link-label"><strong>Option 1 Bali</strong></span></a>
+    </div>
+  </div>
+</aside>
+
+<!-- ===== PAGE CONTENT (locked = indented via .main-content) ===== -->
+<div class="main-content">
+<div class="wrap">
+
+<header>
+  <div><h1>108 Queensberry Street, Carlton</h1>
+    <p style="font-size:13px;color:var(--muted);margin-top:4px;">Complete sale history — 47 apartments sold, 2014–2026</p>
+  </div>
+  <div class="meta"><span>Domain.com.au building profile</span></div>
+</header>
+
+<!-- ============ CURRENTLY FOR SALE ============ -->
+<div class="section">
+  <h2>Currently for sale <span class="badge">Domain · Sep 2026</span></h2>
+  <p class="lead">Apartments currently listed for sale at 108 Queensberry Street, Carlton VIC 3053. Prices are asking ranges as advertised.</p>
+  <div class="table-wrap"><table id="queensberryForSale">
+    <thead><tr><th>Unit</th><th class="num">Beds</th><th class="num">Baths</th><th class="num">Parking</th><th class="num">Asking price (AUD)</th><th>Listing</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>G3/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">—</td>
+        <td class="num">$337k – $370k</td>
+        <td><a href="https://www.domain.com.au/g3-108-queensberry-street-carlton-vic-3053-2020993101" target="_blank" rel="noopener">View listing</a></td>
+        <td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>210/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$500k – $550k</td>
+        <td><a href="https://www.domain.com.au/210-108-queensberry-street-carlton-vic-3053-2020952194" target="_blank" rel="noopener">View listing</a></td>
+        <td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>304/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$440k –$460k</td>
+        <td><a href="https://www.realestate.com.au/property-apartments-for-sale/vic/south-yarra/108-queensberry-street/2017156705" target="_blank" rel="noopener">View listing</a></td>
+        <td class="muted">REAA</td>
+      </tr>
+      <tr>
+        <td><strong>G06/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">—</td>
+        <td class="num">$320,000</td>
+        <td><a href="https://www.domain.com.au/g06-108-queensberry-street-carlton-vic-3053-2020780602" target="_blank" rel="noopener">View listing</a></td>
+        <td class="muted">Domain</td>
+      </tr>
+    </tbody></table>
+  </div>
+  <div class="note" style="margin-top:10px;">
+    <strong>Total currently for sale:</strong> 4 apartments. Combined asking range: ~$1.60M – $1.70M. Source: Domain.com.au building profile, retrieved Sep 2026.
+  </div>
+</div>
+
+<div class="section">
+  <h2>Complete sale history <span class="badge">Domain · Carlton VIC 3053</span></h2>
+  <div class="totals-row">
+    <div class="total-card"><div class="label">Total sales</div><div class="value">50</div><div class="sub">apartments sold</div></div>
+    <div class="total-card"><div class="label">Date range</div><div class="value" style="font-size:18px;font-weight:600;">2014–2026</div><div class="sub">12 years</div></div>
+    <div class="total-card"><div class="label">Median price</div><div class="value">~$860k</div><div class="sub">AUD</div></div>
+    <div class="total-card"><div class="label">Top sale</div><div class="value" style="font-size:18px;font-weight:600;">$3.5M</div><div class="sub">Penthouse, 31 Mar 2026</div></div>
+  </div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Sources: Domain.com.au building profile (47 sales) + realestate.com.au/PropTrack (3 additional). Last recorded sale: Mar 2026.</p>
+  <div class="table-wrap"><table id="queensberryTable">
+    <thead><tr><th>Unit</th><th class="num">Beds</th><th class="num">Baths</th><th class="num">Parking</th><th class="num">Sold (AUD)</th><th>Date sold</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Penthouse</strong></td>
+        <td class="num">4</td><td class="num">3</td><td class="num">2</td>
+        <td class="num">$3,500,000</td><td>31 Mar 2026</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>304/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$460,000</td><td>09 Mar 2026</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>905/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$865,000</td><td>10 Feb 2026</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>906/108</strong></td>
+        <td class="num">3</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$1,200,000</td><td>06 Feb 2026</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>210/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$730,000</td><td>07 Jan 2026</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>G3/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">—</td>
+        <td class="num">$370,000</td><td>18 Dec 2025</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>G1/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$430,000</td><td>12 Nov 2025</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>414/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$750,000</td><td>02 Oct 2025</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>508/108</strong></td>
+        <td class="num">2</td><td class="num">1</td><td class="num">2</td>
+        <td class="num">$695,000</td><td>13 Aug 2025</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>413/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$680,000</td><td>04 Jul 2025</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>307/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$520,000</td><td>07 May 2025</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>415/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$715,000</td><td>10 Apr 2025</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>212/108</strong></td>
+        <td class="num">3</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$1,050,000</td><td>14 Feb 2025</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>209/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$670,000</td><td>31 Jan 2025</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>G2/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$415,000</td><td>13 Jan 2025</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>215/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$650,000</td><td>22 Nov 2024</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>208/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$685,000</td><td>14 Nov 2024</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>103/108</strong></td>
+        <td class="num">2</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$595,000</td><td>22 Oct 2024</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>104/108</strong></td>
+        <td class="num">2</td><td class="num">1</td><td class="num">2</td>
+        <td class="num">$540,000</td><td>25 Sep 2024</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>305/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$470,000</td><td>03 Aug 2024</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>316/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$400,000</td><td>27 Jun 2024</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>315/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">—</td>
+        <td class="num">$375,000</td><td>23 May 2024</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>302/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$412,000</td><td>23 Apr 2024</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>108/108</strong></td>
+        <td class="num">2</td><td class="num">1</td><td class="num">2</td>
+        <td class="num">$535,000</td><td>19 Feb 2024</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>102/108</strong></td>
+        <td class="num">2</td><td class="num">1</td><td class="num">2</td>
+        <td class="num">$525,000</td><td>08 Dec 2023</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>106/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$635,000</td><td>04 Oct 2023</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>306/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$395,000</td><td>14 Sep 2023</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>214/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$635,000</td><td>18 Aug 2023</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>309/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$380,000</td><td>09 Jun 2023</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>301/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$399,000</td><td>03 May 2023</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>312/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$385,000</td><td>05 Apr 2023</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>311/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">—</td>
+        <td class="num">$350,000</td><td>04 Feb 2023</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>213/108</strong></td>
+        <td class="num">3</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$990,000</td><td>20 Jan 2023</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>209/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$620,000</td><td>09 Dec 2022</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>314/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$360,000</td><td>04 Nov 2022</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>308/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$380,000</td><td>15 Sep 2022</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>411/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$620,000</td><td>12 Aug 2022</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>216/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$580,000</td><td>02 Aug 2022</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>211/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$575,000</td><td>12 May 2022</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>413/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$570,000</td><td>18 Mar 2022</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>G4/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$355,000</td><td>25 Jan 2022</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>216/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$565,000</td><td>06 Dec 2021</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>414/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$550,000</td><td>20 Oct 2021</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>412/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$545,000</td><td>02 Sep 2021</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>416/108</strong></td>
+        <td class="num">3</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$900,000</td><td>22 Jul 2021</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>214/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$545,000</td><td>08 Jun 2021</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>208/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">1</td>
+        <td class="num">$482,500</td><td>23 Mar 2021</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>415/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$530,000</td><td>26 Jan 2021</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>310/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$320,000</td><td>04 Dec 2020</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>101/108</strong></td>
+        <td class="num">2</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$435,000</td><td>27 Aug 2020</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>105/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$480,000</td><td>26 Nov 2019</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>410/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$600,000</td><td>30 May 2019</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>304/108</strong></td>
+        <td class="num">2</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$495,000</td><td>04 Apr 2019</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>204/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$610,000</td><td>26 Feb 2019</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>303/108</strong></td>
+        <td class="num">2</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$510,000</td><td>15 Nov 2018</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>101/108</strong></td>
+        <td class="num">2</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$520,000</td><td>29 Mar 2018</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>206/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$570,000</td><td>15 Feb 2018</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>101/108</strong></td>
+        <td class="num">2</td><td class="num">1</td><td class="num">2</td>
+        <td class="num">$515,000</td><td>07 Sep 2016</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>304/108</strong></td>
+        <td class="num">2</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$430,000</td><td>23 Jun 2016</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>205/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$499,000</td><td>15 Dec 2015</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>408/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$440,000</td><td>26 Feb 2015</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>409/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$440,000</td><td>06 Jan 2015</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>204/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$400,000</td><td>19 Nov 2014</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>405/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$404,000</td><td>16 May 2014</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>205/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$420,000</td><td>29 Oct 2013</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>301/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$262,000</td><td>25 Sep 2013</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>302/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$268,000</td><td>29 Aug 2013</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>303/108</strong></td>
+        <td class="num">2</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$325,000</td><td>23 May 2013</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>409/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$470,000</td><td>04 Apr 2013</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>410/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$480,000</td><td>04 Apr 2013</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>206/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$380,000</td><td>28 Feb 2013</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>201/108</strong></td>
+        <td class="num">2</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$320,000</td><td>12 Oct 2012</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>206/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$372,000</td><td>27 Sep 2012</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>200/108</strong></td>
+        <td class="num">2</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$340,000</td><td>31 Aug 2012</td><td class="muted">Domain</td>
+      </tr>
+      <tr>
+        <td><strong>104/108</strong></td>
+        <td class="num">2</td><td class="num">1</td><td class="num">—</td>
+        <td class="num">$412,045</td><td>2014</td>
+        <td class="muted">REA</td>
+      </tr>
+      <tr>
+        <td><strong>404/108</strong></td>
+        <td class="num">2</td><td class="num">2</td><td class="num">2</td>
+        <td class="num">$685,000</td><td>2017</td>
+        <td class="muted">REA</td>
+      </tr>
+      <tr>
+        <td><strong>504/108</strong></td>
+        <td class="num">1</td><td class="num">1</td><td class="num">1</td>
+        <td class="num">$438,000</td><td>19 Nov 2025</td>
+        <td class="muted">REA+Domain</td>
+      </tr>
+    </tbody></table>
+  </div>
+  <div class="note" style="margin-top:10px;font-size:13px;">
+    <strong>Duplicates note:</strong> A small number of entries above may appear twice across Domain's paginated sold listings (pages can overlap). Figures are as scraped verbatim from Domain.com.au on each page; treat as a reference list, not an audit-grade register.
+  </div>
+</div>
+
+<!-- ============ BUILDING BROCHURE ============ -->
+<div class="section">
+  <h2>Building brochure <span class="badge">QUEENS — V12</span></h2>
+  <p class="lead" style="font-size:13px;">Full development brochure for 108 Queensberry Street, Carlton — covering the building, floor plans, apartment layouts, and sales programme. 11-page PDF, V12 version.</p>
+  <img src="assets/queensberry/queens_brochure_preview.png" alt="QUEENS brochure V12 — preview screenshot" style="width:100%;max-width:664px;height:auto;border:1px solid var(--line);border-radius:6px;margin:8px 0 4px;">
+  <div style="font-size:11px;color:var(--muted);margin-bottom:10px;">Preview — click the button below to open the full 11-page PDF.</div>
+  <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
+    <a href="assets/queensberry/QUEENS_Brochure_V12.pdf" target="_blank" rel="noopener"
+       style="display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;text-decoration:none;padding:10px 18px;border-radius:6px;font-size:13px;font-weight:600;">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2h6l2 2h2v10H2V4h2V2zm0 2v2h1.5V6H4V4zm2 2h1.5v2H6V6zm0 3h1.5v2h-1.5v-2zm0 3h1.5v-2H6v2zm-6 0H2v2h1.5V6H4v-2zm0 3h1.5v-2H4v2zm8-3h-1.5v2h1.5V6h-2v2h2v2h1.5V6H14V4h-1.5v-2h-2v2zm2 2h1.5v2h-1.5v-2zm0 3h-1.5v2h1.5v-2h1.5v-2h-2v2zm-8 0h1.5V6h-1.5v2zm0 3h1.5V6h-1.5v2zm8 0h1.5V6h-2v2h2v2h1.5V6h-1.5v-2h-2v2zm2 2h1.5v2h-1.5v-2zm0 3h-1.5v2h1.5v-2h1.5v-2H14v2z" fill="currentColor"/></svg>
+      Open QUEENS brochure V12 (PDF, 11 pages, 1.4 MB)
+    </a>
+    <div class="note" style="font-size:12px;flex:1;min-width:200px;">
+      <strong>File:</strong> <code>QUEENS_Brochure_V12.pdf</code> — 1.4 MB, 11 pages. Building development brochure for 108 Queensberry St, Carlton VIC 3053. Contains floor plans, apartment layouts, building specifications, sales programme, and pricing.
+      <div style="margin-top:4px;color:var(--muted);">Source: building / developer brochure on file.</div>
+    </div>
+  </div>
+</div>
+
+<p style="font-size:12px;color:var(--muted);margin-top:20px;text-align:center;">
+  <a href="index.html" style="color:var(--teal);">← Back to dashboard</a>
+</p>
+
+</div>
+</div>
+
+<script src="render.js?v=5"></script>
+</body>
+</html>
