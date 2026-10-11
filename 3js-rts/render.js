@@ -185,7 +185,118 @@ function setupTerrain() {
   }
 }
 
-// ---- Unit visuals ----
+// ---- Setup UI event handlers ----
+function setupUI() {
+  // Left-click: select units or buildings
+  renderer.domElement.addEventListener('click', (event) => {
+    if (game.isGameOver) return;
+
+    const intersects = getMouseIntersects(event);
+    if (intersects.length > 0) {
+      const hit = intersects[0];
+      const unit = findUnitByObject(hit.object);
+      if (unit) {
+        selectUnit(unit.stats.id);
+        return;
+      }
+
+      const building = findBuildingByObject(hit.object);
+      if (building) {
+        selectBuilding(building);
+        return;
+      }
+    }
+
+    // Click on ground — deselect
+    if (!event.ctrlKey && !event.shiftKey) {
+      game.selected = null;
+      updateSelectionUI();
+      updateSelectedUI('base', 'Click a unit or building to select it');
+      buildButtons.style.display = 'none';
+      healthBarContainer.style.display = 'none';
+    }
+  });
+
+  // Right-click: attack (if warrior selected) or place unit
+  renderer.domElement.addEventListener('contextmenu', (event) => {
+    event.preventDefault();
+    if (game.isGameOver) return;
+
+    const intersects = getMouseIntersects(event);
+    const hit = intersects[0];
+
+    // Check if clicked on a unit
+    if (intersects.length > 0) {
+      const clickedUnit = findUnitByObject(hit.object);
+      if (clickedUnit && game.selected && game.selected.type === 'warrior') {
+        // Warrior selected, clicked another unit — attack
+        const target = units.find(u => u.stats.id === clickedUnit.stats.id);
+        if (target && target.stats.alive && target.stats.type !== 'worker') {
+          attackTarget(game.selected.id, target.stats.id);
+          return;
+        }
+      }
+    }
+
+    // Clicked on a building — select it
+    const building = findBuildingByObject(hit.object);
+    if (building) {
+      selectBuilding(building);
+      return;
+    }
+
+    // Clicked on ground — place unit or deselect
+    const groundHit = getMouseIntersects(event);
+    if (groundHit.length > 0 && groundHit[0].object === terrainMesh) {
+      if (game.selected && game.selected.alive) {
+        const unit = units.find(u => u.stats.id === game.selected.id);
+        if (unit) {
+          placeUnitAt(unit.stats.type, groundHit[0].point);
+          return;
+        }
+      }
+      // Deselect
+      game.selected = null;
+      updateSelectionUI();
+      updateSelectedUI('base', 'Click a unit or building to select it');
+      buildButtons.style.display = 'none';
+      healthBarContainer.style.display = 'none';
+      return;
+    }
+
+    // Clicked elsewhere — deselect
+    game.selected = null;
+    updateSelectionUI();
+    updateSelectedUI('base', 'Click a unit or building to select it');
+    buildButtons.style.display = 'none';
+    healthBarContainer.style.display = 'none';
+  });
+
+  // Hover for build preview
+  renderer.domElement.addEventListener('mousemove', (event) => {
+    if (game.selected && game.selected.alive) {
+      const intersects = getMouseIntersects(event);
+      if (intersects.length > 0 && intersects[0].object === terrainMesh) {
+        showFlyOrigin = true;
+        updateBuildPreview(intersects[0].point);
+        updateHUD();
+        // Show health bar for warrior selection
+        if (game.selected.type === 'warrior') {
+          const unit = units.find(u => u.stats.id === game.selected.id);
+          if (unit) {
+            showHealthBar(unit.stats.health, unit.stats.maxHealth);
+          }
+        }
+      } else {
+        showFlyOrigin = false;
+        if (buildPreviewMesh) {
+          buildPreviewMesh.removeFromParent();
+          buildPreviewMesh = null;
+        }
+      }
+    }
+  });
+}
 function createUnitVisual(type, position) {
   const group = new THREE.Group();
 
