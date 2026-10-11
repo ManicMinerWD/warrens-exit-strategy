@@ -28,7 +28,7 @@ const healthBarFill = document.getElementById('health-bar-fill');
 const healthLabel = document.getElementById('health-label');
 const infoPanel = document.getElementById('info-panel');
 const minimapContainer = document.getElementById('minimap-container');
-const minimapCanvas = document.getElementById('minimap');
+const minimapCanvas = document.getElementById('minimap-canvas');
 const minimapCtx = minimapCanvas.getContext('2d');
 
 // ---- Setup scene ----
@@ -97,6 +97,9 @@ function init() {
   gridHelper.position.y = -0.01;
   scene.add(gridHelper);
 
+  // Load game data from data.js
+  initData();
+
   // UI
   buildButtons.style.display = 'none';
   healthBarContainer.style.display = 'none';
@@ -130,7 +133,7 @@ function init() {
   // Start AI
   setTimeout(() => {
     startAI();
-  }, 3000);
+  }, 1000);
 
   // Check game over
   setInterval(() => {
@@ -182,183 +185,95 @@ function setupTerrain() {
   }
 }
 
-// ---- Setup UI event handlers ----
-function setupUI() {
-  // Left-click: select units or buildings
-  renderer.domElement.addEventListener('click', (event) => {
-    if (game.isGameOver) return;
+// ---- Unit visuals ----
+function createUnitVisual(type, position) {
+  const group = new THREE.Group();
 
-    const intersects = getMouseIntersects(event);
-    if (intersects.length > 0) {
-      const hit = intersects[0];
-      const unit = findUnitByObject(hit.object);
-      if (unit) {
-        selectUnit(unit.stats.id);
-        return;
-      }
-
-      const building = findBuildingByObject(hit.object);
-      if (building) {
-        selectBuilding(building);
-        return;
-      }
-    }
-
-    // Click on ground — deselect
-    if (!event.ctrlKey && !event.shiftKey) {
-      game.selected = null;
-      updateSelectionUI();
-      updateSelectedUI('base', 'Click a unit or building to select it');
-      buildButtons.style.display = 'none';
-      healthBarContainer.style.display = 'none';
-    }
-  });
-
-  // Right-click: attack (if warrior selected) or place unit
-  renderer.domElement.addEventListener('contextmenu', (event) => {
-    event.preventDefault();
-    if (game.isGameOver) return;
-
-    const intersects = getMouseIntersects(event);
-    const hit = intersects[0];
-
-    // Check if clicked on a unit
-    if (intersects.length > 0) {
-      const clickedUnit = findUnitByObject(hit.object);
-      if (clickedUnit && game.selected && game.selected.type === 'warrior') {
-        // Warrior selected, clicked another unit — attack
-        const target = units.find(u => u.stats.id === clickedUnit.stats.id);
-        if (target && target.stats.alive && target.stats.type !== 'worker') {
-          attackTarget(game.selected.id, target.stats.id);
-          return;
-        }
-      }
-    }
-
-    // Clicked on a building — select it
-    const building = findBuildingByObject(hit.object);
-    if (building) {
-      selectBuilding(building);
-      return;
-    }
-
-    // Clicked on ground — place unit or deselect
-    if (hitsOnGround(intersects, event)) {
-      if (game.selected && game.selected.alive) {
-        const unit = units.find(u => u.stats.id === game.selected.id);
-        if (unit) {
-          const groundPos = intersects[0].point;
-          placeUnitAt(unit.stats.type, groundPos);
-          return;
-        }
-      }
-      game.selected = null;
-      updateSelectionUI();
-      updateSelectedUI('base', 'Click a unit or building to select it');
-      buildButtons.style.display = 'none';
-      healthBarContainer.style.display = 'none';
-      return;
-    }
-
-    // Clicked elsewhere — deselect
-    game.selected = null;
-    updateSelectionUI();
-    updateSelectedUI('base', 'Click a unit or building to select it');
-    buildButtons.style.display = 'none';
-    healthBarContainer.style.display = 'none';
-  });
-
-  // Hover for build preview
-  renderer.domElement.addEventListener('mousemove', (event) => {
-    if (game.selected && game.selected.alive) {
-      const intersects = getMouseIntersects(event);
-      if (intersects.length > 0 && intersects[0].object === terrainMesh) {
-        showFlyOrigin = true;
-        updateBuildPreview(intersects[0].point);
-        updateHUD();
-        // Show health bar for warrior selection
-        if (game.selected.type === 'warrior') {
-          const unit = units.find(u => u.stats.id === game.selected.id);
-          if (unit) {
-            showHealthBar(unit.stats.health, unit.stats.maxHealth);
-          }
-        }
-      } else {
-        showFlyOrigin = false;
-        if (buildPreviewMesh) {
-          buildPreviewMesh.removeFromParent();
-          buildPreviewMesh = null;
-        }
-      }
-    }
-  });
-}
-
-// ---- Check if mousedown is on ground ----
-function hitsOnGround(intersects, event) {
-  if (intersects.length > 0 && intersects[0].object === terrainMesh) {
-    // Check if this is a left click (not right click)
-    const button = event.button || 0;
-    return button === 0;
-  }
-  return false;
-}
-
-// ---- Get mouse intersects ----
-function getMouseIntersects(event) {
-  const raycaster = new THREE.Raycaster();
-  const mouse = new THREE.Vector2(
-    (event.clientX / window.innerWidth) * 2 - 1,
-    -(event.clientY / window.innerHeight) * 2 + 1
-  );
-  raycaster.setFromCamera(mouse, camera);
-
-  const intersects = [];
-  const terrainIntersects = raycaster.intersectObject(terrainMesh);
-  if (terrainIntersects.length > 0) {
-    intersects.push(terrainIntersects[0]);
+  if (type === 'worker') {
+    // Worker: simple worker figure
+    const body = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.2, 0.4, 6), new THREE.MeshStandardMaterial({ color: 0x4CAF50, roughness: 0.8 }));
+    body.position.y = 0.2;
+    group.add(body);
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.12, 8, 8), new THREE.MeshStandardMaterial({ color: 0xFFD700, roughness: 0.9 }));
+    head.position.y = 0.5;
+    group.add(head);
+    const arm1 = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.3, 0.05), new THREE.MeshStandardMaterial({ color: 0x4CAF50, roughness: 0.8 }));
+    arm1.position.set(0.2, 0.35, 0);
+    group.add(arm1);
+    const arm2 = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.3, 0.05), new THREE.MeshStandardMaterial({ color: 0x4CAF50, roughness: 0.8 }));
+    arm2.position.set(-0.2, 0.35, 0);
+    group.add(arm2);
+  } else if (type === 'warrior') {
+    // Warrior: generic warrior figure
+    const body = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.25, 0.5, 6), new THREE.MeshStandardMaterial({ color: 0x795548, roughness: 0.8 }));
+    body.position.y = 0.25;
+    group.add(body);
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.12, 8, 8), new THREE.MeshStandardMaterial({ color: 0xFFD700, roughness: 0.9 }));
+    head.position.y = 0.6;
+    group.add(head);
+    const bodyArm = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.05, 0.05), new THREE.MeshStandardMaterial({ color: 0x795548, roughness: 0.8 }));
+    bodyArm.position.set(0, 0.35, 0);
+    group.add(bodyArm);
+    const arm1 = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.3, 0.05), new THREE.MeshStandardMaterial({ color: 0x795548, roughness: 0.8 }));
+    arm1.position.set(0.25, 0.4, 0);
+    group.add(arm1);
+    const arm2 = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.3, 0.05), new THREE.MeshStandardMaterial({ color: 0x795548, roughness: 0.8 }));
+    arm2.position.set(-0.25, 0.4, 0);
+    group.add(arm2);
+    const sword = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.4, 0.02), new THREE.MeshStandardMaterial({ color: 0xFFD700, roughness: 0.9 }));
+    sword.position.set(0.35, 0.3, 0);
+    group.add(sword);
+  } else if (type === 'scout') {
+    // Scout: taller, leaner figure
+    const body = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.2, 0.4, 6), new THREE.MeshStandardMaterial({ color: 0x2E86AB, roughness: 0.8 }));
+    body.position.y = 0.2;
+    group.add(body);
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.12, 8, 8), new THREE.MeshStandardMaterial({ color: 0xFFD700, roughness: 0.9 }));
+    head.position.y = 0.5;
+    group.add(head);
+    const telescope = new THREE.Mesh(new THREE.CylinderGeometry(0.01, 0.02, 0.3, 6), new THREE.MeshStandardMaterial({ color: 0x2E86AB, roughness: 0.8 }));
+    telescope.position.set(0, 0.4, 0);
+    group.add(telescope);
+  } else if (type === 'archer') {
+    // Archer: leaned-back figure with bow
+    const body = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.22, 0.5, 6), new THREE.MeshStandardMaterial({ color: 0xC06C2B, roughness: 0.8 }));
+    body.position.y = 0.25;
+    group.add(body);
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.12, 8, 8), new THREE.MeshStandardMaterial({ color: 0xFFD700, roughness: 0.9 }));
+    head.position.y = 0.6;
+    group.add(head);
+    const bow = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.05, 0.05), new THREE.MeshStandardMaterial({ color: 0x8B4513, roughness: 0.8 }));
+    bow.position.set(-0.35, 0.35, 0);
+    group.add(bow);
+    const arrow = new THREE.Mesh(new THREE.CylinderGeometry(0.01, 0.01, 0.3, 6), new THREE.MeshStandardMaterial({ color: 0xFFD700, roughness: 0.9 }));
+    arrow.position.set(-0.35, 0.2, 0);
+    group.add(arrow);
+  } else if (type === 'engineer') {
+    // Engineer: with hard hat and tool
+    const body = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.2, 0.4, 6), new THREE.MeshStandardMaterial({ color: 0x4CAF50, roughness: 0.8 }));
+    body.position.y = 0.2;
+    group.add(body);
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.12, 8, 8), new THREE.MeshStandardMaterial({ color: 0xFFD700, roughness: 0.9 }));
+    head.position.y = 0.5;
+    group.add(head);
+    const hardHat = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.1, 0.15, 8), new THREE.MeshStandardMaterial({ color: 0x2E7D32, roughness: 0.8 }));
+    hardHat.position.y = 0.6;
+    group.add(hardHat);
+    const tool = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 0.2, 6), new THREE.MeshStandardMaterial({ color: 0x4CAF50, roughness: 0.8 }));
+    tool.position.set(0.25, 0.3, 0);
+    group.add(tool);
   }
 
-  units.forEach(u => {
-    if (!u.stats.alive) return;
-    u.group.traverse(child => {
-      if (child.isMesh && child.material) {
-        const hits = raycaster.intersectObject(child);
-        hits.forEach(h => {
-          if (!intersects.some(i => i.object === h.object)) {
-            h.object.userData.unitId = u.stats.id;
-            h.object.userData.unitType = u.stats.type;
-            intersects.push(h);
-          }
-        });
-      }
-    });
-  });
-
-  buildings.forEach(b => {
-    if (!b.group) return;
-    b.group.traverse(child => {
-      if (child.isMesh && child.material) {
-        const hits = raycaster.intersectObject(child);
-        hits.forEach(h => {
-          if (!intersects.some(i => i.object === h.object)) {
-            h.object.userData.buildingId = b.id;
-            h.object.userData.buildingType = b.type;
-            intersects.push(h);
-          }
-        });
-      }
-    });
-  });
-
-  intersects.sort((a, b) => a.distanceTo(camera.position) - b.distanceTo(camera.position));
-  return intersects;
+  group.position.set(position.x, position.y || 0, position.z);
+  if (position.rotation) group.rotation.y = position.rotation;
+  return group;
 }
 
 // ---- Main game loop ----
 function gameLoop() {
   update();
   render();
+  drawMinimap();
   gameLoopId = requestAnimationFrame(gameLoop);
 }
 
@@ -410,6 +325,92 @@ function update() {
 
 function render() {
   renderer.render(scene, camera);
+}
+
+// ---- Minimap rendering ----
+const MAP_SIZE = 140;
+
+function drawMinimap() {
+  const ctx = minimapCtx;
+  const canvas = minimapCanvas;
+  const w = canvas.width;
+  const h = canvas.height;
+
+  // Clear canvas
+  ctx.clearRect(0, 0, w, h);
+
+  // Draw background
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
+  ctx.fillRect(0, 0, w, h);
+
+  // Draw terrain outline (bounding box)
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(2, 2, w - 4, h - 4);
+
+  // Find min/max positions for centering
+  let minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
+  const bounds = [game.terrainCenter];
+  units.forEach(u => { if (u.stats.alive) { bounds.push(u.stats.position); } });
+  buildings.forEach(b => { bounds.push(b.position); });
+
+  bounds.forEach(p => {
+    if (p.x < minX) minX = p.x;
+    if (p.x > maxX) maxX = p.x;
+    if (p.z < minZ) minZ = p.z;
+    if (p.z > maxZ) maxZ = p.z;
+  });
+
+  const rangeX = maxX - minX || 1;
+  const rangeZ = maxZ - minZ || 1;
+
+  function toMapCoords(p) {
+    const x = ((p.x - minX) / rangeX) * (w - 10) + 5;
+    const z = ((p.z - minZ) / rangeZ) * (h - 10) + 5;
+    return { x: x - 0.5, y: z - 0.5 };
+  }
+
+  // Draw resource nodes
+  resources.nodes.forEach(node => {
+    const pos = toMapCoords(node.position);
+    ctx.beginPath();
+    ctx.arc(pos.x, pos.y, 3, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(180, 140, 255, 0.6)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  });
+
+  // Draw units
+  units.forEach(u => {
+    if (!u.stats.alive) return;
+    const pos = toMapCoords(u.stats.position);
+    if (u.stats.type === 'worker') {
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = '#8BC34A';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    } else if (u.stats.type === 'warrior') {
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, 5, 0, Math.PI * 2);
+      ctx.fillStyle = '#795548';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+  });
+
+  // Draw buildings
+  buildings.forEach(b => {
+    const pos = toMapCoords(b.position);
+    ctx.fillStyle = '#4CAF50';
+    ctx.fillRect(pos.x - 4, pos.y - 4, 8, 8);
+  });
 }
 
 // ---- Selection ----
@@ -547,171 +548,69 @@ function attack(targetId, targetHealth) {
 
 function moveUnit(unit, targetPos) {
   if (!unit.stats.alive) return;
-  const dx = targetPos.x - unit.stats.position.x;
-  const dz = targetPos.z - unit.stats.position.z;
-  const dist = Math.sqrt(dx * dx + dz * dz);
-
-  if (dist > 1.0) {
-    const speed = unit.stats.speed || 2.0;
-    unit.stats.position.x += (dx / dist) * speed * 0.1;
-    unit.stats.position.z += (dz / dist) * speed * 0.1;
-    unit.group.position.set(unit.stats.position.x, 0.4, unit.stats.position.z);
-    unit.group.lookAt(targetPos.x, 0, targetPos.z);
-  } else {
-    unit.stats.position.x = targetPos.x;
-    unit.stats.position.z = targetPos.z;
-    unit.group.position.set(targetPos.x, 0.4, targetPos.z);
-  }
+  const dir = new THREE.Vector3(targetPos.x - unit.stats.position.x, 0, targetPos.z - unit.stats.position.z);
+  dir.normalize();
+  unit.stats.position.x += dir.x * unit.stats.speed * 0.016;
+  unit.stats.position.z += dir.z * unit.stats.speed * 0.016;
+  unit.group.position.copy(unit.stats.position);
 }
 
-// ---- Build system ----
+// ---- Placement ----
 function buildBase() {
-  if (game.isGameOver) return;
-  const cost = { gold: 300, food: 0 };
-  if (!deductResources(cost.gold, cost.food)) {
+  if (!canAfford(300, 0)) {
     updateSelectedUI('base', 'Not enough resources');
     return;
   }
-
-  const pos = getBuildPosition();
-  if (!pos) {
-    updateSelectedUI('base', 'Nothing to build on');
-    return;
-  }
-
-  const group = createBaseVisual(pos);
-  buildingsGroup.add(group);
-  buildings.push({ type: 'base', position: { x: pos.x, y: pos.y, z: pos.z }, group: group, id: buildings.length });
-
+  deductResources(300, 0);
+  const base = createBaseData({ x: 0, y: 0, z: 0 });
+  buildings.push(base);
+  const baseMesh = createUnitVisual('base', base.position);
+  base.group = baseMesh;
+  buildingsGroup.add(baseMesh);
   updateHUD();
-  updateSelectedUI('base', 'Base built! Build more units.');
-  saveState();
-  updateBuildButtons();
-  healthBarContainer.style.display = 'none';
+  updateSelectionUI();
+  updateSelectedUI('base', 'Base built! Right-click ground to place units');
 }
 
 function placeUnitAt(type, position) {
-  if (game.isGameOver) return;
+  const building = buildings.find(b => b.id === game.selected.id);
+  if (!building) return;
 
-  if (type === 'base') {
-    if (game.isGameOver) return;
-    const cost = { gold: 300, food: 0 };
-    if (!deductResources(cost.gold, cost.food)) {
+  if (type === 'worker') {
+    if (!canAfford(100, 50)) {
       updateSelectedUI('base', 'Not enough resources');
       return;
     }
-
-    const potentialConflict = buildings.find(b => {
-      return Math.sqrt(Math.pow(position.x - b.position.x, 2) + Math.pow(position.z - b.position.z, 2)) < 3;
-    });
-    if (potentialConflict) {
-      updateSelectedUI('base', 'Cannot build on a building');
+    deductResources(100, 50);
+    const unit = createUnitData('worker', position);
+    units.push(unit);
+    const unitMesh = createUnitVisual('worker', unit.position);
+    unit.group = unitMesh;
+    unitsGroup.add(unitMesh);
+    game.workers++;
+  } else if (type === 'warrior') {
+    if (!canAfford(150, 100)) {
+      updateSelectedUI('base', 'Not enough resources');
       return;
     }
-
-    const group = createBaseVisual(position);
-    buildingsGroup.add(group);
-    buildings.push({ type: 'base', position: { x: position.x, y: position.y, z: position.z }, group: group, id: buildings.length });
-
-    updateHUD();
-    updateSelectedUI('base', 'Base placed! Build more units.');
-    saveState();
-    updateBuildButtons();
-    healthBarContainer.style.display = 'none';
-    return;
+    deductResources(150, 100);
+    const unit = createUnitData('warrior', position);
+    units.push(unit);
+    const unitMesh = createUnitVisual('warrior', unit.position);
+    unit.group = unitMesh;
+    unitsGroup.add(unitMesh);
+    game.warriors++;
   }
-
-  const cost = type === 'worker' ? { gold: 100, food: 50 } : type === 'warrior' ? { gold: 150, food: 100 } : { gold: 0, food: 0 };
-  if (!deductResources(cost.gold, cost.food)) {
-    updateSelectedUI('base', 'Not enough resources');
-    return;
-  }
-
-  const potentialConflict = buildings.find(b => {
-    return Math.sqrt(Math.pow(position.x - b.position.x, 2) + Math.pow(position.z - b.position.z, 2)) < 3;
-  });
-  if (potentialConflict) {
-    updateSelectedUI('base', 'Cannot build on a building');
-    return;
-  }
-
-  const unit = createUnitVisual(type, position);
-  const stats = {
-    id: units.length,
-    type: type,
-    position: { x: position.x, y: position.y, z: position.z },
-    rotation: type === 'warrior' ? Math.PI : 0,
-    health: type === 'worker' ? 100 : 150,
-    maxHealth: type === 'worker' ? 100 : 150,
-    damage: type === 'warrior' ? 20 : 0,
-    attackRange: 3.0,
-    speed: 2.0,
-    gatherRate: type === 'worker' ? 2.0 : 0,
-    buildRate: type === 'worker' ? 5.0 : 0,
-    goldCost: type === 'worker' ? 100 : type === 'warrior' ? 150 : 0,
-    foodCost: type === 'worker' ? 50 : type === 'warrior' ? 100 : 0,
-    alive: true,
-    target: null,
-    animation: 0,
-    attacking: false,
-    attackingTimer: 0,
-  };
-  units.push({ stats: stats, group: unit, alive: true });
-
-  if (unit) {
-    if (type === 'worker') {
-      workerGatherInterval = setInterval(() => {
-        collectResource(stats);
-      }, 1000);
-    }
-  }
-
   updateHUD();
-  updateSelectedUI('base', 'Unit placed! Select a unit to control it.');
-  saveState();
+  updateSelectionUI();
   updateBuildButtons();
-  healthBarContainer.style.display = 'none';
-}
-
-// ---- Get build position ----
-function getBuildPosition() {
-  if (!game.selected) {
-    return null;
-  }
-
-  const unit = units.find(u => u.stats.id === game.selected.id);
-  if (unit) {
-    return unit.stats.position;
-  }
-
-  const building = buildings.find(b => b.id === game.selected.id);
-  if (building) {
-    return building.position;
-  }
-
-  return null;
-}
-
-function getNearBasePosition() {
-  const base = getFirstBuildingPosition();
-  const offsets = [
-    { x: 10, z: 0 },
-    { x: -10, z: 0 },
-    { x: 0, z: 10 },
-    { x: 0, z: -10 },
-  ];
-
-  for (const offset of offsets) {
-    const pos = { x: base.x + offset.x, y: 0, z: base.z + offset.z };
-    const overlap = buildings.find(b => {
-      return Math.sqrt(Math.pow(pos.x - b.position.x, 2) + Math.pow(pos.z - b.position.z, 2)) < 3;
-    });
-    if (!overlap) {
-      return pos;
+  updateMinimap();
+  updateSelectedUI('base', 'Unit placed! Select the new unit to give it orders.');
+  setTimeout(() => {
+    if (game.selected && game.selected.id === building.id) {
+      updateSelectedUI('base', 'Base — click a unit or building to select it');
     }
-  }
-
-  return { x: base.x + offsets[0].x, y: 0, z: base.z + offsets[0].z };
+  }, 1500);
 }
 
 // ---- Resource system ----
@@ -733,9 +632,8 @@ function findNearestResourceNode(unitPosition) {
   return nearest;
 }
 
-let workerGatherInterval;
-
 function collectResource(unit) {
+  if (unit.stats.type !== 'worker') return;
   const node = findNearestResourceNode(unit.position);
   if (!node) return;
 
@@ -745,7 +643,7 @@ function collectResource(unit) {
   updateHUD();
 }
 
-// ---- Show build preview ----
+// ---- Build preview ----
 function updateBuildPreview(position) {
   if (buildPreviewMesh) {
     buildPreviewMesh.removeFromParent();
@@ -879,6 +777,7 @@ function startAI() {
     attackingTimer: 0,
   };
   units.push({ stats: aiStats, group: aiWorker, alive: true });
+  game.workers++;
 
   // AI tick
   aiLoop();
@@ -955,7 +854,7 @@ function aiLoop() {
     const warStats = {
       id: units.length,
       type: 'warrior',
-      position: { x: warPos.x, y: warPos.y, z: warPos.z },
+      position: { x: warPos.x, y: 0, z: warPos.z },
       rotation: Math.PI,
       health: 150,
       maxHealth: 150,
@@ -973,6 +872,7 @@ function aiLoop() {
       attackingTimer: 0,
     };
     units.push({ stats: warStats, group: warUnit, alive: true });
+    game.warriors++;
   }
 
   if (aiInterval) clearInterval(aiInterval);
@@ -1001,39 +901,81 @@ function aiLoop() {
         attackingTimer: 0,
       };
       units.push({ stats: workerStats, group: workerUnit, alive: true });
+      game.workers++;
     }
   }, 20000);
 
   gameLoopId = requestAnimationFrame(aiLoop);
 }
 
-// ---- Minimap rendering ----
+// ---- Game over check ----
+setInterval(() => {
+  checkGameOver();
+}, 1000);
 
-const MAP_SIZE = 140;
-const MAP_SCALE = 1000; // map world units to pixels
+// ---- Resize ----
+function onResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
 
-function drawMinimap() {
+// ---- Build buttons ----
+function updateBuildButtons() {
+  const actions = getBuildingActions();
+  if (!actions || actions.length === 0) {
+    buildButtons.style.display = 'none';
+    return;
+  }
+
+  buildButtons.style.display = 'flex';
+  buildButtons.innerHTML = '';
+
+  actions.forEach(action => {
+    const btn = document.createElement('div');
+    btn.className = 'build-btn';
+    btn.dataset.action = 'place_' + action.type;
+    btn.innerHTML = `
+      <span class="build-icon">${action.type === 'worker' ? '⛏️' : action.type === 'warrior' ? '⚔️' : '🏰'}</span>
+      <span class="build-text">${action.name} (${action.gold}g/${action.food}f)</span>
+    `;
+    btn.addEventListener('click', () => {
+      placeUnitAt(action.type, getBuildingPosition());
+    });
+    buildButtons.appendChild(btn);
+  });
+}
+
+// ---- HUD updates ----
+function updateResourceFills() {
+  if (goldFill) goldFill.style.width = (resources.gold / 1000) * 100 + '%';
+  if (foodFill) foodFill.style.width = (resources.food / 1000) * 100 + '%';
+  if (goldVal) goldVal.textContent = Math.floor(resources.gold);
+  if (foodVal) foodVal.textContent = Math.floor(resources.food);
+  if (workerVal) workerVal.textContent = game.workers;
+  if (warriorVal) warriorVal.textContent = game.warriors;
+}
+
+// ---- Minimap ----
+function updateMinimap() {
   const ctx = minimapCtx;
-  const canvas = minimapCanvas;
-  const w = canvas.width;
-  const h = canvas.height;
+  const w = minimapCanvas.width;
+  const h = minimapCanvas.height;
 
-  // Clear canvas
+  // Clear
   ctx.clearRect(0, 0, w, h);
-
-  // Draw background
   ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
   ctx.fillRect(0, 0, w, h);
 
-  // Draw terrain outline (bounding box)
+  // Draw terrain outline
   ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
   ctx.lineWidth = 2;
   ctx.strokeRect(2, 2, w - 4, h - 4);
 
-  // Find min/max positions for centering
+  // Find bounds
   let minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
   const bounds = [game.terrainCenter];
-  units.forEach(u => { if (u.stats.alive) { bounds.push(u.stats.position); } });
+  units.forEach(u => { if (u.stats.alive) bounds.push(u.stats.position); });
   buildings.forEach(b => { bounds.push(b.position); });
 
   bounds.forEach(p => {
@@ -1093,88 +1035,8 @@ function drawMinimap() {
     ctx.fillStyle = '#4CAF50';
     ctx.fillRect(pos.x - 4, pos.y - 4, 8, 8);
   });
-}
 
-// ---- Main game loop ----
-function gameLoop() {
-  update();
-  render();
-  drawMinimap();
-  gameLoopId = requestAnimationFrame(gameLoop);
-}
-
-function update() {
-  if (isFlyToMode && flyToTarget) {
-    updateFlyTo();
-  }
-
-  // Update unit animations
-  units.forEach(u => {
-    if (u.group && u.stats.alive) {
-      u.stats.animation = (u.stats.animation || 0) + 0.02;
-
-      // Idle bob for units without target
-      if (!u.stats.target && u.stats.type !== 'warrior') {
-        u.group.position.y = 0.4 + Math.sin(u.stats.animation) * 0.03;
-      }
-
-      // Warrior animation
-      if (u.stats.type === 'warrior') {
-        u.group.rotation.y += 0.005;
-        // Attack animation
-        if (u.stats.attacking) {
-          u.stats.attackingTimer += 0.02;
-          u.group.position.y = 0.4 + Math.sin(u.stats.attackingTimer) * 0.08;
-        }
-      }
-    }
-  });
-
-  if (isFlyToMode) {
-    if (flyToTarget) {
-      const dist = camera.position.distanceTo(flyToTarget);
-      if (dist < 0.5) {
-        camera.position.copy(flyToTarget);
-        isFlyToMode = false;
-        flyToTarget = null;
-        showFlyOrigin = false;
-      } else {
-        camera.position.lerp(flyToTarget, 0.08);
-      }
-    }
-  }
-
-  controls.update();
-  updateResourceFills();
-  drawMinimap();
-}
-
-function render() {
-  renderer.render(scene, camera);
-}
-
-// ---- Selection ----
-function updateBuildButtons() {
-  const actions = getBuildingActions();
-  if (!actions || actions.length === 0) {
-    buildButtons.style.display = 'none';
-    return;
-  }
-
-  buildButtons.style.display = 'flex';
-  buildButtons.innerHTML = '';
-
-  actions.forEach(action => {
-    const btn = document.createElement('div');
-    btn.className = 'build-btn';
-    btn.dataset.action = 'place_' + action.type;
-    btn.innerHTML = `
-      <span class="build-icon">${action.type === 'worker' ? '⛏️' : action.type === 'warrior' ? '⚔️' : '🏰'}</span>
-      <span class="build-text">${action.name} (${action.gold}g/${action.food}f)</span>
-    `;
-    btn.addEventListener('click', () => {
-      placeUnitAt(action.type, getBuildingPosition());
-    });
-    buildButtons.appendChild(btn);
-  });
+  // Update HUD counts
+  document.getElementById('minimap-workers').textContent = 'Workers: ' + game.workers;
+  document.getElementById('minimap-warriors').textContent = 'Warriors: ' + game.warriors;
 }
