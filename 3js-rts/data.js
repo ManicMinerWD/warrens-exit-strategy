@@ -56,6 +56,9 @@ function initData() {
     group: null,
   });
 
+  // Set terrain center for minimap
+  game.terrainCenter = { x: 0, y: 0, z: 0 };
+
   // Start with nothing selected
   game.selected = null;
 }

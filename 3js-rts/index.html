@@ -37,10 +37,10 @@
       <div id="health-label" style="text-align:center; font-size:10px; color:#aaa; margin-top:4px;">0 / 0</div>
     </div>
     <div id="minimap-container" style="position:absolute; top:15px; right:15px; width:140px; height:140px; pointer-events:none;">
-      <div id="minimap" style="width:140px; height:140px; border:2px solid rgba(255,255,255,0.5); border-radius:4px; overflow:hidden;">
+      <div id="minimap" style="width:140px; height:140px; border:2px solid rgba(255,255,255,0.5); border-radius:4px; overflow:hidden; background:rgba(0,0,0,0.6);">
         <canvas id="minimap-canvas" width="140" height="140" style="width:100%; height:100%; display:block;"></canvas>
       </div>
-      <div id="minimap-hud" style="font-size:13px; color:#aaa; text-align:center; margin-top:3px;">
+      <div id="minimap-hud" style="font-size:13px; color:#aaa; text-align:center; margin-top:3px; pointer-events:none;">
         <span id="minimap-workers">Workers: 0</span>
         <span id="minimap-warriors">Warriors: 0</span>
       </div>
@@ -59,13 +59,11 @@
         <span class="build-text">Base (300 Gold)</span>
       </div>
     </div>
-    <div id="minimap-container" style="position:absolute; top:15px; right:15px; width:140px; height:140px; pointer-events:none;">
-      <div id="minimap" style="width:140px; height:140px; border:2px solid rgba(255,255,255,0.5); border-radius:4px; overflow:hidden; background:rgba(0,0,0,0.6);">
-        <canvas id="minimap-canvas" width="140" height="140" style="width:100%; height:100%; display:block;"></canvas>
-      </div>
-      <div id="minimap-hud" style="font-size:13px; color:#aaa; text-align:center; margin-top:3px; pointer-events:none;">
-        <span id="minimap-workers">Workers: 0</span>
-        <span id="minimap-warriors">Warriors: 0</span>
+    <div id="info-panel">
+      <div id="selected-info">
+        <strong id="selected-name">Select a unit</strong>
+        <span id="selected-type"></span>
+        <span id="selected-action">Right-click to assign job</span>
       </div>
     </div>
   </div>
