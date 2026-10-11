@@ -442,7 +442,7 @@ function getUnitAction(type) {
     case 'warrior':
       return 'Right-click on enemy to attack';
     case 'base':
-      return 'Right-click ground to place units';
+      return 'Right-click ground to place units (Base: 300g)';
     default:
       return 'Select a unit';
   }
@@ -589,6 +589,34 @@ function buildBase() {
 function placeUnitAt(type, position) {
   if (game.isGameOver) return;
 
+  if (type === 'base') {
+    if (game.isGameOver) return;
+    const cost = { gold: 300, food: 0 };
+    if (!deductResources(cost.gold, cost.food)) {
+      updateSelectedUI('base', 'Not enough resources');
+      return;
+    }
+
+    const potentialConflict = buildings.find(b => {
+      return Math.sqrt(Math.pow(position.x - b.position.x, 2) + Math.pow(position.z - b.position.z, 2)) < 3;
+    });
+    if (potentialConflict) {
+      updateSelectedUI('base', 'Cannot build on a building');
+      return;
+    }
+
+    const group = createBaseVisual(position);
+    buildingsGroup.add(group);
+    buildings.push({ type: 'base', position: { x: position.x, y: position.y, z: position.z }, group: group, id: buildings.length });
+
+    updateHUD();
+    updateSelectedUI('base', 'Base placed! Build more units.');
+    saveState();
+    updateBuildButtons();
+    healthBarContainer.style.display = 'none';
+    return;
+  }
+
   const cost = type === 'worker' ? { gold: 100, food: 50 } : type === 'warrior' ? { gold: 150, food: 100 } : { gold: 0, food: 0 };
   if (!deductResources(cost.gold, cost.food)) {
     updateSelectedUI('base', 'Not enough resources');
@@ -635,8 +663,8 @@ function placeUnitAt(type, position) {
   }
 
   updateHUD();
-  saveState();
   updateSelectedUI('base', 'Unit placed! Select a unit to control it.');
+  saveState();
   updateBuildButtons();
   healthBarContainer.style.display = 'none';
 }
