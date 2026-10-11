@@ -27,6 +27,9 @@ const healthBarContainer = document.getElementById('health-bar-container');
 const healthBarFill = document.getElementById('health-bar-fill');
 const healthLabel = document.getElementById('health-label');
 const infoPanel = document.getElementById('info-panel');
+const minimapContainer = document.getElementById('minimap-container');
+const minimapCanvas = document.getElementById('minimap');
+const minimapCtx = minimapCanvas.getContext('2d');
 
 // ---- Setup scene ----
 function init() {
@@ -402,6 +405,7 @@ function update() {
 
   controls.update();
   updateResourceFills();
+  updateMinimap();
 }
 
 function render() {
@@ -1003,10 +1007,95 @@ function aiLoop() {
   gameLoopId = requestAnimationFrame(aiLoop);
 }
 
-// ---- Game over check ----
-setInterval(() => {
-  checkGameOver();
-}, 1000);
+// ---- Minimap rendering ----
+
+const MAP_SIZE = 140;
+const MAP_SCALE = 1000; // map world units to pixels
+
+function drawMinimap() {
+  const ctx = minimapCtx;
+  const canvas = minimapCanvas;
+  const w = canvas.width;
+  const h = canvas.height;
+
+  // Clear canvas
+  ctx.clearRect(0, 0, w, h);
+
+  // Draw background
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
+  ctx.fillRect(0, 0, w, h);
+
+  // Draw terrain outline (bounding box)
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(2, 2, w - 4, h - 4);
+
+  // Find min/max positions for centering
+  let minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
+  const bounds = [game.terrainCenter];
+  units.forEach(u => { if (u.stats.alive) { bounds.push(u.stats.position); } });
+  buildings.forEach(b => { bounds.push(b.position); });
+
+  bounds.forEach(p => {
+    if (p.x < minX) minX = p.x;
+    if (p.x > maxX) maxX = p.x;
+    if (p.z < minZ) minZ = p.z;
+    if (p.z > maxZ) maxZ = p.z;
+  });
+
+  const rangeX = maxX - minX || 1;
+  const rangeZ = maxZ - minZ || 1;
+
+  function toMapCoords(p) {
+    const x = ((p.x - minX) / rangeX) * (w - 10) + 5;
+    const z = ((p.z - minZ) / rangeZ) * (h - 10) + 5;
+    return { x: x - 0.5, y: z - 0.5 };
+  }
+
+  // Draw resource nodes
+  resources.nodes.forEach(node => {
+    const pos = toMapCoords(node.position);
+    ctx.beginPath();
+    ctx.arc(pos.x, pos.y, 3, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(180, 140, 255, 0.6)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  });
+
+  // Draw units
+  units.forEach(u => {
+    if (!u.stats.alive) return;
+    const pos = toMapCoords(u.stats.position);
+    if (u.stats.type === 'worker') {
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = '#8BC34A';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    } else if (u.stats.type === 'warrior') {
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, 5, 0, Math.PI * 2);
+      ctx.fillStyle = '#795548';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+  });
+
+  // Draw buildings
+  buildings.forEach(b => {
+    const pos = toMapCoords(b.position);
+    ctx.fillStyle = '#4CAF50';
+    ctx.fillRect(pos.x - 4, pos.y - 4, 8, 8);
+  });
+}
+
+// ---- Game loop ----
 
 // ---- Resize ----
 function onResize() {
