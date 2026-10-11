@@ -1095,16 +1095,65 @@ function drawMinimap() {
   });
 }
 
-// ---- Game loop ----
-
-// ---- Resize ----
-function onResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+// ---- Main game loop ----
+function gameLoop() {
+  update();
+  render();
+  drawMinimap();
+  gameLoopId = requestAnimationFrame(gameLoop);
 }
 
-// ---- Build buttons ----
+function update() {
+  if (isFlyToMode && flyToTarget) {
+    updateFlyTo();
+  }
+
+  // Update unit animations
+  units.forEach(u => {
+    if (u.group && u.stats.alive) {
+      u.stats.animation = (u.stats.animation || 0) + 0.02;
+
+      // Idle bob for units without target
+      if (!u.stats.target && u.stats.type !== 'warrior') {
+        u.group.position.y = 0.4 + Math.sin(u.stats.animation) * 0.03;
+      }
+
+      // Warrior animation
+      if (u.stats.type === 'warrior') {
+        u.group.rotation.y += 0.005;
+        // Attack animation
+        if (u.stats.attacking) {
+          u.stats.attackingTimer += 0.02;
+          u.group.position.y = 0.4 + Math.sin(u.stats.attackingTimer) * 0.08;
+        }
+      }
+    }
+  });
+
+  if (isFlyToMode) {
+    if (flyToTarget) {
+      const dist = camera.position.distanceTo(flyToTarget);
+      if (dist < 0.5) {
+        camera.position.copy(flyToTarget);
+        isFlyToMode = false;
+        flyToTarget = null;
+        showFlyOrigin = false;
+      } else {
+        camera.position.lerp(flyToTarget, 0.08);
+      }
+    }
+  }
+
+  controls.update();
+  updateResourceFills();
+  drawMinimap();
+}
+
+function render() {
+  renderer.render(scene, camera);
+}
+
+// ---- Selection ----
 function updateBuildButtons() {
   const actions = getBuildingActions();
   if (!actions || actions.length === 0) {
