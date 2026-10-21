@@ -1052,10 +1052,7 @@ const BALI_STRATEGY = {
 
 
 /* =============================================================================
-   MACTAN OPTION 2 — Punta Engaño, Cebu (inlined from mactan_data.js)
-   ============================================================================= */
-const MACTAN_VILLA = {
-  // Land
+   // ---- Land ----
   land: {
     area: 241,            // m²
     frontage: "2.09m N edge",
@@ -1458,7 +1455,6 @@ const DATA = {
   los2025Annual: LOS_2025_ANNUAL,
   hotelReport: HOTEL_REPORT,
   villaShortlist: VILLA_SHORTLIST,
-  mactan: MACTAN_VILLA,
   investmentTable: INVESTMENT_TABLE,
   queensberrySales: QUEENSBERRY_SALES,
   sussexSales: SUSSEX_SALES,
