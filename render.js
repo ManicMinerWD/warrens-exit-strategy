@@ -884,7 +884,7 @@ function renderCompetition() {
 function renderElleLease() {
   const d = DATA.elle_lease;
   if (!d) return;
-  const root = document.getElementById("elleRoot");
+  const root = document.getElementById("elleRoot") || document;
   if (!root) return;
 
   const put = (sel, html) => {
@@ -957,7 +957,7 @@ function renderElleLease() {
             <tr><td><strong>1/20 Standard Room</strong></td><td class="num">A$${d.leaseStructure.fractions[0].annual10.toLocaleString()}/yr guaranteed</td></tr>
             <tr><td><strong>2/20 Standard Room Premium</strong></td><td class="num">A$${d.leaseStructure.fractions[1].annual10.toLocaleString()}/yr guaranteed</td></tr>
             <tr><td><strong>Total 10% guarantee</strong></td><td class="num"><strong>A$${d.leaseStructure.guaranteeAnnual.toLocaleString()}/yr</strong></td></tr>
-            <tr><td><strong>Total guarantee period (5 yrs)</strong></td><td class="num">A$${d.leaseStructure.guaranteeAnnual * 5}.toLocaleString()}</td></tr>
+            <tr><td><strong>Total guarantee period (5 yrs)</strong></td><td class="num">A$${d.headline.guaranteeDuringConstruction + d.headline.guaranteeFirst2YearsOperating}.toLocaleString()}</td></tr>
           </tbody>
         </table>
       </div>

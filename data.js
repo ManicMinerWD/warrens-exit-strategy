@@ -1210,8 +1210,8 @@ const ELLE_LEASE = {
     deposit: 1000,
     depositNote: "User's deposit paid at signing — $1,000 (part of total consideration, not separate from the fractional sale)",
     fractions: [
-      { share: "1/20", type: "Standard Room", value: 74750, annual10: 7475 },
-      { share: "2/20", type: "Standard Room Premium", value: 201250, annual10: 20125 }
+      { share: "1/20", type: "Standard Room", value: 74750, price: 74750, annual10: 7475 },
+      { share: "2/20", type: "Standard Room Premium", value: 201250, price: 201250, annual10: 20125 }
     ],
     totalFractionValue: 276000,
     totalFractionShare: "3/20",  // 1/20 + 2/20
