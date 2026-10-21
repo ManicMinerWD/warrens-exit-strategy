@@ -825,15 +825,13 @@ const ELLE = {
   // Owner receives 3/20 of room revenue pool + 30% net profit after the guarantee period.
   // Personal property — no PT PMA, no Indonesia bonds, no IDX shares.
   product: {
-    structure: "Fractional ownership (PWD/IOD-style) — 3/20 of the property: 1/20 Standard Room at $74,750 + 2/20 Standard Room Premium at $201,250 = $276,000 total fractional value, plus a $1,000 deposit. 50-year investment period. Personal property (no PT PMA).",
-    guarantee: "10% of $276,000 = $27,600/yr guaranteed during construction AND the first 2 years of operation (FY2026-FY2030), paid at source by the operator before passing any profit/rental share to the owner.",
-    projectedNet: "10% guaranteed return = $27,600/yr (during construction + first 2 yrs). After FY2030, the 10% steps down to a contractual floor; you receive a monthly income-share stream (3/20 of room revenue pool) + 30% of net profit. The 10% is the guarantee; the income-share is the upside.",
-    poolBasis: "3/20 fractional interest in the room revenue pool (45% of room revenue) + 30% of net profit after all expenses. 10% Indonesian final withholding on gross rental at source.",
-    entryUsd: 276000,  // 1/20 std room $74,750 + 2/20 std room premium $201,250
-    depositUsd: 1000,
-    depositNote: "Your $1,000 deposit was paid at signing — it is part of the total $276,000 consideration, not a separate obligation.",
-    perks: "Annual free stays + VIP access + early event bookings",
-    verify: "Confirm with your tax adviser: the 10% guarantee terms and who stands behind it; the 3/20 fractional definition; payout frequency and currency; the 15% p.a. basis (on entry price? on net pool share?); and exit/liquidity terms at year 50 — or on default."
+    structure: "Individual suite sale into a 50-year investment period, inside a fully managed room rental program operated under the ELLE lifestyle brand.",
+    guarantee: "10% return guaranteed during construction + first 2 years of operation",
+    projectedNet: "up to 15% p.a. projected net returns (quoted)",
+    poolBasis: "45% net revenue pool spanning hotel rooms, food & beverage, and beach club operations",
+    entryUsd: 65000,
+    perks: "Annual free stays + VIP access",
+    verify: "Confirm before ranking: the 10% construction guarantee terms and who stands behind it; the 45% pool definition (net of what?); payout frequency and currency; the 15% p.a. basis (on entry price? on net pool share?); and exit/liquidity terms at year 50 — or on default."
   },
   // ---- Two sites, two collections ----
   sites: [
@@ -1312,8 +1310,7 @@ const ELLE_LEASE = {
   },
 
   // ---- Verdict ----
-  verdict: "CONFIRMED personal property — fractional ownership (3/20 fractional interest), NO PT PMA, NO Indonesia bonds, NO IDX shares. Your fractional value is $276,000 (1/20 standard room at $74,750 + 2/20 standard room premium at $201,250) plus a $1,000 deposit. You receive a 10% guaranteed return = $27,600/yr during construction and the first 2 years of operation (contractual floor, paid at source by the operator). After the guarantee period (FY2031+), the 10% steps down to a floor; you receive a monthly income-share stream (3/20 of room revenue pool) + 30% net profit. This is the highest-value fractional leasehold position in Bali — $27,600 guaranteed/yr on $276,000 = 10% guaranteed, with upside via the income-share. Confirm with your tax adviser: the 10% guarantee terms and who stands behind it; the 3/20 fractional definition; payout frequency and currency; and exit/liquidity terms at year 50."
-
+  verdict: "CONFIRMED personal property (no PT PMA, no Indonesia bonds, no IDX shares). Entry from ~$65,000 USD - the cheapest of any Bali option by an order of magnitude - and the 15.78% average lease income rate on advance consideration is the highest of the Bali pool products. The rental yield is the income engine that funds the personal portfolio; the only deliberate leakage is the 10% Indonesian final withholding on gross rental plus the FX spread on the IDR-to-SGD conversion. No PT PMA, no Indonesia bonds, no IDX shares, no outbound dividend, no foreign capital gains tax on the share deployment - the earlier PT PMA / IDX regime no longer applies to this structure. Confirm: the 10% construction guarantee terms and who stands behind it; the 45% pool definition (net of what?); payout frequency and currency; and exit/liquidity terms at year 50.",
 };
 
 const DATA = {
