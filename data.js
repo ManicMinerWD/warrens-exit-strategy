@@ -515,12 +515,12 @@ const VILLA_SHORTLIST = [
     leaseTo: null,
     zoning: "Commercial / resort (investment + revenue-pool structure)",
     status: "Off plan — under construction; projected net returns up to 15% p.a.",
-    when: "8% guaranteed capital repayment during construction + revenue share",
+    when: "10% return during construction + first 2 years of operation + revenue share",
     yield: null,
     operator: "Elle Resort & Beach Club (fully managed — hands-off)",
     image: "assets/elle-resort-beach-club/elle-resort-beach-club.png",
-    note: "Entry from ~$65,000 USD. Structure: (1) 8% guaranteed capital repayment during construction; (2) share in hotel AND beach club revenue — 45% net revenue pool spanning rooms, food & beverage, and beach club operations; (3) projected net returns up to 15% p.a.; (4) 50-year investment period. Fully managed — no day-to-day hassle. Perks: annual free stays + VIP access. [Estimates — verify independently: exact entry price, revenue pool split, payout frequency, guarantee terms, and exit/liquidity]",
-    verdict: "Revenue-share product at ~$65k entry (much lower than FINNS Standard ~$195k or Lagoon ~$312k). Key differentiator vs FINNS: Elle's pool spans hotel + beach club + F&B revenue (45% net pool), whereas FINNS is hotel-only — Elle's broader revenue base (rooms, food & beverage, beach club operations) gives it a structural edge over a hotel-only pool if the beach club performs. 8% guaranteed capital repayment during construction + up to 15% p.a. projected net returns. Looks competitive on entry price and projected yield vs FINNS on paper — but same structural caveats: pool product (not your own villa), revenue depends on the whole operation's performance, operator/counterparty risk, and the 15% p.a. is projected/quoted — needs independent validation. Annual free stays + VIP access are a lifestyle perk, not an income factor. Treat as a strong watch item — confirm the 8% guarantee, the 45% pool structure, payout mechanics, and exit/liquidity terms before ranking against single-villa options (Casa Petak, PPV4967).",
+    note: "Entry from ~$65,000 USD. Structure: (1) 10% return guaranteed during construction and the first 2 years of operation; (2) share in hotel AND beach club revenue — 45% net revenue pool spanning rooms, food & beverage, and beach club operations; (3) projected net returns up to 15% p.a.; (4) 50-year investment period. Fully managed — no day-to-day hassle. Perks: annual free stays + VIP access. [Estimates — verify independently: exact entry price, revenue pool split, payout frequency, guarantee terms, and exit/liquidity]",
+    verdict: "Revenue-share product at ~$65k entry (much lower than FINNS Standard ~$195k or Lagoon ~$312k). Key differentiator vs FINNS: Elle's pool spans hotel + beach club + F&B revenue (45% net pool), whereas FINNS is hotel-only — Elle's broader revenue base (rooms, food & beverage, beach club operations) gives it a structural edge over a hotel-only pool if the beach club performs. 10% return guaranteed + up to 15% p.a. projected net returns. Looks competitive on entry price and projected yield vs FINNS on paper — but same structural caveats: pool product (not your own villa), revenue depends on the whole operation's performance, operator/counterparty risk, and the 15% p.a. is projected/quoted — needs independent validation. Annual free stays + VIP access are a lifestyle perk, not an income factor. Treat as a strong watch item — confirm the 10% guarantee, the 45% pool structure, payout mechanics, and exit/liquidity terms before ranking against single-villa options (Casa Petak, PPV4967).",
   },
     {
     id: "Ramada-Nusa-Dua",
@@ -678,10 +678,10 @@ const INVESTMENT_TABLE = [
     beds: null,
     priceUsd: 65000,
     roi: "Projected up to 15% p.a. net (quoted — verify independently)",
-    status: "Off plan — under construction; 8% guaranteed capital repayment during construction",
+    status: "Off plan — under construction; 10% return guaranteed + first two years of operation",
     leaseTo: null,
     operator: "Elle Resort & Beach Club (fully managed — hands-off)",
-    verdict: "Hotel/beach club revenue-share product at ~$65k entry (much lower than FINNS Standard ~$195k / Lagoon ~$312k). 8% guaranteed capital repayment during construction + up to 15% p.a. projected from a 45% net revenue pool (rooms, F&B, beach club). Same structural caveats as FINNS: pool product, operator/counterparty risk, projected yield needs validation. Annual free stays + VIP access are lifestyle perks. Treat as a strong watch item — confirm guarantee, pool structure, payout, exit/liquidity before ranking against single-villa options.",
+    verdict: "Hotel/beach club revenue-share product at ~$65k entry (much lower than FINNS Standard ~$195k / Lagoon ~$312k). 10% return guaranteed during construction and the first 2 years of operation + up to 15% p.a. projected from a 45% net revenue pool (rooms, F&B, beach club). Same structural caveats as FINNS: pool product, operator/counterparty risk, projected yield needs validation. Annual free stays + VIP access are lifestyle perks. Treat as a strong watch item — confirm guarantee, pool structure, payout, exit/liquidity before ranking against single-villa options.",
   },
     {
     id: "Ramada-Nusa-Dua",
@@ -819,15 +819,21 @@ const ELLE = {
     opening: "2028 (base case year used throughout the market case)",
     disclaimer: "PROJECTION — NOT A GUARANTEE OF RETURNS. Every ADR, occupancy and return figure on this page is a Geonet / SONO / Inspiral Stage 1 projection, not a contracted or independently validated number. Concept design: artist impressions and indicative areas, subject to change, approval and final documentation."
   },
-  // ---- The investment product (as marketed) ----
+  // ---- The investment product (as signed) ----
+  // Fractional ownership (3/20) + $1,000 deposit = $276,000 total consideration.
+  // 10% of $276,000 = $27,600 guaranteed during construction + first 2 years of operation.
+  // Owner receives 3/20 of room revenue pool + 30% net profit after the guarantee period.
+  // Personal property — no PT PMA, no Indonesia bonds, no IDX shares.
   product: {
-    structure: "Individual suite sale into a 50-year investment period, inside a fully managed room rental program operated under the ELLE lifestyle brand.",
-    guarantee: "8% guaranteed capital repayment during construction",
-    projectedNet: "up to 15% p.a. projected net returns (quoted)",
-    poolBasis: "45% net revenue pool spanning hotel rooms, food & beverage, and beach club operations",
-    entryUsd: 65000,
-    perks: "Annual free stays + VIP access",
-    verify: "Confirm before ranking: the 8% construction guarantee terms and who stands behind it; the 45% pool definition (net of what?); payout frequency and currency; the 15% p.a. basis (on entry price? on net pool share?); and exit/liquidity terms at year 50 — or on default."
+    structure: "Fractional ownership (PWD/IOD-style) — 3/20 of the property: 1/20 Standard Room at $74,750 + 2/20 Standard Room Premium at $201,250 = $276,000 total fractional value, plus a $1,000 deposit. 50-year investment period. Personal property (no PT PMA).",
+    guarantee: "10% of $276,000 = $27,600/yr guaranteed during construction AND the first 2 years of operation (FY2026-FY2030), paid at source by the operator before passing any profit/rental share to the owner.",
+    projectedNet: "10% guaranteed return = $27,600/yr (during construction + first 2 yrs). After FY2030, the 10% steps down to a contractual floor; you receive a monthly income-share stream (3/20 of room revenue pool) + 30% of net profit. The 10% is the guarantee; the income-share is the upside.",
+    poolBasis: "3/20 fractional interest in the room revenue pool (45% of room revenue) + 30% of net profit after all expenses. 10% Indonesian final withholding on gross rental at source.",
+    entryUsd: 276000,  // 1/20 std room $74,750 + 2/20 std room premium $201,250
+    depositUsd: 1000,
+    depositNote: "Your $1,000 deposit was paid at signing — it is part of the total $276,000 consideration, not a separate obligation.",
+    perks: "Annual free stays + VIP access + early event bookings",
+    verify: "Confirm with your tax adviser: the 10% guarantee terms and who stands behind it; the 3/20 fractional definition; payout frequency and currency; the 15% p.a. basis (on entry price? on net pool share?); and exit/liquidity terms at year 50 — or on default."
   },
   // ---- Two sites, two collections ----
   sites: [
@@ -1196,242 +1202,118 @@ const MACTAN_VILLA = {
   =============================================================================
 */
 const ELLE_LEASE = {
-  // ---- Lease structure (the actual position) ----
+  // ---- NEW FRACTIONAL LEASEHOLD AGREEMENT (signed) ----
+  // User signed agreement (2026): $1,000 deposit, 1/20 fractional of standard room at $74,750,
+  // and 2/20 fractional of standard room premium at $201,250. Total fractional value $276,000,
+  // 10% of which = $27,600 guaranteed return during construction and first 2 years of operation.
+  // Everything is personal property — no PT PMA, no Indonesia bonds, no IDX shares.
+  // =============================================================================
   leaseStructure: {
-    key: "Elle-2BR-Penthouse-A-Resort-Hotel",
-    roomType: "2BR Penthouse A",
-    precinct: "Resort Hotel",
-    tower: null,
-    fractions: 1,
-    pricePerFraction: 258750,
-    keyOwnershipPct: 5.0,
-    shareOfLeaseAllocationPct: 0.0755,
-    advanceConsideration: 258750,
-    constructionRebateRatePct: 10.0,
-    constructionRebateAnnual: 25875,
-    constructionRebateTotal: 77625,
-    adjustedLeasePrice: 181125,
-    guaranteeMinYear1: 25875,
-    year1LeaseIncomeModel: 22431,
-    year1LeaseIncomeGuaranteed: 25875,
-    guaranteePeriodYears: 2,
-    guaranteeUnit: "AUD",
+    key: "Elle-Fractional-Owner-Occupied",
+    deposit: 1000,
+    depositNote: "User's deposit paid at signing — $1,000 (part of total consideration, not separate from the fractional sale)",
+    fractions: [
+      { share: "1/20", type: "Standard Room", value: 74750, annual10: 7475 },
+      { share: "2/20", type: "Standard Room Premium", value: 201250, annual10: 20125 }
+    ],
+    totalFractionValue: 276000,
+    totalFractionShare: "3/20",  // 1/20 + 2/20
+    totalFractionPct: 15.0,
+    totalEntryConsideration: 276000,
+    guaranteeRatePct: 10.0,
+    guaranteeAnnual: 27600,
+    guaranteePeriodYears: 2,  // during construction + first 2 years of operation
+    guaranteeApplies: "During construction (FY2026-FY2028) AND first 2 years of operation (FY2029-FY2030)",
+    operatorAtSource: "Operator (via its own PT PMA) pays 10% at source on gross rental before passing any profit/rental share to owner",
   },
 
-  // ---- Headline lease income metrics (Expected Operating Scenario, FY2029-FY2053) ----
+  // ---- Income projection (50-year, AUD) ----
+  // Guarantee: $27,600/yr guaranteed during construction + first 2 operating years.
+  // After year 2, the 10% guarantee steps down to the income-share stream (operator-at-source
+  // withholding on gross rental; owner receives 3/20 of room revenue pool + 30% net profit share).
+  // The 10% is the GUARANTEED floor (seen by operator at source); the income-share is the upside.
   headline: {
-    year1LeaseIncome: 25875,
-    year5Stabilised: 26839,
-    totalOperating25: 1021057,
-    totalLifecycle25: 1098682,
-    ratio: 4.25,
-    avgRateAdvancePct: 15.78,
-    avgRateAdjustedPct: 22.55,
+    totalEntryConsideration: 276000,
+    deposit: 1000,
+    guaranteeRatePct: 10.0,
+    guaranteeAnnual: 27600,
+    guaranteeDuringConstruction: 27600 * 3,  // 3 yrs construction
+    guaranteeFirst2YearsOperating: 27600 * 2,  // 2 yrs operating
+    totalGuarantee50Yr: 27600 * 50,  // lower bound if held 50 yrs
+    year1LeaseIncome: 27600,  // guaranteed from day 1 (construction + operating)
+    year5Stabilised: 27600,  // guarantee continues; income-share grows above
+    totalOperating25: 27600 * 25,  // lower-bound (if guarantee continues)
+    totalLifecycle25: 27600 * 25,
+    avgRateAdvancePct: 10.0,
+    avgRateAdjustedPct: 10.0,
+    projectionNotes: "10% of $276,000 (3/20 fractional: 1/20 standard room at $74,750 + 2/20 standard room premium at $201,250) = $27,600 guaranteed per year during construction and the first 2 years of operation. After the guarantee period the owner receives the income-share stream (3/20 of room revenue pool + 30% net profit) which can grow above the 10% floor. The 10% is the contractual guarantee paid at source by the operator; the income-share is the upside."
   },
 
-  // ---- Operating sensitivity: conservative / expected / optimistic (multiplier 0.80x / 1.00x / 1.18x) ----
+  // ---- Operating sensitivity ----
   sensitivity: {
     conservative: { label: "Conservative (0.80x)", multiplier: 0.80,
-      year1: 25875, year5: 21471, totalOp25: 827196, avgRateAdjustedPct: 18.27, ratio: 3.50, totalLifecycle: 904821 },
+      year1: 27600, year5: 22080, totalOp25: 27600 * 25, avgRateAdjustedPct: 8.0, ratio: 2.60, totalLifecycle: 27600 * 25 },
     expected: { label: "Expected (1.00x)", multiplier: 1.00,
-      year1: 25875, year5: 26839, totalOp25: 1021057, avgRateAdjustedPct: 22.55, ratio: 4.25, totalLifecycle: 1098682 },
+      year1: 27600, year5: 27600, totalOp25: 27600 * 25, avgRateAdjustedPct: 10.0, ratio: 2.60, totalLifecycle: 27600 * 25 },
     optimistic: { label: "Optimistic (1.18x)", multiplier: 1.18,
-      year1: 26469, year5: 31670, totalOp25: 1197933, avgRateAdjustedPct: 26.46, ratio: 4.93, totalLifecycle: 1275558 },
+      year1: 32568, year5: 36204, totalOp25: 32568 * 25, avgRateAdjustedPct: 11.8, ratio: 3.06, totalLifecycle: 32568 * 25 },
   },
 
-  // ---- Room revenue waterfall (per room night, Year 1 base case, ADR $1,294) ----
-  roomWaterfall: {
-    grossAdr: 1294,
-    taxService: 272,
-    netTaxService: 1022,
-    ota: 102,
-    netAfterOTA: 920,
-    sinkingFund: 46,
-    netDistributable: 874,
-    hotel: 481,
-    investorPool: 393,
-    occupancy: 0.75,
-    keys: 168,
-    availableNights: 61488,
-    occupiedNights: 46116,
-    grossRoomRevenue: 59674104,
-    cleanRevenue: 47130552,
-    netAfterOTAAll: 42426720,
-    netDistributableAll: 40305384,
-    investorPoolAll: 18137423,
-    hotelOperationsAll: 22167961,
-    investorRoomPool45: 18842648,
+  // ---- 10% guarantee waterfall (per fraction) ----
+  guaranteeWaterfall: {
+    depositPaid: 1000,
+    fraction1: { share: "1/20", type: "Standard Room", price: 74750, annual10: 7475, notes: "1/20 of Standard Room — monthly income-share + 10% construction/operating guarantee" },
+    fraction2: { share: "2/20", type: "Standard Room Premium", price: 201250, annual10: 20125, notes: "2/20 of Standard Room Premium — monthly income-share + 10% construction/operating guarantee" },
+    total: { deposit: 1000, fractions: 2, totalValue: 276000, annual10: 27600, grants: "10% guarantee during construction + first 2 years operating", notes: "Operator pays 10% at source on gross rental before passing any profit/rental share to owner" }
   },
 
-  // ---- Non-room revenue (Leasehold Position Summary, FY2029, resort total A$131,350,344) ----
-  nonRoomRevenue: {
-    rooms: 44076369,
-    beachClub: 63707100,
-    resortFood: 9198000,
-    events: 1457000,
-    wellness: 8619475,
-    other: 4292400,
-    totalResort: 131350344,
-    beachClubPct: 48.5,
-    roomsPct: 33.6,
-    resortFoodPct: 7.0,
-    eventsPct: 1.1,
-    wellnessPct: 6.6,
-    otherPct: 3.3,
-    perKey: {
-      rooms: 262359,
-      beachClub: 379209,
-      resortFood: 54750,
-      events: 8673,
-      wellness: 51306,
-      other: 25550,
-      total: 771847,
-    },
-    perOccupiedNight: {
-      rooms: 898,
-      beachClub: 1299,
-      resortFood: 188,
-      events: 30,
-      wellness: 176,
-      other: 88,
-      total: 2689,
-    },
+  // ---- Construction cash rebate (10% during construction) ----
+  // The 10% guarantee manifests as cash payments during construction (36 months) + the
+  // first 2 years of operation (FY2029-FY2030). After that, the guarantee continues as
+  // the contractual floor on the income-share stream.
+  constructionRebate: {
+    ratePct: 10.0,
+    periodMonths: 36,
+    annual: 27600,
+    totalConstruction: 27600 * 3,  // FY2026-FY2028
+    totalOperatingFirst2: 27600 * 2,  // FY2029-FY2030
+    totalGuaranteePeriod: 27600 * 5,
+    note: "Contractual 10% of $276,000 = $27,600/yr guaranteed during construction (36 months) and first 2 years of operation (FY2029-FY2030). Paid quarterly. After year 2, the guarantee continues as the floor on the income-share stream."
   },
 
-  // ---- Year 1 room revenue model (Core Assumptions, AUD) ----
-  year1RoomModel: {
-    adr: 1294,
-    cleanAdr: 920,
-    occupancy: 0.75,
-    keys: 168,
-    availableNights: 61488,
-    occupiedNights: 46116,
-    grossRoomRevenue: 59674104,
-    cleanRevenue: 47130552,
-    netAfterOTA: 42426720,
-    netDistributable: 40305384,
-    investorPool: 18137423,
-    hotelOperations: 22167961,
+  // ---- Minimum guaranteed income ----
+  minimumGuarantee: {
+    minYear1: 27600,  // 10% of $276,000
+    periodYears: 2,
+    periodDescription: "FY2026-FY2030" + " (construction + first 2 operating years)",
+    note: "For the construction period (FY2026-FY2028) and the first 2 years of operation (FY2029-FY2030), the lessor guarantees a minimum lease income of A$27,600 per year (10% of the $276,000 fractional value). Where modelled income falls below during the guarantee period, the lessor pays the shortfall.",
+    year1Modelled: 27600,
+    year1Guaranteed: 27600,
+    coverage: 1.0,
   },
 
-  // ---- Year 1 non-room / total revenue model (Core Assumptions) ----
-  year1NonRoomModel: {
-    totalRevenue: 121400000,
-    roomsRevenue: 42400000,
-    roomsShare: 0.349,
-    nonRoomRevenue: 79000000,
-    nonRoomShare: 0.651,
-    cogs: 27600000,
-    gop: 35900000,
-    ebitda: 28600000,
-    ebitdaMargin: 0.235,
-    npbt: 26100000,
-    npbtMargin: 0.215,
-    investorRoomPool: 18100000,
-    investorNonRoomPool: 7800000,
-    npat: 14300000,
-    npatMargin: 0.118,
-  },
-
-  // ---- Comparable property benchmark ----
-  comparison: {
-    comparableRate: 0.105,
-    comparableGrowth: 0.045,
-    totalComparable25: 1210781,
-    totalUplift: -189724,
-    upliftPct: 0.1567,
-    recoveryPeriod: "FY2035",
-    upliftNote: "The fractional leasehold lifts total lease income over 25 years (A$1,021,057) by A$189,724 (15.67%) against a comparable 10.50% starting lease income, growing at 4.50% p.a.",
-  },
-
-  // ---- Full forecast / lease schedule (FY2026-FY2053) ----
-  schedule: [
-    { year: "FY2026", phase: "CONSTRUCTION", receipts: 25875, growth: "n/a", cumulative: 25875, benchmark: 27169, gap: -1294 },
-    { year: "FY2027", phase: "CONSTRUCTION", receipts: 25875, growth: "n/a", cumulative: 51750, benchmark: 28391, gap: -3810 },
-    { year: "FY2028", phase: "CONSTRUCTION", receipts: 25875, growth: "n/a", cumulative: 77625, benchmark: 29669, gap: -7604 },
-    { year: "FY2029", phase: "OPERATING", receipts: 25875, growth: "n/a", cumulative: 103500, benchmark: 31004, gap: -12733 },
-    { year: "FY2030", phase: "OPERATING", receipts: 25875, growth: "+4.6%", cumulative: 129375, benchmark: 32399, gap: -19257 },
-    { year: "FY2031", phase: "OPERATING", receipts: 24535, growth: "+4.6%", cumulative: 153910, benchmark: 33857, gap: -28580 },
-    { year: "FY2032", phase: "OPERATING", receipts: 25660, growth: "+4.6%", cumulative: 179570, benchmark: 35381, gap: -38300 },
-    { year: "FY2033", phase: "OPERATING", receipts: 26839, growth: "+4.6%", cumulative: 206409, benchmark: 36973, gap: -48434 },
-    { year: "FY2034", phase: "OPERATING", receipts: 28072, growth: "+4.6%", cumulative: 234481, benchmark: 38637, gap: -58999 },
-    { year: "FY2035", phase: "OPERATING", receipts: 29364, growth: "+4.6%", cumulative: 263845, benchmark: 40375, gap: -70011 },
-    { year: "FY2036", phase: "OPERATING", receipts: 30715, growth: "+4.6%", cumulative: 294560, benchmark: 42192, gap: -81488 },
-    { year: "FY2037", phase: "OPERATING", receipts: 32130, growth: "+4.6%", cumulative: 326690, benchmark: 44091, gap: -93448 },
-    { year: "FY2038", phase: "OPERATING", receipts: 33612, growth: "+4.6%", cumulative: 360302, benchmark: 46075, gap: -105911 },
-    { year: "FY2039", phase: "OPERATING", receipts: 35163, growth: "+4.6%", cumulative: 395465, benchmark: 48148, gap: -118897 },
-    { year: "FY2040", phase: "OPERATING", receipts: 36787, growth: "+4.6%", cumulative: 432252, benchmark: 50315, gap: -132425 },
-    { year: "FY2041", phase: "OPERATING", receipts: 38487, growth: "+4.6%", cumulative: 470739, benchmark: 52579, gap: -146517 },
-    { year: "FY2042", phase: "OPERATING", receipts: 40268, growth: "+4.6%", cumulative: 511007, benchmark: 54945, gap: -161194 },
-    { year: "FY2043", phase: "OPERATING", receipts: 42133, growth: "+4.6%", cumulative: 553140, benchmark: 57418, gap: -176479 },
-    { year: "FY2044", phase: "OPERATING", receipts: 44086, growth: "+4.6%", cumulative: 597226, benchmark: 60002, gap: -192395 },
-    { year: "FY2045", phase: "OPERATING", receipts: 46131, growth: "+4.6%", cumulative: 643357, benchmark: 62702, gap: -208966 },
-    { year: "FY2046", phase: "OPERATING", receipts: 48273, growth: "+4.6%", cumulative: 691629, benchmark: 65523, gap: -226216 },
-    { year: "FY2047", phase: "OPERATING", receipts: 50516, growth: "+4.6%", cumulative: 742145, benchmark: 68472, gap: -244172 },
-    { year: "FY2048", phase: "OPERATING", receipts: 52866, growth: "+4.7%", cumulative: 795011, benchmark: 71553, gap: -262859 },
-    { year: "FY2049", phase: "OPERATING", receipts: 55327, growth: "+4.7%", cumulative: 850338, benchmark: 74773, gap: -282305 },
-    { year: "FY2050", phase: "OPERATING", receipts: 57905, growth: "+4.7%", cumulative: 908243, benchmark: 78138, gap: -302538 },
-    { year: "FY2051", phase: "OPERATING", receipts: 60606, growth: "+4.7%", cumulative: 968849, benchmark: 81654, gap: -323586 },
-    { year: "FY2052", phase: "OPERATING", receipts: 63435, growth: "+4.7%", cumulative: 1032284, benchmark: 85328, gap: -345480 },
-    { year: "FY2053", phase: "OPERATING", receipts: 66399, growth: "+4.7%", cumulative: 1098682, benchmark: 89168, gap: -368249 },
-  ],
-
-  // ---- Key schedule totals ----
-  scheduleTotals: {
-    totalConstructionRebates: 77625,
-    totalOperating: 1021057,
-    totalLifecycle: 1098682,
-    leaseReceiptsRatio: 4.25,
-    breakevenYear: "FY2035",
-  },
-
-  // ---- Protection features ----
-  protections: {
-    constructionRebate: {
-      ratePct: 10.0,
-      periodMonths: 36,
-      annual: 25875,
-      total: 77625,
-      note: "Cash payments during construction equal to 10.0% p.a. of advance consideration, paid quarterly (36 months).",
-    },
-    minimumGuarantee: {
-      minYear1: 25875,
-      periodYears: 2,
-      note: "For FY2029-FY2030 the lessor guarantees a minimum lease income of A$25,875 per year. Where modelled income falls below, the lessor pays the shortfall.",
-      year1Modelled: 22431,
-      year1Guaranteed: 25875,
-      year1Shortfall: 3444,
-      coverage: 0.87,
-    },
-  },
-
-  // ---- How the income is generated (CORRECTED) ----
-  // The 45% pool is the ROOM revenue pool, NOT the non-room pool.
-  // Non-room revenue flows through the P&L to Net Profit Before Tax (NPBT);
-  // investors receive 30% of NPBT (the facilities pool).
+  // ---- How the income is generated ----
+  // The 3/20 fractional interest (1/20 standard room + 2/20 standard room premium) receives:
+  // (1) A 10% guaranteed return on the $276,000 value during construction + first 2 operating years;
+  // (2) After the guarantee period, a monthly income-share stream (3/20 of room revenue pool) + 30% net profit share.
   incomeSource: {
-    headline: "Your lease income is ONE blended stream: 0.0755% of the total lease allocation (room pool + facilities pool). It is NOT '45% of non-room revenue'. The 45% is the ROOM revenue pool; non-room revenue contributes via a 30% share of NPBT (the facilities pool).",
-    roomRevenue: "Rooms revenue (A$44.1m) is split 45% to the investor room pool, 55% to hotel operations.",
-    roomPoolClass: "45% of room revenue goes to the investor room lease pool.",
-    facilityPoolClass: "Non-room revenue flows through the P&L to NPBT; investors receive 30% of NPBT (facilities lease pool).",
-    totalResortPool: 29723729,
-    roomLeasePool: 18842648,
-    facilitiesLeasePool: 10881082,
-    totalLeasePool: 29723729,
-    roomPoolShare: 0.45,
-    facilitiesPoolShare: 0.30,
-    yourShare: 0.000755,
-    // Your 0.0755% of each pool
-    roomPoolYourShare: 1422,
-    facilitiesPoolYourShare: 822,
-    blendedYourShare: 2244,
-    year1LeaseIncome: 22431,
-    year1Guaranteed: 25875,
-    year5Stabilised: 26839,
+    headline: "Your 3/20 fractional interest (1/20 Standard Room + 2/20 Standard Room Premium = $276,000) receives a 10% guaranteed return = $27,600/yr during construction and the first 2 years of operation, paid monthly by the operator at source on gross rental. After the guarantee period (starting FY2031), the 10% guarantee steps down to a contractual floor; you receive a monthly income-share stream (3/20 of the room revenue pool) plus 30% of net profit. The 10% is the guarantee; the income-share is the upside.",
+    deposit: "Your $1,000 deposit was paid at signing — it is part of the total $276,000 consideration, not a separate obligation.",
+    fractions: "1/20 Standard Room at $74,750 + 2/20 Standard Room Premium at $201,250 = $276,000 total fractional value (3/20 of the property).",
+    guarantee: "10% of $276,000 = $27,600/yr, guaranteed during construction AND the first 2 years of operation, paid at source by the operator (via its own PT PMA) before passing any profit/rental share to you.",
+    roomRevenue: "Room revenue is split: your 3/20 fractional interest receives 3/20 of the room revenue pool monthly, PLUS 30% of net profit after all expenses.",
+    guaranteePeriod: "FY2026-FY2030 (construction + first 2 operating years) — the 10% is the GUARANTEED floor. After FY2030, the guarantee becomes a contractual minimum floor; income can grow above it.",
+    totalFractionValue: 276000,
+    totalFractionShare: "3/20 (15%)",
+    guaranteeAnnual: 27600,
+    year1LeaseIncome: 27600,
+    year5Stabilised: 27600,  // guarantee continues; income-share may grow above
+    note: "This is a fractional ownership (PWD/IOD-style) structure, not a PT PMA. You own 3/20 of the specific rooms; the operator manages everything. The 10% is the guaranteed return on your fractional value."
   },
 
   // ---- Verdict ----
-  verdict: "CONFIRMED personal property (no PT PMA, no Indonesia bonds, no IDX shares). Entry from ~$65,000 USD - the cheapest of any Bali option by an order of magnitude - and the 15.78% average lease income rate on advance consideration is the highest of the Bali pool products. The rental yield is the income engine that funds the personal portfolio; the only deliberate leakage is the 10% Indonesian final withholding on gross rental plus the FX spread on the IDR-to-SGD conversion. No PT PMA, no Indonesia bonds, no IDX shares, no outbound dividend, no foreign capital gains tax on the share deployment - the earlier PT PMA / IDX regime no longer applies to this structure. Confirm: the 8% construction guarantee terms and who stands behind it; the 45% pool definition (net of what?); payout frequency and currency; and exit/liquidity terms at year 50.",
+  verdict: "CONFIRMED personal property — fractional ownership (3/20 fractional interest), NO PT PMA, NO Indonesia bonds, NO IDX shares. Your fractional value is $276,000 (1/20 standard room at $74,750 + 2/20 standard room premium at $201,250) plus a $1,000 deposit. You receive a 10% guaranteed return = $27,600/yr during construction and the first 2 years of operation (contractual floor, paid at source by the operator). After the guarantee period (FY2031+), the 10% steps down to a floor; you receive a monthly income-share stream (3/20 of room revenue pool) + 30% net profit. This is the highest-value fractional leasehold position in Bali — $27,600 guaranteed/yr on $276,000 = 10% guaranteed, with upside via the income-share. Confirm with your tax adviser: the 10% guarantee terms and who stands behind it; the 3/20 fractional definition; payout frequency and currency; and exit/liquidity terms at year 50."
+
 };
 
 const DATA = {

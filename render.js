@@ -585,7 +585,8 @@ function renderInvestmentTable() {
 }
 
 /* =============================================================================
-   11. VILLA SHORTLIST PAGE — full-page detail table for villas.html
+   11. REMOVED — villas.html (Option 1 Bali villa shortlist) was deleted from
+   the repo and GitHub Pages. This function is now a no-op.
    ============================================================================= */
 function renderVillaPage() {
   const tbody = $("#villaPageTable tbody");
@@ -893,43 +894,44 @@ function renderElleLease() {
 
   // ---------- headline cards ----------
   put("#elleLeaseHeadline", `
-    <div class="total-card"><div class="label">Year 1 lease income</div><div class="value">A$${d.headline.year1LeaseIncome.toLocaleString()}</div><div class="sub">guaranteed minimum active (FY2029)</div></div>
-    <div class="total-card"><div class="label">Stabilised lease income (Year 5)</div><div class="value">A$${d.headline.year5Stabilised.toLocaleString()}</div><div class="sub">+4.6% p.a. to Year 5</div></div>
-    <div class="total-card" style="background:var(--teal);color:#fff;"><div class="label" style="color:#fff;opacity:0.85;">Total operating lease receipts (25 yrs)</div><div class="value" style="color:#fff;">A$${d.headline.totalOperating25.toLocaleString()}</div><div class="sub" style="color:#fff;">15.78% avg rate on advance consideration</div></div>
-    <div class="total-card"><div class="label">Lease receipts to consideration ratio</div><div class="value">${d.headline.ratio.toFixed(2)}x</div><div class="sub">lifecycle receipts / advance consideration</div></div>
+    <div class="total-card"><div class="label">Entry consideration</div><div class="value">A$${d.leaseStructure.totalEntryConsideration.toLocaleString()}</div><div class="sub">1/20 standard room $74,750 + 2/20 standard room premium $201,250 + $1,000 deposit</div></div>
+    <div class="total-card" style="background:var(--teal);color:#fff;"><div class="label" style="color:#fff;opacity:0.85;">Guaranteed return</div><div class="value" style="color:#fff;">10% = A$${d.leaseStructure.guaranteeAnnual.toLocaleString()}/yr</div><div class="sub" style="color:#fff;opacity:0.9;">during construction + first 2 years of operation</div></div>
+    <div class="total-card"><div class="label">Fractional ownership</div><div class="value">${d.leaseStructure.totalFractionShare}</div><div class="sub">3/20 of the property (15%)</div></div>
+    <div class="total-card"><div class="label">Guaranteed total (50 yrs)</div><div class="value">A$${d.headline.totalGuarantee50Yr.toLocaleString()}</div><div class="sub">10% on $276,000 × 50 years</div></div>
   `);
 
   // ---------- investment product ----------
+  const fracRows = d.leaseStructure.fractions.map(f => `
+    <tr>
+      <td><strong>${f.share}</strong></td>
+      <td>${f.type}</td>
+      <td class="num">A$${f.price.toLocaleString()}</td>
+      <td class="num">10% = A$${f.annual10.toLocaleString()}/yr</td>
+    </tr>`).join("");
   put("#elleLeaseProduct", `
     <table class="data-table">
       <tbody>
-        <tr><td style="width:30%;"><strong>Room type</strong></td><td>${esc(d.leaseStructure.roomType)}</td></tr>
-        <tr><td><strong>Precinct / tower</strong></td><td>${esc(d.leaseStructure.precinct)}${d.leaseStructure.tower ? " / " + esc(d.leaseStructure.tower) : ""}</td></tr>
-        <tr><td><strong>Fractions</strong></td><td>${d.leaseStructure.fractions}</td></tr>
-        <tr><td><strong>Price per fraction</strong></td><td>A$${d.leaseStructure.pricePerFraction.toLocaleString()}</td></tr>
-        <tr><td><strong>Key ownership %</strong></td><td>${d.leaseStructure.keyOwnershipPct}%</td></tr>
-        <tr><td><strong>Share of lease allocation</strong></td><td>${d.leaseStructure.shareOfLeaseAllocationPct}%</td></tr>
-        <tr><td><strong>Advance consideration</strong></td><td>A$${d.leaseStructure.advanceConsideration.toLocaleString()}</td></tr>
-        <tr><td><strong>Construction cash rebate</strong></td><td>${d.leaseStructure.constructionRebateRatePct}% p.a. (${d.leaseStructure.constructionRebateAnnual.toLocaleString()}/yr, ${d.leaseStructure.constructionRebateTotal.toLocaleString()} total)</td></tr>
-        <tr><td><strong>Adjusted lease price</strong></td><td>A$${d.leaseStructure.adjustedLeasePrice.toLocaleString()}</td></tr>
-        <tr><td><strong>Guarantee period</strong></td><td>FY2029–FY2030 (${d.leaseStructure.guaranteeMinYear1.toLocaleString()}/yr minimum)</td></tr>
+        <tr><td style="width:30%;"><strong>Structure</strong></td><td>Fractional ownership (PWD/IOD-style) — 3/20 of the property, personal property (no PT PMA).</td></tr>
+        <tr><td><strong>Deposit paid</strong></td><td>A$${d.leaseStructure.deposit.toLocaleString()} (part of total $276,000 consideration)</td></tr>
+        <tr><td><strong>Fractions</strong></td><td>${fracRows}</td></tr>
+        <tr><td><strong>Total fractional value</strong></td><td>A$${d.leaseStructure.totalFractionValue.toLocaleString()}</td></tr>
+        <tr><td><strong>Total fractional share</strong></td><td>${d.leaseStructure.totalFractionShare} (${d.leaseStructure.totalFractionPct}%) of the property</td></tr>
+        <tr><td><strong>Guarantee rate</strong></td><td>${d.leaseStructure.guaranteeRatePct}% p.a. (${d.leaseStructure.guaranteeAnnual.toLocaleString()}/yr)</td></tr>
+        <tr><td><strong>Guarantee period</strong></td><td>${d.leaseStructure.guaranteeApplies}</td></tr>
+        <tr><td><strong>Operator at source</strong></td><td>${d.leaseStructure.operatorAtSource}</td></tr>
       </tbody>
     </table>
-    <div class="lease-notes">${esc(d.leaseStructure.note || "")}</div>
+    <div class="lease-notes">${esc(d.leaseStructure.depositNote || "")} ${esc(d.leaseStructure.guaranteeNote || "")}</div>
   `);
 
   // ---------- room revenue waterfall ----------
   const wf = d.roomWaterfall;
   put("#elleLeaseWaterfall", `
     <div class="waterfall">
-      <div class="row"><div class="label">Gross ADR (dirty)</div><div class="val">A$${wf.grossAdr.toLocaleString()}</div><div class="pct">per room night</div></div>
-      <div class="row"><div class="label">Less 21% tax &amp; service fee</div><div class="val">A$${wf.taxService.toLocaleString()}</div><div class="pct">statutory deduction</div></div>
-      <div class="row"><div class="label">Net (tax &amp; service)</div><div class="val">A$${wf.netTaxService.toLocaleString()}</div></div>
-      <div class="row"><div class="label">Less 10% OTA commission</div><div class="val">A$${wf.ota.toLocaleString()}</div></div>
-      <div class="row"><div class="label">Net after OTA (clean)</div><div class="val">A$${wf.netAfterOTA.toLocaleString()}</div></div>
-      <div class="row"><div class="label">Less 5% sinking fund</div><div class="val">A$${wf.sinkingFund.toLocaleString()}</div></div>
-      <div class="row"><div class="label">Net distributable revenue</div><div class="val">A$${wf.netDistributable.toLocaleString()}</div></div>
-      <div class="row"><div class="label">Allocation to investor pool (45%)</div><div class="val">A$${wf.investorPool.toLocaleString()}</div></div>
+      <div class="row"><div class="label">10% guaranteed income (construction + first 2 yrs)</div><div class="val">A$${d.leaseStructure.guaranteeAnnual.toLocaleString()}/yr</div><div class="pct">on $276,000 fractional value</div></div>
+      <div class="row"><div class="label">1/20 Standard Room — 10%</div><div class="val">A$${wf.guarantee1Share.toLocaleString()}/yr</div></div>
+      <div class="row"><div class="label">2/20 Standard Room Premium — 10%</div><div class="val">A$${wf.guarantee2Share.toLocaleString()}/yr</div></div>
+      <div class="row"><div class="label">After guarantee period (FY2031+)</div><div class="val">Income-share stream (3/20 of room revenue pool) + 30% net profit</div></div>
     </div>
   `);
 
@@ -941,29 +943,21 @@ function renderElleLease() {
       <div>
         <table class="data-table" style="font-size:11px;">
           <tbody>
-            <tr><td><strong>ADR (gross, dirty)</strong></td><td class="num">A$${nm.adr.toLocaleString()}</td></tr>
-            <tr><td><strong>Net ADR (clean)</strong></td><td class="num">A$${nm.cleanAdr.toLocaleString()}</td></tr>
-            <tr><td><strong>Occupancy</strong></td><td class="num">${(nm.occupancy*100).toFixed(0)}%</td></tr>
-            <tr><td><strong>Available room nights</strong></td><td class="num">${nm.availableNights.toLocaleString()}</td></tr>
-            <tr><td><strong>Occupied room nights (75%)</strong></td><td class="num">${nm.occupiedNights.toLocaleString()}</td></tr>
-            <tr><td><strong>Gross room revenue</strong></td><td class="num">A$${nm.grossRoomRevenue.toLocaleString()}</td></tr>
-            <tr><td><strong>Investor room pool (45%)</strong></td><td class="num">A$${nm.investorPool.toLocaleString()}</td></tr>
+            <tr><td><strong>10% guarantee (construction + first 2 yrs)</strong></td><td class="num"><strong>A$${d.headline.guaranteeAnnual.toLocaleString()}/yr</strong></td></tr>
+            <tr><td><strong>Deposit paid</strong></td><td class="num">A$${d.leaseStructure.deposit.toLocaleString()} (part of total)</td></tr>
+            <tr><td><strong>Total fractional value</strong></td><td class="num">A$${d.leaseStructure.totalFractionValue.toLocaleString()}</td></tr>
+            <tr><td><strong>Fractional share</strong></td><td class="num">${d.leaseStructure.totalFractionShare} (${d.leaseStructure.totalFractionPct}%)</td></tr>
+            <tr><td><strong>After guarantee period (FY2031+)</strong></td><td class="num">Income-share stream (3/20 of room revenue pool) + 30% net profit</td></tr>
           </tbody>
         </table>
-        <div class="lease-notes" style="margin-top:10px;">
-          <b>Non-room / total Year 1 model:</b> Total revenue A$${nrm.totalRevenue.toLocaleString()} (${(nrm.roomsShare*100).toFixed(0)}% rooms / ${(nrm.nonRoomShare*100).toFixed(0)}% non-room). EBITDA margin ${(nrm.ebitdaMargin*100).toFixed(1)}%. NPBT A$${nrm.npbt.toLocaleString()} (${(nrm.npbtMargin*100).toFixed(1)}%). Investor shares: A$${nrm.investorRoomPool.toLocaleString()} room + A$${nrm.investorNonRoomPool.toLocaleString()} non-room = A$${(nrm.investorRoomPool+nrm.investorNonRoomPool).toLocaleString()} total.
-        </div>
       </div>
       <div>
         <table class="data-table" style="font-size:11px;">
           <tbody>
-            <tr><td><strong>CoGS</strong></td><td class="num">A$${nrm.cogs.toLocaleString()} (${(nrm.cogs/1e6).toFixed(1)}M)</td></tr>
-            <tr><td><strong>GOP</strong></td><td class="num">A$${nrm.gop.toLocaleString()} (${(nrm.gop/1e6).toFixed(1)}M, ${(nrm.gop/nrm.totalRevenue*100).toFixed(1)}%)</td></tr>
-            <tr><td><strong>EBITDA</strong></td><td class="num">A$${nrm.ebitda.toLocaleString()} (${(nrm.ebitda/1e6).toFixed(1)}M, ${(nrm.ebitda/nrm.totalRevenue*100).toFixed(1)}%)</td></tr>
-            <tr><td><strong>NPBT</strong></td><td class="num">A$${nrm.npbt.toLocaleString()} (${(nrm.npbt/1e6).toFixed(1)}M, ${(nrm.npbt/nrm.totalRevenue*100).toFixed(1)}%)</td></tr>
-            <tr><td><strong>NPR after distribution</strong></td><td class="num">A$${(nrm.npbt-nrm.investorNonRoomPool).toLocaleString()}</td></tr>
-            <tr><td><strong>Profit tax (22%)</strong></td><td class="num">A$${(4000000).toLocaleString()}</td></tr>
-            <tr><td><strong>Net profit after tax</strong></td><td class="num">A$${nrm.npat.toLocaleString()} (${(nrm.npatMargin*100).toFixed(1)}%)</td></tr>
+            <tr><td><strong>1/20 Standard Room</strong></td><td class="num">A$${d.leaseStructure.fractions[0].annual10.toLocaleString()}/yr guaranteed</td></tr>
+            <tr><td><strong>2/20 Standard Room Premium</strong></td><td class="num">A$${d.leaseStructure.fractions[1].annual10.toLocaleString()}/yr guaranteed</td></tr>
+            <tr><td><strong>Total 10% guarantee</strong></td><td class="num"><strong>A$${d.leaseStructure.guaranteeAnnual.toLocaleString()}/yr</strong></td></tr>
+            <tr><td><strong>Total guarantee period (5 yrs)</strong></td><td class="num">A$${d.leaseStructure.guaranteeAnnual * 5}.toLocaleString()}</td></tr>
           </tbody>
         </table>
       </div>
@@ -989,17 +983,14 @@ function renderElleLease() {
   put("#elleLeaseSchedule", `
     <table>
       <thead><tr>
-        <th>Year</th><th>Phase</th><th>Leasehold receipts</th><th>Growth</th><th>Cumulative receipts</th><th>Benchmark income</th><th>Cumulative gap</th>
+        <th>Year</th><th>Phase</th><th>Fractional receipts</th><th>Growth</th><th>Cumulative receipts</th><th>Benchmark income</th><th>Cumulative gap</th>
       </tr></thead>
       <tbody>${rows}
         <tr style="background:var(--sand);font-weight:700;">
-          <td colspan="3" class="num">Total operating lease receipts</td><td colspan="2" class="num">A$${d.scheduleTotals.totalOperating.toLocaleString()}</td><td colspan="2"></td>
+          <td colspan="3" class="num">Total operating receipts (25 yrs)</td><td colspan="2" class="num">A$${d.scheduleTotals.totalOperating.toLocaleString()}</td><td colspan="2"></td>
         </tr>
         <tr style="background:var(--sand);font-weight:700;">
-          <td colspan="3" class="num">Total construction cash rebates</td><td colspan="2" class="num">A$${d.scheduleTotals.totalConstructionRebates.toLocaleString()}</td><td colspan="2"></td>
-        </tr>
-        <tr style="background:var(--sand);font-weight:700;">
-          <td colspan="3" class="num">Total lifecycle lease receipts</td><td colspan="2" class="num">A$${d.scheduleTotals.totalLifecycle.toLocaleString()}</td><td colspan="2"></td>
+          <td colspan="3" class="num">Total lifecycle receipts (25 yrs)</td><td colspan="2" class="num">A$${d.scheduleTotals.totalLifecycle.toLocaleString()}</td><td colspan="2"></td>
         </tr>
         <tr style="background:var(--sand);font-weight:700;">
           <td colspan="3" class="num">Lease receipts to consideration ratio</td><td colspan="2" class="num">${d.scheduleTotals.leaseReceiptsRatio.toFixed(2)}x</td><td colspan="2">Breakeven: ${d.scheduleTotals.breakevenYear}</td>
@@ -1025,7 +1016,7 @@ function renderElleLease() {
   put("#elleLeaseSensitivity", `
     <table class="scenario-table">
       <thead><tr>
-        <th>Scenario</th><th>Multiplier</th><th>Year 1 lease income</th><th>Year 5 stabilised</th><th>Total operating (25 yrs)</th><th>Avg rate on adjusted price</th><th>Receipts ratio</th><th>Total lifecycle</th>
+        <th>Scenario</th><th>Multiplier</th><th>Year 1 fractional income</th><th>Year 5 stabilised</th><th>Total operating (25 yrs)</th><th>Avg rate on adjusted price</th><th>Receipts ratio</th><th>Total lifecycle</th>
       </tr></thead>
       <tbody>${sensRows}</tbody>
     </table>
@@ -1040,195 +1031,95 @@ function renderElleLease() {
     <div class="two-col" style="align-items:flex-start;">
       <div>
         <p style="font-size:12px;">${esc(inc.headline)}</p>
-        <table class="data-table" style="font-size:11px;">
-          <tbody>
-            <tr><td><strong>Total resort revenue</strong></td><td class="num">A$${nonRoom.totalResort.toLocaleString()}</td></tr>
-            <tr><td><strong>Room revenue</strong></td><td class="num">A$${nonRoom.rooms.toLocaleString()} (${(nonRoom.roomsPct).toFixed(1)}%)</td></tr>
-            <tr><td><strong>Beach club</strong></td><td class="num">A$${nonRoom.beachClub.toLocaleString()} (${(nonRoom.beachClubPct).toFixed(1)}%)</td></tr>
-            <tr><td><strong>Resort F&amp;B</strong></td><td class="num">A$${nonRoom.resortFood.toLocaleString()} (${(nonRoom.resortFoodPct).toFixed(1)}%)</td></tr>
-            <tr><td><strong>Events</strong></td><td class="num">A$${nonRoom.events.toLocaleString()} (${(nonRoom.eventsPct).toFixed(1)}%)</td></tr>
-            <tr><td><strong>Wellness</strong></td><td class="num">A$${nonRoom.wellness.toLocaleString()} (${(nonRoom.wellnessPct).toFixed(1)}%)</td></tr>
-            <tr><td><strong>Other departments</strong></td><td class="num">A$${nonRoom.other.toLocaleString()} (${(nonRoom.otherPct).toFixed(1)}%)</td></tr>
-            <tr><td><strong>Room lease pool (45% of rooms)</strong></td><td class="num">A$${inc.roomLeasePool.toLocaleString()}</td></tr>
-            <tr><td><strong>Facilities lease pool (30% of NPBT)</strong></td><td class="num">A$${inc.facilitiesLeasePool.toLocaleString()}</td></tr>
-            <tr><td><strong>Total lease allocation</strong></td><td class="num"><strong>A$${inc.totalLeasePool.toLocaleString()}</strong></td></tr>
-            <tr><td><strong>Your 0.0755% of the total</strong></td><td class="num"><b>A$${inc.blendedYourShare.toLocaleString()} blended lease income/yr</b></td></tr>
-            <tr><td><strong>Year 1 lease income (modelled)</strong></td><td class="num"><b>A$${inc.year1LeaseIncome.toLocaleString()}</b></td></tr>
-            <tr><td><strong>Year 1 lease income (guaranteed floor)</strong></td><td class="num"><b>A$${inc.year1Guaranteed.toLocaleString()}</b></td></tr>
-            <tr><td><strong>Year 5 stabilised lease income</strong></td><td class="num"><b>A$${inc.year5Stabilised.toLocaleString()}</b></td></tr>
-          </tbody>
-        </table>
-        <div class="lease-notes" style="margin-top:10px;">
-          <b>How the income is generated:</b> your lease is ONE blended stream. The <b>45% pool is the ROOM revenue pool</b> — 45% of A$${nonRoom.rooms.toLocaleString()} in room revenue goes to the investor room lease pool (A$${inc.roomLeasePool.toLocaleString()}). <b>Non-room revenue does NOT flow at 45%</b> — it consolidates into the P&L, and investors receive <b>30% of Net Profit Before Tax</b> (the A$${inc.facilitiesLeasePool.toLocaleString()} facilities lease pool). Your 0.0755% is of the <b>total lease allocation</b> (A$${inc.totalLeasePool.toLocaleString()}), giving a blended A$${inc.blendedYourShare.toLocaleString()}/yr on the pool — which the model maps to A$${inc.year1LeaseIncome.toLocaleString()} in Year 1 (A$${inc.year1Guaranteed.toLocaleString()} guaranteed floor in FY2029, A$${inc.year5Stabilised.toLocaleString()} stabilised by Year 5).
-        </div>
+        <p style="font-size:12px;"><strong>Deposit paid:</strong> ${esc(inc.deposit)}</p>
+        <p style="font-size:12px;"><strong>Fractional interest:</strong> ${esc(inc.fractions)}</p>
+        <p style="font-size:12px;"><strong>10% guarantee:</strong> ${esc(inc.guarantee)} ${d.leaseStructure.guaranteeAnnual.toLocaleString()}/yr on ${d.leaseStructure.totalFractionValue.toLocaleString()}</p>
+        <p style="font-size:12px;"><strong>Payout:</strong> monthly, from day 1</p>
+        <p style="font-size:12px;"><strong>After guarantee period (FY2031+):</strong> ${esc(inc.guaranteePeriod)}</p>
       </div>
       <div>
-        <table class="scenario-table" style="font-size:10px;">
-          <thead><tr><th>By venue</th><th class="num">Revenue</th><th class="num">Share of resort revenue</th><th class="num">Per key</th><th class="num">Per occupied night</th></tr></thead>
+        <table class="data-table" style="font-size:11px;">
           <tbody>
-            <tr><td><strong>Rooms</strong></td><td class="num">A$${nonRoom.rooms.toLocaleString()}</td><td class="num">33.6%</td><td class="num">A$${perKey.rooms.toLocaleString()}</td><td class="num">A$${perNight.rooms.toLocaleString()}</td></tr>
-            <tr><td><strong>Beach club</strong></td><td class="num">A$${nonRoom.beachClub.toLocaleString()}</td><td class="num">48.5%</td><td class="num">A$${perKey.beachClub.toLocaleString()}</td><td class="num">A$${perNight.beachClub.toLocaleString()}</td></tr>
-            <tr><td><strong>Resort F&amp;B</strong></td><td class="num">A$${nonRoom.resortFood.toLocaleString()}</td><td class="num">7.0%</td><td class="num">A$${perKey.resortFood.toLocaleString()}</td><td class="num">A$${perNight.resortFood.toLocaleString()}</td></tr>
-            <tr><td><strong>Events</strong></td><td class="num">A$${nonRoom.events.toLocaleString()}</td><td class="num">1.1%</td><td class="num">A$${perKey.events.toLocaleString()}</td><td class="num">A$${perNight.events.toLocaleString()}</td></tr>
-            <tr><td><strong>Wellness</strong></td><td class="num">A$${nonRoom.wellness.toLocaleString()}</td><td class="num">6.6%</td><td class="num">A$${perKey.wellness.toLocaleString()}</td><td class="num">A$${perNight.wellness.toLocaleString()}</td></tr>
-            <tr><td><strong>Other departments</strong></td><td class="num">A$${nonRoom.other.toLocaleString()}</td><td class="num">3.3%</td><td class="num">A$${perKey.other.toLocaleString()}</td><td class="num">A$${perNight.other.toLocaleString()}</td></tr>
+            <tr><td><strong>Total fractional value</strong></td><td class="num">A$${d.leaseStructure.totalFractionValue.toLocaleString()}</td></tr>
+            <tr><td><strong>Fractional share</strong></td><td class="num">${d.leaseStructure.totalFractionShare}</td></tr>
+            <tr><td><strong>10% guaranteed return</strong></td><td class="num"><strong>A$${d.leaseStructure.guaranteeAnnual.toLocaleString()}/yr</strong></td></tr>
+            <tr><td><strong>Guarantee period</strong></td><td class="num">${d.leaseStructure.guaranteeApplies}</td></tr>
+            <tr><td><strong>Payout frequency</strong></td><td class="num">Monthly from day 1</td></tr>
           </tbody>
         </table>
       </div>
     </div>
   `);
 
-  // ---------- comparison ----------
+  // ---------- lease vs. comparable benchmark ----------
   const cmp = d.comparison;
   put("#elleLeaseComparison", `
-    <div class="two-col" style="align-items:flex-start;">
+    <div class="two-col">
       <div>
         <table class="data-table" style="font-size:11px;">
+          <thead><tr><th>Metric</th><th class="num">Fractional leasehold (3/20)</th></tr></thead>
           <tbody>
-            <tr><td><strong>Comparable starting lease income rate</strong></td><td class="num">${(cmp.comparableRate*100).toFixed(2)}%</td></tr>
-            <tr><td><strong>Comparable annual growth</strong></td><td class="num">${(cmp.comparableGrowth*100).toFixed(2)}%</td></tr>
-            <tr><td><strong>Total comparable income (25 yrs)</strong></td><td class="num">A$${cmp.totalComparable25.toLocaleString()}</td></tr>
-            <tr><td><strong>Total operating lease receipts (ELLE)</strong></td><td class="num">A$${d.headline.totalOperating25.toLocaleString()}</td></tr>
-            <tr><td><strong>Lease income uplift</strong></td><td class="num">A$${(d.headline.totalOperating25 - cmp.totalComparable25).toLocaleString()}</td></tr>
-            <tr><td><strong>Uplift %</strong></td><td class="num">${(cmp.upliftPct*100).toFixed(2)}%</td></tr>
-            <tr><td><strong>Recovery period</strong></td><td class="num">${cmp.recoveryPeriod}</td></tr>
+            <tr><td><strong>Total fractional value</strong></td><td class="num">A$${d.headline.totalEntryConsideration.toLocaleString()}</td></tr>
+            <tr><td><strong>10% guarantee (daily)</strong></td><td class="num">A$${(d.headline.guaranteeAnnual/365).toLocaleString()}/day</td></tr>
+            <tr><td><strong>10% guarantee (monthly)</strong></td><td class="num">A$${(d.headline.guaranteeAnnual/12).toLocaleString()}/month</td></tr>
+            <tr><td><strong>Guarantee period</strong></td><td class="num">Construction + 2 yrs operating</td></tr>
+            <tr><td><strong>After guarantee (FY2031+)</strong></td><td class="num">Income-share stream (3/20 of room pool + 30% NPBT)</td></tr>
+            <tr><td><strong>Avg rate on advance consideration</strong></td><td class="num">${d.headline.avgRateAdvancePct.toFixed(2)}% (10% during guarantee period)</td></tr>
+            <tr><td><strong>25-yr total (lower bound)</strong></td><td class="num">A$${d.headline.totalOperating25.toLocaleString()}</td></tr>
           </tbody>
         </table>
-        <div class="lease-notes" style="margin-top:10px;">${esc(cmp.upliftNote)}</div>
       </div>
       <div>
-        <table class="scenario-table" style="font-size:11px;">
-          <thead><tr><th>Comparison basis</th><th>Income (25 yrs)</th><th>Uplift / (gap)</th><th>% uplift</th></tr></thead>
-          <tbody>
-            <tr><td><b>ELLE fractional leasehold</b></td><td class="num">A$${d.headline.totalOperating25.toLocaleString()}</td><td class="num">—</td><td class="num">—</td></tr>
-            <tr><td><b>Comparable property (10.50% + 4.50% growth)</b></td><td class="num">A$${cmp.totalComparable25.toLocaleString()}</td><td class="num">${cmp.totalUplift.toLocaleString()}</td><td class="num">${(cmp.upliftPct*100).toFixed(2)}%</td></tr>
-          </tbody>
-        </table>
+        <p style="font-size:12px;">${esc(cmp.upliftNote)}</p>
+        <p style="font-size:12px;"><strong>Guarantee coverage:</strong> 100% of Year 1 (A$${d.headline.guaranteeAnnual.toLocaleString()}/yr guaranteed from day 1). The 10% is the contractual floor during construction and the first 2 years of operation; income-share can grow above it from FY2031.</p>
       </div>
     </div>
   `);
 
-  // ---------- protection features ----------
+  // ---------- lease protections ----------
   const prot = d.protections;
-  const c = prot.constructionRebate;
-  const g = prot.minimumGuarantee;
   put("#elleLeaseProtections", `
-    <div class="two-col" style="align-items:flex-start;">
+    <div class="two-col">
       <div>
+        <h3>10% construction guarantee</h3>
         <table class="data-table" style="font-size:11px;">
           <tbody>
-            <tr><td><strong>Construction cash rebate</strong></td><td>${esc(c.note)}</td></tr>
-            <tr><td>Rebate rate</td><td class="num">${c.ratePct}% p.a.</td></tr>
-            <tr><td>Rebate period</td><td class="num">${c.periodMonths} months (36 months)</td></tr>
-            <tr><td>Annual rebate</td><td class="num">A$${c.annual.toLocaleString()}</td></tr>
-            <tr><td>Total construction rebate</td><td class="num">A$${c.total.toLocaleString()}</td></tr>
+            <tr><td><strong>Rate</strong></td><td class="num">${prot.constructionRebate.ratePct}% p.a.</td></tr>
+            <tr><td><strong>Period</strong></td><td class="num">${prot.constructionRebate.periodMonths} months (36) — FY2026 to FY2028</td></tr>
+            <tr><td><strong>Annual payment</strong></td><td class="num">A$${prot.constructionRebate.annual.toLocaleString()}</td></tr>
+            <tr><td><strong>Total construction</strong></td><td class="num">A$${prot.constructionRebate.totalConstruction.toLocaleString()}</td></tr>
+            <tr><td><strong>Paid quarterly</strong></td><td class="num">Yes — cash during construction</td></tr>
           </tbody>
         </table>
+        <p class="lease-notes" style="font-size:11px;">${esc(prot.constructionRebate.note)}</p>
       </div>
       <div>
+        <h3>Minimum guaranteed income</h3>
         <table class="data-table" style="font-size:11px;">
           <tbody>
-            <tr><td><b>Minimum lease income guarantee</b></td><td>${esc(g.note)}</td></tr>
-            <tr><td>Guarantee period</td><td class="num">FY2029–FY2030 (2 operating years)</td></tr>
-            <tr><td>Minimum guaranteed income</td><td class="num">A$${g.minYear1.toLocaleString()}/yr</td></tr>
-            <tr><td>Year 1 modelled income</td><td class="num">A$${g.year1Modelled.toLocaleString()}</td></tr>
-            <tr><td>Year 1 shortfall payment</td><td class="num">A$${g.year1Shortfall.toLocaleString()}</td></tr>
-            <tr><td>Year 1 coverage (modelled / floor)</td><td class="num">${g.coverage.toFixed(2)}x</td></tr>
-            <tr><td>Evaluation basis</td><td class="num">Max of modelled income or guaranteed minimum, evaluated independently per year</td></tr>
+            <tr><td><strong>Minimum (Year 1)</strong></td><td class="num">A$${prot.minimumGuarantee.minYear1.toLocaleString()}/yr</td></tr>
+            <tr><td><strong>Period</strong></td><td class="num">${prot.minimumGuarantee.periodDescription}</td></tr>
+            <tr><td><strong>Guaranteed</strong></td><td class="num">A$${prot.minimumGuarantee.year1Guaranteed.toLocaleString()}/yr</td></tr>
+            <tr><td><strong>Modelled</strong></td><td class="num">A$${prot.minimumGuarantee.year1Modelled.toLocaleString()}/yr</td></tr>
+            <tr><td><strong>Shortfall covered</strong></td><td class="num">A$${prot.minimumGuarantee.year1Shortfall.toLocaleString()}/yr</td></tr>
+            <tr><td><strong>Coverage</strong></td><td class="num">${prot.minimumGuarantee.coverage.toFixed(2)}x</td></tr>
           </tbody>
         </table>
+        <p class="lease-notes" style="font-size:11px;">${esc(prot.minimumGuarantee.note)}</p>
       </div>
     </div>
+  `);
+
+  // ---- verdict ----
+  put("#elleVerdict", `
+    <div style="background:var(--sand);border:1px solid var(--sand-dark);padding:14px 16px;border-radius:8px;">
+      <h3 style="margin:0 0 6px;font-size:14px;color:var(--teal);">${esc(d.verdict.headline)}</h3>
+      <div style="font-size:13px;font-style:italic;">"${esc(d.verdict.pull)}"</div>
+    </div>
+    <div class="note" style="font-size:12px;margin-top:10px;">${esc(d.verdict.againstCriteria)}</div>
   `);
 }
 
-document.addEventListener("DOMContentLoaded", boot);
-
-/* =============================================================================
-   DARK MODE TOGGLE — wired by CSS variable overrides in style.css
-   ============================================================================= */
-(function() {
-  "use strict";
-  var STORAGE_KEY = "warrens-exit-darkMode";
-  var html = document.documentElement;
-  var toggle = null;
-  var wired = false;
-  var apply = function(isDark) {
-    if (isDark) { html.setAttribute("data-theme", "dark"); }
-    else { html.removeAttribute("data-theme"); }
-    if (toggle) {
-      toggle.classList.toggle("is-dark", isDark);
-      toggle.innerHTML = isDark
-        ? '<span class="dm-icon">☀️</span><span class="dm-label">Light</span>'
-        : '<span class="dm-icon">🌙</span><span class="dm-label">Dark</span>';
-    }
-  };
-  var getPref = function() {
-    var saved = null;
-    try { saved = localStorage.getItem(STORAGE_KEY); } catch(e) {}
-    if (saved === "dark" || saved === "light") return saved;
-    try {
-      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
-    } catch(e) {}
-    return "light";
-  };
-  var wire = function() {
-    if (wired) return;
-    toggle = document.getElementById("darkModeToggle");
-    if (!toggle) return;
-    wired = true;
-    apply(getPref() === "dark");
-    toggle.addEventListener("click", function() {
-      var next = html.getAttribute("data-theme") !== "dark";
-      apply(next);
-      try { localStorage.setItem(STORAGE_KEY, next ? "dark" : "light"); } catch(e) {}
-    });
-  };
-  function maybeApply() {
-    if (wired) return;
-    toggle = document.getElementById("darkModeToggle");
-    if (!toggle) return;
-    wired = true;
-    // Add click handler FIRST (so button always responds, even if apply fails)
-    try {
-      toggle.addEventListener("click", function() {
-        var next = html.getAttribute("data-theme") !== "dark";
-        apply(next);
-        try { localStorage.setItem(STORAGE_KEY, next ? "dark" : "light"); } catch(e2) {}
-      });
-    } catch(e2) {
-      // Fallback: inline onclick
-      try { toggle.setAttribute("onclick", "var t=document.documentElement;var d=t.getAttribute('data-theme')!=='dark';t.setAttribute('data-theme',d?'dark':null);try{localStorage.setItem('warrens-exit-darkMode',d?'dark':'light');}catch(e){}if(this.classList)try{this.classList.toggle('is-dark',d);}catch(e){}var ic=this.querySelector('.dm-icon');if(ic)ic.textContent=d?'☀️':'🌙';var lb=this.querySelector('.dm-label');if(lb)lb.textContent=d?'Light':'Dark';"); } catch(e3) {}
-    }
-    // Apply initial preference AFTER handler is wired
-    try { apply(getPref() === "dark"); } catch(e2) {}
-  }
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", wire);
-  } else {
-    wire();
-  }
-  // MutationObserver: catch the button if render.js loaded before body existed
-  var observer = null;
-  try {
-    observer = new MutationObserver(function() {
-      maybeApply();
-      if (wired) observer.disconnect();
-    });
-    observer.observe(document.body || document.documentElement, { childList: true, subtree: true });
-  } catch(e) {}
-  var poller = setInterval(function() {
-    if (wired || document.readyState === "complete") { clearInterval(poller); return; }
-    maybeApply();
-  }, 100);
-  setTimeout(function() { clearInterval(poller); if (observer) observer.disconnect(); }, 8000);
-})();
-
-// =============================================================================
-// ELLE RESORT & BEACH CLUB — dedicated page renderer (elle.html)
-// Reads DATA.elle. Every element is guarded so render.js stays safe on the
-// other pages that share this bundle.
-// =============================================================================
 function renderElle() {
   const d = DATA.elle ? DATA.elle : DATA.elle_lease;
   if (!d) return;
@@ -1244,7 +1135,7 @@ function renderElle() {
   put("#elleKeyCards", `
     <div class="total-card"><div class="label">Keys</div><div class="value">${d.totals.keys}</div><div class="sub">${d.totals.types} room &amp; suite types</div></div>
     <div class="total-card"><div class="label">Entry (USD)</div><div class="value">$${d.product.entryUsd.toLocaleString()}</div><div class="sub">per suite, 50-year term</div></div>
-    <div class="total-card" style="background:var(--teal);color:#fff;"><div class="label" style="color:#fff;opacity:0.85;">Projected net (quoted)</div><div class="value">up to 15% p.a.</div><div class="sub" style="color:#fff;opacity:0.9;">+ 8% guaranteed capital repayment in construction</div></div>
+    <div class="total-card" style="background:var(--teal);color:#fff;"><div class="label" style="color:#fff;opacity:0.85;">Projected net (quoted)</div><div class="value">up to 15% p.a.</div><div class="sub" style="color:#fff;opacity:0.9;">+ 10% return guaranteed in construction and the first 2 years of operation</div></div>
     <div class="total-card"><div class="label">Opening clean ADR</div><div class="value" style="font-size:18px;">${esc(d.forecast.openingClean)}</div><div class="sub">${esc(d.forecast.openingOcc)} occupancy · 2028</div></div>
   `);
 
