@@ -515,12 +515,12 @@ const VILLA_SHORTLIST = [
     leaseTo: null,
     zoning: "Commercial / resort (investment + revenue-pool structure)",
     status: "Off plan — under construction; projected net returns up to 15% p.a.",
-    when: "8% guaranteed capital repayment during construction + revenue share",
+    when: "10% return during construction + first 2 years of operation + revenue share",
     yield: null,
     operator: "Elle Resort & Beach Club (fully managed — hands-off)",
     image: "assets/elle-resort-beach-club/elle-resort-beach-club.png",
-    note: "Entry from ~$65,000 USD. Structure: (1) 8% guaranteed capital repayment during construction; (2) share in hotel AND beach club revenue — 45% net revenue pool spanning rooms, food & beverage, and beach club operations; (3) projected net returns up to 15% p.a.; (4) 50-year investment period. Fully managed — no day-to-day hassle. Perks: annual free stays + VIP access. [Estimates — verify independently: exact entry price, revenue pool split, payout frequency, guarantee terms, and exit/liquidity]",
-    verdict: "Revenue-share product at ~$65k entry (much lower than FINNS Standard ~$195k or Lagoon ~$312k). Key differentiator vs FINNS: Elle's pool spans hotel + beach club + F&B revenue (45% net pool), whereas FINNS is hotel-only — Elle's broader revenue base (rooms, food & beverage, beach club operations) gives it a structural edge over a hotel-only pool if the beach club performs. 8% guaranteed capital repayment during construction + up to 15% p.a. projected net returns. Looks competitive on entry price and projected yield vs FINNS on paper — but same structural caveats: pool product (not your own villa), revenue depends on the whole operation's performance, operator/counterparty risk, and the 15% p.a. is projected/quoted — needs independent validation. Annual free stays + VIP access are a lifestyle perk, not an income factor. Treat as a strong watch item — confirm the 8% guarantee, the 45% pool structure, payout mechanics, and exit/liquidity terms before ranking against single-villa options (Casa Petak, PPV4967).",
+    note: "Entry from ~$65,000 USD. Structure: (1) 10% return guaranteed during construction and the first 2 years of operation; (2) share in hotel AND beach club revenue — 45% net revenue pool spanning rooms, food & beverage, and beach club operations; (3) projected net returns up to 15% p.a.; (4) 50-year investment period. Fully managed — no day-to-day hassle. Perks: annual free stays + VIP access. [Estimates — verify independently: exact entry price, revenue pool split, payout frequency, guarantee terms, and exit/liquidity]",
+    verdict: "Revenue-share product at ~$65k entry (much lower than FINNS Standard ~$195k or Lagoon ~$312k). Key differentiator vs FINNS: Elle's pool spans hotel + beach club + F&B revenue (45% net pool), whereas FINNS is hotel-only — Elle's broader revenue base (rooms, food & beverage, beach club operations) gives it a structural edge over a hotel-only pool if the beach club performs. 10% return guaranteed + up to 15% p.a. projected net returns. Looks competitive on entry price and projected yield vs FINNS on paper — but same structural caveats: pool product (not your own villa), revenue depends on the whole operation's performance, operator/counterparty risk, and the 15% p.a. is projected/quoted — needs independent validation. Annual free stays + VIP access are a lifestyle perk, not an income factor. Treat as a strong watch item — confirm the 10% guarantee, the 45% pool structure, payout mechanics, and exit/liquidity terms before ranking against single-villa options (Casa Petak, PPV4967).",
   },
     {
     id: "Ramada-Nusa-Dua",
@@ -678,10 +678,10 @@ const INVESTMENT_TABLE = [
     beds: null,
     priceUsd: 65000,
     roi: "Projected up to 15% p.a. net (quoted — verify independently)",
-    status: "Off plan — under construction; 8% guaranteed capital repayment during construction",
+    status: "Off plan — under construction; 10% return guaranteed + first two years of operation",
     leaseTo: null,
     operator: "Elle Resort & Beach Club (fully managed — hands-off)",
-    verdict: "Hotel/beach club revenue-share product at ~$65k entry (much lower than FINNS Standard ~$195k / Lagoon ~$312k). 8% guaranteed capital repayment during construction + up to 15% p.a. projected from a 45% net revenue pool (rooms, F&B, beach club). Same structural caveats as FINNS: pool product, operator/counterparty risk, projected yield needs validation. Annual free stays + VIP access are lifestyle perks. Treat as a strong watch item — confirm guarantee, pool structure, payout, exit/liquidity before ranking against single-villa options.",
+    verdict: "Hotel/beach club revenue-share product at ~$65k entry (much lower than FINNS Standard ~$195k / Lagoon ~$312k). 10% return guaranteed during construction and the first 2 years of operation + up to 15% p.a. projected from a 45% net revenue pool (rooms, F&B, beach club). Same structural caveats as FINNS: pool product, operator/counterparty risk, projected yield needs validation. Annual free stays + VIP access are lifestyle perks. Treat as a strong watch item — confirm guarantee, pool structure, payout, exit/liquidity before ranking against single-villa options.",
   },
     {
     id: "Ramada-Nusa-Dua",
@@ -822,12 +822,12 @@ const ELLE = {
   // ---- The investment product (as marketed) ----
   product: {
     structure: "Individual suite sale into a 50-year investment period, inside a fully managed room rental program operated under the ELLE lifestyle brand.",
-    guarantee: "8% guaranteed capital repayment during construction",
+    guarantee: "10% return guaranteed during construction + first 2 years of operation",
     projectedNet: "up to 15% p.a. projected net returns (quoted)",
     poolBasis: "45% net revenue pool spanning hotel rooms, food & beverage, and beach club operations",
     entryUsd: 65000,
     perks: "Annual free stays + VIP access",
-    verify: "Confirm before ranking: the 8% construction guarantee terms and who stands behind it; the 45% pool definition (net of what?); payout frequency and currency; the 15% p.a. basis (on entry price? on net pool share?); and exit/liquidity terms at year 50 — or on default."
+    verify: "Confirm before ranking: the 10% construction guarantee terms and who stands behind it; the 45% pool definition (net of what?); payout frequency and currency; the 15% p.a. basis (on entry price? on net pool share?); and exit/liquidity terms at year 50 — or on default."
   },
   // ---- Two sites, two collections ----
   sites: [
@@ -1431,7 +1431,7 @@ const ELLE_LEASE = {
   },
 
   // ---- Verdict ----
-  verdict: "CONFIRMED personal property (no PT PMA, no Indonesia bonds, no IDX shares). Entry from ~$65,000 USD - the cheapest of any Bali option by an order of magnitude - and the 15.78% average lease income rate on advance consideration is the highest of the Bali pool products. The rental yield is the income engine that funds the personal portfolio; the only deliberate leakage is the 10% Indonesian final withholding on gross rental plus the FX spread on the IDR-to-SGD conversion. No PT PMA, no Indonesia bonds, no IDX shares, no outbound dividend, no foreign capital gains tax on the share deployment - the earlier PT PMA / IDX regime no longer applies to this structure. Confirm: the 8% construction guarantee terms and who stands behind it; the 45% pool definition (net of what?); payout frequency and currency; and exit/liquidity terms at year 50.",
+  verdict: "CONFIRMED personal property (no PT PMA, no Indonesia bonds, no IDX shares). Entry from ~$65,000 USD - the cheapest of any Bali option by an order of magnitude - and the 15.78% average lease income rate on advance consideration is the highest of the Bali pool products. The rental yield is the income engine that funds the personal portfolio; the only deliberate leakage is the 10% Indonesian final withholding on gross rental plus the FX spread on the IDR-to-SGD conversion. No PT PMA, no Indonesia bonds, no IDX shares, no outbound dividend, no foreign capital gains tax on the share deployment - the earlier PT PMA / IDX regime no longer applies to this structure. Confirm: the 10% construction guarantee terms and who stands behind it; the 45% pool definition (net of what?); payout frequency and currency; and exit/liquidity terms at year 50.",
 };
 
 const DATA = {

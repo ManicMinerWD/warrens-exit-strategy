@@ -1245,7 +1245,7 @@ function renderElle() {
   put("#elleKeyCards", `
     <div class="total-card"><div class="label">Keys</div><div class="value">${d.totals.keys}</div><div class="sub">${d.totals.types} room &amp; suite types</div></div>
     <div class="total-card"><div class="label">Entry (USD)</div><div class="value">$${d.product.entryUsd.toLocaleString()}</div><div class="sub">per suite, 50-year term</div></div>
-    <div class="total-card" style="background:var(--teal);color:#fff;"><div class="label" style="color:#fff;opacity:0.85;">Projected net (quoted)</div><div class="value">up to 15% p.a.</div><div class="sub" style="color:#fff;opacity:0.9;">+ 8% guaranteed capital repayment in construction</div></div>
+    <div class="total-card" style="background:var(--teal);color:#fff;"><div class="label" style="color:#fff;opacity:0.85;">Projected net (quoted)</div><div class="value">up to 15% p.a.</div><div class="sub" style="color:#fff;opacity:0.9;">+ 10% return guaranteed in construction and the first 2 years of operation</div></div>
     <div class="total-card"><div class="label">Opening clean ADR</div><div class="value" style="font-size:18px;">${esc(d.forecast.openingClean)}</div><div class="sub">${esc(d.forecast.openingOcc)} occupancy · 2028</div></div>
   `);
 
