@@ -992,11 +992,7 @@ const ELLE = {
   ],
   milestoneNote: "The forecast is conditional. These are the operating thresholds that carry the property from opening to a defensible rate, stated so that progress can be tracked rather than asserted. Tier two and tier three milestones carry the property from the success case toward the exceptional case — they are set out in full in the Phase 2 destination analysis.",
   // ---- Verdict ----
-  verdict: {
-    headline: "The base case is conservative. The brand and the beach club are why it rises.",
-    pull: "The beach club is the single most commercially powerful element of the product mix.",
-    againstCriteria: "Against Warren's hard lines: the 15% p.a. quoted is well above the 10% net yield floor, and the ~$65k entry is the cheapest of any Bali option by an order of magnitude. The unresolved question is not the yield — it is that the 15% is a projection, not a contract, and it depends on a 45% revenue pool spanning a hotel, a beach club and F&B across 168 keys. Unlike Casa Petak (Balitecture management, 20% fee) there is no operator whose economics you can read, and unlike FINNS there is no comparable operating track record to anchor the pool. Treat it as the highest-upside / least-verified item in the Option 1 set, not as a done deal."
-  }
+  verdict: "CONFIRMED personal property — fractional ownership (3/20 fractional interest), NO PT PMA, NO Indonesia bonds, NO IDX shares. Your fractional value is $276,000 (1/20 standard room at $74,750 + 2/20 standard room premium at $201,250) plus a $1,000 deposit. You receive a 10% guaranteed return = $27,600/yr during construction and the first 2 years of operation (contractual floor, paid at source by the operator). After the guarantee period (FY2031+), the 10% steps down to a floor; you receive a monthly income-share stream (3/20 of room revenue pool) + 30% net profit. This is the highest-value fractional leasehold position in Bali — $27,600 guaranteed/yr on $276,000 = 10% guaranteed, with upside via the income-share. Confirm with your tax adviser: the 10% guarantee terms and who stands behind it; the 3/20 fractional definition; payout frequency and currency; and exit/liquidity terms at year 50."
 };
 
 /* =============================================================================
