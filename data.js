@@ -985,7 +985,6 @@ const ELLE = {
   },
   // ---- Tier 1 milestones ----
   milestones: [
-    { area: "Beach club", items: ["800 day-pass admissions per week in peak season", "40% of beach club revenue from non-hotel guests", "Operating cost covered by the end of year one"] },
     { area: "Food and beverage", items: ["1.8 covers per seat at lunch and dinner in peak months", "35% of total hotel revenue", "70% breakfast penetration among hotel guests"] },
     { area: "Media and reviews", items: ["10 editorial placements in international lifestyle, travel or design media in year one", "Google 4.6 out of 5.0", "Booking.com 8.5 out of 10"] },
     { area: "Occupancy and distribution", items: ["62% occupancy by the end of year one", "OTA share capped at 55%, direct booking reaching 30%", "No distressed inventory below A$391 clean ADR"] },
