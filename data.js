@@ -994,7 +994,8 @@ const ELLE = {
 };
 
 /* =============================================================================
-   OPTION 1 BALI — INCOME STRATEGY (PT PMA → Mandiri → IDX domestic shares)
+   OPTION 1 BALI — INCOME STRATEGY (personal property)
+   Single-step income funnel: personal property (Elle) → FX conversion (net IDR to SGD) → personal portfolio (AI/robotics / sovereign AI shares)
    ============================================================================= */
 const BALI_STRATEGY = {
   lastUpdated: "2026-10-21",
