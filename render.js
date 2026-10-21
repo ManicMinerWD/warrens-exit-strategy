@@ -884,11 +884,9 @@ function renderCompetition() {
 function renderElleLease() {
   const d = DATA.elle_lease;
   if (!d) return;
-  const root = document.getElementById("elleRoot") || document;
-  if (!root) return;
 
   const put = (sel, html) => {
-    const w = root.querySelector(sel);
+    const w = document.querySelector(sel);
     if (w) w.innerHTML = html;
   };
 
@@ -1127,7 +1125,7 @@ function renderElle() {
   if (!root) return;
 
   const put = (sel, html) => {
-    const w = $(sel, root);
+    const w = document.querySelector(sel);
     if (w) w.innerHTML = html;
   };
 
