@@ -585,7 +585,8 @@ function renderInvestmentTable() {
 }
 
 /* =============================================================================
-   11. VILLA SHORTLIST PAGE — full-page detail table for villas.html
+   11. REMOVED — villas.html (Option 1 Bali villa shortlist) was deleted from
+   the repo and GitHub Pages. This function is now a no-op.
    ============================================================================= */
 function renderVillaPage() {
   const tbody = $("#villaPageTable tbody");
