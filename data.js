@@ -26,13 +26,13 @@ const _lab = (m,y) => _monFull[m-1] + " " + y;
    ANNUAL TOTALS — BPS Bali annual tourist arrivals
    ============================================================================= */
 const ARR_ANNUAL = [
-  { year: 2019, intl: 6520000, dom: 24996099, src: "bps-balinese-arrivals" },
-  { year: 2020, intl: 1110000, dom: 6808965, src: "bps-balinese-arrivals" },
-  { year: 2021, intl: 210000, dom: 3930032, src: "bps-balinese-arrivals" },
-  { year: 2022, intl: 2700000, dom: 18061127, src: "bps-balinese-arrivals" },
-  { year: 2023, intl: 5403900, dom: 24900000, src: "bps-balinese-arrivals" },
-  { year: 2024, intl: 5950000, dom: 26200000, src: "bps-balinese-arrivals" },
-  { year: 2025, intl: 6950000, dom: 26615306, src: "antarabpsmar2026.md" },
+    { year: 2019, intl: 6520000, dom: 24996099, src: "bps-balinese-arrivals" },
+    { year: 2020, intl: 1110000, dom: 6808965, src: "bps-balinese-arrivals" },
+    { year: 2021, intl: 210000, dom: 3930032, src: "bps-balinese-arrivals" },
+    { year: 2022, intl: 2700000, dom: 18061127, src: "bps-balinese-arrivals" },
+    { year: 2023, intl: 5403900, dom: 24900000, src: "bps-balinese-arrivals" },
+    { year: 2024, intl: 5950000, dom: 26200000, src: "bps-balinese-arrivals" },
+    { year: 2025, intl: 6950000, dom: 26615306, src: "antarabpsmar2026.md" },
 ];
 
 /* =============================================================================
@@ -40,39 +40,39 @@ const ARR_ANNUAL = [
    ============================================================================= */
 const ARR_MONTHLY = [
   // ---- 2025 ----
-  { m:1,y:2025, intl:576397, dom:2266235 },
-  { m:2,y:2025, intl:503775, dom:2028061 },
-  { m:3,y:2025, intl:585598, dom:2249615 },
-  { m:4,y:2025, intl:587573, dom:2272007 },
-  { m:5,y:2025, intl:594441, dom:2260422 },
-  { m:6,y:2025, intl:576025, dom:2250818 },
-  { m:7,y:2025, intl:556926, dom:2210225 },
-  { m:8,y:2025, intl:592557, dom:2297617 },
-  { m:9,y:2025, intl:512623, dom:2147543 },
-  { m:10,y:2025, intl:541315, dom:2169945 },
-  { m:11,y:2025, intl:503861, dom:2133435 },
-  { m:12,y:2025, intl:439690, dom:2006927 },
+    { m:1,y:2025, intl:576397, dom:2266235 },
+    { m:2,y:2025, intl:503775, dom:2028061 },
+    { m:3,y:2025, intl:585598, dom:2249615 },
+    { m:4,y:2025, intl:587573, dom:2272007 },
+    { m:5,y:2025, intl:594441, dom:2260422 },
+    { m:6,y:2025, intl:576025, dom:2250818 },
+    { m:7,y:2025, intl:556926, dom:2210225 },
+    { m:8,y:2025, intl:592557, dom:2297617 },
+    { m:9,y:2025, intl:512623, dom:2147543 },
+    { m:10,y:2025, intl:541315, dom:2169945 },
+    { m:11,y:2025, intl:503861, dom:2133435 },
+    { m:12,y:2025, intl:439690, dom:2006927 },
   // ---- 2026 (Jan–May from BPS; Jun–Jul estimated) ----
-  { m:1,y:2026, intl:532105, dom:2122665 },
-  { m:2,y:2026, intl:482494, dom:1974488 },
-  { m:3,y:2026, intl:471026, dom:1959646 },
-  { m:4,y:2026, intl:477991, dom:2000374 },
-  { m:5,y:2026, intl:473900, dom:1991267 },
-  { m:6,y:2026, intl:530000, dom:2150000, est:true },
-  { m:7,y:2026, intl:520000, dom:2110000, est:true },
+    { m:1,y:2026, intl:532105, dom:2122665 },
+    { m:2,y:2026, intl:482494, dom:1974488 },
+    { m:3,y:2026, intl:471026, dom:1959646 },
+    { m:4,y:2026, intl:477991, dom:2000374 },
+    { m:5,y:2026, intl:473900, dom:1991267 },
+    { m:6,y:2026, intl:530000, dom:2150000, est:true },
+    { m:7,y:2026, intl:520000, dom:2110000, est:true },
 ];
 
 /* =============================================================================
    BPS GATE DATA — 2026 monthly foreign arrivals by entry point
    ============================================================================= */
 const GATE_2026 = [
-  { m:1, y:2026, airport:532105, harbour:1204, total:533309 },
-  { m:2, y:2026, airport:482494, harbour:1023, total:483517 },
-  { m:3, y:2026, airport:471026, harbour:969, total:471995 },
-  { m:4, y:2026, airport:477991, harbour:1422, total:479413 },
-  { m:5, y:2026, airport:473900, harbour:1386, total:475286 },
-  { m:6, y:2026, airport:530000, harbour:1755, total:531755, est:true },
-  { m:7, y:2026, airport:520000, harbour:1700, total:521700, est:true },
+    { m:1, y:2026, airport:532105, harbour:1204, total:533309 },
+    { m:2, y:2026, airport:482494, harbour:1023, total:483517 },
+    { m:3, y:2026, airport:471026, harbour:969, total:471995 },
+    { m:4, y:2026, airport:477991, harbour:1422, total:479413 },
+    { m:5, y:2026, airport:473900, harbour:1386, total:475286 },
+    { m:6, y:2026, airport:530000, harbour:1755, total:531755, est:true },
+    { m:7, y:2026, airport:520000, harbour:1700, total:521700, est:true },
 ];
 
 const BPS_GATE_NOTE = "BPS gate data counts all foreign visitors passing through Bali's entry points — not just overnight tourists. Source: https://bali.bps.go.id";
@@ -81,84 +81,84 @@ const BPS_GATE_NOTE = "BPS gate data counts all foreign visitors passing through
    TOP SOURCE MARKETS — 2025 full year
    ============================================================================= */
 const MARKET_2025 = [
-  { rank:1, country:"Australia", arrivals:1598018, share:0.230, yoy:"+5.2%" },
-  { rank:2, country:"India", arrivals:666945, share:0.096, yoy:"+11.8%" },
-  { rank:3, country:"China", arrivals:532159, share:0.077, yoy:"+18.6%" },
-  { rank:4, country:"Malaysia", arrivals:320504, share:0.046, yoy:"+2.1%" },
-  { rank:5, country:"Japan", arrivals:278151, share:0.040, yoy:"-12.4%" },
-  { rank:6, country:"Singapore", arrivals:278117, share:0.040, yoy:"-13.4%" },
-  { rank:7, country:"South Korea", arrivals:215199, share:0.031, yoy:"+15.2%" },
-  { rank:8, country:"United States", arrivals:203018, share:0.029, yoy:"+1.8%" },
-  { rank:9, country:"Taiwan", arrivals:170207, share:0.025, yoy:"+8.3%" },
-  { rank:10, country:"Netherlands", arrivals:157843, share:0.023, yoy:"+10.1%" },
+    { rank:1, country:"Australia", arrivals:1598018, share:0.230, yoy:"+5.2%" },
+    { rank:2, country:"India", arrivals:666945, share:0.096, yoy:"+11.8%" },
+    { rank:3, country:"China", arrivals:532159, share:0.077, yoy:"+18.6%" },
+    { rank:4, country:"Malaysia", arrivals:320504, share:0.046, yoy:"+2.1%" },
+    { rank:5, country:"Japan", arrivals:278151, share:0.040, yoy:"-12.4%" },
+    { rank:6, country:"Singapore", arrivals:278117, share:0.040, yoy:"-13.4%" },
+    { rank:7, country:"South Korea", arrivals:215199, share:0.031, yoy:"+15.2%" },
+    { rank:8, country:"United States", arrivals:203018, share:0.029, yoy:"+1.8%" },
+    { rank:9, country:"Taiwan", arrivals:170207, share:0.025, yoy:"+8.3%" },
+    { rank:10, country:"Netherlands", arrivals:157843, share:0.023, yoy:"+10.1%" },
 ];
 
 /* =============================================================================
    HOTEL OCCUPANCY (TPK) — BPS Bali
    ============================================================================= */
 const TPK_STAR = [
-  { m:1, y:2026, v:45.99 },
-  { m:2, y:2026, v:47.31 },
-  { m:3, y:2026, v:50.57 },
-  { m:4, y:2026, v:52.42 },
-  { m:5, y:2026, v:53.68 },
-  { m:6, y:2026, v:54.88 },
-  { m:7, y:2026, v:60.79 },
-  { m:8, y:2026, v:62.15 },
-  { m:9, y:2026, v:58.34 },
-  { m:10, y:2026, v:56.21 },
-  { m:11, y:2026, v:54.08 },
-  { m:12, y:2026, v:52.93 },
+    { m:1, y:2026, v:45.99 },
+    { m:2, y:2026, v:47.31 },
+    { m:3, y:2026, v:50.57 },
+    { m:4, y:2026, v:52.42 },
+    { m:5, y:2026, v:53.68 },
+    { m:6, y:2026, v:54.88 },
+    { m:7, y:2026, v:60.79 },
+    { m:8, y:2026, v:62.15 },
+    { m:9, y:2026, v:58.34 },
+    { m:10, y:2026, v:56.21 },
+    { m:11, y:2026, v:54.08 },
+    { m:12, y:2026, v:52.93 },
 ];
 
 const TPK_NONSTAR = [
-  { m:1, y:2026, v:36.99 },
-  { m:2, y:2026, v:31.98 },
-  { m:3, y:2026, v:33.70 },
-  { m:4, y:2026, v:32.75 },
-  { m:5, y:2026, v:30.84 },
-  { m:6, y:2026, v:33.69 },
-  { m:7, y:2026, v:37.54 },
-  { m:8, y:2026, v:38.92 },
-  { m:9, y:2026, v:36.18 },
-  { m:10, y:2026, v:34.55 },
-  { m:11, y:2026, v:33.02 },
-  { m:12, y:2026, v:31.87 },
+    { m:1, y:2026, v:36.99 },
+    { m:2, y:2026, v:31.98 },
+    { m:3, y:2026, v:33.70 },
+    { m:4, y:2026, v:32.75 },
+    { m:5, y:2026, v:30.84 },
+    { m:6, y:2026, v:33.69 },
+    { m:7, y:2026, v:37.54 },
+    { m:8, y:2026, v:38.92 },
+    { m:9, y:2026, v:36.18 },
+    { m:10, y:2026, v:34.55 },
+    { m:11, y:2026, v:33.02 },
+    { m:12, y:2026, v:31.87 },
 ];
 
 /* =============================================================================
    LENGTH OF STAY — star-rated hotels, BPS Bali
    ============================================================================= */
 const LOS_MONTHLY_2026 = [
-  { m:1, y:2026, foreign:3.78, domestic:2.60, total:3.25 },
-  { m:2, y:2026, foreign:3.79, domestic:2.60, total:3.24 },
-  { m:3, y:2026, foreign:3.58, domestic:2.54, total:3.11 },
-  { m:4, y:2026, foreign:3.58, domestic:2.56, total:3.12 },
-  { m:5, y:2026, foreign:3.55, domestic:2.52, total:3.08 },
-  { m:6, y:2026, foreign:3.50, domestic:2.50, total:3.05 },
-  { m:7, y:2026, foreign:3.48, domestic:2.48, total:3.02 },
+    { m:1, y:2026, foreign:3.78, domestic:2.60, total:3.25 },
+    { m:2, y:2026, foreign:3.79, domestic:2.60, total:3.24 },
+    { m:3, y:2026, foreign:3.58, domestic:2.54, total:3.11 },
+    { m:4, y:2026, foreign:3.58, domestic:2.56, total:3.12 },
+    { m:5, y:2026, foreign:3.55, domestic:2.52, total:3.08 },
+    { m:6, y:2026, foreign:3.50, domestic:2.50, total:3.05 },
+    { m:7, y:2026, foreign:3.48, domestic:2.48, total:3.02 },
 ];
 
 /* =============================================================================
    BALI ECONOMY (GDP) — BPS Bali
    ============================================================================= */
 const GDP_QUARTERLY = [
-  { y: 2024, q: 1, g: 4.43 },
-  { y: 2024, q: 2, g: 4.58 },
-  { y: 2024, q: 3, g: 4.50 },
-  { y: 2024, q: 4, g: 4.53 },
-  { y: 2025, q: 1, g: 4.78 },
-  { y: 2025, q: 2, g: 5.02 },
-  { y: 2025, q: 3, g: 4.88 },
-  { y: 2025, q: 4, g: 4.90 },
-  { y: 2026, q: 1, g: 5.62 },
+    { y: 2024, q: 1, g: 4.43 },
+    { y: 2024, q: 2, g: 4.58 },
+    { y: 2024, q: 3, g: 4.50 },
+    { y: 2024, q: 4, g: 4.53 },
+    { y: 2025, q: 1, g: 4.78 },
+    { y: 2025, q: 2, g: 5.02 },
+    { y: 2025, q: 3, g: 4.88 },
+    { y: 2025, q: 4, g: 4.90 },
+    { y: 2026, q: 1, g: 5.62 },
 ];
 
 const GDP_FULL_YEAR = [
-  { y:2022, g:4.98 },
-  { y:2023, g:4.83 },
-  { y:2024, g:4.53 },
-  { y:2025, g:4.90 },
+    { y:2022, g:4.98 },
+    { y:2023, g:4.83 },
+    { y:2024, g:4.53 },
+    { y:2025, g:4.90 },
 ];
 
 const GDP_2026_Q1 = { y:"2026", q:"Q1", g:5.62, note:"Antara News — highest quarterly growth in recent years" };
@@ -214,15 +214,15 @@ const MARCH_2026_SNAPSHOT_NOTE = "March 2026 snapshot — top 20 source markets.
    HOTEL OCCUPANCY — APRIL 2026 BY REGION — BPS Bali
    ============================================================================= */
 const TPK_APRIL_2026_BY_REGION = [
-  { region:"Badung", tpk:57.95, note:"Kuta, Seminyak, Legian, Jimbaran, Nusa Dua — highest in Bali" },
-  { region:"Denpasar", tpk:52.10, note:"Provincial capital" },
-  { region:"Gianyar", tpk:44.88, note:"Ubud corridor" },
-  { region:"Tabanan", tpk:35.21, note:"West Bali, Pantai Mengwi" },
-  { region:"Karangasem", tpk:31.45, note:"East Bali, Amlapura, Candidasa" },
-  { region:"Klungkung", tpk:29.73, note:"South-east, Kediri, Padang Bai" },
-  { region:"Buleleng", tpk:27.88, note:"North Bali, Singaraja, Lovina" },
-  { region:"Bangli", tpk:22.42, note:"Central highlands, Bedugul — lowest in Bali" },
-  { region:"Jembrana", tpk:21.10, note:"Extreme west" },
+    { region:"Badung", tpk:57.95, note:"Kuta, Seminyak, Legian, Jimbaran, Nusa Dua — highest in Bali" },
+    { region:"Denpasar", tpk:52.10, note:"Provincial capital" },
+    { region:"Gianyar", tpk:44.88, note:"Ubud corridor" },
+    { region:"Tabanan", tpk:35.21, note:"West Bali, Pantai Mengwi" },
+    { region:"Karangasem", tpk:31.45, note:"East Bali, Amlapura, Candidasa" },
+    { region:"Klungkung", tpk:29.73, note:"South-east, Kediri, Padang Bai" },
+    { region:"Buleleng", tpk:27.88, note:"North Bali, Singaraja, Lovina" },
+    { region:"Bangli", tpk:22.42, note:"Central highlands, Bedugul — lowest in Bali" },
+    { region:"Jembrana", tpk:21.10, note:"Extreme west" },
 ];
 
 /* =============================================================================
@@ -309,7 +309,7 @@ const AVG_SIZE_SQM = {
    PHASE 1 COMPETITION TRACKER — properties potential buyers are looking at
    ============================================================================= */
 const COMPETITION_TRACKER = [
-  {
+    {
     id: "rea-stkildaroad-730-539",
     title: "730/539 St Kilda Road — REA listing #151850872",
     url: "https://www.realestate.com.au/property-apartment-vic-melbourne-151850872",
@@ -324,7 +324,7 @@ const COMPETITION_TRACKER = [
     status: "logged",
     action: "1 bed, 1 car, $360k-$395k asking. Compare to G05/108 ($420k est.) and 302/108 ($420k est.) — this is priced below our Carlton apartments; check why (floor level, building quality, condition, BSV)."
   },
-  {
+    {
     id: "rea-spencerstreet-1711-200",
     title: "1711/200 Spencer Street — REA listing #151710008",
     url: "https://www.realestate.com.au/property-apartment-vic-melbourne-151710008",
@@ -339,7 +339,7 @@ const COMPETITION_TRACKER = [
     status: "logged",
     action: "1 bed, $345,000 asking. Compare to 730/539 St Kilda Road ($360k-$395k) and G05/108 ($420k est.) and 302/108 ($420k est.) — lowest asking price in the tracker so far."
   },
-  {
+    {
     id: "rea-carlton-apartment-150593592",
     title: "112A/640 Swanston Street — REA listing #150593592",
     url: "https://www.realestate.com.au/property-apartment-vic-carlton-150593592",
@@ -354,7 +354,7 @@ const COMPETITION_TRACKER = [
     status: "logged",
     action: "1 bed, 1 carpark, $399k-$430k asking. Compare to G05/108 ($420k est.) and 302/108 ($420k est.) — same suburb (Carlton), similar price range; check floor level, building quality, condition, BSV."
   },
-  {
+    {
     id: "rea-carlton-apartment-151054624",
     title: "101/94 Canning Street — REA listing #151054624",
     url: "https://www.realestate.com.au/property-apartment-vic-carlton-151054624",
@@ -386,7 +386,7 @@ const COMPETITION_TRACKER = [
    verdict: short note
    ============================================================================= */
 const VILLA_SHORTLIST = [
-  {
+    {
     id:"Casa-Petak",
     name:"Casa Petak",
     url:"https://www.balitecture.com/",
@@ -419,7 +419,7 @@ const VILLA_SHORTLIST = [
       ]
     }
   },
-  {
+    {
     id:"PPV4967",
     name:"PPV4967 — Modern Tropical Villa",
     url:"https://propertia.com/property/amazing-modern-tropical-villa-project-in-uluwatu/",
@@ -436,7 +436,7 @@ const VILLA_SHORTLIST = [
     note:"155m² built / 160m² land (1.6 Are), 27yr lease to Aug 2053. Pool + rooftop BBQ. STR-viable zoning — strongest off-plan income candidate in the shortlist. ~$94.4k leftover in $360k no-debt budget if bought alone.",
     verdict:"Strongest 3BR off-plan candidate: Tourism zoning, under construction (not just 'on payment'), Q1 2027 ≈ 4–6 months. Risk: operator + actual build/quality not yet validated. Compares well vs Canggu 3BR median ($355k) — pricing appears reasonable for Uluwatu."
   },
-  {
+    {
     id:"PPV4619",
     name:"PPV4619 — Thomas Beach 2BR",
     url:"https://propertia.com/property/exclusive-2-bedroom-villa-in-the-prime-of-thomas-beach-prime-investment/",
@@ -453,7 +453,7 @@ const VILLA_SHORTLIST = [
     note:"104m² built / 110m² land (1.1 Are), 28.5yr lease to Nov 2054 + 10yr extension. Thomas Beach = quiet, unmarked access, TripAdvisor 4.1/272 reviews, Thomas Beach Residence 7.9/10 Booking. Near Suka Espresso (on same road). Airport ~30min. Lower STR volume than main Uluwatu strip — niche appeal. Gross yield 10–16% / net 4–6% self-mgd / 10–15% pro-mgd (Uluwatu market).",
     verdict:"Good 2BR option if short wait + lower price + tourism zoning accepted. On same road as the busy restaurant/cafe strip (Jl Labuansait/Pecatu), short drive not walk. Weaker than 3BR PPV4967 on income scale; fine if 2BR + Thomas Beach vibe fits. Off-plan Q1 2027 — delivery risk re-weighted down (4–6 months)."
   },
-  {
+    {
     id:"PPV4637",
     name:"PPV4637 — Pererenan Japanese Villa",
     url:"https://propertia.com/property/timeless-modern-japanese-inspired-villa-in-pererenan/",
@@ -470,7 +470,7 @@ const VILLA_SHORTLIST = [
     note:"107m² built / 270m² land (2.7 Are), 22yr lease + guaranteed 25yr extension (47yr total). 8 min to beach / 15 min Canggu / 25 min Seminyak. Pool + sun deck, Japanese-inspired tropical, closed living, garden, storage, fully furnished. ZONING NOT STATED — must confirm STR viability before any commitment.",
     verdict:"Interesting but incomplete: zoning unknown, no completion timeline, no operator named, no stated lease end date (only '22yr lease + 25yr extension'). Large land (2.7 Are) in Pererenan is a genuine upside if zoning is Tourism, but the listing is thin on the details that matter for an income property. Treat as 'watch' until zoning + timeline confirmed."
   },
-  {
+    {
     id:"FINNS-Standard",
     name:"FINNS — Standard Pool Villa",
     url:"https://www.finns.com/",
@@ -487,7 +487,7 @@ const VILLA_SHORTLIST = [
     note:"Cost: 3,322,008,000 IDR (~$195,193 USD). Deal structure: 35% of gross rental revenue → investor pool (revenue share, NOT profit). Monthly payouts from day 1, Q3 2027. Std pool 0.38% of pool; Lagoon Superior 0.59% of pool. Yr1 pool ~$4.1M → Std ~$15,580 (8.0%) / Lagoon ~$24,190 (7.8%); yr5 pool ~$6.7M → Lagoon ~$39,530 (12.7%); 5yr avg ~12.3%. Stated 9% yr1 doesn't reconcile with spot (~7.8%) — flag FX. Misses Warren's 10% yield floor and 6yr payback hard lines; below $50k SGD/yr until yr5 peak.",
     verdict:"Pool-revenue product, not a villa. Higher scale/divided risk than a single villa — your share depends on the whole pool. Below 10% yield floor; below $50k SGD/yr until yr5 peak. Lags behind single-villa options on every axis Warren cares about. Keep as a watch item, not a lead."
   },
-  {
+    {
     id:"FINNS-Lagoon",
     name:"FINNS — Lagoon Superior Pool",
     url:"https://www.finns.com/",
@@ -504,7 +504,7 @@ const VILLA_SHORTLIST = [
     note:"Lagoon Superior pool — 5,309,962,500 IDR (~$312,000 USD). Same revenue-share structure as the Standard pool: 0.59% of investor pool (vs 0.38% for Standard). So this is a ~55% larger share of the same pool. Yr1: ~$24,190 (7.8%) / yr5: ~$39,530 (12.7%). Same caveats as Standard: below 10% yield floor, below $50k SGD/yr until yr5 peak, misses 6yr payback, FX on stated 9% vs spot ~7.8%.",
     verdict: "Higher ticket ($312k) for a ~55% bigger slice of the same pool — but still a pool product, not your own villa. Revenue depends on FINNS' whole pool performance, not your asset. Same structural drawbacks as Standard. If you want exposure to the FINNS resort, the Lagoon Superior is the better-priced slice of that exposure — but still doesn't beat a single STR-viable villa on Warren's criteria.",
   },
-  {
+    {
     id: "Elle-Resort-Beach-Club",
     name: "Elle Resort & Beach Club — Hotel / Beach Club Revenue Share",
     url: "https://www.stonerealestate.com.au/property/8441876-elle-resort-beach-club-bali-international-int/",
@@ -522,7 +522,7 @@ const VILLA_SHORTLIST = [
     note: "Entry from ~$65,000 USD. Structure: (1) 8% guaranteed capital repayment during construction; (2) share in hotel AND beach club revenue — 45% net revenue pool spanning rooms, food & beverage, and beach club operations; (3) projected net returns up to 15% p.a.; (4) 50-year investment period. Fully managed — no day-to-day hassle. Perks: annual free stays + VIP access. [Estimates — verify independently: exact entry price, revenue pool split, payout frequency, guarantee terms, and exit/liquidity]",
     verdict: "Revenue-share product at ~$65k entry (much lower than FINNS Standard ~$195k or Lagoon ~$312k). Key differentiator vs FINNS: Elle's pool spans hotel + beach club + F&B revenue (45% net pool), whereas FINNS is hotel-only — Elle's broader revenue base (rooms, food & beverage, beach club operations) gives it a structural edge over a hotel-only pool if the beach club performs. 8% guaranteed capital repayment during construction + up to 15% p.a. projected net returns. Looks competitive on entry price and projected yield vs FINNS on paper — but same structural caveats: pool product (not your own villa), revenue depends on the whole operation's performance, operator/counterparty risk, and the 15% p.a. is projected/quoted — needs independent validation. Annual free stays + VIP access are a lifestyle perk, not an income factor. Treat as a strong watch item — confirm the 8% guarantee, the 45% pool structure, payout mechanics, and exit/liquidity terms before ranking against single-villa options (Casa Petak, PPV4967).",
   },
-  {
+    {
     id: "Ramada-Nusa-Dua",
     name:"Ramada Nusa Dua by Wyndham — STR-reserved apartment unit",
     url:"https://www.ramada.com/",
@@ -540,7 +540,7 @@ const VILLA_SHORTLIST = [
     note: "Ramada Nusa Dua by Wyndham markets apartment units for short-term rental under the brand's STR programme. Nusa Dua is Bali's planned resort enclave — tourism-zone, high ADR, strong occupancy, 5★ hotel anchor. Zone is Tourism (STR-viable). Yields / unit prices to be confirmed from the developer/STR operator. Pending research: confirmed unit price (USD), management fee, projected net yield, lease structure, minimum commitment.",
     verdict: "Nusa Dua = Bali's highest-occupancy resort zone (TPK Badung incl. Nusa Dua ~57–62% in 2026). STR-reserved apartment under a known brand (Wyndham/Ramada) could clear $50k SGD/yr if occupied at resort-level rates. Not yet validated — need unit price, fee, and yield figures from operator before ranking against Casa Petak / PPV4967. Treat as 'research in progress'.",
   },
-  {
+    {
     id: "Mirah",
     name: "Mirah Developments — FINNS Bali Resort",
     url: "https://mirahdevelopments.com/",
@@ -557,7 +557,7 @@ const VILLA_SHORTLIST = [
     note: "Mirah Developments is the developer behind FINNS Bali Resort in Berawa, Canggu. 256-room resort with FINNS Beach Club. Pool-revenue investment model: 35% of gross rental revenue → investor pool (revenue share, NOT profit). Standard pool 0.38% of pool; Lagoon Superior 0.59% of pool. Yr1 pool ~$4.1M → Std ~$15,580 (8.0%) / Lagoon ~$24,190 (7.8%); yr5 pool ~$6.7M → Lagoon ~$39,530 (12.7%). Stated 9% yr1 doesn't reconcile with spot (~7.8%) — flag FX. Misses Warren's 10% yield floor and 6yr payback hard lines; below $50k SGD/yr until yr5 peak.",
     verdict: "Developer of FINNS Bali Resort. See FINNS entries above for pool-revenue details. Below 10% yield floor; below $50k SGD/yr until yr5 peak. Lags behind single-villa options on every axis Warren cares about. Keep as a watch item, not a lead."
   },
-  {
+    {
     id: "Magnum-Estate",
     name: "Magnum Estate",
     url: "https://magnumestate.com/",
@@ -574,7 +574,7 @@ const VILLA_SHORTLIST = [
     note: "Bali property developer with projects including The Umalas Signature Luxury Apartments (from $225,000). Also publishes Bali villa ROI/stress-test research. Gross yields 7-18% quoted; net ~4-6% self-managed, ~10-15% pro-managed per their 2026 analysis. Canggu/Berawa gross 12-18%; Uluwatu/Bukit 10-16%; Ubud 10-15%; Seminyak 10-14%. [Estimates — verify independently]",
     verdict: "Bali developer + research publisher. Their yield data is useful for benchmarking but is self-published and commercially motivated (they develop property). Verify every figure independently before committing. Treat as a research source, not a lead villa."
   },
-  {
+    {
     id: "InvestLand-Bali",
     name: "InvestLand Bali",
     url: "https://investlandbali.com/",
@@ -598,7 +598,7 @@ const VILLA_SHORTLIST = [
    Flat table version of the shortlist — renders into #investmentTableWrap
    ============================================================================= */
 const INVESTMENT_TABLE = [
-  {
+    {
     id: "Casa-Petak",
     name: "Casa Petak",
     location: "Petak / Mengwi (Bali)",
@@ -611,7 +611,7 @@ const INVESTMENT_TABLE = [
     image: "assets/casa-petak/casa-petak.png",
     verdict: "Best on-hand: completed + managed + clears $50k SGD/yr from 70% occ. Confirms 10% yield floor & 6yr payback.",
   },
-  {
+    {
     id: "PPV4967",
     name: "PPV4967 — Modern Tropical Villa",
     location: "Uluwatu / Pecatu (Jl Pura Selonding)",
@@ -623,7 +623,7 @@ const INVESTMENT_TABLE = [
     operator: "TBC",
     verdict: "Strongest 3BR off-plan: Tourism zoning, under construction, Q1 2027. Operator + build quality not yet validated.",
   },
-  {
+    {
     id: "PPV4619",
     name: "PPV4619 — Thomas Beach 2BR",
     location: "Uluwatu / Thomas Beach (Jl Labuan Sait-Pecatu)",
@@ -635,7 +635,7 @@ const INVESTMENT_TABLE = [
     operator: "Palmera (developer)",
     verdict: "Good 2BR if short wait + lower price + tourism zoning accepted. Weaker than 3BR PPV4967 on income scale.",
   },
-  {
+    {
     id: "PPV4637",
     name: "PPV4637 — Pererenan Japanese Villa",
     location: "Pererenan (Canggu corridor)",
@@ -647,7 +647,7 @@ const INVESTMENT_TABLE = [
     operator: "TBC (unnamed)",
     verdict: "Interesting but incomplete: zoning unknown, no timeline, no operator. Treat as 'watch'.",
   },
-  {
+    {
     id: "FINNS-Standard",
     name: "FINNS — Standard Pool Villa",
     location: "Berawa, Seminyak (FINNS Beach Club)",
@@ -659,7 +659,7 @@ const INVESTMENT_TABLE = [
     operator: "FINNS (Mgmt Agreement — 35% gross rev → pool)",
     verdict: "Pool-revenue product, not a villa. Below 10% yield floor & $50k SGD/yr until yr5 peak. Watch item, not a lead.",
   },
-  {
+    {
     id: "FINNS-Lagoon",
     name: "FINNS — Lagoon Superior Pool",
     location: "Berawa, Seminyak (FINNS Beach Club)",
@@ -671,7 +671,7 @@ const INVESTMENT_TABLE = [
     operator: "FINNS (Mgmt Agreement — 35% gross rev → pool)",
     verdict: "Higher ticket ($312k) for ~55% bigger slice of same pool. Still pool product — doesn't beat single-villa options.",
   },
-  {
+    {
     id: "Elle-Resort-Beach-Club",
     name: "Elle Resort & Beach Club — Hotel / Beach Club Revenue Share",
     location: "Bali (resort location — confirm)",
@@ -683,7 +683,7 @@ const INVESTMENT_TABLE = [
     operator: "Elle Resort & Beach Club (fully managed — hands-off)",
     verdict: "Hotel/beach club revenue-share product at ~$65k entry (much lower than FINNS Standard ~$195k / Lagoon ~$312k). 8% guaranteed capital repayment during construction + up to 15% p.a. projected from a 45% net revenue pool (rooms, F&B, beach club). Same structural caveats as FINNS: pool product, operator/counterparty risk, projected yield needs validation. Annual free stays + VIP access are lifestyle perks. Treat as a strong watch item — confirm guarantee, pool structure, payout, exit/liquidity before ranking against single-villa options.",
   },
-  {
+    {
     id: "Ramada-Nusa-Dua",
     name: "Ramada Nusa Dua by Wyndham — STR apartment",
     location: "Nusa Dua, Bali (resort enclave)",
@@ -696,7 +696,7 @@ const INVESTMENT_TABLE = [
     image: "assets/ramada-nusa-dua/ramada-nusa-dua.png",
     verdict: "Nusa Dua = top-occupancy resort zone (~57–62% TPK). STR apartment under known brand could clear $50k SGD/yr. Need unit price, fee, yield from operator before ranking. Research in progress.",
   },
-  {
+    {
     id: "Mirah",
     name: "Mirah Developments — FINNS Bali Resort",
     location: "Berawa, Canggu (FINNS Beach Club)",
@@ -708,7 +708,7 @@ const INVESTMENT_TABLE = [
     operator: "FINNS Global (operator) / Mirah (developer)",
     verdict: "Developer of FINNS Bali Resort. Below 10% yield floor & $50k SGD/yr until yr5 peak. Watch item, not a lead.",
   },
-  {
+    {
     id: "Magnum-Estate",
     name: "Magnum Estate",
     location: "Bali (multiple project locations)",
@@ -720,7 +720,7 @@ const INVESTMENT_TABLE = [
     operator: "Magnum Estate (developer + management)",
     verdict: "Bali developer + research publisher. Useful benchmarking data but self-published / commercially motivated. Verify independently. Treat as research source, not a lead villa.",
   },
-  {
+    {
     id: "InvestLand-Bali",
     name: "InvestLand Bali",
     location: "Bali (Canggu / Uluwatu / Pererenan / Ubud / Sanur / Seminyak)",
@@ -740,51 +740,51 @@ const INVESTMENT_TABLE = [
    Fields: unit, beds, baths, parking (null=not stated), price (AUD), date, link
    ============================================================================= */
 const QUEENSBERRY_SALES = [
-  { unit:"G2", beds:1, baths:1, parking:1, price:370000, date:"Mar 2026", link:"https://www.domain.com.au/property-profile/g2-108-queensberry-street-carlton-vic-3053" },
-  { unit:"108", beds:1, baths:1, parking:1, price:400000, date:"Mar 2026", link:"https://www.domain.com.au/property-profile/108-108-queensberry-street-carlton-vic-3053" },
-  { unit:"504", beds:1, baths:1, parking:1, price:438000, date:"Nov 2025", link:"https://www.domain.com.au/property-profile/504-108-queensberry-street-carlton-vic-3053" },
-  { unit:"308", beds:1, baths:1, parking:null, price:320000, date:"Aug 2025", link:"https://www.domain.com.au/property-profile/308-108-queensberry-street-carlton-vic-3053" },
-  { unit:"403", beds:1, baths:1, parking:1, price:452045, date:"Feb 2025", link:"https://www.domain.com.au/property-profile/403-108-queensberry-street-carlton-vic-3053" },
-  { unit:"G1", beds:1, baths:1, parking:null, price:295000, date:"Nov 2024", link:"https://www.domain.com.au/property-profile/g1-108-queensberry-street-carlton-vic-3053" },
-  { unit:"G8", beds:2, baths:2, parking:1, price:640000, date:"Jun 2023", link:"https://www.domain.com.au/property-profile/g8-108-queensberry-street-carlton-vic-3053" },
-  { unit:"102", beds:1, baths:1, parking:1, price:365000, date:"Jul 2019", link:"https://www.domain.com.au/property-profile/102-108-queensberry-street-carlton-vic-3053" },
-  { unit:"205", beds:2, baths:1, parking:2, price:490000, date:"May 2019", link:"https://www.domain.com.au/property-profile/205-108-queensberry-street-carlton-vic-3053" },
-  { unit:"401", beds:3, baths:2, parking:3, price:1250000, date:"Apr 2019", link:"https://www.domain.com.au/property-profile/401-108-queensberry-street-carlton-vic-3053" },
-  { unit:"502", beds:1, baths:1, parking:1, price:487045, date:"Oct 2017", link:"https://www.domain.com.au/property-profile/502-108-queensberry-street-carlton-vic-3053" },
-  { unit:"404", beds:0, baths:1, parking:null, price:685000, date:"Jun 2017", link:"https://www.domain.com.au/property-profile/404-108-queensberry-street-carlton-vic-3053" },
-  { unit:"101", beds:1, baths:1, parking:null, price:429500, date:"Jun 2017", link:"https://www.domain.com.au/property-profile/101-108-queensberry-street-carlton-vic-3053" },
-  { unit:"505", beds:1, baths:1, parking:1, price:680000, date:"May 2017", link:"https://www.domain.com.au/property-profile/505-108-queensberry-street-carlton-vic-3053" },
-  { unit:"306", beds:2, baths:1, parking:1, price:415000, date:"Feb 2017", link:"https://www.domain.com.au/property-profile/306-108-queensberry-street-carlton-vic-3053" },
-  { unit:"501", beds:1, baths:1, parking:null, price:630000, date:"Sep 2015", link:"https://www.domain.com.au/property-profile/501-108-queensberry-street-carlton-vic-3053" },
-  { unit:"310", beds:2, baths:2, parking:1, price:380795, date:"Aug 2014", link:"https://www.domain.com.au/property-profile/310-108-queensberry-street-carlton-vic-3053" },
-  { unit:"202", beds:1, baths:1, parking:1, price:385000, date:"Aug 2014", link:"https://www.domain.com.au/property-profile/202-108-queensberry-street-carlton-vic-3053" },
-  { unit:"208", beds:1, baths:1, parking:null, price:417045, date:"Aug 2014", link:"https://www.domain.com.au/property-profile/208-108-queensberry-street-carlton-vic-3053" },
-  { unit:"201", beds:1, baths:1, parking:null, price:390795, date:"Aug 2014", link:"https://www.domain.com.au/property-profile/201-108-queensberry-street-carlton-vic-3053" },
-  { unit:"109", beds:2, baths:1, parking:1, price:540000, date:"Aug 2014", link:"https://www.domain.com.au/property-profile/109-108-queensberry-street-carlton-vic-3053" },
-  { unit:"G3", beds:1, baths:1, parking:null, price:465995, date:"Aug 2014", link:"https://www.domain.com.au/property-profile/g3-108-queensberry-street-carlton-vic-3053" },
-  { unit:"G4", beds:1, baths:1, parking:1, price:465995, date:"Aug 2014", link:"https://www.domain.com.au/property-profile/g4-108-queensberry-street-carlton-vic-3053" },
-  { unit:"506", beds:2, baths:1, parking:1, price:645000, date:"Jul 2014", link:"https://www.domain.com.au/property-profile/506-108-queensberry-street-carlton-vic-3053" },
-  { unit:"206", beds:2, baths:1, parking:1, price:427045, date:"Jul 2014", link:"https://www.domain.com.au/property-profile/206-108-queensberry-street-carlton-vic-3053" },
-  { unit:"203", beds:1, baths:1, parking:null, price:446408, date:"Jul 2014", link:"https://www.domain.com.au/property-profile/203-108-queensberry-street-carlton-vic-3053" },
-  { unit:"304", beds:1, baths:1, parking:1, price:485795, date:"Jul 2014", link:"https://www.domain.com.au/property-profile/304-108-queensberry-street-carlton-vic-3053" },
-  { unit:"G7", beds:0, baths:1, parking:null, price:400000, date:"Jul 2014", link:"https://www.domain.com.au/property-profile/g7-108-queensberry-street-carlton-vic-3053" },
-  { unit:"207", beds:1, baths:1, parking:1, price:420795, date:"Jul 2014", link:"https://www.domain.com.au/property-profile/207-108-queensberry-street-carlton-vic-3053" },
-  { unit:"204", beds:0, baths:1, parking:null, price:410795, date:"Jul 2014", link:"https://www.domain.com.au/property-profile/204-108-queensberry-street-carlton-vic-3053" },
-  { unit:"106", beds:1, baths:1, parking:null, price:681445, date:"Jun 2014", link:"https://www.domain.com.au/property-profile/106-108-queensberry-street-carlton-vic-3053" },
-  { unit:"405", beds:2, baths:1, parking:1, price:567425, date:"Jun 2014", link:"https://www.domain.com.au/property-profile/405-108-queensberry-street-carlton-vic-3053" },
-  { unit:"209", beds:2, baths:1, parking:1, price:560000, date:"Jun 2014", link:"https://www.domain.com.au/property-profile/209-108-queensberry-street-carlton-vic-3053" },
-  { unit:"309", beds:2, baths:1, parking:1, price:566585, date:"Jun 2014", link:"https://www.domain.com.au/property-profile/309-108-queensberry-street-carlton-vic-3053" },
-  { unit:"105", beds:2, baths:1, parking:1, price:412000, date:"Jun 2014", link:"https://www.domain.com.au/property-profile/105-108-queensberry-street-carlton-vic-3053" },
-  { unit:"103", beds:1, baths:1, parking:1, price:585000, date:"Jun 2014", link:"https://www.domain.com.au/property-profile/103-108-queensberry-street-carlton-vic-3053" },
-  { unit:"305", beds:2, baths:1, parking:1, price:412000, date:"Jun 2014", link:"https://www.domain.com.au/property-profile/305-108-queensberry-street-carlton-vic-3053" },
-  { unit:"307", beds:1, baths:1, parking:1, price:485795, date:"Aug 2014", link:"https://www.domain.com.au/property-profile/307-108-queensberry-street-carlton-vic-3053" },
-  { unit:"G5", beds:1, baths:1, parking:1, price:411545, date:"Oct 2014", link:"https://www.domain.com.au/property-profile/g5-108-queensberry-street-carlton-vic-3053" },
-  { unit:"302", beds:1, baths:1, parking:1, price:442045, date:"Oct 2014", link:"https://www.domain.com.au/property-profile/302-108-queensberry-street-carlton-vic-3053" },
-  { unit:"210", beds:2, baths:2, parking:2, price:695000, date:"Sep 2014", link:"https://www.domain.com.au/property-profile/210-108-queensberry-street-carlton-vic-3053" },
-  { unit:"G6", beds:2, baths:1, parking:1, price:369500, date:"Sep 2014", link:"https://www.domain.com.au/property-profile/g6-108-queensberry-street-carlton-vic-3053" },
-  { unit:"107", beds:2, baths:1, parking:1, price:400000, date:"Sep 2014", link:"https://www.domain.com.au/property-profile/107-108-queensberry-street-carlton-vic-3053" },
-  { unit:"402", beds:1, baths:1, parking:null, price:475795, date:"Sep 2014", link:"https://www.domain.com.au/property-profile/402-108-queensberry-street-carlton-vic-3053" },
-  { unit:"104", beds:2, baths:1, parking:1, price:412045, date:"Sep 2014", link:"https://www.domain.com.au/property-profile/104-108-queensberry-street-carlton-vic-3053" },
+    { unit:"G2", beds:1, baths:1, parking:1, price:370000, date:"Mar 2026", link:"https://www.domain.com.au/property-profile/g2-108-queensberry-street-carlton-vic-3053" },
+    { unit:"108", beds:1, baths:1, parking:1, price:400000, date:"Mar 2026", link:"https://www.domain.com.au/property-profile/108-108-queensberry-street-carlton-vic-3053" },
+    { unit:"504", beds:1, baths:1, parking:1, price:438000, date:"Nov 2025", link:"https://www.domain.com.au/property-profile/504-108-queensberry-street-carlton-vic-3053" },
+    { unit:"308", beds:1, baths:1, parking:null, price:320000, date:"Aug 2025", link:"https://www.domain.com.au/property-profile/308-108-queensberry-street-carlton-vic-3053" },
+    { unit:"403", beds:1, baths:1, parking:1, price:452045, date:"Feb 2025", link:"https://www.domain.com.au/property-profile/403-108-queensberry-street-carlton-vic-3053" },
+    { unit:"G1", beds:1, baths:1, parking:null, price:295000, date:"Nov 2024", link:"https://www.domain.com.au/property-profile/g1-108-queensberry-street-carlton-vic-3053" },
+    { unit:"G8", beds:2, baths:2, parking:1, price:640000, date:"Jun 2023", link:"https://www.domain.com.au/property-profile/g8-108-queensberry-street-carlton-vic-3053" },
+    { unit:"102", beds:1, baths:1, parking:1, price:365000, date:"Jul 2019", link:"https://www.domain.com.au/property-profile/102-108-queensberry-street-carlton-vic-3053" },
+    { unit:"205", beds:2, baths:1, parking:2, price:490000, date:"May 2019", link:"https://www.domain.com.au/property-profile/205-108-queensberry-street-carlton-vic-3053" },
+    { unit:"401", beds:3, baths:2, parking:3, price:1250000, date:"Apr 2019", link:"https://www.domain.com.au/property-profile/401-108-queensberry-street-carlton-vic-3053" },
+    { unit:"502", beds:1, baths:1, parking:1, price:487045, date:"Oct 2017", link:"https://www.domain.com.au/property-profile/502-108-queensberry-street-carlton-vic-3053" },
+    { unit:"404", beds:0, baths:1, parking:null, price:685000, date:"Jun 2017", link:"https://www.domain.com.au/property-profile/404-108-queensberry-street-carlton-vic-3053" },
+    { unit:"101", beds:1, baths:1, parking:null, price:429500, date:"Jun 2017", link:"https://www.domain.com.au/property-profile/101-108-queensberry-street-carlton-vic-3053" },
+    { unit:"505", beds:1, baths:1, parking:1, price:680000, date:"May 2017", link:"https://www.domain.com.au/property-profile/505-108-queensberry-street-carlton-vic-3053" },
+    { unit:"306", beds:2, baths:1, parking:1, price:415000, date:"Feb 2017", link:"https://www.domain.com.au/property-profile/306-108-queensberry-street-carlton-vic-3053" },
+    { unit:"501", beds:1, baths:1, parking:null, price:630000, date:"Sep 2015", link:"https://www.domain.com.au/property-profile/501-108-queensberry-street-carlton-vic-3053" },
+    { unit:"310", beds:2, baths:2, parking:1, price:380795, date:"Aug 2014", link:"https://www.domain.com.au/property-profile/310-108-queensberry-street-carlton-vic-3053" },
+    { unit:"202", beds:1, baths:1, parking:1, price:385000, date:"Aug 2014", link:"https://www.domain.com.au/property-profile/202-108-queensberry-street-carlton-vic-3053" },
+    { unit:"208", beds:1, baths:1, parking:null, price:417045, date:"Aug 2014", link:"https://www.domain.com.au/property-profile/208-108-queensberry-street-carlton-vic-3053" },
+    { unit:"201", beds:1, baths:1, parking:null, price:390795, date:"Aug 2014", link:"https://www.domain.com.au/property-profile/201-108-queensberry-street-carlton-vic-3053" },
+    { unit:"109", beds:2, baths:1, parking:1, price:540000, date:"Aug 2014", link:"https://www.domain.com.au/property-profile/109-108-queensberry-street-carlton-vic-3053" },
+    { unit:"G3", beds:1, baths:1, parking:null, price:465995, date:"Aug 2014", link:"https://www.domain.com.au/property-profile/g3-108-queensberry-street-carlton-vic-3053" },
+    { unit:"G4", beds:1, baths:1, parking:1, price:465995, date:"Aug 2014", link:"https://www.domain.com.au/property-profile/g4-108-queensberry-street-carlton-vic-3053" },
+    { unit:"506", beds:2, baths:1, parking:1, price:645000, date:"Jul 2014", link:"https://www.domain.com.au/property-profile/506-108-queensberry-street-carlton-vic-3053" },
+    { unit:"206", beds:2, baths:1, parking:1, price:427045, date:"Jul 2014", link:"https://www.domain.com.au/property-profile/206-108-queensberry-street-carlton-vic-3053" },
+    { unit:"203", beds:1, baths:1, parking:null, price:446408, date:"Jul 2014", link:"https://www.domain.com.au/property-profile/203-108-queensberry-street-carlton-vic-3053" },
+    { unit:"304", beds:1, baths:1, parking:1, price:485795, date:"Jul 2014", link:"https://www.domain.com.au/property-profile/304-108-queensberry-street-carlton-vic-3053" },
+    { unit:"G7", beds:0, baths:1, parking:null, price:400000, date:"Jul 2014", link:"https://www.domain.com.au/property-profile/g7-108-queensberry-street-carlton-vic-3053" },
+    { unit:"207", beds:1, baths:1, parking:1, price:420795, date:"Jul 2014", link:"https://www.domain.com.au/property-profile/207-108-queensberry-street-carlton-vic-3053" },
+    { unit:"204", beds:0, baths:1, parking:null, price:410795, date:"Jul 2014", link:"https://www.domain.com.au/property-profile/204-108-queensberry-street-carlton-vic-3053" },
+    { unit:"106", beds:1, baths:1, parking:null, price:681445, date:"Jun 2014", link:"https://www.domain.com.au/property-profile/106-108-queensberry-street-carlton-vic-3053" },
+    { unit:"405", beds:2, baths:1, parking:1, price:567425, date:"Jun 2014", link:"https://www.domain.com.au/property-profile/405-108-queensberry-street-carlton-vic-3053" },
+    { unit:"209", beds:2, baths:1, parking:1, price:560000, date:"Jun 2014", link:"https://www.domain.com.au/property-profile/209-108-queensberry-street-carlton-vic-3053" },
+    { unit:"309", beds:2, baths:1, parking:1, price:566585, date:"Jun 2014", link:"https://www.domain.com.au/property-profile/309-108-queensberry-street-carlton-vic-3053" },
+    { unit:"105", beds:2, baths:1, parking:1, price:412000, date:"Jun 2014", link:"https://www.domain.com.au/property-profile/105-108-queensberry-street-carlton-vic-3053" },
+    { unit:"103", beds:1, baths:1, parking:1, price:585000, date:"Jun 2014", link:"https://www.domain.com.au/property-profile/103-108-queensberry-street-carlton-vic-3053" },
+    { unit:"305", beds:2, baths:1, parking:1, price:412000, date:"Jun 2014", link:"https://www.domain.com.au/property-profile/305-108-queensberry-street-carlton-vic-3053" },
+    { unit:"307", beds:1, baths:1, parking:1, price:485795, date:"Aug 2014", link:"https://www.domain.com.au/property-profile/307-108-queensberry-street-carlton-vic-3053" },
+    { unit:"G5", beds:1, baths:1, parking:1, price:411545, date:"Oct 2014", link:"https://www.domain.com.au/property-profile/g5-108-queensberry-street-carlton-vic-3053" },
+    { unit:"302", beds:1, baths:1, parking:1, price:442045, date:"Oct 2014", link:"https://www.domain.com.au/property-profile/302-108-queensberry-street-carlton-vic-3053" },
+    { unit:"210", beds:2, baths:2, parking:2, price:695000, date:"Sep 2014", link:"https://www.domain.com.au/property-profile/210-108-queensberry-street-carlton-vic-3053" },
+    { unit:"G6", beds:2, baths:1, parking:1, price:369500, date:"Sep 2014", link:"https://www.domain.com.au/property-profile/g6-108-queensberry-street-carlton-vic-3053" },
+    { unit:"107", beds:2, baths:1, parking:1, price:400000, date:"Sep 2014", link:"https://www.domain.com.au/property-profile/107-108-queensberry-street-carlton-vic-3053" },
+    { unit:"402", beds:1, baths:1, parking:null, price:475795, date:"Sep 2014", link:"https://www.domain.com.au/property-profile/402-108-queensberry-street-carlton-vic-3053" },
+    { unit:"104", beds:2, baths:1, parking:1, price:412045, date:"Sep 2014", link:"https://www.domain.com.au/property-profile/104-108-queensberry-street-carlton-vic-3053" },
 ];
 
 /* =============================================================================
@@ -792,12 +792,12 @@ const QUEENSBERRY_SALES = [
    Source: Domain.com.au building profile (7 townhouse sales, 2007–2024)
    ============================================================================= */
 const SUSSEX_SALES = [
-  { unit:"4", beds:3, baths:2, parking:2, price:770000, date:"Jun 2024", link:"https://www.domain.com.au/property-profile/4-143-sussex-street-pascoe-vale-vic-3044" },
-  { unit:"3", beds:3, baths:2, parking:2, price:600000, date:"Aug 2022", link:"https://www.domain.com.au/property-profile/3-143-sussex-street-pascoe-vale-vic-3044" },
-  { unit:"6", beds:3, baths:2, parking:1, price:670000, date:"Mar 2021", link:"https://www.domain.com.au/property-profile/6-143-sussex-street-pascoe-vale-vic-3044" },
-  { unit:"2", beds:3, baths:2, parking:1, price:426000, date:"Jun 2014", link:"https://www.domain.com.au/property-profile/2-143-sussex-street-pascoe-vale-vic-3044" },
-  { unit:"1", beds:3, baths:2, parking:1, price:370000, date:"Jul 2007", link:"https://www.domain.com.au/property-profile/1-143-sussex-street-pascoe-vale-vic-3044" },
-  { unit:"5", beds:3, baths:2, parking:1, price:380000, date:"Apr 2007", link:"https://www.domain.com.au/property-profile/5-143-sussex-street-pascoe-vale-vic-3044" },
+    { unit:"4", beds:3, baths:2, parking:2, price:770000, date:"Jun 2024", link:"https://www.domain.com.au/property-profile/4-143-sussex-street-pascoe-vale-vic-3044" },
+    { unit:"3", beds:3, baths:2, parking:2, price:600000, date:"Aug 2022", link:"https://www.domain.com.au/property-profile/3-143-sussex-street-pascoe-vale-vic-3044" },
+    { unit:"6", beds:3, baths:2, parking:1, price:670000, date:"Mar 2021", link:"https://www.domain.com.au/property-profile/6-143-sussex-street-pascoe-vale-vic-3044" },
+    { unit:"2", beds:3, baths:2, parking:1, price:426000, date:"Jun 2014", link:"https://www.domain.com.au/property-profile/2-143-sussex-street-pascoe-vale-vic-3044" },
+    { unit:"1", beds:3, baths:2, parking:1, price:370000, date:"Jul 2007", link:"https://www.domain.com.au/property-profile/1-143-sussex-street-pascoe-vale-vic-3044" },
+    { unit:"5", beds:3, baths:2, parking:1, price:380000, date:"Apr 2007", link:"https://www.domain.com.au/property-profile/5-143-sussex-street-pascoe-vale-vic-3044" },
 ];
 
 // =============================================================================
@@ -999,40 +999,40 @@ const ELLE = {
    ============================================================================= */
 const BALI_STRATEGY = {
   lastUpdated: "2026-10-21",
-  active: "Elle Beach Club — personal property (no PT PMA, no Indonesia bonds, no IDX shares)",
+  active: "Elle Beach Club — personal property (no PT PMA, no Indonesia bonds, no IDX shares). Operator pays 10% at source on gross rental before passing share to you.",
   // ---- Single-step income funnel ----
   steps: [
     {
       title: "Buy & own Elle Beach Club personally",
-      detail: "You own the Elle Beach Club $256K investment directly as personal property — no PT PMA, no Indonesian corporate structure. The 10% final withholding tax is applied to gross IDR rentals. The rental yield is the income engine that funds everything downstream.",
-      caveat: "Confirm the exact rental-yield, management-agreement terms, and the 45% net revenue pool definition with the operator before relying on income figures."
+      detail: "You own the Elle Beach Club $256K investment directly as personal property — no PT PMA, no Indonesian corporate structure. The hotel operator (via its own PT PMA) pays a 10% final withholding tax at source on the gross rental before passing any profit/rental share to you. The rental yield is the income engine that funds everything downstream.",
+      caveat: "Confirm the exact rental-yield, management-agreement terms, the 45% net revenue pool definition, and the operator withholding mechanics before relying on income figures."
     },
     {
-      title: "Collect IDR rental, apply Indonesia 10% final withholding",
-      detail: "Rental income is received in IDR. Indonesia applies a 10% final withholding tax on gross rental income — this is the only Indonesian tax on the rental itself. The net IDR is retained onshore.",
-      caveat: "Confirm the withholding mechanism (withheld by operator vs self-declared) with your tax adviser."
+      title: "Operator withholds 10% at source on gross rental",
+      detail: "The hotel operator (via its own PT PMA) withholds 10% final tax at source on the gross rental before passing any profit/rental share to you. This is the only Indonesian tax on the rental itself. You then hold the net IDR (after the 10% withholding).",
+      caveat: "Confirm the withholding mechanism is operator-at-source vs self-declared, the withholding rate (confirm 10%), and whether the withholding applies to gross rental or net rental with your tax adviser."
     },
     {
       title: "Convert net IDR to SGD, deploy into personal portfolio",
-      detail: "Net IDR (after the 10% Indonesian rental withholding) is converted to SGD and deployed into your personal investment portfolio — aligned with your existing AI/robotics / sovereign AI share thesis. No PT PMA, no Indonesia bonds, no IDX shares, no outbound dividend.",
+      detail: "You hold the net IDR (after the 10% operator-at-source withholding). Convert net IDR to SGD and deploy into your personal investment portfolio — aligned with your existing AI/robotics / sovereign AI share thesis. No PT PMA, no Indonesia bonds, no IDX shares, no outbound dividend, no foreign capital gains tax on the share deployment.",
       caveat: "Confirm FX conversion mechanics and rates with your FX provider/adviser."
     }
   ],
   tax: {
-    rentalGross: "100%",
-    indonesiaRentalTax: "−10% final withholding tax on gross rental income (Indonesia)",
-    afterRentalTax: "90% net IDR",
+    rentalGross: "100% (gross rental, before any withholding)",
+    indonesiaRentalTax: "−10% final withholding tax on gross rental income (Indonesia) — paid by the hotel operator at source, before passing any profit/rental share to you",
+    afterRentalTax: "90% net IDR (retained by you after operator-at-source withholding)",
     fxConversion: "Net IDR converted to SGD — FX spread applies per conversion",
     afterFx: "Net SGD after FX conversion",
     personalDeployment: {
       label: "Personal portfolio deployment (no PT PMA, no Indonesia bonds, no IDX shares)",
-      step1: "Rental income received — 100% gross IDR",
-      step2: "Indonesia 10% final withholding on rental — −10%",
-      step3: "After-tax IDR retained onshore, then converted to SGD",
+      step1: "Rental income received — 100% gross IDR, before 10% operator-at-source withholding",
+      step2: "Indonesia 10% final withholding on rental — −10% (operator withholds at source before passing profit/rental share to you)",
+      step3: "After-tax IDR retained by you onshore, then converted to SGD",
       step4: "Converted to SGD, deployed into personal portfolio (AI/robotics / sovereign AI shares)",
       step5: "Capital gains tax on sale at personal level — confirm rate with tax adviser"
     },
-    summary: "10% rental tax (Indonesia — unavoidable) + FX spread (convert net IDR to SGD) + personal capital gains tax (on sale). No PT PMA, no Indonesia bonds, no IDX shares, no outbound dividend, no foreign capital gains tax on the share deployment. The only intentional leakage is the 10% Indonesian rental withholding plus the FX spread on the IDR-to-SGD conversion."
+    summary: "10% rental tax (Indonesia — unavoidable, operator pays at source on gross rental before passing any share to you) + FX spread (convert net IDR to SGD) + personal capital gains tax (on sale). No PT PMA, no Indonesia bonds, no IDX shares, no outbound dividend, no foreign capital gains tax on the share deployment. The only intentional leakage is the 10% Indonesian rental withholding plus the FX spread on the IDR-to-SGD conversion."
   },
   risks: [
     { num: "1", title: "Rental collecting & withholding", body: "Confirm the 10% final withholding mechanics — whether it is withheld by the operator or self-declared by you. This is the main tax leakage point. The withholding is unavoidable in Indonesia." },
