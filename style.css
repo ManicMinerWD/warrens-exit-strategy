@@ -1060,7 +1060,9 @@ table.compare tbody tr:hover {
 #elleLeaseSchedule table { width: 100%; border-collapse: collapse; font-size: 10px; }
 #elleLeaseSchedule th, #elleLeaseSchedule td { padding: 5px 6px; border-bottom: 1px solid var(--line); text-align: left; }
 #elleLeaseSchedule th { color: var(--muted); font-size: 9px; text-transform: uppercase; letter-spacing: 0.04em; }
-#elleLeaseSchedule .num { text-align: right; font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace; }
+/* ---- Part 4 — lease income model: left-align all figure cells ---- */
+#elleLeaseWrap td.num, #elleLeaseWrap th, #elleLeaseSchedule td, #elleLeaseSchedule th { text-align: left; }
+#elleLeaseSchedule .num { text-align: left; font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace; }
 #elleLeaseSchedule tr.landing { background: var(--sand); font-weight: 600; }
 #elleLeaseSchedule tr.phase-2 { background: #f4f8f6; }
 #elleLeaseSchedule tr.phase-c { background: #faf6f2; }
