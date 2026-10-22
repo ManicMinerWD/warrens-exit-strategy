@@ -1107,7 +1107,7 @@ function renderElleLease() {
         <p style="font-size:12px;"><strong>Deposit paid:</strong> ${esc(inc.deposit)}</p>
         <p style="font-size:12px;"><strong>Fractional interest:</strong> ${esc(inc.fractions)}</p>
         <p style="font-size:12px;"><strong>10% guarantee:</strong> ${esc(inc.guarantee)} ${d.leaseStructure.guaranteeAnnual.toLocaleString()}/yr on ${d.leaseStructure.totalFractionValue.toLocaleString()}</p>
-        <p style="font-size:12px;"><strong>Payout:</strong> monthly, from day 1</p>
+        <p style="font-size:12px;"><strong>Payout:</strong> ${esc(d.leaseStructure.payoutFrequencyDetail || "Quarterly in arrears")} — first payment ${esc(d.leaseStructure.firstPaymentNote || "")}</p>
         <p style="font-size:12px;"><strong>After guarantee period (FY2031+):</strong> ${esc(inc.guaranteePeriod)}</p>
       </div>
       <div>
@@ -1117,7 +1117,9 @@ function renderElleLease() {
             <tr><td><strong>Fractional share</strong></td><td class="num">${d.leaseStructure.totalFractionShare}</td></tr>
             <tr><td><strong>10% guaranteed return</strong></td><td class="num"><strong>A$${d.leaseStructure.guaranteeAnnual.toLocaleString()}/yr</strong></td></tr>
             <tr><td><strong>Guarantee period</strong></td><td class="num">${d.leaseStructure.guaranteeApplies}</td></tr>
-            <tr><td><strong>Payout frequency</strong></td><td class="num">Monthly from day 1</td></tr>
+            <tr><td><strong>Payout frequency</strong></td><td class="num">${esc(d.leaseStructure.payoutFrequency || "Quarterly")}</td></tr>
+            <tr><td><strong>Quarterly amount</strong></td><td class="num">A$${d.leaseStructure.quarterAmount.toLocaleString()}</td></tr>
+            <tr><td><strong>First payment</strong></td><td class="num">A$${d.leaseStructure.firstPaymentAmount.toLocaleString()}${d.leaseStructure.firstPaymentIsProRata ? " (pro rata)" : ""}</td></tr>
           </tbody>
         </table>
       </div>
@@ -1133,8 +1135,8 @@ function renderElleLease() {
           <thead><tr><th>Metric</th><th class="num">Fractional leasehold (3/20)</th></tr></thead>
           <tbody>
             <tr><td><strong>Total fractional value</strong></td><td class="num">A$${d.headline.totalEntryConsideration.toLocaleString()}</td></tr>
-            <tr><td><strong>10% guarantee (daily)</strong></td><td class="num">A$${(d.headline.guaranteeAnnual/365).toLocaleString()}/day</td></tr>
-            <tr><td><strong>10% guarantee (monthly)</strong></td><td class="num">A$${(d.headline.guaranteeAnnual/12).toLocaleString()}/month</td></tr>
+            <tr><td><strong>10% guarantee (quarterly)</strong></td><td class="num">A$${d.leaseStructure.quarterAmount.toLocaleString()}/quarter</td></tr>
+            <tr><td><strong>First payment</strong></td><td class="num">A$${d.leaseStructure.firstPaymentAmount.toLocaleString()}${d.leaseStructure.firstPaymentIsProRata ? " (pro rata)" : ""} — ${esc(d.leaseStructure.paymentCommencement)}</td></tr>
             <tr><td><strong>Guarantee period</strong></td><td class="num">Construction + 2 yrs operating</td></tr>
             <tr><td><strong>After guarantee (FY2031+)</strong></td><td class="num">Income-share stream (3/20 of room pool + 30% NPBT)</td></tr>
             <tr><td><strong>Avg rate on advance consideration</strong></td><td class="num">${d.headline.avgRateAdvancePct.toFixed(2)}% (10% during guarantee period)</td></tr>

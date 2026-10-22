@@ -20,6 +20,21 @@ const _fmt = n => {
 };
 const _pct = p => (p == null ? "—" : p.toFixed(1) + "%");
 const _usd = u => (u == null ? "—" : "$" + u.toLocaleString("en-AU"));
+
+/* ---------- quarterly payment pro-rata ---------- */
+/* Quarterly in arrears. The first payment is pro rata for the part-quarter from
+   the commencement date to the end of that calendar quarter.
+   quarterAmount is the full-quarter figure; the pro-rata share is the number of
+   whole months remaining in the quarter (including the commencement month) / 3. */
+function elleProRataFirstPayment(commencementISO, quarterAmount) {
+  if (!commencementISO) return quarterAmount;
+  const d = new Date(commencementISO + "T00:00:00");
+  if (isNaN(d.getTime())) return quarterAmount;
+  const month = d.getMonth();                    // 0-based: 0=Jan
+  const monthsLeftInQuarter = 3 - (month % 3);    // Oct->3, Nov->2, Dec->1
+  if (monthsLeftInQuarter >= 3) return quarterAmount;
+  return Math.round(quarterAmount * monthsLeftInQuarter / 3);
+}
 const _lab = (m,y) => _monFull[m-1] + " " + y;
 
 /* =============================================================================
@@ -762,7 +777,7 @@ const ELLE = {
   product: {
     structure: "Fractional ownership (PWD/IOD-style) — 3/20 of the property: 1/20 Standard Room at $74,750 + 2/20 Standard Room Premium at $201,250 = $276,000 total fractional value, plus a $1,000 deposit. 50-year investment period. Personal property (no PT PMA).",
     guarantee: "10% of $276,000 = $27,600/yr guaranteed during construction AND the first 2 years of operation (FY2026-FY2030), paid at source by the operator before passing any profit/rental share to the owner.",
-    projectedNet: "10% guaranteed return = $27,600/yr (during construction + first 2 yrs). After FY2030, the 10% steps down to a contractual floor; you receive a monthly income-share stream (3/20 of room revenue pool) + 30% of net profit. The 10% is the guarantee; the income-share is the upside.",
+    projectedNet: "10% guaranteed return = $27,600/yr (during construction + first 2 yrs). After FY2030, the 10% steps down to a contractual floor; you receive a quarterly income-share stream (3/20 of room revenue pool) + 30% of net profit. The 10% is the guarantee; the income-share is the upside.",
     poolBasis: "3/20 fractional interest in the room revenue pool (45% of room revenue) + 30% of net profit after all expenses. 10% Indonesian final withholding on gross rental at source.",
     entryUsd: 276000,  // 1/20 std room $74,750 + 2/20 std room premium $201,250
     depositUsd: 1000,
@@ -926,7 +941,7 @@ const ELLE = {
   ],
   milestoneNote: "The forecast is conditional. These are the operating thresholds that carry the property from opening to a defensible rate, stated so that progress can be tracked rather than asserted. Tier two and tier three milestones carry the property from the success case toward the exceptional case — they are set out in full in the Phase 2 destination analysis.",
   // ---- Verdict ----
-  verdict: "CONFIRMED personal property — fractional ownership (3/20 fractional interest), NO PT PMA, NO Indonesia bonds, NO IDX shares. Your fractional value is $276,000 (1/20 standard room at $74,750 + 2/20 standard room premium at $201,250) plus a $1,000 deposit. You receive a 10% guaranteed return = $27,600/yr during construction and the first 2 years of operation (contractual floor, paid at source by the operator). After the guarantee period (FY2031+), the 10% steps down to a floor; you receive a monthly income-share stream (3/20 of room revenue pool) + 30% net profit. This is the highest-value fractional leasehold position in Bali — $27,600 guaranteed/yr on $276,000 = 10% guaranteed, with upside via the income-share. Confirm with your tax adviser: the 10% guarantee terms and who stands behind it; the 3/20 fractional definition; payout frequency and currency; and exit/liquidity terms at year 50."
+  verdict: "CONFIRMED personal property — fractional ownership (3/20 fractional interest), NO PT PMA, NO Indonesia bonds, NO IDX shares. Your fractional value is $276,000 (1/20 standard room at $74,750 + 2/20 standard room premium at $201,250) plus a $1,000 deposit. You receive a 10% guaranteed return = $27,600/yr during construction and the first 2 years of operation (contractual floor, paid at source by the operator). After the guarantee period (FY2031+), the 10% steps down to a floor; you receive a quarterly income-share stream (3/20 of room revenue pool) + 30% net profit. This is the highest-value fractional leasehold position in Bali — $27,600 guaranteed/yr on $276,000 = 10% guaranteed, with upside via the income-share. Confirm with your tax adviser: the 10% guarantee terms and who stands behind it; the 3/20 fractional definition; payout frequency and currency; and exit/liquidity terms at year 50."
 };
 
 /* =============================================================================
@@ -1018,6 +1033,17 @@ const ELLE_LEASE = {
     guaranteePeriodYears: 2,  // during construction + first 2 years of operation
     guaranteeApplies: "During construction (FY2026-FY2028) AND first 2 years of operation (FY2029-FY2030)",
     operatorAtSource: "Operator (via its own PT PMA) pays 10% at source on gross rental before passing any profit/rental share to owner",
+    // ---- Payment terms ----
+    // Quarterly in arrears. The first payment is pro rata for the part-quarter
+    // from the payment commencement date to the end of that quarter.
+    payoutFrequency: "Quarterly",
+    payoutFrequencyDetail: "Quarterly in arrears — 4 payments per year of A$6,900",
+    paymentCommencement: "2026-10-01",
+    paymentCommencementNote: "First payment runs from the commencement date to the end of that quarter. If the commencement date is mid-quarter, the first payment is pro rata: A$6,900 × (months remaining in quarter ÷ 3).",
+    quarterAmount: 6900,
+    firstPaymentAmount: elleProRataFirstPayment("2026-10-01", 6900),
+    firstPaymentIsProRata: elleProRataFirstPayment("2026-10-01", 6900) !== 6900,
+    firstPaymentNote: "A$" + elleProRataFirstPayment("2026-10-01", 6900).toLocaleString("en-AU") + " for the first quarter" + (elleProRataFirstPayment("2026-10-01", 6900) !== 6900 ? " (pro rata — commencement falls mid-quarter)" : " (full quarter from 1 October 2026)"),
   },
 
   // ---- Income projection (50-year, AUD) ----
@@ -1055,8 +1081,8 @@ const ELLE_LEASE = {
   // ---- 10% guarantee waterfall (per fraction) ----
   guaranteeWaterfall: {
     depositPaid: 1000,
-    fraction1: { share: "1/20", type: "Standard Room", price: 74750, annual10: 7475, notes: "1/20 of Standard Room — monthly income-share + 10% construction/operating guarantee" },
-    fraction2: { share: "2/20", type: "Standard Room Premium", price: 201250, annual10: 20125, notes: "2/20 of Standard Room Premium — monthly income-share + 10% construction/operating guarantee" },
+    fraction1: { share: "1/20", type: "Standard Room", price: 74750, annual10: 7475, notes: "1/20 of Standard Room — quarterly income-share + 10% construction/operating guarantee" },
+    fraction2: { share: "2/20", type: "Standard Room Premium", price: 201250, annual10: 20125, notes: "2/20 of Standard Room Premium — quarterly income-share + 10% construction/operating guarantee" },
     total: { deposit: 1000, fractions: 2, totalValue: 276000, annual10: 27600, grants: "10% guarantee during construction + first 2 years operating", notes: "Operator pays 10% at source on gross rental before passing any profit/rental share to owner" }
   },
 
@@ -1088,13 +1114,13 @@ const ELLE_LEASE = {
   // ---- How the income is generated ----
   // The 3/20 fractional interest (1/20 standard room + 2/20 standard room premium) receives:
   // (1) A 10% guaranteed return on the $276,000 value during construction + first 2 operating years;
-  // (2) After the guarantee period, a monthly income-share stream (3/20 of room revenue pool) + 30% net profit share.
+  // (2) After the guarantee period, a quarterly income-share stream (3/20 of room revenue pool) + 30% net profit share.
   incomeSource: {
-    headline: "Your 3/20 fractional interest (1/20 Standard Room + 2/20 Standard Room Premium = $276,000) receives a 10% guaranteed return = $27,600/yr during construction and the first 2 years of operation, paid monthly by the operator at source on gross rental. After the guarantee period (starting FY2031), the 10% guarantee steps down to a contractual floor; you receive a monthly income-share stream (3/20 of the room revenue pool) plus 30% of net profit. The 10% is the guarantee; the income-share is the upside.",
+    headline: "Your 3/20 fractional interest (1/20 Standard Room + 2/20 Standard Room Premium = $276,000) receives a 10% guaranteed return = $27,600/yr during construction and the first 2 years of operation, paid quarterly by the operator at source on gross rental. After the guarantee period (starting FY2031), the 10% guarantee steps down to a contractual floor; you receive a quarterly income-share stream (3/20 of the room revenue pool) plus 30% of net profit. The 10% is the guarantee; the income-share is the upside.",
     deposit: "Your $1,000 deposit was paid at signing — it is part of the total $276,000 consideration, not a separate obligation.",
     fractions: "1/20 Standard Room at $74,750 + 2/20 Standard Room Premium at $201,250 = $276,000 total fractional value (3/20 of the property).",
     guarantee: "10% of $276,000 = $27,600/yr, guaranteed during construction AND the first 2 years of operation, paid at source by the operator (via its own PT PMA) before passing any profit/rental share to you.",
-    roomRevenue: "Room revenue is split: your 3/20 fractional interest receives 3/20 of the room revenue pool monthly, PLUS 30% of net profit after all expenses.",
+    roomRevenue: "Room revenue is split: your 3/20 fractional interest receives 3/20 of the room revenue pool quarterly, PLUS 30% of net profit after all expenses.",
     guaranteePeriod: "FY2026-FY2030 (construction + first 2 operating years) — the 10% is the GUARANTEED floor. After FY2030, the guarantee becomes a contractual minimum floor; income can grow above it.",
     totalFractionValue: 276000,
     totalFractionShare: "3/20 (15%)",
