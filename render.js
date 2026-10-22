@@ -1242,6 +1242,22 @@ function renderElleLease() {
         <p class="lease-notes" style="font-size:11px;">${esc(prot.minimumGuarantee.note)}</p>
       </div>
     </div>
+    <div class="two-col" style="align-items:flex-start;">
+      <div>
+        <h3>Successor rights (death/dismissal)</h3>
+        <table class="data-table" style="font-size:11px;">
+          <tbody>
+            <tr><td><strong>Notification period</strong></td><td class="num">${prot.successorRights.notificationPeriodDays} days</td></tr>
+            <tr><td><strong>Action required</strong></td><td>Heirs must notify lessor within 60 days</td></tr>
+            <tr><td><strong>Succession requirement</strong></td><td>Provide legally sufficient evidence</td></tr>
+            <tr><td><strong>Continuity</strong></td>Contract automatically continues with heirs</td></tr>
+            <tr><td><strong>Obligations</strong></td>Borne by heirs/successors</td></tr>
+          </tbody>
+        </table>
+        <p class="lease-notes" style="font-size:11px;">${esc(prot.successorRights.notice)}. Source: ${esc(prot.successorRights.source)}</p>
+      </div>
+      <div style="min-width:200px;"></div>
+    </div>
   `);
 
   // ---- verdict ----

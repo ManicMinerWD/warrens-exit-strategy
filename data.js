@@ -1256,6 +1256,11 @@ const ELLE_LEASE = {
       year1Shortfall: 0,
       coverage: 1.0,
       note: "For the construction period (FY2026-FY2028) and the first 2 years of operation (FY2029-FY2030), the lessor guarantees a minimum lease income of A$27,500 per year (10% of the $275,000 fractional value). Where modelled income falls below during the guarantee period, the lessor pays the shortfall."
+    },
+    successorRights: {
+      notificationPeriodDays: 60,
+      notice: "If the lessee dies or is dismissed during the lease term, heirs or lawful successors must notify the lessor within 60 days and provide legally sufficient evidence of succession. They then continue the agreement with all obligations and costs borne by the heirs or successors.",
+      source: "Lease Agreement Article 6, paragraph 6"
     }
   },
 
