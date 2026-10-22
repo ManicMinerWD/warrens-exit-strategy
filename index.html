@@ -10,9 +10,11 @@
   <script src="render.js?v=6"></script>
   
   <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    // No balinese strategy rendering
-  });
+  // boot() is registered by render.js; this inline call only covers the case
+  // where render.js loads after DOMContentLoaded has already fired.
+  if (document.readyState !== "loading") {
+    try { boot(); } catch(e) { console.error("[index] boot failed:", e && e.message); }
+  }
   </script>
 </head>
 <body>
@@ -127,7 +129,7 @@
   </div>
 </header>
 
-<div id="balistatsShowAll">Show all Bali Statistics sections</div>
+<div id="balistatsShowAll">Show all Bali Statistics sections</div>
 
 <!-- ============ SECTION 1: ANNUAL TOTALS ============ -->
 <div class="section" id="annualWrap">
@@ -371,7 +373,7 @@
   </div>
 </div>
 
-<!-- ============ SOURCES ============ -->
+<!-- ============ SOURCES ============ -->
 <div class="section sources" id="sources">
   <h2>Data sources &amp; method</h2>
   <ul id="sourceList"></ul>
@@ -395,5 +397,5 @@
 </div><!-- /wrap -->
 </div><!-- /main-content -->
 
-</body>
+</body>
 </html>

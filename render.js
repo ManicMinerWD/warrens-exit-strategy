@@ -808,6 +808,80 @@ function setupSidebars() {
 /* =============================================================================
    BOOT — render everything, set last-updated
    ============================================================================= */
+/* =============================================================================
+   2b. MONTHLY ARRIVALS — summary cards (the #monthlyCards container)
+   ============================================================================= */
+function renderMonthlyCards() {
+  const wrap = $("#monthlyWrap");
+  if (!wrap) return;
+  const el = $("#monthlyCards");
+  if (!el) return;
+  const d = DATA.arrMonthly || [];
+  if (!d.length) return;
+  const last = d[d.length - 1];
+  const prev = d.length > 1 ? d[d.length - 2] : null;
+  const tot = last.intl + last.dom;
+  const delta = prev ? tot - (prev.intl + prev.dom) : null;
+  el.innerHTML = `
+    <div class="total-card"><div class="label">Latest month (${esc(lab(last.m, last.y))})</div><div class="value">${fmt(tot)}</div><div class="sub">${fmt(last.intl)} international · ${fmt(last.dom)} domestic</div></div>
+    <div class="total-card"><div class="label">vs previous month</div><div class="value" style="color:${delta == null ? "var(--muted)" : delta >= 0 ? "var(--teal)" : "var(--coral)"}">${delta == null ? "—" : (delta >= 0 ? "+" : "") + fmt(delta)}</div><div class="sub">total arrivals month-on-month</div></div>
+    <div class="total-card"><div class="label">Months tracked</div><div class="value">${d.length}</div><div class="sub">${esc(lab(d[0].m, d[0].y))} – ${esc(lab(last.m, last.y))}</div></div>
+  `;
+}
+
+/* =============================================================================
+   1b. ANNUAL ARRIVALS — summary cards (the #annualCards container)
+   ============================================================================= */
+function renderAnnualCards() {
+  const wrap = $("#annualWrap");
+  if (!wrap) return;
+  const el = $("#annualCards");
+  if (!el) return;
+  const d = DATA.arrAnnual || [];
+  if (!d.length) return;
+  const last = d[d.length - 1];
+  const prev = d.length > 1 ? d[d.length - 2] : null;
+  const tot = last.intl + last.dom;
+  const delta = prev ? tot - (prev.intl + prev.dom) : null;
+  const best = d.reduce((a, b) => ((a.intl + a.dom) >= (b.intl + b.dom) ? a : b));
+  el.innerHTML = `
+    <div class="total-card"><div class="label">${last.year} total arrivals</div><div class="value">${fmt(tot)}</div><div class="sub">${fmt(last.intl)} international · ${fmt(last.dom)} domestic</div></div>
+    <div class="total-card"><div class="label">vs ${prev ? prev.year : "—"}</div><div class="value" style="color:${delta == null ? "var(--muted)" : delta >= 0 ? "var(--teal)" : "var(--coral)"}">${delta == null ? "—" : (delta >= 0 ? "+" : "") + fmt(delta)}</div><div class="sub">total arrivals year-on-year</div></div>
+    <div class="total-card"><div class="label">Peak year</div><div class="value">${best.year}</div><div class="sub">${fmt(best.intl + best.dom)} total arrivals</div></div>
+  `;
+}
+
+/* =============================================================================
+   1c. ANNUAL ARRIVALS — source note (the #annualNote container)
+   ============================================================================= */
+function renderAnnualNote() {
+  const el = $("#annualNote");
+  if (!el) return;
+  const d = DATA.arrAnnual || [];
+  if (!d.length) return;
+  const last = d[d.length - 1];
+  el.innerHTML = `Annual figures are BPS Bali totals. The latest year (${last.year}) is sourced from <code>${esc(last.src)}</code>. International and domestic are published separately; the total is the sum of both.`;
+}
+
+/* =============================================================================
+   13. DATA SOURCES — populate #sourceList on index.html
+   ============================================================================= */
+function renderSources() {
+  const el = $("#sourceList");
+  if (!el) return;
+  const items = [
+    ["BPS Bali", "Annual arrivals, foreign arrivals by gate, hotel occupancy (TPK), length of stay, GDP"],
+    ["BHA", "Monthly international + domestic arrivals; March 2026 snapshot by source market"],
+    ["Antara / BPS press releases", "Monthly TPK and length-of-star-hotel-stay releases"],
+    ["AirDNA / Airbtics / Villa Finder / Hospitable", "STR occupancy, ADR, RevPAR, active listings (private platforms — not official)"],
+    ["Reid Real Info 2025 Market Report", "Property prices and STR rates by zone (via Investlandbali.com)"],
+    ["Horwath HTL Bali 2026", "Hotel &amp; branded residences industry report"],
+    ["Colliers / JLL / CBRE / BTN-CoStar", "Hotel sector transaction and pipeline references"],
+  ];
+  el.innerHTML = items.map(([name, what]) =>
+    `<li><strong>${name}</strong> — ${what}</li>`).join("");
+}
+
 function boot() {
   const lu = $("#lastUpdated");
   if (lu) lu.textContent = "Last updated: " + DATA.lastUpdated;
@@ -819,7 +893,10 @@ function boot() {
   renderInvestmentSubmenu();
   renderInvestmentTable();
   renderAnnual();
+  renderAnnualCards();
+  renderAnnualNote();
   renderMonthly();
+  renderMonthlyCards();
   renderGate();
   renderMarkets();
   renderHotelOccupancy();
@@ -828,12 +905,28 @@ function boot() {
   renderSTR();
   renderPriceAdr();
   renderHotelReport();
+  renderSources();
   renderVillaPage();
   renderElle();
   renderElleLease();
 }
 
-// Boot: wait for DOM fully parsed before querying
+/* Boot: run once the DOM is parsed. Guarded against double-invocation
+   (a page may also call boot() from its own inline script). */
+var __booted = false;
+function runBoot() {
+  if (__booted) return;
+  __booted = true;
+  try { boot(); }
+  catch (e) {
+    console.error("[render.js] boot() threw:", e && e.message);
+  }
+}
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", runBoot);
+} else {
+  runBoot();
+}
 
 
 /* =============================================================================
@@ -1323,3 +1416,54 @@ function renderElle() {
     <div class="note" style="font-size:12px;margin-top:10px;">${esc(d.verdict.againstCriteria)}</div>
   `);
 }
+
+/* =============================================================================
+   DARK MODE TOGGLE — wired by CSS variable overrides in style.css
+   ============================================================================= */
+(function() {
+  "use strict";
+  var STORAGE_KEY = "warrens-exit-darkMode";
+  var html = document.documentElement;
+  var toggle = null;
+  var wired = false;
+
+  var apply = function(isDark) {
+    if (isDark) { html.setAttribute("data-theme", "dark"); }
+    else { html.removeAttribute("data-theme"); }
+    if (toggle) {
+      toggle.classList.toggle("is-dark", isDark);
+      toggle.innerHTML = isDark
+        ? '<span class="dm-icon">☀️</span><span class="dm-label">Light</span>'
+        : '<span class="dm-icon">🌙</span><span class="dm-label">Dark</span>';
+    }
+  };
+
+  var getPref = function() {
+    var saved = null;
+    try { saved = localStorage.getItem(STORAGE_KEY); } catch(e) {}
+    if (saved === "dark" || saved === "light") return saved;
+    try {
+      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
+    } catch(e) {}
+    return "light";
+  };
+
+  var wire = function() {
+    if (wired) return;
+    toggle = document.getElementById("darkModeToggle");
+    if (!toggle) return;
+    wired = true;
+    toggle.addEventListener("click", function() {
+      var next = html.getAttribute("data-theme") !== "dark";
+      apply(next);
+      try { localStorage.setItem(STORAGE_KEY, next ? "dark" : "light"); } catch(e) {}
+    });
+    apply(getPref() === "dark");
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", wire);
+  } else {
+    wire();
+  }
+})();

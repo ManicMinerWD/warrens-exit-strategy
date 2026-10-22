@@ -10,10 +10,11 @@
 <script src="render.js?v=6"></script>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-
-
-});
+// boot() is registered by render.js; this inline call only covers the case
+// where render.js loads after DOMContentLoaded has already fired.
+if (document.readyState !== "loading") {
+  try { boot(); } catch(e) { console.error("[financial] boot failed:", e && e.message); }
+}
 </script>
 </head>
 <body>
@@ -86,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
   </div>
 </header>
 
-<!-- ====== HEADLINE FIGURES ====== -->
+<!-- ====== HEADLINE FIGURES ====== -->
 <div class="totals-row" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;">
   <div class="total-card" style="flex:1;min-width:120px;background:var(--teal);color:#fff;padding:14px 16px;border-radius:8px;">
     <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;opacity:0.85;margin-bottom:4px;">Net cleared &#x2014; full CGT (no offset)</div>
@@ -207,7 +208,7 @@ document.addEventListener("DOMContentLoaded", function() {
   </div>
 </div>
 
-</div>
+</div>
 
 <!-- ====== LOSS OFFSET ====== -->
 <div class="section">

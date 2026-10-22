@@ -444,6 +444,30 @@ body { display: flex; flex-direction: row; min-height: 100vh; }
   .collapsible-sub-content.collapsed {
     max-height: 0 !important;
   }
+  /* ---- Tables: scroll inside the page instead of forcing horizontal page scroll ---- */
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 12.5px;
+  }
+  table.data-table { font-size: 12.5px; }
+  th, td { padding: 6px 8px; white-space: nowrap; }
+  /* allow long prose cells to wrap rather than push the table wide */
+  td.muted, td.src, td.note, td.verdict-cell, td.area-name { white-space: normal; }
+  .chart-box { height: 220px; }
+  .chart-box.tall { height: 260px; }
+  /* two-column blocks stack */
+  .two-col { grid-template-columns: 1fr; }
+  .two-col > * { width: 100%; min-width: 0; }
+  /* grid/flex children must be allowed to shrink below their content width,
+     otherwise a wide table inside a grid cell pushes the whole page wide */
+  .wrap, .main-content, .section, .two-col, .two-col > div,
+  .table-wrap, .chart-box, .totals-row, .waterfall, .lease-notes {
+    min-width: 0;
+  }
+  .section { overflow-x: hidden; }
 }
 
 [data-theme="dark"] .border-box,
