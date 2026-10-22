@@ -944,10 +944,10 @@ function renderElleLease() {
 
   // ---------- headline cards ----------
   put("#elleLeaseHeadline", `
-    <div class="total-card"><div class="label">Entry consideration</div><div class="value">A$${d.leaseStructure.totalEntryConsideration.toLocaleString()}</div><div class="sub">1/20 standard room $74,750 + 2/20 standard room premium $201,250 + $1,000 deposit</div></div>
+    <div class="total-card"><div class="label">Entry consideration</div><div class="value">A$${d.leaseStructure.totalEntryConsideration.toLocaleString()}</div><div class="sub">2 x $100,000 units + 1 x $75,000 unit + $1,000 deposit</div></div>
     <div class="total-card" style="background:var(--teal);color:#fff;"><div class="label" style="color:#fff;opacity:0.85;">Guaranteed return</div><div class="value" style="color:#fff;">10% = A$${d.leaseStructure.guaranteeAnnual.toLocaleString()}/yr</div><div class="sub" style="color:#fff;opacity:0.9;">during construction + first 2 years of operation</div></div>
-    <div class="total-card"><div class="label">Fractional ownership</div><div class="value">${d.leaseStructure.totalFractionShare}</div><div class="sub">3/20 of the property (15%)</div></div>
-    <div class="total-card"><div class="label">Guaranteed total (50 yrs)</div><div class="value">A$${d.headline.totalGuarantee50Yr.toLocaleString()}</div><div class="sub">10% on $276,000 × 50 years</div></div>
+    <div class="total-card"><div class="label">Fractional ownership</div><div class="value">${d.leaseStructure.totalFractionShare}</div><div class="sub">3 units of the property</div></div>
+    <div class="total-card"><div class="label">Guaranteed total (50 yrs)</div><div class="value">A$${d.headline.totalGuarantee50Yr.toLocaleString()}</div><div class="sub">10% on $275,000 × 50 years of the lease to 24 May 2092</div></div>
   `);
 
   // ---------- investment product ----------
@@ -961,11 +961,11 @@ function renderElleLease() {
   put("#elleLeaseProduct", `
     <table class="data-table">
       <tbody>
-        <tr><td style="width:30%;"><strong>Structure</strong></td><td>Fractional ownership (PWD/IOD-style) — 3/20 of the property, personal property (no PT PMA).</td></tr>
-        <tr><td><strong>Deposit paid</strong></td><td>A$${d.leaseStructure.deposit.toLocaleString()} (part of total $276,000 consideration)</td></tr>
+        <tr><td style="width:30%;"><strong>Structure</strong></td><td>Fractional ownership (PWD/IOD-style) — 3 units, personal property (no PT PMA).</td></tr>
+        <tr><td><strong>Deposit paid</strong></td><td>A$${d.leaseStructure.deposit.toLocaleString()} (part of total $275,000 consideration)</td></tr>
         <tr><td><strong>Fractions</strong></td><td>${fracRows}</td></tr>
         <tr><td><strong>Total fractional value</strong></td><td>A$${d.leaseStructure.totalFractionValue.toLocaleString()}</td></tr>
-        <tr><td><strong>Total fractional share</strong></td><td>${d.leaseStructure.totalFractionShare} (${d.leaseStructure.totalFractionPct}%) of the property</td></tr>
+        <tr><td><strong>Total fractional share</strong></td><td>${d.leaseStructure.totalFractionShare} of the property</td></tr>
         <tr><td><strong>Guarantee rate</strong></td><td>${d.leaseStructure.guaranteeRatePct}% p.a. (${d.leaseStructure.guaranteeAnnual.toLocaleString()}/yr)</td></tr>
         <tr><td><strong>Guarantee period</strong></td><td>${d.leaseStructure.guaranteeApplies}</td></tr>
         <tr><td><strong>Operator at source</strong></td><td>${d.leaseStructure.operatorAtSource}</td></tr>
@@ -978,7 +978,7 @@ function renderElleLease() {
   const wf = d.roomWaterfall;
   put("#elleLeaseWaterfall", `
     <div class="waterfall">
-      <div class="row"><div class="label">10% guaranteed income (construction + first 2 yrs)</div><div class="val">A$${d.leaseStructure.guaranteeAnnual.toLocaleString()}/yr</div><div class="pct">on $276,000 fractional value</div></div>
+      <div class="row"><div class="label">10% guaranteed income (construction + first 2 yrs)</div><div class="val">A$${d.leaseStructure.guaranteeAnnual.toLocaleString()}/yr</div><div class="pct">on $275,000 fractional value</div></div>
       <div class="row"><div class="label">1/20 Standard Room — 10%</div><div class="val">A$${wf.guarantee1Share.toLocaleString()}/yr</div></div>
       <div class="row"><div class="label">2/20 Standard Room Premium — 10%</div><div class="val">A$${wf.guarantee2Share.toLocaleString()}/yr</div></div>
       <div class="row"><div class="label">After guarantee period (FY2031+)</div><div class="val">Income-share stream (3/20 of room revenue pool) + 30% net profit</div></div>
@@ -1015,7 +1015,7 @@ function renderElleLease() {
   `);
 
   // ---------- year-by-year schedule ----------
-  // Benchmark = Optimistic (1.18x) target rate on the $276,000 fractional value.
+  // Benchmark = Optimistic (1.18x) target rate on the $275,000 fractional value.
   // Construction years (FY2026-FY2028) carry no benchmark: the 10% guarantee is
   // the maximum potential income during construction, so there is no target to
   // measure against. From FY2029 the benchmark compounds at 4.6% p.a.
@@ -1151,6 +1151,65 @@ function renderElleLease() {
     </div>
   `);
 
+  // ---------- cost protection: capital calls & renovations ----------
+  const cc = d.capitalCalls || {};
+  const rn = d.renovations || {};
+  put("#elleLeaseCostProtection", `
+    <div class="two-col" style="align-items:flex-start;">
+      <div>
+        <h3 style="font-size:13px;color:var(--teal);margin-bottom:8px;">No capital calls</h3>
+        <p style="font-size:12px;margin-bottom:8px;">${esc(cc.summary || "")}</p>
+        <table class="data-table" style="font-size:11px;">
+          <tbody>
+            <tr><td><strong>Capital calls permitted</strong></td><td class="num" style="color:var(--teal);font-weight:600;">No</td></tr>
+            <tr><td><strong>Running costs</strong></td><td>Paid out of hotel revenue before your income is calculated (PMA Article 4)</td></tr>
+            <tr><td><strong>Your own triggered costs</strong></td><td>Fees if you sell, damage during your own stays, your own taxes</td></tr>
+            <tr><td><strong>Disaster shortfall</strong></td><td>Discussed with all lessees (Lease Article 10) — you cannot be made to contribute</td></tr>
+          </tbody>
+        </table>
+        <p class="lease-notes" style="font-size:11px;">Source: ${esc(cc.source || "")}</p>
+      </div>
+      <div>
+        <h3 style="font-size:13px;color:var(--teal);margin-bottom:8px;">Renovations &amp; the sinking fund</h3>
+        <table class="data-table" style="font-size:11px;">
+          <tbody>
+            <tr><td><strong>Sinking fund rate</strong></td><td class="num">${rn.sinkingFundRatePct}%</td></tr>
+            <tr><td><strong>Funded on</strong></td><td>${esc(rn.sinkingFundBasis || "")}</td></tr>
+            <tr><td><strong>Spent on</strong></td><td>${esc(rn.sinkingFundUse || "")}</td></tr>
+            <tr><td><strong>Separate reserves</strong></td><td>${esc(rn.separateReserves || "")}</td></tr>
+            <tr><td><strong>Fixed renovation cycle</strong></td><td class="num" style="color:var(--teal);font-weight:600;">No — timing follows brand standards</td></tr>
+          </tbody>
+        </table>
+        <p class="lease-notes" style="font-size:11px;">${esc(rn.cycleNote || "")} Source: ${esc(rn.source || "")}</p>
+      </div>
+    </div>
+  `);
+
+  // ---------- investment tiers ----------
+  const tr = d.tiers || {};
+  const crb = tr.constructionRebate || {};
+  const og = tr.operatingGuarantee || {};
+  const tl = tr.lease || {};
+  put("#elleLeaseTiers", `
+    <table class="data-table" style="font-size:11px;">
+      <thead><tr><th>Tier / feature</th><th class="num">Value</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Tier threshold</strong></td><td class="num">A$${tr.thresholdAud.toLocaleString()}</td><td>At or above this, the 10% rate applies</td></tr>
+        <tr><td><strong>Rate</strong></td><td class="num">${tr.ratePct}%</td><td>Applies to both the qualifying investment and any further investment</td></tr>
+        <tr><td><strong>Your position</strong></td><td class="num">A$${d.leaseStructure.totalEntryConsideration.toLocaleString()}</td><td style="color:var(--teal);font-weight:600;">Clears the tier — 10% applies</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;margin:8px 0;">${esc(tr.rule || "")}</p>
+    <table class="data-table" style="font-size:11px;">
+      <thead><tr><th>Benefit</th><th class="num">Rate</th><th class="num">Period</th><th>Cap / note</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Construction rebate</strong></td><td class="num">${crb.ratePct}% p.a.</td><td class="num">up to ${crb.maxMonths} months</td><td>${esc(crb.note || "")}</td></tr>
+        <tr><td><strong>Operating guarantee</strong></td><td class="num">${og.ratePct}% p.a.</td><td class="num">${og.minMonths} months</td><td>${esc(og.note || "")}</td></tr>
+        <tr><td><strong>Lease term</strong></td><td class="num">${tl.termYears} yrs</td><td class="num">${esc(tl.endLabel || "")}</td><td>${esc(tl.note || "")}</td></tr>
+      </tbody>
+    </table>
+  `);
+
   // ---------- lease protections ----------
   const prot = d.protections;
   put("#elleLeaseProtections", `
@@ -1209,7 +1268,7 @@ function renderElle() {
   // ---- headline cards ----
   put("#elleKeyCards", `
     <div class="total-card"><div class="label">Keys</div><div class="value">${d.totals.keys}</div><div class="sub">${d.totals.types} room &amp; suite types</div></div>
-    <div class="total-card"><div class="label">Entry (USD)</div><div class="value">$${d.product.entryUsd.toLocaleString()}</div><div class="sub">per suite, 50-year term</div></div>
+    <div class="total-card"><div class="label">Entry (USD)</div><div class="value">$${d.product.entryUsd.toLocaleString()}</div><div class="sub">per unit, lease to 24 May 2092</div></div>
     <div class="total-card" style="background:var(--teal);color:#fff;"><div class="label" style="color:#fff;opacity:0.85;">Projected net (quoted)</div><div class="value">up to 15% p.a.</div><div class="sub" style="color:#fff;opacity:0.9;">+ 10% return guaranteed in construction and the first 2 years of operation</div></div>
     <div class="total-card"><div class="label">Opening clean ADR</div><div class="value" style="font-size:18px;">${esc(d.forecast.openingClean)}</div><div class="sub">${esc(d.forecast.openingOcc)} occupancy · 2028</div></div>
   `);

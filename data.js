@@ -468,7 +468,7 @@ const VILLA_SHORTLIST = [
     yield: null,
     operator: "Elle Resort & Beach Club (fully managed — hands-off)",
     image: "assets/elle-resort-beach-club/elle-resort-beach-club.png",
-    note: "Entry from ~$65,000 USD. Structure: (1) 10% return guaranteed during construction and the first 2 years of operation; (2) share in hotel AND beach club revenue — 45% net revenue pool spanning rooms, food & beverage, and beach club operations; (3) projected net returns up to 15% p.a.; (4) 50-year investment period. Fully managed — no day-to-day hassle. Perks: annual free stays + VIP access. [Estimates — verify independently: exact entry price, revenue pool split, payout frequency, guarantee terms, and exit/liquidity]",
+    note: "Entry from ~$65,000 USD. Structure: (1) 10% return guaranteed during construction and the first 2 years of operation; (2) share in hotel AND beach club revenue — 45% net revenue pool spanning rooms, food & beverage, and beach club operations; (3) projected net returns up to 15% p.a.; (4) Lease to 24 May 2092. Fully managed — no day-to-day hassle. Perks: annual free stays + VIP access. [Estimates — verify independently: exact entry price, revenue pool split, payout frequency, guarantee terms, and exit/liquidity]",
     verdict: "Revenue-share product at ~$65k entry (much lower than FINNS Standard ~$195k or Lagoon ~$312k). Key differentiator vs FINNS: Elle's pool spans hotel + beach club + F&B revenue (45% net pool), whereas FINNS is hotel-only — Elle's broader revenue base (rooms, food & beverage, beach club operations) gives it a structural edge over a hotel-only pool if the beach club performs. 10% return guaranteed + up to 15% p.a. projected net returns. Looks competitive on entry price and projected yield vs FINNS on paper — but same structural caveats: pool product (not your own villa), revenue depends on the whole operation's performance, operator/counterparty risk, and the 15% p.a. is projected/quoted — needs independent validation. Annual free stays + VIP access are a lifestyle perk, not an income factor. Treat as a strong watch item — confirm the 10% guarantee, the 45% pool structure, payout mechanics, and exit/liquidity terms before ranking against single-villa options (Casa Petak, PPV4967).",
   },
     {
@@ -625,13 +625,13 @@ const INVESTMENT_TABLE = [
     name: "Elle Resort & Beach Club — Fractional ownership (3/20)",
     location: "Bali (Batu Belig, Seminyak)",
     beds: null,
-    priceUsd: 276000,
-    roi: "10% guaranteed = $27,600/yr during construction + first 2 yrs; after FY2030 income-share + 30% NPBT",
+    priceUsd: 275000,
+    roi: "10% guaranteed = $27,500/yr during construction + first 2 yrs; after FY2030 income-share + 30% NPBT",
     status: "Fractional ownership — personal property (no PT PMA)",
     leaseTo: null,
     operator: "Geonet / SONO (managed), operator pays 10% at source",
     image: null,
-    verdict: "Fractional leasehold position — personal property (no PT PMA, no IDX shares, no Indonesia bonds). 3/20 interest: 1/20 Standard Room + 2/20 Standard Room Premium = $276,000. 10% = $27,600/yr guaranteed construction + first 2 yrs, paid at source. After FY2030 income-share (3/20 room pool) + 30% NPBT. Confirm 10% guarantee terms, payout frequency/currency, exit/liquidity.",
+    verdict: "Fractional leasehold position — personal property (no PT PMA, no IDX shares, no Indonesia bonds). 3/20 interest: 1/20 Standard Room + 2/20 Standard Room Premium = $275,000. 10% = $27,500/yr guaranteed construction + first 2 yrs, paid at source. After FY2030 income-share (3/20 room pool) + 30% NPBT. Confirm 10% guarantee terms, payout frequency/currency, exit/liquidity.",
   },
     {
     id: "Ramada-Nusa-Dua",
@@ -770,18 +770,18 @@ const ELLE = {
     disclaimer: "PROJECTION — NOT A GUARANTEE OF RETURNS. Every ADR, occupancy and return figure on this page is a Geonet / SONO / Inspiral Stage 1 projection, not a contracted or independently validated number. Concept design: artist impressions and indicative areas, subject to change, approval and final documentation."
   },
   // ---- The investment product (as signed) ----
-  // Fractional ownership (3/20) + $1,000 deposit = $276,000 total consideration.
-  // 10% of $276,000 = $27,600 guaranteed during construction + first 2 years of operation.
+  // Fractional ownership (3/20) + $1,000 deposit = $275,000 total consideration.
+  // 10% of $275,000 = $27,500 guaranteed during construction + first 2 years of operation.
   // Owner receives 3/20 of room revenue pool + 30% net profit after the guarantee period.
   // Personal property — no PT PMA, no Indonesia bonds, no IDX shares.
   product: {
-    structure: "Fractional ownership (PWD/IOD-style) — 3/20 of the property: 1/20 Standard Room at $74,750 + 2/20 Standard Room Premium at $201,250 = $276,000 total fractional value, plus a $1,000 deposit. 50-year investment period. Personal property (no PT PMA).",
-    guarantee: "10% of $276,000 = $27,600/yr guaranteed during construction AND the first 2 years of operation (FY2026-FY2030), paid at source by the operator before passing any profit/rental share to the owner.",
-    projectedNet: "10% guaranteed return = $27,600/yr (during construction + first 2 yrs). After FY2030, the 10% steps down to a contractual floor; you receive a quarterly income-share stream (3/20 of room revenue pool) + 30% of net profit. The 10% is the guarantee; the income-share is the upside.",
-    poolBasis: "3/20 fractional interest in the room revenue pool (45% of room revenue) + 30% of net profit after all expenses. 10% Indonesian final withholding on gross rental at source.",
-    entryUsd: 276000,  // 1/20 std room $74,750 + 2/20 std room premium $201,250
+    structure: "Fractional ownership (PWD/IOD-style) — 3 units: 2 x $100,000 units + 1 x $75,000 unit = $275,000 total fractional value, plus a $1,000 deposit. Lease to 24 May 2092. Personal property (no PT PMA).",
+    guarantee: "10% of $275,000 = $27,500/yr guaranteed during construction AND the first 2 years of operation (FY2026-FY2030), paid at source by the operator before passing any profit/rental share to the owner.",
+    projectedNet: "10% guaranteed return = $27,500/yr (during construction + first 2 yrs). After FY2030, the 10% steps down to a contractual floor; you receive a quarterly income-share stream (3/20 of room revenue pool) + 30% of net profit. The 10% is the guarantee; the income-share is the upside.",
+    poolBasis: "3-unit fractional interest in the room revenue pool (45% of room revenue) + 30% of net profit after all expenses. 10% Indonesian final withholding on gross rental at source.",
+    entryUsd: 275000,  // 1/20 std room $74,750 + 2/20 std room premium $201,250
     depositUsd: 1000,
-    depositNote: "Your $1,000 deposit was paid at signing — it is part of the total $276,000 consideration, not a separate obligation.",
+    depositNote: "Your $1,000 deposit was paid at signing — it is part of the total $275,000 consideration, not a separate obligation.",
     perks: "Annual free stays + VIP access + early event bookings",
     verify: "Confirm with your tax adviser: the 10% guarantee terms and who stands behind it; the 3/20 fractional definition; payout frequency and currency; the 15% p.a. basis (on entry price? on net pool share?); and exit/liquidity terms at year 50 — or on default."
   },
@@ -941,7 +941,7 @@ const ELLE = {
   ],
   milestoneNote: "The forecast is conditional. These are the operating thresholds that carry the property from opening to a defensible rate, stated so that progress can be tracked rather than asserted. Tier two and tier three milestones carry the property from the success case toward the exceptional case — they are set out in full in the Phase 2 destination analysis.",
   // ---- Verdict ----
-  verdict: "CONFIRMED personal property — fractional ownership (3/20 fractional interest), NO PT PMA, NO Indonesia bonds, NO IDX shares. Your fractional value is $276,000 (1/20 standard room at $74,750 + 2/20 standard room premium at $201,250) plus a $1,000 deposit. You receive a 10% guaranteed return = $27,600/yr during construction and the first 2 years of operation (contractual floor, paid at source by the operator). After the guarantee period (FY2031+), the 10% steps down to a floor; you receive a quarterly income-share stream (3/20 of room revenue pool) + 30% net profit. This is the highest-value fractional leasehold position in Bali — $27,600 guaranteed/yr on $276,000 = 10% guaranteed, with upside via the income-share. Confirm with your tax adviser: the 10% guarantee terms and who stands behind it; the 3/20 fractional definition; payout frequency and currency; and exit/liquidity terms at year 50."
+  verdict: "CONFIRMED personal property — fractional ownership (3-unit fractional interest), NO PT PMA, NO Indonesia bonds, NO IDX shares. Your fractional value is $275,000 (1/20 standard room at $74,750 + 2/20 standard room premium at $201,250) plus a $1,000 deposit. You receive a 10% guaranteed return = $27,500/yr during construction and the first 2 years of operation (contractual floor, paid at source by the operator). After the guarantee period (FY2031+), the 10% steps down to a floor; you receive a quarterly income-share stream (3/20 of room revenue pool) + 30% net profit. This is the highest-value fractional leasehold position in Bali — $27,500 guaranteed/yr on $275,000 = 10% guaranteed, with upside via the income-share. Confirm with your tax adviser: the 10% guarantee terms and who stands behind it; the 3/20 fractional definition; payout frequency and currency; and exit/liquidity terms."
 };
 
 /* =============================================================================
@@ -1011,9 +1011,9 @@ const BALI_STRATEGY = {
 */
 const ELLE_LEASE = {
   // ---- NEW FRACTIONAL LEASEHOLD AGREEMENT (signed) ----
-  // User signed agreement (2026): $1,000 deposit, 1/20 fractional of standard room at $74,750,
-  // and 2/20 fractional of standard room premium at $201,250. Total fractional value $276,000,
-  // 10% of which = $27,600 guaranteed return during construction and first 2 years of operation.
+  // Locked purchase: 2 x $100,000 units + 1 x $75,000 unit = $275,000 total fractional value.
+  // (The earlier intention was a single 1/20 penthouse at ~$258,750; superseded by this purchase.)
+  // 10% of $275,000 = $27,500 guaranteed return during construction and first 2 years of operation.
   // Everything is personal property — no PT PMA, no Indonesia bonds, no IDX shares.
   // =============================================================================
   leaseStructure: {
@@ -1021,15 +1021,15 @@ const ELLE_LEASE = {
     deposit: 1000,
     depositNote: "User's deposit paid at signing — $1,000 (part of total consideration, not separate from the fractional sale)",
     fractions: [
-      { share: "1/20", type: "Standard Room", value: 74750, price: 74750, annual10: 7475 },
-      { share: "2/20", type: "Standard Room Premium", value: 201250, price: 201250, annual10: 20125 }
+      { share: "2 units", type: "Standard Room unit @ $100,000", value: 100000, price: 100000, annual10: 10000, qty: 2 },
+      { share: "1 unit", type: "Standard Room unit @ $75,000", value: 75000, price: 75000, annual10: 7500, qty: 1 }
     ],
-    totalFractionValue: 276000,
-    totalFractionShare: "3/20",  // 1/20 + 2/20
-    totalFractionPct: 15.0,
-    totalEntryConsideration: 276000,
+    totalFractionValue: 275000,
+    totalFractionShare: "3 units",  // 2 x $100,000 + 1 x $75,000
+    totalFractionPct: null,         // unit count, not a percentage of the property
+    totalEntryConsideration: 275000,
     guaranteeRatePct: 10.0,
-    guaranteeAnnual: 27600,
+    guaranteeAnnual: 27500,
     guaranteePeriodYears: 2,  // during construction + first 2 years of operation
     guaranteeApplies: "During construction (FY2026-FY2028) AND first 2 years of operation (FY2029-FY2030)",
     operatorAtSource: "Operator (via its own PT PMA) pays 10% at source on gross rental before passing any profit/rental share to owner",
@@ -1037,43 +1037,43 @@ const ELLE_LEASE = {
     // Quarterly in arrears. The first payment is pro rata for the part-quarter
     // from the payment commencement date to the end of that quarter.
     payoutFrequency: "Quarterly",
-    payoutFrequencyDetail: "Quarterly in arrears — 4 payments per year of A$6,900",
+    payoutFrequencyDetail: "Quarterly in arrears — 4 payments per year of A$6,875",
     paymentCommencement: "2026-10-01",
-    paymentCommencementNote: "First payment runs from the commencement date to the end of that quarter. If the commencement date is mid-quarter, the first payment is pro rata: A$6,900 × (months remaining in quarter ÷ 3).",
-    quarterAmount: 6900,
-    firstPaymentAmount: elleProRataFirstPayment("2026-10-01", 6900),
-    firstPaymentIsProRata: elleProRataFirstPayment("2026-10-01", 6900) !== 6900,
-    firstPaymentNote: "A$" + elleProRataFirstPayment("2026-10-01", 6900).toLocaleString("en-AU") + " for the first quarter" + (elleProRataFirstPayment("2026-10-01", 6900) !== 6900 ? " (pro rata — commencement falls mid-quarter)" : " (full quarter from 1 October 2026)"),
+    paymentCommencementNote: "First payment runs from the commencement date to the end of that quarter. If the commencement date is mid-quarter, the first payment is pro rata: A$6,875 × (months remaining in quarter ÷ 3).",
+    quarterAmount: 6875,
+    firstPaymentAmount: elleProRataFirstPayment("2026-10-01", 6875),
+    firstPaymentIsProRata: elleProRataFirstPayment("2026-10-01", 6875) !== 6875,
+    firstPaymentNote: "A$" + elleProRataFirstPayment("2026-10-01", 6875).toLocaleString("en-AU") + " for the first quarter" + (elleProRataFirstPayment("2026-10-01", 6875) !== 6875 ? " (pro rata — commencement falls mid-quarter)" : " (full quarter from 1 October 2026)"),
   },
 
-  // ---- Income projection (50-year, AUD) ----
-  // Guarantee: $27,600/yr guaranteed during construction + first 2 operating years.
+  // ---- Income projection (lease to 24 May 2092, AUD) ----
+  // Guarantee: $27,500/yr guaranteed during construction + first 2 operating years.
   // After year 2, the 10% guarantee steps down to the income-share stream (operator-at-source
   // withholding on gross rental; owner receives 3/20 of room revenue pool + 30% net profit share).
   // The 10% is the GUARANTEED floor (seen by operator at source); the income-share is the upside.
   headline: {
-    totalEntryConsideration: 276000,
+    totalEntryConsideration: 275000,
     deposit: 1000,
     guaranteeRatePct: 10.0,
-    guaranteeAnnual: 27600,
-    guaranteeDuringConstruction: 27600 * 3,  // 3 yrs construction
-    guaranteeFirst2YearsOperating: 27600 * 2,  // 2 yrs operating
-    totalGuarantee50Yr: 27600 * 50,  // lower bound if held 50 yrs
-    year1LeaseIncome: 27600,  // guaranteed from day 1 (construction + operating)
-    year5Stabilised: 27600,  // guarantee continues; income-share grows above
-    totalOperating25: 27600 * 25,  // lower-bound (if guarantee continues)
-    totalLifecycle25: 27600 * 25,
+    guaranteeAnnual: 27500,
+    guaranteeDuringConstruction: 27500 * 3,  // 3 yrs construction
+    guaranteeFirst2YearsOperating: 27500 * 2,  // 2 yrs operating
+    totalGuarantee50Yr: 27500 * 50,  // lower bound over the first 50 yrs of the lease
+    year1LeaseIncome: 27500,  // guaranteed from day 1 (construction + operating)
+    year5Stabilised: 27500,  // guarantee continues; income-share grows above
+    totalOperating25: 27500 * 25,  // lower-bound (if guarantee continues)
+    totalLifecycle25: 27500 * 25,
     avgRateAdvancePct: 10.0,
     avgRateAdjustedPct: 10.0,
-    projectionNotes: "10% of $276,000 (3/20 fractional: 1/20 standard room at $74,750 + 2/20 standard room premium at $201,250) = $27,600 guaranteed per year during construction and the first 2 years of operation. After the guarantee period the owner receives the income-share stream (3/20 of room revenue pool + 30% net profit) which can grow above the 10% floor. The 10% is the contractual guarantee paid at source by the operator; the income-share is the upside."
+    projectionNotes: "10% of $275,000 (3/20 fractional: 1/20 standard room at $74,750 + 2/20 standard room premium at $201,250) = $27,500 guaranteed per year during construction and the first 2 years of operation. After the guarantee period the owner receives the income-share stream (3/20 of room revenue pool + 30% net profit) which can grow above the 10% floor. The 10% is the contractual guarantee paid at source by the operator; the income-share is the upside."
   },
 
   // ---- Operating sensitivity ----
   sensitivity: {
     conservative: { label: "Conservative (0.80x)", multiplier: 0.80,
-      year1: 27600, year5: 22080, totalOp25: 27600 * 25, avgRateAdjustedPct: 8.0, ratio: 2.60, totalLifecycle: 27600 * 25 },
+      year1: 27500, year5: 22080, totalOp25: 27500 * 25, avgRateAdjustedPct: 8.0, ratio: 2.60, totalLifecycle: 27500 * 25 },
     expected: { label: "Expected (1.00x)", multiplier: 1.00,
-      year1: 27600, year5: 27600, totalOp25: 27600 * 25, avgRateAdjustedPct: 10.0, ratio: 2.60, totalLifecycle: 27600 * 25 },
+      year1: 27500, year5: 27500, totalOp25: 27500 * 25, avgRateAdjustedPct: 10.0, ratio: 2.60, totalLifecycle: 27500 * 25 },
     optimistic: { label: "Optimistic (1.18x)", multiplier: 1.18,
       year1: 32568, year5: 36204, totalOp25: 32568 * 25, avgRateAdjustedPct: 11.8, ratio: 3.06, totalLifecycle: 32568 * 25 },
   },
@@ -1083,7 +1083,7 @@ const ELLE_LEASE = {
     depositPaid: 1000,
     fraction1: { share: "1/20", type: "Standard Room", price: 74750, annual10: 7475, notes: "1/20 of Standard Room — quarterly income-share + 10% construction/operating guarantee" },
     fraction2: { share: "2/20", type: "Standard Room Premium", price: 201250, annual10: 20125, notes: "2/20 of Standard Room Premium — quarterly income-share + 10% construction/operating guarantee" },
-    total: { deposit: 1000, fractions: 2, totalValue: 276000, annual10: 27600, grants: "10% guarantee during construction + first 2 years operating", notes: "Operator pays 10% at source on gross rental before passing any profit/rental share to owner" }
+    total: { deposit: 1000, fractions: 2, totalValue: 275000, annual10: 27500, grants: "10% guarantee during construction + first 2 years operating", notes: "Operator pays 10% at source on gross rental before passing any profit/rental share to owner" }
   },
 
   // ---- Construction cash rebate (10% during construction) ----
@@ -1093,40 +1093,40 @@ const ELLE_LEASE = {
   constructionRebate: {
     ratePct: 10.0,
     periodMonths: 36,
-    annual: 27600,
-    totalConstruction: 27600 * 3,  // FY2026-FY2028
-    totalOperatingFirst2: 27600 * 2,  // FY2029-FY2030
-    totalGuaranteePeriod: 27600 * 5,
-    note: "Contractual 10% of $276,000 = $27,600/yr guaranteed during construction (36 months) and first 2 years of operation (FY2029-FY2030). Paid quarterly. After year 2, the guarantee continues as the floor on the income-share stream."
+    annual: 27500,
+    totalConstruction: 27500 * 3,  // FY2026-FY2028
+    totalOperatingFirst2: 27500 * 2,  // FY2029-FY2030
+    totalGuaranteePeriod: 27500 * 5,
+    note: "Contractual 10% of $275,000 = $27,500/yr guaranteed during construction (36 months) and first 2 years of operation (FY2029-FY2030). Paid quarterly. After year 2, the guarantee continues as the floor on the income-share stream."
   },
 
   // ---- Minimum guaranteed income ----
   minimumGuarantee: {
-    minYear1: 27600,  // 10% of $276,000
+    minYear1: 27500,  // 10% of $275,000
     periodYears: 2,
     periodDescription: "FY2026-FY2030" + " (construction + first 2 operating years)",
-    note: "For the construction period (FY2026-FY2028) and the first 2 years of operation (FY2029-FY2030), the lessor guarantees a minimum lease income of A$27,600 per year (10% of the $276,000 fractional value). Where modelled income falls below during the guarantee period, the lessor pays the shortfall.",
-    year1Modelled: 27600,
-    year1Guaranteed: 27600,
+    note: "For the construction period (FY2026-FY2028) and the first 2 years of operation (FY2029-FY2030), the lessor guarantees a minimum lease income of A$27,500 per year (10% of the $275,000 fractional value). Where modelled income falls below during the guarantee period, the lessor pays the shortfall.",
+    year1Modelled: 27500,
+    year1Guaranteed: 27500,
     coverage: 1.0,
   },
 
   // ---- How the income is generated ----
-  // The 3/20 fractional interest (1/20 standard room + 2/20 standard room premium) receives:
-  // (1) A 10% guaranteed return on the $276,000 value during construction + first 2 operating years;
+  // The 3-unit fractional interest (2 x $100,000 + 1 x $75,000) receives:
+  // (1) A 10% guaranteed return on the $275,000 value during construction + first 2 operating years;
   // (2) After the guarantee period, a quarterly income-share stream (3/20 of room revenue pool) + 30% net profit share.
   incomeSource: {
-    headline: "Your 3/20 fractional interest (1/20 Standard Room + 2/20 Standard Room Premium = $276,000) receives a 10% guaranteed return = $27,600/yr during construction and the first 2 years of operation, paid quarterly by the operator at source on gross rental. After the guarantee period (starting FY2031), the 10% guarantee steps down to a contractual floor; you receive a quarterly income-share stream (3/20 of the room revenue pool) plus 30% of net profit. The 10% is the guarantee; the income-share is the upside.",
-    deposit: "Your $1,000 deposit was paid at signing — it is part of the total $276,000 consideration, not a separate obligation.",
-    fractions: "1/20 Standard Room at $74,750 + 2/20 Standard Room Premium at $201,250 = $276,000 total fractional value (3/20 of the property).",
-    guarantee: "10% of $276,000 = $27,600/yr, guaranteed during construction AND the first 2 years of operation, paid at source by the operator (via its own PT PMA) before passing any profit/rental share to you.",
-    roomRevenue: "Room revenue is split: your 3/20 fractional interest receives 3/20 of the room revenue pool quarterly, PLUS 30% of net profit after all expenses.",
+    headline: "Your 3 units (2 x $100,000 + 1 x $75,000 = $275,000) receives a 10% guaranteed return = $27,500/yr during construction and the first 2 years of operation, paid quarterly by the operator at source on gross rental. After the guarantee period (starting FY2031), the 10% guarantee steps down to a contractual floor; you receive a quarterly income-share stream (3/20 of the room revenue pool) plus 30% of net profit. The 10% is the guarantee; the income-share is the upside.",
+    deposit: "Your $1,000 deposit was paid at signing — it is part of the total $275,000 consideration, not a separate obligation.",
+    fractions: "2 x $100,000 units + 1 x $75,000 unit = $275,000 total fractional value (3 units).",
+    guarantee: "10% of $275,000 = $27,500/yr, guaranteed during construction AND the first 2 years of operation, paid at source by the operator (via its own PT PMA) before passing any profit/rental share to you.",
+    roomRevenue: "Room revenue is split: your 3 units receive their share of the room revenue pool quarterly, PLUS 30% of net profit after all expenses.",
     guaranteePeriod: "FY2026-FY2030 (construction + first 2 operating years) — the 10% is the GUARANTEED floor. After FY2030, the guarantee becomes a contractual minimum floor; income can grow above it.",
-    totalFractionValue: 276000,
+    totalFractionValue: 275000,
     totalFractionShare: "3/20 (15%)",
-    guaranteeAnnual: 27600,
-    year1LeaseIncome: 27600,
-    year5Stabilised: 27600,  // guarantee continues; income-share may grow above
+    guaranteeAnnual: 27500,
+    year1LeaseIncome: 27500,
+    year5Stabilised: 27500,  // guarantee continues; income-share may grow above
     note: "This is a fractional ownership (PWD/IOD-style) structure, not a PT PMA. You own 3/20 of the specific rooms; the operator manages everything. The 10% is the guaranteed return on your fractional value."
   },
 
@@ -1136,18 +1136,18 @@ const ELLE_LEASE = {
   roomWaterfall: {
     guarantee1Share: { amount: 7475, description: "1/20 Standard Room — 10% of $74,750" },
     guarantee2Share: { amount: 20125, description: "2/20 Standard Room Premium — 10% of $201,250" },
-    totalAnnual: 27600
+    totalAnnual: 27500
   },
 
   // ---- Year 1 room + non-room model ----
   year1RoomModel: {
     deposit: 1000,
-    totalFractionValue: 276000,
+    totalFractionValue: 275000,
     totalFractionShare: "3/20",
     totalFractionPct: 15.0,
-    guaranteeAnnual: 27600,
-    guaranteeDuringConstruction: 27600 * 3,
-    guaranteeFirst2YearsOperating: 27600 * 2,
+    guaranteeAnnual: 27500,
+    guaranteeDuringConstruction: 27500 * 3,
+    guaranteeFirst2YearsOperating: 27500 * 2,
     guaranteePeriodYears: 5,
     guaranteeApplies: "During construction (FY2026-FY2028) AND first 2 years of operation (FY2029-FY2030)",
     fractions: [
@@ -1158,12 +1158,12 @@ const ELLE_LEASE = {
 
   year1NonRoomModel: {
     deposit: 1000,
-    totalFractionValue: 276000,
+    totalFractionValue: 275000,
     totalFractionShare: "3/20",
     totalFractionPct: 15.0,
-    guaranteeAnnual: 27600,
-    guaranteeDuringConstruction: 27600 * 3,
-    guaranteeFirst2YearsOperating: 27600 * 2,
+    guaranteeAnnual: 27500,
+    guaranteeDuringConstruction: 27500 * 3,
+    guaranteeFirst2YearsOperating: 27500 * 2,
     guaranteePeriodYears: 5,
     guaranteeApplies: "During construction (FY2026-FY2028) AND first 2 years of operation (FY2029-FY2030)",
     nonRoomRevenue: {
@@ -1178,54 +1178,54 @@ const ELLE_LEASE = {
 
   // ---- Year-by-year schedule ----
   schedule: [
-    { year: "FY2026", phase: "Construction", receipts: 27600, growth: "n/a", cumulative: 27600, benchmark: null },
-    { year: "FY2027", phase: "Construction", receipts: 27600, growth: "n/a", cumulative: 55200, benchmark: null },
-    { year: "FY2028", phase: "Construction", receipts: 27600, growth: "n/a", cumulative: 82800, benchmark: null },
-    { year: "FY2029", phase: "Operating", receipts: 27600, growth: "n/a", cumulative: 110400, benchmark: 32568 },
-    { year: "FY2030", phase: "Operating", receipts: 27600, growth: "n/a", cumulative: 138000, benchmark: 34066 },
-    { year: "FY2031", phase: "Operating", receipts: 28870, growth: "+4.6%", cumulative: 166870, benchmark: 35633 },
-    { year: "FY2032", phase: "Operating", receipts: 30198, growth: "+4.6%", cumulative: 197068, benchmark: 37272 },
-    { year: "FY2033", phase: "Operating", receipts: 31587, growth: "+4.6%", cumulative: 228655, benchmark: 38987 },
-    { year: "FY2034", phase: "Operating", receipts: 33040, growth: "+4.6%", cumulative: 261695, benchmark: 40780 },
-    { year: "FY2035", phase: "Operating", receipts: 34560, growth: "+4.6%", cumulative: 296255, benchmark: 42656 },
-    { year: "FY2036", phase: "Operating", receipts: 36149, growth: "+4.6%", cumulative: 332404, benchmark: 44618 },
-    { year: "FY2037", phase: "Operating", receipts: 37812, growth: "+4.6%", cumulative: 370216, benchmark: 46670 },
-    { year: "FY2038", phase: "Operating", receipts: 39551, growth: "+4.6%", cumulative: 409767, benchmark: 48817 },
-    { year: "FY2039", phase: "Operating", receipts: 41371, growth: "+4.6%", cumulative: 451138, benchmark: 51063 },
-    { year: "FY2040", phase: "Operating", receipts: 43274, growth: "+4.6%", cumulative: 494412, benchmark: 53412 },
-    { year: "FY2041", phase: "Operating", receipts: 45264, growth: "+4.6%", cumulative: 539676, benchmark: 55869 },
-    { year: "FY2042", phase: "Operating", receipts: 47347, growth: "+4.6%", cumulative: 587023, benchmark: 58439 },
-    { year: "FY2043", phase: "Operating", receipts: 49525, growth: "+4.6%", cumulative: 636548, benchmark: 61127 },
-    { year: "FY2044", phase: "Operating", receipts: 51803, growth: "+4.6%", cumulative: 688351, benchmark: 63939 },
-    { year: "FY2045", phase: "Operating", receipts: 54186, growth: "+4.6%", cumulative: 742537, benchmark: 66880 },
-    { year: "FY2046", phase: "Operating", receipts: 56678, growth: "+4.6%", cumulative: 799215, benchmark: 69956 },
-    { year: "FY2047", phase: "Operating", receipts: 59285, growth: "+4.6%", cumulative: 858500, benchmark: 73174 },
-    { year: "FY2048", phase: "Operating", receipts: 62013, growth: "+4.6%", cumulative: 920513, benchmark: 76540 },
-    { year: "FY2049", phase: "Operating", receipts: 64865, growth: "+4.6%", cumulative: 985378, benchmark: 80061 },
-    { year: "FY2050", phase: "Operating", receipts: 67849, growth: "+4.6%", cumulative: 1053227, benchmark: 83744 },
-    { year: "FY2051", phase: "Operating", receipts: 70970, growth: "+4.6%", cumulative: 1124197, benchmark: 87596 },
-    { year: "FY2052", phase: "Operating", receipts: 74235, growth: "+4.6%", cumulative: 1198432, benchmark: 91625 },
-    { year: "FY2053", phase: "Operating", receipts: 77649, growth: "+4.6%", cumulative: 1276081, benchmark: 95840 },
+    { year: "FY2026", phase: "Construction", receipts: 27500, growth: "n/a", cumulative: 27500, benchmark: null },
+    { year: "FY2027", phase: "Construction", receipts: 27500, growth: "n/a", cumulative: 55000, benchmark: null },
+    { year: "FY2028", phase: "Construction", receipts: 27500, growth: "n/a", cumulative: 82500, benchmark: null },
+    { year: "FY2029", phase: "Operating", receipts: 27500, growth: "n/a", cumulative: 110000, benchmark: 32500 },
+    { year: "FY2030", phase: "Operating", receipts: 27500, growth: "n/a", cumulative: 137500, benchmark: 33995 },
+    { year: "FY2031", phase: "Operating", receipts: 28765, growth: "+4.6%", cumulative: 166265, benchmark: 35559 },
+    { year: "FY2032", phase: "Operating", receipts: 30088, growth: "+4.6%", cumulative: 196353, benchmark: 37195 },
+    { year: "FY2033", phase: "Operating", receipts: 31472, growth: "+4.6%", cumulative: 227825, benchmark: 38906 },
+    { year: "FY2034", phase: "Operating", receipts: 32920, growth: "+4.6%", cumulative: 260745, benchmark: 40696 },
+    { year: "FY2035", phase: "Operating", receipts: 34434, growth: "+4.6%", cumulative: 295179, benchmark: 42568 },
+    { year: "FY2036", phase: "Operating", receipts: 36018, growth: "+4.6%", cumulative: 331197, benchmark: 44526 },
+    { year: "FY2037", phase: "Operating", receipts: 37675, growth: "+4.6%", cumulative: 368872, benchmark: 46574 },
+    { year: "FY2038", phase: "Operating", receipts: 39408, growth: "+4.6%", cumulative: 408280, benchmark: 48716 },
+    { year: "FY2039", phase: "Operating", receipts: 41221, growth: "+4.6%", cumulative: 449501, benchmark: 50957 },
+    { year: "FY2040", phase: "Operating", receipts: 43117, growth: "+4.6%", cumulative: 492618, benchmark: 53301 },
+    { year: "FY2041", phase: "Operating", receipts: 45100, growth: "+4.6%", cumulative: 537718, benchmark: 55753 },
+    { year: "FY2042", phase: "Operating", receipts: 47175, growth: "+4.6%", cumulative: 584893, benchmark: 58318 },
+    { year: "FY2043", phase: "Operating", receipts: 49345, growth: "+4.6%", cumulative: 634238, benchmark: 61001 },
+    { year: "FY2044", phase: "Operating", receipts: 51615, growth: "+4.6%", cumulative: 685853, benchmark: 63807 },
+    { year: "FY2045", phase: "Operating", receipts: 53989, growth: "+4.6%", cumulative: 739842, benchmark: 66742 },
+    { year: "FY2046", phase: "Operating", receipts: 56472, growth: "+4.6%", cumulative: 796314, benchmark: 69812 },
+    { year: "FY2047", phase: "Operating", receipts: 59070, growth: "+4.6%", cumulative: 855384, benchmark: 73023 },
+    { year: "FY2048", phase: "Operating", receipts: 61787, growth: "+4.6%", cumulative: 917171, benchmark: 76382 },
+    { year: "FY2049", phase: "Operating", receipts: 64629, growth: "+4.6%", cumulative: 981800, benchmark: 79896 },
+    { year: "FY2050", phase: "Operating", receipts: 67602, growth: "+4.6%", cumulative: 1049402, benchmark: 83571 },
+    { year: "FY2051", phase: "Operating", receipts: 70712, growth: "+4.6%", cumulative: 1120114, benchmark: 87415 },
+    { year: "FY2052", phase: "Operating", receipts: 73965, growth: "+4.6%", cumulative: 1194079, benchmark: 91436 },
+    { year: "FY2053", phase: "Operating", receipts: 77367, growth: "+4.6%", cumulative: 1271446, benchmark: 95642 }
   ],
 
   // ---- Schedule totals ----
   scheduleTotals: {
-    totalOperating: 1193281,      // sum of the 25 Operating rows (FY2029-FY2053)
-    totalLifecycle: 1276081,      // sum of all 28 rows (FY2026-FY2053)
-    totalBenchmark: 1471332,      // sum of the 25 benchmarked years (FY2029-FY2053)
+    totalOperating: 1188946,      // sum of the 25 Operating rows (FY2029-FY2053)
+    totalLifecycle: 1271446,      // sum of all 28 rows (FY2026-FY2053)
+    totalBenchmark: 1468291,      // sum of the 25 benchmarked years (FY2029-FY2053)
     benchmarkYears: 25,           // FY2026-FY2028 carry no benchmark (construction)
-    cumulativeGap: -195251,       // totalLifecycle - totalBenchmark (behind)
-    benchmarkAnnual: 32568,       // 27,600 x 1.18 = Optimistic scenario, FY2029 base
-    benchmarkGrowthPct: 4.6,      // compounds at the same 4.6% p.a. as receipts
+    cumulativeGap: -196845,       // totalLifecycle - totalBenchmark (behind)
+    benchmarkAnnual: 32500,       // 27,500 x 1.18 = Optimistic scenario, FY2029 base
+    benchmarkGrowthPct: 4.6,
     benchmarkLabel: "Optimistic (1.18x), growing 4.6% p.a.",
-    leaseReceiptsRatio: 4.62,     // totalLifecycle / 276,000 fractional value
+    leaseReceiptsRatio: 4.62,     // totalLifecycle / 275,000 fractional value
     breakevenYear: null,          // cumulative receipts never overtake the benchmark
-    note: "Construction years FY2026-FY2028 carry no benchmark: the 10% guarantee of $27,600/yr is the maximum potential income during construction, so there is no comparable target to measure against. From FY2029 the benchmark is the Optimistic (1.18x) target rate of $32,568/yr, compounding at the same 4.6% p.a. as the receipts series. Because the guarantee floor ($27,600) starts below the Optimistic target ($32,568) and both then grow at the same rate, the gap stays constant in proportional terms and cumulative receipts never overtake the benchmark."
+    note: "Construction years FY2026-FY2028 carry no benchmark: the 10% guarantee of $27,500/yr is the maximum potential income during construction, so there is no comparable target to measure against. From FY2029 the benchmark is the Optimistic (1.18x) target rate of $32,500/yr, compounding at the same 4.6% p.a. as the receipts series. Because the guarantee floor ($27,500) starts below the Optimistic target ($32,500) and both then grow at the same rate, the gap stays constant in proportional terms and cumulative receipts never overtake the benchmark."
   },
 
   // ---- Lease vs comparable benchmark ----
   comparison: {
-    upliftNote: "The 3/20 fractional leasehold (1/20 Standard Room + 2/20 Standard Room Premium = $276,000) is benchmarked against hotel-let comparable positions at an average of 8% net yield on advance consideration. Your 10% guaranteed return on $276,000 = $27,600/yr exceeds the benchmark by 2 percentage points during the construction and guarantee period, and the income-share (3/20 of room pool) plus 30% net profit after FY2030 provides upside above the guarantee floor."
+    upliftNote: "The 3/20 fractional leasehold (1/20 Standard Room + 2/20 Standard Room Premium = $275,000) is benchmarked against hotel-let comparable positions at an average of 8% net yield on advance consideration. Your 10% guaranteed return on $275,000 = $27,500/yr exceeds the benchmark by 2 percentage points during the construction and guarantee period, and the income-share (3/20 of room pool) plus 30% net profit after FY2030 provides upside above the guarantee floor."
   },
 
   // ---- Non-room revenue ----
@@ -1243,27 +1243,76 @@ const ELLE_LEASE = {
     constructionRebate: {
       ratePct: 10.0,
       periodMonths: 36,
-      annual: 27600,
-      totalConstruction: 27600 * 3,
-      note: "Contractual 10% of $276,000 = $27,600/yr guaranteed during construction (36 months) and first 2 years of operation (FY2029-FY2030). Paid quarterly. After year 2, the guarantee continues as the floor on the income-share stream."
+      annual: 27500,
+      totalConstruction: 27500 * 3,
+      note: "Contractual 10% of $275,000 = $27,500/yr guaranteed during construction (36 months) and first 2 years of operation (FY2029-FY2030). Paid quarterly. After year 2, the guarantee continues as the floor on the income-share stream."
     },
     minimumGuarantee: {
-      minYear1: 27600,
+      minYear1: 27500,
       periodYears: 2,
       periodDescription: "FY2026-FY2030 (construction + first 2 operating years)",
-      year1Guaranteed: 27600,
-      year1Modelled: 27600,
+      year1Guaranteed: 27500,
+      year1Modelled: 27500,
       year1Shortfall: 0,
       coverage: 1.0,
-      note: "For the construction period (FY2026-FY2028) and the first 2 years of operation (FY2029-FY2030), the lessor guarantees a minimum lease income of A$27,600 per year (10% of the $276,000 fractional value). Where modelled income falls below during the guarantee period, the lessor pays the shortfall."
+      note: "For the construction period (FY2026-FY2028) and the first 2 years of operation (FY2029-FY2030), the lessor guarantees a minimum lease income of A$27,500 per year (10% of the $275,000 fractional value). Where modelled income falls below during the guarantee period, the lessor pays the shortfall."
     }
   },
 
   // ---- Verdict ----
   verdict: {
-    headline: "CONFIRMED personal property — fractional ownership (3/20 fractional interest), NO PT PMA, NO Indonesia bonds, NO IDX shares",
-    pull: "Higher ticket ($312k) for a ~55% bigger slice of the same pool — but structural cross-party risk remains: Elle's pool spans hotel + beach club + F&B (45% of room revenue), so returns depend on the whole operation, not just your rooms. The 10% guarantee is the floor; income-share is the upside.",
-    againstCriteria: "This is the highest-value fractional leasehold position in Bali — $27,600 guaranteed/yr on $276,000 = 10% guaranteed, with upside via the income-share. Confirm with your tax adviser: the 10% guarantee terms and who stands behind it; the 3/20 fractional definition; payout frequency and currency; and exit/liquidity terms at year 50."
+    headline: "CONFIRMED personal property — fractional ownership (3 units), NO PT PMA, NO Indonesia bonds, NO IDX shares",
+    pull: "Structural cross-party risk remains: Elle's pool spans hotel + beach club + F&B, so returns depend on the whole operation, not just your units. The 10% guarantee is the floor; income-share is the upside.",
+    againstCriteria: "Locked purchase: 2 x $100,000 + 1 x $75,000 = $275,000 for 3 units. $27,500 guaranteed/yr (10%) during construction + first 2 years of operation, paid quarterly. No capital calls can be levied against you. Lease runs to 24 May 2092. Confirm with your tax adviser: the 10% guarantee terms and who stands behind it; the unit definition; payout frequency and currency; and exit/liquidity terms."
+  },
+
+  // ---- 1. Capital calls: none permitted ----
+  capitalCalls: {
+    permitted: false,
+    summary: "No capital calls. Nothing in the agreements allows the operator to ask you for more money to build, run, maintain or renovate the hotel.",
+    detail: [
+      "Running costs are paid out of hotel revenue before your income is calculated (PMA Article 4).",
+      "The only extra costs are ones you trigger yourself: fees if you sell, damage during your own stays, and your own taxes.",
+      "If a natural disaster destroyed the buildings and insurance fell short, the shortfall would be discussed with all lessees (Lease Article 10) — you cannot be made to contribute."
+    ],
+    source: "PMA Article 4 (operating costs); Lease Article 10 (disaster shortfall)"
+  },
+
+  // ---- 2. Renovations: sinking fund ----
+  renovations: {
+    sinkingFundRatePct: 5.0,
+    sinkingFundBasis: "Net Room Revenue (not gross)",
+    sinkingFundUse: "Capital works and refurbishment only (PMA Article 3)",
+    separateReserves: "A separate FF&E reserve and normal operating costs cover the remainder.",
+    fixedCycle: false,
+    cycleNote: "No fixed 6-year cycle. Timing follows brand standards.",
+    source: "PMA Article 3"
+  },
+
+  // ---- 3. Tiers: 10% applies to both positions ----
+  tiers: {
+    thresholdAud: 250000,
+    ratePct: 10.0,
+    rule: "10% applies to both. An investment at or above the A$250,000 tier qualifies, and any further investment also receives 10% — whether in the same transaction or added later.",
+    appliesToFurtherInvestment: true,
+    constructionRebate: {
+      ratePct: 10.0,
+      maxMonths: 36,
+      capPct: 30.0,
+      capBasis: "30% of the fractional value",
+      note: "10% a year rebate until the hotel opens (up to 36 months, capped at 30%)."
+    },
+    operatingGuarantee: {
+      ratePct: 10.0,
+      minMonths: 24,
+      note: "10% minimum income for the first 24 months of operations, plus operational profits."
+    },
+    lease: {
+      endDate: "2092-05-24",
+      endLabel: "24 May 2092",
+      termYears: 66,
+      note: "Lease to 24 May 2092."
+    }
   },
 
 };
