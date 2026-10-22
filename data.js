@@ -306,72 +306,6 @@ const AVG_SIZE_SQM = {
 };
 
 /* =============================================================================
-   PHASE 1 COMPETITION TRACKER — properties potential buyers are looking at
-   ============================================================================= */
-const COMPETITION_TRACKER = [
-    {
-    id: "rea-stkildaroad-730-539",
-    title: "730/539 St Kilda Road — REA listing #151850872",
-    url: "https://www.realestate.com.au/property-apartment-vic-melbourne-151850872",
-    source: "realestate.com.au",
-    type: "Apartment",
-    location: "St Kilda Road VIC",
-    beds: 1,
-    price: "$360,000 - $395,000",
-    lastSeen: "2026-09-20",
-    buyerContext: "Reported by potential buyer — tracking what else they're looking at alongside G05/108 + 302/108",
-    notes: "1 bed, 1 car. Asking $360,000 - $395,000. St Kilda Road — central Melbourne CBD fringe; comparable to G05/108 + 302/108 (Carlton) as another inner-Melbourne apartment exit option.",
-    status: "logged",
-    action: "1 bed, 1 car, $360k-$395k asking. Compare to G05/108 ($420k est.) and 302/108 ($420k est.) — this is priced below our Carlton apartments; check why (floor level, building quality, condition, BSV)."
-  },
-    {
-    id: "rea-spencerstreet-1711-200",
-    title: "1711/200 Spencer Street — REA listing #151710008",
-    url: "https://www.realestate.com.au/property-apartment-vic-melbourne-151710008",
-    source: "realestate.com.au",
-    type: "Apartment",
-    location: "Spencer Street VIC",
-    beds: 1,
-    price: "$345,000",
-    lastSeen: "2026-09-22",
-    buyerContext: "Reported by potential buyer — tracking alongside other Melbourne apartments they're considering",
-    notes: "1 bed. Asking $345,000. Spencer Street — inner Melbourne, near Southern Cross Station; another inner-Melbourne apartment exit option alongside 730/539 St Kilda Road and our Carlton apartments.",
-    status: "logged",
-    action: "1 bed, $345,000 asking. Compare to 730/539 St Kilda Road ($360k-$395k) and G05/108 ($420k est.) and 302/108 ($420k est.) — lowest asking price in the tracker so far."
-  },
-    {
-    id: "rea-carlton-apartment-150593592",
-    title: "112A/640 Swanston Street — REA listing #150593592",
-    url: "https://www.realestate.com.au/property-apartment-vic-carlton-150593592",
-    source: "realestate.com.au",
-    type: "Apartment",
-    location: "Swanston Street VIC",
-    beds: 1,
-    price: "$399,000 - $430,000",
-    lastSeen: "2026-09-21",
-    buyerContext: "Reported by potential buyer — Carlton is the same suburb as G05/108 and 302/108, so this is a direct same-suburb comparison",
-    notes: "1 bed, 1 carpark. Asking $399,000 - $430,000. Swanston Street — inner Melbourne, same suburb (Carlton 3053) as G05/108 and 302/108; direct same-suburb comparison.",
-    status: "logged",
-    action: "1 bed, 1 carpark, $399k-$430k asking. Compare to G05/108 ($420k est.) and 302/108 ($420k est.) — same suburb (Carlton), similar price range; check floor level, building quality, condition, BSV."
-  },
-    {
-    id: "rea-carlton-apartment-151054624",
-    title: "101/94 Canning Street — REA listing #151054624",
-    url: "https://www.realestate.com.au/property-apartment-vic-carlton-151054624",
-    source: "realestate.com.au",
-    type: "Apartment",
-    location: "Canning Street VIC",
-    beds: 1,
-    price: "$380,000 - $410,000",
-    lastSeen: "2026-09-22",
-    buyerContext: "Reported by potential buyer — Carlton is the same suburb as G05/108 and 302/108, so this is another direct same-suburb comparison",
-    notes: "1 bed, 1 carpark. Asking $380,000 - $410,000. Canning Street — inner Melbourne, same suburb (Carlton 3053) as G05/108 and 302/108; direct same-suburb comparison.",
-    status: "logged",
-    action: "1 bed, 1 carpark, $380k-$410k asking. Compare to G05/108 ($420k est.) and 302/108 ($420k est.) — same suburb (Carlton), similar price range; check floor level, building quality, condition, BSV."
-  }
-];
-
-/* =============================================================================
    VILLA SHORT LIST — Warren's Villa Shortlist
    Fill in / update this array — renders into the sidebar submenu
    url: Propertia / developer listing page (or your own notes)
@@ -1466,6 +1400,5 @@ const DATA = {
   avgSizeSqm: AVG_SIZE_SQM,
   baliStrategy: BALI_STRATEGY,
   elle: ELLE,
-  competitionTracker: COMPETITION_TRACKER,
   elle_lease: ELLE_LEASE
 };
