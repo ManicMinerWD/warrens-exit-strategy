@@ -1121,6 +1121,7 @@ function renderElleLease() {
     const wft = d.roomWaterfall;
     const wfRows = wft.walkthrough.map(r => `
       <tr><td class="num">${r.step}</td><td>${r.desc}</td><td class="num">${r.amount}</td></tr>`).join("");
+    const yourInvestorShare = Math.round(wft.year1InvestorPoolTotal * wft.yourShareFraction);
     put("#elleLeaseWaterfallDetails", `
       <div style="margin-top:12px;">
         <h3 style="font-size:13px;margin-bottom:8px;">Room Revenue Waterfall (Year 1 base case)</h3>
@@ -1133,6 +1134,9 @@ function renderElleLease() {
             </tr>
             <tr style="background:var(--sand);font-weight:700;">
               <td colspan="2">Hotel operations (55%)</td><td class="num">$${(wft.year1OperationsTotal/365).toFixed(0)}/night ≈ $${(wft.year1OperationsTotal/4).toFixed(0)}/quarter</td>
+            </tr>
+            <tr style="background:#1a2a2a;font-weight:700;">
+              <td colspan="2">Your investor share (0.0755)</td><td class="num"> $${yourInvestorShare.toLocaleString()}/yr</td>
             </tr>
           </tbody>
         </table>
