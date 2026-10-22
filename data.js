@@ -1178,7 +1178,7 @@ const ELLE_LEASE = {
       { step: 7, desc: "Net distributable", amount: "$874" },
       { step: 8, desc: "45% to investor pool", amount: "$393" },
       { step: 9, desc: "55% to hotel operations", amount: "$481" },
-      { step: 10, desc: "Your investor share (3/20 × 2/20 total)", amount: "$30K" }
+      { step: 10, desc: "Your investor share (3/20 total)", amount: "$30K" }
     ],
     year1InvestorPoolTotal: 18137423,
     year1OperationsTotal: 22167961
