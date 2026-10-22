@@ -1156,6 +1156,32 @@ const ELLE_LEASE = {
     ]
   },
 
+  // ---- Room Revenue Waterfall (Year 1 base case) ----
+  // From Elle Core Assumptions appendix: ADR $1,294, 75% occupancy, 168 keys
+  roomWaterfall: {
+    grossAdr: 1294,
+    taxRate: 21,
+    otaCommission: 10,
+    sinkingFundRate: 5,
+    investorPool: 45,
+    operatorShare: 55,
+    guarantee1Share: 747.5,    // 1/20 Standard Room: 10% of A$74,750
+    guarantee2Share: 20125,    // 2/20 Standard Room Premium: 10% of A$201,250
+    walkthrough: [
+      { step: 1, desc: "Gross ADR (dirty rate)", amount: "$1,294" },
+      { step: 2, desc: "Less 21% taxes & service fees", amount: "($272)" },
+      { step: 3, desc: "Net clean ADR", amount: "$1,022" },
+      { step: 4, desc: "Less 10% OTA commission", amount: "($102)" },
+      { step: 5, desc: "Net after OTA commission", amount: "$920" },
+      { step: 6, desc: "Less 5% sinking fund", amount: "($46)" },
+      { step: 7, desc: "Net distributable", amount: "$874" },
+      { step: 8, desc: "45% to investor pool", amount: "$393" },
+      { step: 9, desc: "55% to hotel operations", amount: "$481" }
+    ],
+    year1InvestorPoolTotal: 18137423,
+    year1OperationsTotal: 22167961
+  },
+
   year1NonRoomModel: {
     deposit: 1000,
     totalFractionValue: 275000,
