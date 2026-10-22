@@ -1124,19 +1124,19 @@ function renderElleLease() {
     put("#elleLeaseWaterfallDetails", `
       <div style="margin-top:12px;">
         <h3 style="font-size:13px;margin-bottom:8px;">Room Revenue Waterfall (Year 1 base case)</h3>
-        <p style="font-size:11px;margin:0 0 8px;">ADR $1,294, 75% occupancy, 168 keys → investor pool $18.1M, hotel ops $22.2M</p>
+        <p style="font-size:11px;margin:0 0 8px;">ADR $1,294, 75% occupancy, 168 keys → Net distributable $40.3M → 45% investor pool $18.1M, 55% hotel ops $22.2M</p>
         <table class="data-table" style="font-size:11px;">
           <thead><tr><th>#</th><th>Metric</th><th class="num">Amount per night</th></tr></thead>
           <tbody>${wfRows}
             <tr style="background:var(--sand);font-weight:700;">
-              <td colspan="2">Investor pool (45%)</td><td class="num">$${wft.investorPool}/night</td>
+              <td colspan="2">Investor pool (45%)</td><td class="num">$${(wft.year1InvestorPoolTotal/365).toFixed(0)}/night ≈ $${(wft.year1InvestorPoolTotal/4).toFixed(0)}/quarter</td>
             </tr>
             <tr style="background:var(--sand);font-weight:700;">
-              <td colspan="2">Hotel operations (55%)</td><td class="num">$${wft.operatorShare}/night</td>
+              <td colspan="2">Hotel operations (55%)</td><td class="num">$${(wft.year1OperationsTotal/365).toFixed(0)}/night ≈ $${(wft.year1OperationsTotal/4).toFixed(0)}/quarter</td>
             </tr>
           </tbody>
         </table>
-        <p class="lease-notes" style="font-size:10px;margin-top:6px;">Source: Elle Core Assumptions waterfall model — taxes 21%, OTA 10%, sinking fund 5%.</p>
+        <p class="lease-notes" style="font-size:10px;margin-top:6px;">Source: Elle Core Assumptions waterfall model — taxes 21%, OTA 10%, sinking fund 5%. Payments: 10% guarantee quarterly during construction + first 2 yrs; quarterly income-share (3/20 pool) + 30% NPBT after FY2031.</p>
       </div>
     `);
 
