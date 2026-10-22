@@ -1016,41 +1016,54 @@ function renderElleLease() {
 
   // ---------- year-by-year schedule ----------
   // Benchmark = Optimistic (1.18x) target rate on the $276,000 fractional value.
-  const benchAnnual = d.scheduleTotals.benchmarkAnnual || d.schedule[0].benchmark;
+  // Construction years (FY2026-FY2028) carry no benchmark: the 10% guarantee is
+  // the maximum potential income during construction, so there is no target to
+  // measure against. From FY2029 the benchmark compounds at 4.6% p.a.
+  const T = d.scheduleTotals;
+  const benchAnnual = T.benchmarkAnnual || (d.schedule.find(r => r.benchmark != null) || {}).benchmark;
   const rows = d.schedule.map((r) => {
     const isLanding = r.year === "FY2029";
     const isC = r.growth === "n/a";
     const cls = (isLanding ? "landing" : "") + (isC ? " phase-c" : " phase-2");
     const growth = r.growth === "n/a" ? "—" : r.growth;
-    const gap = (r.receipts || 0) - (r.benchmark || 0);
-    const gapCls = gap < 0 ? ' style="color:var(--coral);"' : (gap > 0 ? ' style="color:var(--teal);"' : "");
-    const gapTxt = (gap > 0 ? "+" : gap < 0 ? "−" : "") + "A$" + Math.abs(gap).toLocaleString();
+    const bench = r.benchmark;
+    let benchTxt = "—";
+    let gapTxt = "—";
+    let gapCls = ' style="color:var(--muted);"';
+    if (bench != null) {
+      benchTxt = "A$" + bench.toLocaleString();
+      const gap = r.receipts - bench;
+      gapCls = gap < 0 ? ' style="color:var(--coral);"' : (gap > 0 ? ' style="color:var(--teal);"' : "");
+      gapTxt = (gap > 0 ? "+" : gap < 0 ? "−" : "") + "A$" + Math.abs(gap).toLocaleString();
+    }
     return `<tr class="${cls}">
       <td class="num">${r.year}</td>
       <td class="num">${r.phase}</td>
       <td class="num">A$${r.receipts.toLocaleString()}</td>
       <td class="num">${growth}</td>
       <td class="num">A$${r.cumulative.toLocaleString()}</td>
-      <td class="num">A$${r.benchmark.toLocaleString()}</td>
+      <td class="num">${benchTxt}</td>
       <td class="num"${gapCls}>${gapTxt}</td>
     </tr>`;
   }).join("");
-  const T = d.scheduleTotals;
-  const totalBenchmark = T.totalBenchmark || (benchAnnual * d.schedule.length);
+  const totalBenchmark = T.totalBenchmark || 0;
+  const gap = T.totalLifecycle - totalBenchmark;
+  const gapSign = gap >= 0 ? "+" : "−";
+  const gapWord = gap >= 0 ? "ahead" : "behind";
   put("#elleLeaseSchedule", `
     <table>
       <thead><tr>
-        <th>Year</th><th>Phase</th><th>Fractional receipts</th><th>Growth</th><th>Cumulative receipts</th><th>Benchmark income<br><span style="font-weight:400;font-size:10px;color:var(--muted);">${esc(T.benchmarkLabel || "Benchmark")} — A$${benchAnnual.toLocaleString()}/yr</span></th><th>Annual gap</th>
+        <th>Year</th><th>Phase</th><th>Fractional receipts</th><th>Growth</th><th>Cumulative receipts</th><th>Benchmark income<br><span style="font-weight:400;font-size:10px;color:var(--muted);">${esc(T.benchmarkLabel || "Benchmark")} — A$${benchAnnual.toLocaleString()}/yr base</span></th><th>Annual gap</th>
       </tr></thead>
       <tbody>${rows}
         <tr style="background:var(--sand);font-weight:700;">
           <td colspan="3" class="num">Total operating receipts (25 yrs)</td><td colspan="2" class="num">A$${T.totalOperating.toLocaleString()}</td><td colspan="2"></td>
         </tr>
         <tr style="background:var(--sand);font-weight:700;">
-          <td colspan="3" class="num">Total lifecycle receipts (28 yrs)</td><td colspan="2" class="num">A$${T.totalLifecycle.toLocaleString()}</td><td colspan="2">A$${totalBenchmark.toLocaleString()} benchmark</td>
+          <td colspan="3" class="num">Total lifecycle receipts (28 yrs)</td><td colspan="2" class="num">A$${T.totalLifecycle.toLocaleString()}</td><td colspan="2">A$${totalBenchmark.toLocaleString()} benchmark<br><span style="font-weight:400;font-size:10px;color:var(--muted);">${T.benchmarkYears} yrs (FY2029-FY2053)</span></td>
         </tr>
         <tr style="background:var(--sand);font-weight:700;">
-          <td colspan="3" class="num">Cumulative receipts vs benchmark</td><td colspan="2" class="num" style="color:var(--teal);">A$${(T.totalLifecycle - totalBenchmark).toLocaleString()} ahead</td><td colspan="2">Breakeven: yr ${T.breakevenYear}</td>
+          <td colspan="3" class="num">Cumulative receipts vs benchmark</td><td colspan="2" class="num" style="color:var(--coral);">${gapSign}A$${Math.abs(gap).toLocaleString()} ${gapWord}</td><td colspan="2">${T.breakevenYear ? "Breakeven: yr " + T.breakevenYear : "Never overtakes"}</td>
         </tr>
         <tr style="background:var(--sand);font-weight:700;">
           <td colspan="3" class="num">Lease receipts to consideration ratio</td><td colspan="2" class="num">${T.leaseReceiptsRatio.toFixed(2)}x</td><td colspan="2"></td>

@@ -1152,47 +1152,49 @@ const ELLE_LEASE = {
 
   // ---- Year-by-year schedule ----
   schedule: [
-    { year: "FY2026", phase: "Construction", receipts: 27600, growth: "n/a", cumulative: 27600, benchmark: 32568, gap: -4968 },
-    { year: "FY2027", phase: "Construction", receipts: 27600, growth: "n/a", cumulative: 55200, benchmark: 32568, gap: -9936 },
-    { year: "FY2028", phase: "Construction", receipts: 27600, growth: "n/a", cumulative: 82800, benchmark: 32568, gap: -14904 },
-    { year: "FY2029", phase: "Operating", receipts: 27600, growth: "n/a", cumulative: 110400, benchmark: 32568, gap: -19872 },
-    { year: "FY2030", phase: "Operating", receipts: 27600, growth: "n/a", cumulative: 138000, benchmark: 32568, gap: -24840 },
-    { year: "FY2031", phase: "Operating", receipts: 28870, growth: "+4.6%", cumulative: 166870, benchmark: 32568, gap: -28538 },
-    { year: "FY2032", phase: "Operating", receipts: 30198, growth: "+4.6%", cumulative: 197068, benchmark: 32568, gap: -30908 },
-    { year: "FY2033", phase: "Operating", receipts: 31587, growth: "+4.6%", cumulative: 228655, benchmark: 32568, gap: -31889 },
-    { year: "FY2034", phase: "Operating", receipts: 33040, growth: "+4.6%", cumulative: 261695, benchmark: 32568, gap: -31417 },
-    { year: "FY2035", phase: "Operating", receipts: 34560, growth: "+4.6%", cumulative: 296255, benchmark: 32568, gap: -29425 },
-    { year: "FY2036", phase: "Operating", receipts: 36149, growth: "+4.6%", cumulative: 332404, benchmark: 32568, gap: -25844 },
-    { year: "FY2037", phase: "Operating", receipts: 37812, growth: "+4.6%", cumulative: 370216, benchmark: 32568, gap: -20600 },
-    { year: "FY2038", phase: "Operating", receipts: 39551, growth: "+4.6%", cumulative: 409767, benchmark: 32568, gap: -13617 },
-    { year: "FY2039", phase: "Operating", receipts: 41371, growth: "+4.6%", cumulative: 451138, benchmark: 32568, gap: -4814 },
-    { year: "FY2040", phase: "Operating", receipts: 43274, growth: "+4.6%", cumulative: 494412, benchmark: 32568, gap: 5892 },
-    { year: "FY2041", phase: "Operating", receipts: 45264, growth: "+4.6%", cumulative: 539676, benchmark: 32568, gap: 18588 },
-    { year: "FY2042", phase: "Operating", receipts: 47347, growth: "+4.6%", cumulative: 587023, benchmark: 32568, gap: 33367 },
-    { year: "FY2043", phase: "Operating", receipts: 49525, growth: "+4.6%", cumulative: 636548, benchmark: 32568, gap: 50324 },
-    { year: "FY2044", phase: "Operating", receipts: 51803, growth: "+4.6%", cumulative: 688351, benchmark: 32568, gap: 69559 },
-    { year: "FY2045", phase: "Operating", receipts: 54186, growth: "+4.6%", cumulative: 742537, benchmark: 32568, gap: 91177 },
-    { year: "FY2046", phase: "Operating", receipts: 56678, growth: "+4.6%", cumulative: 799215, benchmark: 32568, gap: 115287 },
-    { year: "FY2047", phase: "Operating", receipts: 59285, growth: "+4.6%", cumulative: 858500, benchmark: 32568, gap: 142004 },
-    { year: "FY2048", phase: "Operating", receipts: 62013, growth: "+4.6%", cumulative: 920513, benchmark: 32568, gap: 171449 },
-    { year: "FY2049", phase: "Operating", receipts: 64865, growth: "+4.6%", cumulative: 985378, benchmark: 32568, gap: 203746 },
-    { year: "FY2050", phase: "Operating", receipts: 67849, growth: "+4.6%", cumulative: 1053227, benchmark: 32568, gap: 239027 },
-    { year: "FY2051", phase: "Operating", receipts: 70970, growth: "+4.6%", cumulative: 1124197, benchmark: 32568, gap: 277429 },
-    { year: "FY2052", phase: "Operating", receipts: 74235, growth: "+4.6%", cumulative: 1198432, benchmark: 32568, gap: 319096 },
-    { year: "FY2053", phase: "Operating", receipts: 77649, growth: "+4.6%", cumulative: 1276081, benchmark: 32568, gap: 364177 }
+    { year: "FY2026", phase: "Construction", receipts: 27600, growth: "n/a", cumulative: 27600, benchmark: null },
+    { year: "FY2027", phase: "Construction", receipts: 27600, growth: "n/a", cumulative: 55200, benchmark: null },
+    { year: "FY2028", phase: "Construction", receipts: 27600, growth: "n/a", cumulative: 82800, benchmark: null },
+    { year: "FY2029", phase: "Operating", receipts: 27600, growth: "n/a", cumulative: 110400, benchmark: 32568 },
+    { year: "FY2030", phase: "Operating", receipts: 27600, growth: "n/a", cumulative: 138000, benchmark: 34066 },
+    { year: "FY2031", phase: "Operating", receipts: 28870, growth: "+4.6%", cumulative: 166870, benchmark: 35633 },
+    { year: "FY2032", phase: "Operating", receipts: 30198, growth: "+4.6%", cumulative: 197068, benchmark: 37272 },
+    { year: "FY2033", phase: "Operating", receipts: 31587, growth: "+4.6%", cumulative: 228655, benchmark: 38987 },
+    { year: "FY2034", phase: "Operating", receipts: 33040, growth: "+4.6%", cumulative: 261695, benchmark: 40780 },
+    { year: "FY2035", phase: "Operating", receipts: 34560, growth: "+4.6%", cumulative: 296255, benchmark: 42656 },
+    { year: "FY2036", phase: "Operating", receipts: 36149, growth: "+4.6%", cumulative: 332404, benchmark: 44618 },
+    { year: "FY2037", phase: "Operating", receipts: 37812, growth: "+4.6%", cumulative: 370216, benchmark: 46670 },
+    { year: "FY2038", phase: "Operating", receipts: 39551, growth: "+4.6%", cumulative: 409767, benchmark: 48817 },
+    { year: "FY2039", phase: "Operating", receipts: 41371, growth: "+4.6%", cumulative: 451138, benchmark: 51063 },
+    { year: "FY2040", phase: "Operating", receipts: 43274, growth: "+4.6%", cumulative: 494412, benchmark: 53412 },
+    { year: "FY2041", phase: "Operating", receipts: 45264, growth: "+4.6%", cumulative: 539676, benchmark: 55869 },
+    { year: "FY2042", phase: "Operating", receipts: 47347, growth: "+4.6%", cumulative: 587023, benchmark: 58439 },
+    { year: "FY2043", phase: "Operating", receipts: 49525, growth: "+4.6%", cumulative: 636548, benchmark: 61127 },
+    { year: "FY2044", phase: "Operating", receipts: 51803, growth: "+4.6%", cumulative: 688351, benchmark: 63939 },
+    { year: "FY2045", phase: "Operating", receipts: 54186, growth: "+4.6%", cumulative: 742537, benchmark: 66880 },
+    { year: "FY2046", phase: "Operating", receipts: 56678, growth: "+4.6%", cumulative: 799215, benchmark: 69956 },
+    { year: "FY2047", phase: "Operating", receipts: 59285, growth: "+4.6%", cumulative: 858500, benchmark: 73174 },
+    { year: "FY2048", phase: "Operating", receipts: 62013, growth: "+4.6%", cumulative: 920513, benchmark: 76540 },
+    { year: "FY2049", phase: "Operating", receipts: 64865, growth: "+4.6%", cumulative: 985378, benchmark: 80061 },
+    { year: "FY2050", phase: "Operating", receipts: 67849, growth: "+4.6%", cumulative: 1053227, benchmark: 83744 },
+    { year: "FY2051", phase: "Operating", receipts: 70970, growth: "+4.6%", cumulative: 1124197, benchmark: 87596 },
+    { year: "FY2052", phase: "Operating", receipts: 74235, growth: "+4.6%", cumulative: 1198432, benchmark: 91625 },
+    { year: "FY2053", phase: "Operating", receipts: 77649, growth: "+4.6%", cumulative: 1276081, benchmark: 95840 },
   ],
 
   // ---- Schedule totals ----
   scheduleTotals: {
     totalOperating: 1193281,      // sum of the 25 Operating rows (FY2029-FY2053)
     totalLifecycle: 1276081,      // sum of all 28 rows (FY2026-FY2053)
-    totalBenchmark: 911904,       // 28 x 32,568 (Optimistic 1.18x benchmark)
-    cumulativeGap: 364177,        // totalLifecycle - totalBenchmark
-    benchmarkAnnual: 32568,       // 27,600 x 1.18 = Optimistic scenario
-    benchmarkLabel: "Optimistic (1.18x)",
+    totalBenchmark: 1471332,      // sum of the 25 benchmarked years (FY2029-FY2053)
+    benchmarkYears: 25,           // FY2026-FY2028 carry no benchmark (construction)
+    cumulativeGap: -195251,       // totalLifecycle - totalBenchmark (behind)
+    benchmarkAnnual: 32568,       // 27,600 x 1.18 = Optimistic scenario, FY2029 base
+    benchmarkGrowthPct: 4.6,      // compounds at the same 4.6% p.a. as receipts
+    benchmarkLabel: "Optimistic (1.18x), growing 4.6% p.a.",
     leaseReceiptsRatio: 4.62,     // totalLifecycle / 276,000 fractional value
-    breakevenYear: 15,            // FY2040 — first year cumulative receipts exceed cumulative benchmark
-    note: "Schedule benchmarked against the Optimistic (1.18x) target rate of $32,568/yr (10% guarantee of $27,600 x 1.18). The 10% guarantee is the contractual floor paid at source during construction (FY2026-FY2028) and the first 2 years of operation (FY2029-FY2030); after FY2030 the income-share stream grows at 4.6% p.a. above the 10% floor. Cumulative receipts overtake the benchmark in FY2040."
+    breakevenYear: null,          // cumulative receipts never overtake the benchmark
+    note: "Construction years FY2026-FY2028 carry no benchmark: the 10% guarantee of $27,600/yr is the maximum potential income during construction, so there is no comparable target to measure against. From FY2029 the benchmark is the Optimistic (1.18x) target rate of $32,568/yr, compounding at the same 4.6% p.a. as the receipts series. Because the guarantee floor ($27,600) starts below the Optimistic target ($32,568) and both then grow at the same rate, the gap stays constant in proportional terms and cumulative receipts never overtake the benchmark."
   },
 
   // ---- Lease vs comparable benchmark ----
