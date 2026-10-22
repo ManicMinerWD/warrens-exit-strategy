@@ -1015,11 +1015,16 @@ function renderElleLease() {
   `);
 
   // ---------- year-by-year schedule ----------
-  const rows = d.schedule.map((r, idx) => {
+  // Benchmark = Optimistic (1.18x) target rate on the $276,000 fractional value.
+  const benchAnnual = d.scheduleTotals.benchmarkAnnual || d.schedule[0].benchmark;
+  const rows = d.schedule.map((r) => {
     const isLanding = r.year === "FY2029";
     const isC = r.growth === "n/a";
     const cls = (isLanding ? "landing" : "") + (isC ? " phase-c" : " phase-2");
     const growth = r.growth === "n/a" ? "—" : r.growth;
+    const gap = (r.receipts || 0) - (r.benchmark || 0);
+    const gapCls = gap < 0 ? ' style="color:var(--coral);"' : (gap > 0 ? ' style="color:var(--teal);"' : "");
+    const gapTxt = (gap > 0 ? "+" : gap < 0 ? "−" : "") + "A$" + Math.abs(gap).toLocaleString();
     return `<tr class="${cls}">
       <td class="num">${r.year}</td>
       <td class="num">${r.phase}</td>
@@ -1027,27 +1032,32 @@ function renderElleLease() {
       <td class="num">${growth}</td>
       <td class="num">A$${r.cumulative.toLocaleString()}</td>
       <td class="num">A$${r.benchmark.toLocaleString()}</td>
-      <td class="num">A$${r.gap.toLocaleString()}</td>
+      <td class="num"${gapCls}>${gapTxt}</td>
     </tr>`;
   }).join("");
+  const T = d.scheduleTotals;
+  const totalBenchmark = T.totalBenchmark || (benchAnnual * d.schedule.length);
   put("#elleLeaseSchedule", `
     <table>
       <thead><tr>
-        <th>Year</th><th>Phase</th><th>Fractional receipts</th><th>Growth</th><th>Cumulative receipts</th><th>Benchmark income</th><th>Cumulative gap</th>
+        <th>Year</th><th>Phase</th><th>Fractional receipts</th><th>Growth</th><th>Cumulative receipts</th><th>Benchmark income<br><span style="font-weight:400;font-size:10px;color:var(--muted);">${esc(T.benchmarkLabel || "Benchmark")} — A$${benchAnnual.toLocaleString()}/yr</span></th><th>Annual gap</th>
       </tr></thead>
       <tbody>${rows}
         <tr style="background:var(--sand);font-weight:700;">
-          <td colspan="3" class="num">Total operating receipts (25 yrs)</td><td colspan="2" class="num">A$${d.scheduleTotals.totalOperating.toLocaleString()}</td><td colspan="2"></td>
+          <td colspan="3" class="num">Total operating receipts (25 yrs)</td><td colspan="2" class="num">A$${T.totalOperating.toLocaleString()}</td><td colspan="2"></td>
         </tr>
         <tr style="background:var(--sand);font-weight:700;">
-          <td colspan="3" class="num">Total lifecycle receipts (25 yrs)</td><td colspan="2" class="num">A$${d.scheduleTotals.totalLifecycle.toLocaleString()}</td><td colspan="2"></td>
+          <td colspan="3" class="num">Total lifecycle receipts (28 yrs)</td><td colspan="2" class="num">A$${T.totalLifecycle.toLocaleString()}</td><td colspan="2">A$${totalBenchmark.toLocaleString()} benchmark</td>
         </tr>
         <tr style="background:var(--sand);font-weight:700;">
-          <td colspan="3" class="num">Lease receipts to consideration ratio</td><td colspan="2" class="num">${d.scheduleTotals.leaseReceiptsRatio.toFixed(2)}x</td><td colspan="2">Breakeven: ${d.scheduleTotals.breakevenYear}</td>
+          <td colspan="3" class="num">Cumulative receipts vs benchmark</td><td colspan="2" class="num" style="color:var(--teal);">A$${(T.totalLifecycle - totalBenchmark).toLocaleString()} ahead</td><td colspan="2">Breakeven: yr ${T.breakevenYear}</td>
+        </tr>
+        <tr style="background:var(--sand);font-weight:700;">
+          <td colspan="3" class="num">Lease receipts to consideration ratio</td><td colspan="2" class="num">${T.leaseReceiptsRatio.toFixed(2)}x</td><td colspan="2"></td>
         </tr>
       </tbody>
     </table>
-    <div class="lease-notes">${esc(d.scheduleTotals.note || "")}</div>
+    <div class="lease-notes">${esc(T.note || "")}</div>
   `);
 
   // ---------- operating sensitivity ----------
