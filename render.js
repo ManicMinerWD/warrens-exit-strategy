@@ -1251,6 +1251,38 @@ function renderElleLease() {
     </div>
   `);
 
+  // ---- property management agreement ----
+  const pma = d.pma;
+  put("#ellePma", `
+    <div class="two-col">
+      <div>
+        <h3>Operator</h3>
+        <table class="data-table" style="font-size:11px;">
+          <tbody>
+            <tr><td><strong>Name</strong></td><td class="num">${pma.operator.name}</td></tr>
+            <tr><td><strong>Role</strong></td><td>Day-to-day operational management</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3>Income structure</h3>
+        <table class="data-table" style="font-size:11px;">
+          <tbody>
+            <tr><td><strong>Room pool</strong></td><td class="num">45% Net Room Income</td></tr>
+            <tr><td><strong>Facilities pool</strong></td><td class="num">45% Net Facilities Income</td></tr>
+            <tr><td><strong>Operator share</strong></td><td class="num">55% operations share</td></tr>
+            <tr><td><strong>NPBT share</strong></td><td class="num">30% of profit to investors</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div style="margin-top:12px;">
+      <h3 style="font-size:13px;">House Rules</h3>
+      <p style="font-size:11px;margin:0;">Explains complimentary stays, usage limits, and leaseholder benefits. Must be followed by all leaseholders.</p>
+    </div>
+    <p class="lease-notes" style="font-size:11px;">Source: Lease Agreement Article 3; Property Management Agreement</p>
+  `);
+
   // ---- verdict ----
   put("#elleVerdict", `
     <div style="background:var(--sand);border:1px solid var(--sand-dark);padding:14px 16px;border-radius:8px;">

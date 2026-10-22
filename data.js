@@ -1294,7 +1294,26 @@ const ELLE_LEASE = {
     source: "PMA Article 3"
   },
 
-  // ---- 3. Tiers: 10% applies to both positions ----
+  // ---- 3. Property Management Agreement ----
+  pma: {
+    operator: {
+      name: "SONO Hotels & Resorts",
+      role: "Day-to-day operational management"
+    },
+    incomeStructure: {
+      roomPool: "45% of Net Room Operating Income to investors",
+      facilitiesPool: "45% of Net Facilities Operating Income to investors",
+      operatorShare: "55% to Lessor/operator for operations",
+      npbtShare: "30% of Net Profit Before Tax to investors"
+    },
+    houseRules: {
+      purpose: "Explains complimentary stays, usage limits, and leaseholder benefits",
+      compliance: "Must be followed by all leaseholders"
+    },
+    source: "Lease Agreement Article 3; Property Management Agreement"
+  },
+
+  // ---- 4. Tiers: 10% applies to both positions ----
   tiers: {
     thresholdAud: 250000,
     ratePct: 10.0,
