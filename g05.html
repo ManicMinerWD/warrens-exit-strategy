@@ -93,6 +93,7 @@
       <tr><td><strong>Year built</strong></td><td class="num">2017 <span style="font-size:11.5px;color:var(--muted);">(per Domain profile)</span></td></tr>
       <tr><td><strong>Storeys</strong></td><td class="num">6 <span style="font-size:11.5px;color:var(--muted);">(per REA PropTrack)</span></td></tr>
       <tr><td><strong>Last sold</strong></td><td class="num"><strong>$411,545</strong> <span style="font-size:11.5px;color:var(--muted);">— 12 Oct 2014, private treaty</span></td></tr>
+      <tr><td><strong>Planned sale price</strong></td><td class="num" style="color:var(--teal);"><strong>$355,000</strong> <span style="font-size:11.5px;color:var(--muted);">— base case, see sale simulation below</span></td></tr>
       <tr><td><strong>Listing agent (2014)</strong></td><td>Raine &amp; Horne Brunswick <span style="font-size:11.5px;color:var(--muted);">— 27 days on market</span></td></tr>
       <tr><td><strong>Open floor plan</strong></td><td>Yes <span style="font-size:11.5px;color:var(--muted);">(per REA)</span></td></tr>
       <tr><td><strong>Garden</strong></td><td>Yes <span style="font-size:11.5px;color:var(--muted);">(per REA)</span></td></tr>
@@ -393,9 +394,29 @@
 
 <!-- ====== SALE SIMULATION ====== -->
 <div class="section">
-  <h2>Sale simulation — Exit proceeds analysis <span class="badge">$350k–$380k scenarios</span></h2>
-  <p style="font-size:12px;color:var(--muted);margin-bottom:10px;">Selling G5/108 at various prices, accounting for the following outgoing costs: $330k mortgage payoff, $10k sales agent fees, $10k bills ( Council rates + body corp), $10k lawyer fees. Total outgoing costs: $360,000.</p>
+  <h2>Sale simulation — Exit proceeds analysis <span class="badge">$350k–$380k scenarios · base $355k</span></h2>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:10px;">Selling G5/108 — base case <strong>$355,000</strong>. Outgoing costs: $330k mortgage payoff + $21,500 itemised sale costs (breakdown below). Total outgoing costs: <strong>$351,500</strong>.</p>
   <table class="compare">
+    <thead>
+      <tr>
+        <th>Sale cost item</th>
+        <th class="num">Amount (AUD)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Agent commission</td><td class="num">$10,000</td></tr>
+      <tr><td>Conveyancing</td><td class="num">$1,200</td></tr>
+      <tr><td>Marketing</td><td class="num">$4,500</td></tr>
+      <tr><td>Body corporate</td><td class="num">$2,500</td></tr>
+      <tr><td>Water</td><td class="num">$1,200</td></tr>
+      <tr><td>Land tax</td><td class="num">$500</td></tr>
+      <tr><td>Utility bills</td><td class="num">$1,600</td></tr>
+      <tr style="border-top:2px solid var(--teal);"><td><strong>Total sale costs</strong></td><td class="num"><strong>$21,500</strong></td></tr>
+      <tr><td>Mortgage payoff</td><td class="num">$330,000</td></tr>
+      <tr><td><strong>Total outgoing costs</strong></td><td class="num"><strong>$351,500</strong></td></tr>
+    </tbody>
+  </table>
+  <table class="compare" style="margin-top:12px;">
     <thead>
       <tr>
         <th>Sale Price</th>
@@ -407,33 +428,39 @@
     <tbody>
       <tr>
         <td><strong>$350,000</strong></td>
-        <td class="num">$360,000</td>
-        <td class="num" style="color:var(--coral);font-weight:700;">&minus;<strong>$10,000</strong></td>
-        <td class="num" style="color:var(--coral);">&minus;<strong>$41,545</strong></td>
+        <td class="num">$351,500</td>
+        <td class="num" style="color:var(--coral);font-weight:700;">&minus;<strong>$1,500</strong></td>
+        <td class="num" style="color:var(--coral);">&minus;<strong>$61,545</strong></td>
+      </tr>
+      <tr style="background:rgba(45,212,191,0.08);">
+        <td><strong>$355,000</strong> <span style="font-size:11px;color:var(--teal);font-weight:600;">BASE CASE</span></td>
+        <td class="num">$351,500</td>
+        <td class="num" style="color:var(--teal);font-weight:700;">$3,500</td>
+        <td class="num" style="color:var(--coral);">&minus;<strong>$56,545</strong></td>
       </tr>
       <tr>
         <td><strong>$360,000</strong></td>
-        <td class="num">$360,000</td>
-        <td class="num">$0</td>
+        <td class="num">$351,500</td>
+        <td class="num" style="color:var(--teal);font-weight:700;">$8,500</td>
         <td class="num" style="color:var(--coral);">&minus;<strong>$51,545</strong></td>
       </tr>
       <tr>
         <td><strong>$370,000</strong></td>
-        <td class="num">$360,000</td>
-        <td class="num" style="color:var(--teal);font-weight:700;">$10,000</td>
+        <td class="num">$351,500</td>
+        <td class="num" style="color:var(--teal);font-weight:700;">$18,500</td>
         <td class="num" style="color:var(--coral);">&minus;<strong>$41,545</strong></td>
       </tr>
       <tr>
         <td><strong>$380,000</strong></td>
-        <td class="num">$360,000</td>
-        <td class="num" style="color:var(--teal);font-weight:700;">$20,000</td>
+        <td class="num">$351,500</td>
+        <td class="num" style="color:var(--teal);font-weight:700;">$28,500</td>
         <td class="num" style="color:var(--coral);">&minus;<strong>$31,545</strong></td>
       </tr>
     </tbody>
   </table>
   <p style="font-size:12px;color:var(--muted);margin-top:8px;"><strong>Notes:</strong> 
     Purchase price: $411,545 (Warren Duncan, 2017). 
-    Sale costs: $330k mortgage payoff + $10k sales agent + $10k bills + $10k lawyer = $360,000 total. 
+    Sale costs: $330k mortgage payoff + $10,000 agent commission + $1,200 conveyancing + $4,500 marketing + $2,500 body corporate + $1,200 water + $500 land tax + $1,600 utility bills = $351,500 total. 
     Capital Gain/(Loss) = Sale Price - Purchase Price. Negative = capital loss. 
     Net Cash = Sale Price - Sale costs (may require additional outlay if negative).
     Mortgage payoff assumes full $330k outstanding at time of sale.
